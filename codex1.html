@@ -322,6 +322,149 @@
     .nav{margin-top:12px}
     .nav button{padding:8px 10px;font-size:.7rem}
   }
+
+  /* ---------- outils (sauvegarde) ---------- */
+  .tools{display:flex;gap:8px}
+  .tool{font-family:'Cinzel',serif;font-weight:700;font-size:.72rem;letter-spacing:.08em;color:var(--gold);
+    background:rgba(0,0,0,.35);border:1px solid rgba(212,168,75,.35);border-radius:3px;padding:6px 10px;cursor:pointer}
+  .tool:hover{background:rgba(212,168,75,.15);color:var(--gold-light)}
+
+  /* ---------- pages : défilement interne si une fiche est longue ---------- */
+  .content{overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:rgba(122,26,26,.35) transparent}
+  .content::-webkit-scrollbar{width:5px}
+  .content::-webkit-scrollbar-thumb{background:rgba(122,26,26,.35);border-radius:3px}
+
+  /* catégories contenant des fiches */
+  .cats a.cat{text-decoration:none;cursor:pointer;border-radius:3px;transition:background .2s,color .2s}
+  .cats a.cat:hover,.cats a.cat:focus-visible{background:rgba(122,26,26,.08);color:var(--red);outline:none}
+  .cats .count{margin-left:auto;align-self:center;font-family:'Cinzel',serif;font-weight:700;font-size:.7rem;color:var(--paper);
+    background:var(--red);border-radius:10px;min-width:20px;height:20px;padding:0 6px;display:inline-grid;place-items:center}
+  .cats .code.wide{min-width:92px}
+  .def-label{font-family:'Cinzel',serif;font-weight:700;font-size:.75rem;letter-spacing:.3em;color:var(--ink-soft);text-transform:uppercase;margin:14px 0 8px}
+
+  .add-here{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:18px;color:var(--ink-soft);font-style:italic;font-size:1.05rem}
+  .add-here strong{font-style:normal;color:var(--red);font-family:'Cinzel',serif}
+
+  /* ---------- fiche ---------- */
+  .fiche-code{display:inline-block;font-family:'Cinzel',serif;font-weight:700;font-size:.8rem;letter-spacing:.15em;color:var(--red);
+    border:1px solid rgba(122,26,26,.4);padding:2px 10px;border-radius:2px}
+  .fiche{text-align:left}
+  .fiche .fiche-code{display:table;margin:0 auto}
+  .fiche-name{font-family:'Cinzel Decorative',serif;font-weight:700;font-size:clamp(1.4rem,2.6vw,2rem);color:var(--red);text-align:center;line-height:1.15;margin:10px 0 4px}
+  .fiche-var{text-align:center;font-style:italic;color:var(--ink-soft);font-size:.98rem}
+  .fiche-img{margin:16px auto 4px;width:min(100%,340px);aspect-ratio:4/3;border:1px solid rgba(122,26,26,.4);outline:1px solid rgba(122,26,26,.2);outline-offset:4px;
+    background:rgba(255,255,255,.25);display:grid;place-items:center;overflow:hidden}
+  .fiche-img img{width:100%;height:100%;object-fit:contain;filter:sepia(.12)}
+  .fiche-img.empty span{font-style:italic;color:var(--ink-soft);font-size:.9rem}
+  .fiche-desc{font-size:1.05rem;line-height:1.55;white-space:pre-line}
+  .fiche-none{color:var(--ink-soft)}
+  .fiche-path{text-align:center;font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:.08em;color:var(--ink-soft);line-height:1.5;
+    padding-bottom:10px;border-bottom:1px solid rgba(122,26,26,.25)}
+  .fiche-path em{font-family:'IM Fell English',serif;font-size:.95rem;letter-spacing:0;color:var(--red)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{font-size:.92rem;padding:3px 10px;border:1px solid rgba(122,26,26,.4);border-radius:14px;background:rgba(122,26,26,.06);color:var(--ink)}
+  .fiche-quote{font-style:italic;font-size:1.02rem;line-height:1.55;white-space:pre-line;border-left:3px solid rgba(122,26,26,.5);padding:4px 0 4px 14px;color:var(--ink)}
+  .fiche-src{margin-top:8px;text-align:right;font-family:'Cinzel',serif;font-size:.8rem;color:var(--ink-soft)}
+  .fiche-actions{display:flex;justify-content:center;gap:10px;margin-top:26px;padding-top:14px;border-top:1px solid rgba(122,26,26,.2)}
+
+  /* ---------- boutons encre ---------- */
+  .ink-btn{font-family:'Cinzel',serif;font-weight:700;font-size:.85rem;letter-spacing:.06em;cursor:pointer;
+    color:var(--paper);background:linear-gradient(180deg,#8a2020,var(--red));border:1px solid #4a0e0e;border-radius:3px;padding:9px 16px;
+    box-shadow:0 2px 0 rgba(0,0,0,.25);transition:filter .2s,transform .1s}
+  .ink-btn:hover{filter:brightness(1.12)}
+  .ink-btn:active{transform:translateY(1px)}
+  .ink-btn.small{font-size:.75rem;padding:6px 12px}
+  .ink-btn.ghost{background:transparent;color:var(--red);border-color:rgba(122,26,26,.5);box-shadow:none}
+  .ink-btn.danger{background:linear-gradient(180deg,#3a2a20,#1f140d);border-color:#000}
+  .fiche-actions .ink-btn.danger{background:transparent;color:#6b1a1a;border-color:rgba(122,26,26,.4);box-shadow:none}
+
+  /* ---------- plume ---------- */
+  .quill{position:fixed;right:18px;bottom:18px;z-index:40;width:74px;height:74px;border-radius:50%;cursor:pointer;
+    background:radial-gradient(circle at 40% 35%,#4a2912,#1c0e06);border:1px solid rgba(212,168,75,.6);
+    box-shadow:0 10px 25px rgba(0,0,0,.6),0 0 18px rgba(212,168,75,.25);display:grid;place-items:center;padding:0;
+    transition:transform .25s, box-shadow .25s}
+  .quill svg{width:44px;height:64px;overflow:visible}
+  .quill:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.7),0 0 28px rgba(243,200,110,.45)}
+  .quill .feather{transform-origin:44px 104px;transition:transform .35s}
+  .quill:hover .feather{transform:rotate(-8deg)}
+  .quill-label{position:absolute;right:calc(100% + 10px);white-space:nowrap;font-family:'Cinzel',serif;font-weight:700;font-size:.75rem;letter-spacing:.1em;
+    color:var(--gold-light);background:rgba(0,0,0,.7);padding:5px 10px;border-radius:3px;opacity:0;pointer-events:none;transition:opacity .2s}
+  .quill:hover .quill-label{opacity:1}
+  /* grand écran : l'encrier et sa plume se posent à côté du livre */
+  @media (min-width:1300px){
+    .quill{position:absolute;right:auto;left:calc(50% + 570px);bottom:auto;top:calc(var(--book-bottom,760px) - 170px);width:96px;height:150px;border-radius:0;
+      background:none;border:none;box-shadow:none}
+    .quill svg{width:90px;height:140px;filter:drop-shadow(0 10px 12px rgba(0,0,0,.7))}
+    .quill:hover{box-shadow:none}
+    .quill-label{right:auto;left:50%;top:100%;transform:translateX(-50%);margin-top:6px;opacity:.85;background:none}
+  }
+
+  /* ---------- fenêtres ---------- */
+  body.modal-on{overflow:hidden}
+  .modal{position:fixed;inset:0;z-index:60;background:rgba(10,5,2,.72);backdrop-filter:blur(2px);
+    display:flex;align-items:flex-start;justify-content:center;padding:28px 12px;overflow-y:auto}
+  .modal[hidden]{display:none}
+  .sheet{position:relative;width:min(640px,100%);color:var(--ink);padding:34px 34px 26px;border-radius:4px;
+    background:radial-gradient(ellipse at 30% 10%,rgba(255,255,255,.3),transparent 60%),linear-gradient(180deg,var(--paper),var(--paper-dark));
+    box-shadow:0 30px 60px rgba(0,0,0,.7), inset 0 0 0 1px rgba(122,26,26,.35), inset 0 0 0 6px rgba(239,224,187,.6), inset 0 0 0 7px rgba(122,26,26,.2);
+    animation:sheetIn .3s ease both}
+  .sheet.small{width:min(420px,100%);text-align:center;margin-top:18vh;font-size:1.1rem;line-height:1.5}
+  .sheet.small strong{color:var(--red);font-family:'Cinzel',serif}
+  @keyframes sheetIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .sheet .x{position:absolute;top:10px;right:12px;background:none;border:none;font-size:1.1rem;color:var(--ink-soft);cursor:pointer;padding:6px}
+  .sheet h2{margin-bottom:2px}
+  .code-prev{text-align:center;font-family:'Cinzel',serif;font-size:.85rem;color:var(--ink-soft);letter-spacing:.1em}
+  .code-prev span{color:var(--red);font-weight:700}
+  .sheet label,.sheet .field{display:block;margin-bottom:14px;font-family:'Cinzel',serif;font-weight:700;font-size:.78rem;letter-spacing:.08em;color:var(--ink-soft)}
+  .sheet .lbl{display:block;margin-bottom:6px}
+  .sheet .req{color:var(--red)}
+  .sheet .hint{font-family:'IM Fell English',serif;font-weight:400;font-style:italic;letter-spacing:0;font-size:.85rem}
+  .sheet input[type=text],.sheet input[type=url],.sheet select,.sheet textarea{
+    display:block;width:100%;margin-top:6px;font-family:'IM Fell English',Georgia,serif;font-size:1.02rem;color:var(--ink);
+    background:rgba(255,252,240,.65);border:1px solid rgba(122,26,26,.35);border-radius:3px;padding:8px 10px;letter-spacing:0}
+  .sheet textarea{resize:vertical;line-height:1.45}
+  .sheet input:focus,.sheet select:focus,.sheet textarea:focus{outline:2px solid rgba(122,26,26,.35);outline-offset:1px;background:#fffaf0}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .img-row{display:flex;gap:14px;align-items:stretch}
+  .img-prev{width:130px;min-width:130px;aspect-ratio:4/3;border:1px dashed rgba(122,26,26,.45);display:grid;place-items:center;overflow:hidden;background:rgba(255,255,255,.3)}
+  .img-prev img{width:100%;height:100%;object-fit:contain}
+  .img-prev span{font-family:'IM Fell English',serif;font-weight:400;font-style:italic;letter-spacing:0;font-size:.85rem}
+  .img-actions{flex:1;display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+  .img-actions input{margin-top:0 !important}
+  .ink-btn.file{display:inline-block;margin:0;color:var(--paper)}
+  .warn{font-style:italic;font-size:.92rem;background:rgba(122,26,26,.08);border-left:3px solid var(--red);padding:6px 10px;margin-bottom:14px}
+  .msg{min-height:1.2em;color:var(--red);font-style:italic;margin-bottom:6px}
+  .sheet-actions{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+  .sheet.small .sheet-actions{justify-content:center;margin-top:18px}
+
+  @media (max-width:640px){
+    .tools .tool{font-size:.6rem;padding:5px 7px}
+    .quill{width:60px;height:60px;right:12px;bottom:12px}
+    .quill svg{width:36px;height:54px}
+    .quill-label{display:none}
+    .def-label{font-size:.5rem;margin:6px 0 4px;letter-spacing:.2em}
+    .cats .count{font-size:.5rem;min-width:14px;height:14px;padding:0 4px}
+    .cats .code.wide{min-width:54px}
+    .add-here{font-size:.72rem;gap:10px}
+    .fiche-code{font-size:.5rem;padding:1px 5px}
+    .fiche-name{font-size:.9rem;margin:6px 0 2px}
+    .fiche-var{font-size:.62rem}
+    .fiche-img{margin:8px auto 2px;outline-offset:2px}
+    .fiche-img.empty span{font-size:.55rem}
+    .fiche-desc,.fiche-quote{font-size:.62rem;line-height:1.4}
+    .fiche-quote{padding-left:6px;border-left-width:2px}
+    .fiche-path{font-size:.5rem;padding-bottom:5px}
+    .fiche-path em{font-size:.62rem}
+    .chip{font-size:.55rem;padding:1px 6px}
+    .chips{gap:3px}
+    .fiche-src{font-size:.5rem}
+    .fiche-actions{flex-direction:column;align-items:stretch;gap:5px;margin-top:12px;padding-top:8px}
+    .ink-btn.small{font-size:.58rem;padding:5px 6px}
+    .sheet{padding:28px 16px 18px}
+    .grid2{grid-template-columns:1fr}
+    .img-row{flex-direction:column}
+    .img-prev{width:100%;min-width:0}
+  }
 </style>
 </head>
 <body>
@@ -329,6 +472,11 @@
   <div class="topbar">
     <a class="back" href="index.html">← La bibliothèque</a>
     <span class="label">GRIMOIRES · CODEX I</span>
+    <div class="tools">
+      <button type="button" class="tool" id="exportBtn" title="Télécharger une sauvegarde de toutes les fiches">⤓ Sauvegarder</button>
+      <button type="button" class="tool" id="importBtn" title="Charger une sauvegarde de fiches">⤒ Charger</button>
+      <input type="file" id="importFile" accept="application/json,.json" hidden>
+    </div>
   </div>
 
   <main class="book" id="book">
@@ -351,6 +499,94 @@
     <button id="toc" class="mid" type="button">Sommaire</button>
     <button id="next" type="button">Suivant →</button>
   </nav>
+
+  <button type="button" class="quill" id="quill" title="Créer une fiche" aria-label="Créer une nouvelle fiche">
+    <svg viewBox="0 0 90 140" aria-hidden="true">
+      <defs>
+        <linearGradient id="vane" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#fbf3dc"/><stop offset=".6" stop-color="#e6d3a3"/><stop offset="1" stop-color="#b99a62"/>
+        </linearGradient>
+        <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#0d0d14"/><stop offset=".35" stop-color="#2a2a3a"/><stop offset="1" stop-color="#08080c"/>
+        </linearGradient>
+      </defs>
+      <g class="feather">
+        <path d="M44 104 C50 76 60 44 80 8 C84 30 78 54 66 72 C58 84 50 95 44 104 Z" fill="url(#vane)" stroke="#8a6a2a" stroke-width="1"/>
+        <path d="M44 104 C54 76 66 44 80 8" fill="none" stroke="#6b4c1a" stroke-width="1.6"/>
+        <path d="M52 86 L64 78 M56 76 L69 66 M60 66 L73 52 M65 54 L77 38 M70 42 L79 26" stroke="#b99a62" stroke-width=".8"/>
+        <path d="M44 104 L40 116" stroke="#2a1a0e" stroke-width="2.2" stroke-linecap="round"/>
+      </g>
+      <rect x="31" y="104" width="24" height="10" rx="2" fill="#6b4c1a" stroke="#d4a84b" stroke-width="1"/>
+      <path d="M18 116 h50 a8 8 0 0 1 8 8 v6 a8 8 0 0 1 -8 8 h-50 a8 8 0 0 1 -8 -8 v-6 a8 8 0 0 1 8 -8z" fill="url(#glass)" stroke="#d4a84b" stroke-width="1.2"/>
+      <path d="M16 121 h54" stroke="rgba(212,168,75,.5)" stroke-width="1"/>
+    </svg>
+    <span class="quill-label">Nouvelle fiche</span>
+  </button>
+
+  <!-- Formulaire de fiche -->
+  <div class="modal" id="formModal" hidden>
+    <form class="sheet" id="ficheForm" novalidate>
+      <button type="button" class="x" data-close aria-label="Fermer">✕</button>
+      <h2 id="formTitle">Nouvelle fiche</h2>
+      <div class="code-prev">Index : <span id="codePrev">E-01-01-001</span></div>
+      <div class="rule"></div>
+      <p class="warn" id="storeWarn" hidden>Ici, les fiches ne sont pas conservées après fermeture de la page. Pense à utiliser « Sauvegarder ».</p>
+
+      <div class="grid2">
+        <label>Catégorie<select id="fCat"></select></label>
+        <label>Sous-catégorie<select id="fSub"></select></label>
+      </div>
+
+      <label>Nom <span class="req">*</span>
+        <input id="fNom" type="text" placeholder="Nom principal" autocomplete="off">
+      </label>
+      <label>Variantes <span class="hint">(facultatif, séparées par des virgules)</span>
+        <input id="fVar" type="text" placeholder="Autres noms, orthographes…" autocomplete="off">
+      </label>
+
+      <div class="field">
+        <span class="lbl">Image</span>
+        <div class="img-row">
+          <div class="img-prev" id="imgPrev"><span>Aucune image</span></div>
+          <div class="img-actions">
+            <label class="ink-btn small file">Choisir une image<input id="fFile" type="file" accept="image/*" hidden></label>
+            <input id="fUrl" type="url" placeholder="… ou coller un lien d’image (https://…)">
+            <button type="button" class="ink-btn small danger" id="imgClear" hidden>Retirer l’image</button>
+          </div>
+        </div>
+      </div>
+
+      <label>Description rapide
+        <textarea id="fDesc" rows="3" placeholder="Quelques lignes pour identifier immédiatement l’entité"></textarea>
+      </label>
+      <label>Domaines d’expertise <span class="hint">(séparés par des virgules)</span>
+        <input id="fDom" type="text" placeholder="ex. protection, messages, guérison" autocomplete="off">
+      </label>
+      <label>Texte d’origine — source / référence
+        <input id="fSrc" type="text" placeholder="ex. Livre de Tobie, 12:15" autocomplete="off">
+      </label>
+      <label>Texte d’origine — extrait
+        <textarea id="fExt" rows="4" placeholder="Extrait pertinent, texte ancien…"></textarea>
+      </label>
+
+      <p class="msg" id="formMsg" role="alert"></p>
+      <div class="sheet-actions">
+        <button type="button" class="ink-btn ghost" data-close>Annuler</button>
+        <button type="button" class="ink-btn" id="saveBtn">✒ Inscrire dans le codex</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Confirmation -->
+  <div class="modal" id="confirmModal" hidden>
+    <div class="sheet small">
+      <p id="confirmText"></p>
+      <div class="sheet-actions">
+        <button type="button" class="ink-btn ghost" data-close>Annuler</button>
+        <button type="button" class="ink-btn danger" id="confirmYes">Supprimer</button>
+      </div>
+    </div>
+  </div>
 
 <script>
   // Chapitres : ordre alphabétique, "Autres / inclassables" toujours à la fin
@@ -641,10 +877,13 @@
   };
 
   const pad = n => String(n).padStart(2,'0');
+  const pad3 = n => String(n).padStart(3,'0');
   const roman = n => {
     const m=[[10,'X'],[9,'IX'],[5,'V'],[4,'IIII'],[1,'I']]; let r='';
     for(const [v,s] of m){while(n>=v){r+=s;n-=v}} return r;
   };
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const subsOf = i => (subcats[chapters[i]] || {items:[]}).items;
 
   const spread = document.getElementById('spread');
   const tocBtn = document.getElementById('toc');
@@ -652,6 +891,33 @@
   const FL = document.getElementById('folioL'), FR = document.getElementById('folioR');
   const prev = document.getElementById('prev'), next = document.getElementById('next');
 
+  /* =========================================================
+     FICHES : stockage
+     ========================================================= */
+  const STORE_KEY = 'grimoires.codex1.fiches';
+  let storageOK = true;
+  let fiches = [];
+  try {
+    const rawData = localStorage.getItem(STORE_KEY);
+    if (rawData) fiches = JSON.parse(rawData) || [];
+  } catch (e) { storageOK = false; }
+
+  function saveFiches(){
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(fiches)); return true; }
+    catch (e) {
+      if (e && (e.name === 'QuotaExceededError' || e.code === 22)) return 'quota';
+      storageOK = false; return true;   // stockage indisponible : on garde en mémoire
+    }
+  }
+
+  const ficheCode = f => `E-${pad(f.cat+1)}-${pad(f.sub+1)}-${pad3(f.num)}`;
+  const fichesOfSub = (i,k) => fiches.filter(f=>f.cat===i && f.sub===k).sort((a,b)=>a.num-b.num);
+  const fichesOfChapter = i => fiches.filter(f=>f.cat===i).sort((a,b)=>a.sub-b.sub || a.num-b.num);
+  const nextNum = (i,k) => fichesOfSub(i,k).reduce((m,f)=>Math.max(m,f.num),0) + 1;
+
+  /* =========================================================
+     Vues : sommaire, chapitre, sous-catégorie, fiche
+     ========================================================= */
   const sigil = `<svg class="sigil" viewBox="0 0 120 120" aria-hidden="true">
       <circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="48"/>
       <polygon points="60,14 100,83 20,83"/><polygon points="60,106 20,37 100,37"/>
@@ -664,6 +930,7 @@
         ${sigil}
         <p class="motto">Registre des êtres visibles et invisibles, des cieux jusqu'aux abîmes.</p>
       </div>`;
+
   const homeRight = () => `
       <h2>Sommaire</h2>
       <div class="rule"></div>
@@ -676,15 +943,6 @@
             </div>
           </li>`).join('')}
       </ol>`;
-
-  function renderHome(){
-    L.innerHTML = homeLeft();
-    R.innerHTML = homeRight();
-    FL.textContent = '';
-    FR.textContent = '— i —';
-    prev.disabled = true;
-    next.disabled = false;
-  }
 
   function chapterLeft(i){
     const c = chapters[i], code = 'E-'+pad(i+1);
@@ -705,32 +963,152 @@
   }
 
   function chapterRight(i){
-    const sc = subcats[chapters[i]];
-    if(!sc) return '';
+    const items = subsOf(i);
+    if(!items.length) return '';
     return `
       <h2>Catégories</h2>
       <div class="rule"></div>
       <ol class="toc cats">
-        ${sc.items.map((t,k)=>`
-          <li>
-            <div class="cat">
-              <span class="code">E-${pad(i+1)}-${pad(k+1)}</span>
-              <span class="name">${t}</span>
-            </div>
-          </li>`).join('')}
+        ${items.map((t,k)=>{
+          const n = fichesOfSub(i,k).length;
+          const code = `E-${pad(i+1)}-${pad(k+1)}`;
+          return n
+            ? `<li><a class="cat has" href="#${code}" data-go="${code}">
+                 <span class="code">${code}</span><span class="name">${t}</span>
+                 <span class="count" title="${n} fiche${n>1?'s':''}">${n}</span></a></li>`
+            : `<li><div class="cat"><span class="code">${code}</span><span class="name">${t}</span></div></li>`;
+        }).join('')}
       </ol>`;
   }
 
-  function renderChapter(i){
-    L.innerHTML = chapterLeft(i);
-    R.innerHTML = chapterRight(i);
-    FL.textContent = `— ${2*i+2} —`;
-    FR.textContent = `— ${2*i+3} —`;
-    prev.disabled = false;
-    next.disabled = i === chapters.length-1;
+  function subLeft(i,k){
+    const list = fichesOfSub(i,k);
+    return `
+      <div class="chapter-head">
+        <div class="kicker">E-${pad(i+1)} · ${chapters[i]}</div>
+        <h3>${subsOf(i)[k]}</h3>
+        <div class="code">E-${pad(i+1)}-${pad(k+1)}</div>
+      </div>
+      <div class="rule"></div>
+      <div class="def-label">Fiches</div>
+      <ol class="toc cats">
+        ${list.map(f=>`
+          <li><a class="cat has" href="#${ficheCode(f)}" data-go="${ficheCode(f)}">
+            <span class="code wide">${ficheCode(f)}</span><span class="name">${esc(f.nom)}</span></a></li>`).join('')}
+      </ol>`;
   }
 
-  // Toutes les pages ont la même hauteur : celle de la page la plus longue
+  function subRight(i,k){
+    return `
+      <div class="add-here">
+        <p>Inscrire une nouvelle entité dans<br><strong>${subsOf(i)[k]}</strong></p>
+        <button type="button" class="ink-btn" data-add="${i}:${k}">✒ Nouvelle fiche</button>
+      </div>`;
+  }
+
+  function ficheLeft(f){
+    const variantes = (f.variantes||'').trim();
+    return `
+      <div class="fiche">
+        <div class="fiche-code">${ficheCode(f)}</div>
+        <h3 class="fiche-name">${esc(f.nom)}</h3>
+        ${variantes ? `<div class="fiche-var">aussi : ${esc(variantes)}</div>` : ''}
+        ${f.image ? `<figure class="fiche-img"><img src="${esc(f.image)}" alt="${esc(f.nom)}"></figure>`
+                  : `<figure class="fiche-img empty"><span>✦ Aucune illustration ✦</span></figure>`}
+        <div class="def-label">Description</div>
+        ${f.description ? `<p class="fiche-desc">${esc(f.description)}</p>` : `<p class="fiche-none">—</p>`}
+      </div>`;
+  }
+
+  function ficheRight(f){
+    const doms = (f.domaines||'').split(/[,;\n]/).map(s=>s.trim()).filter(Boolean);
+    return `
+      <div class="fiche">
+        <div class="fiche-path">${chapters[f.cat]}<br><em>${subsOf(f.cat)[f.sub]}</em></div>
+        <div class="def-label">Domaines d’expertise</div>
+        ${doms.length ? `<div class="chips">${doms.map(d=>`<span class="chip">${esc(d)}</span>`).join('')}</div>`
+                      : `<p class="fiche-none">—</p>`}
+        <div class="def-label">Texte d’origine</div>
+        ${f.extrait ? `<blockquote class="fiche-quote">${esc(f.extrait)}</blockquote>` : ''}
+        ${f.source ? `<div class="fiche-src">— ${esc(f.source)}</div>` : ''}
+        ${!f.extrait && !f.source ? `<p class="fiche-none">—</p>` : ''}
+        <div class="fiche-actions">
+          <button type="button" class="ink-btn small" data-edit="${f.id}">✎ Modifier</button>
+          <button type="button" class="ink-btn small danger" data-del="${f.id}">✕ Supprimer</button>
+        </div>
+      </div>`;
+  }
+
+  /* ---------- adresse (#...) <-> vue ---------- */
+  function parseHash(){
+    const h = location.hash;
+    let m;
+    if((m = h.match(/^#E-(\d{2})-(\d{2})-(\d{3})$/))){
+      const i=+m[1]-1, k=+m[2]-1, n=+m[3];
+      const f = fiches.find(x=>x.cat===i && x.sub===k && x.num===n);
+      if(f) return {type:'fiche', f};
+      if(fichesOfSub(i,k).length) return {type:'sub', i, k};
+      return chapters[i] ? {type:'chapter', i} : {type:'home'};
+    }
+    if((m = h.match(/^#E-(\d{2})-(\d{2})$/))){
+      const i=+m[1]-1, k=+m[2]-1;
+      if(chapters[i] && subsOf(i)[k] !== undefined) return {type:'sub', i, k};
+    }
+    if((m = h.match(/^#E-(\d{2})$/))){
+      const i=+m[1]-1;
+      if(chapters[i]) return {type:'chapter', i};
+    }
+    return {type:'home'};
+  }
+  const keyOf = v => v.type==='home' ? 'home' : v.type==='chapter' ? 'c'+v.i : v.type==='sub' ? `s${v.i}-${v.k}` : 'f'+v.f.id;
+  const hashOf = v => v.type==='home' ? '#sommaire' : v.type==='chapter' ? '#E-'+pad(v.i+1)
+                    : v.type==='sub' ? `#E-${pad(v.i+1)}-${pad(v.k+1)}` : '#'+ficheCode(v.f);
+
+  // ordre de lecture du livre : sommaire, puis chaque chapitre suivi de ses fiches
+  function sequence(){
+    const seq=[{type:'home'}];
+    chapters.forEach((_,i)=>{
+      seq.push({type:'chapter', i});
+      fichesOfChapter(i).forEach(f=>seq.push({type:'fiche', f}));
+    });
+    return seq;
+  }
+  function position(v){
+    const seq = sequence();
+    if(v.type==='sub'){
+      const first = fichesOfSub(v.i,v.k)[0];
+      const idx = first ? seq.findIndex(s=>s.type==='fiche' && s.f.id===first.id) : seq.findIndex(s=>s.type==='chapter'&&s.i===v.i);
+      return idx - 0.5;
+    }
+    return seq.findIndex(s=>keyOf(s)===keyOf(v));
+  }
+  function neighbour(v, dir){
+    const seq = sequence();
+    const p = position(v);
+    const idx = dir>0 ? Math.floor(p)+1 : Math.ceil(p)-1;
+    return seq[idx] || null;
+  }
+
+  function paintView(v){
+    [L,R].forEach(el=>{el.style.animation='none';el.offsetHeight;el.style.animation='';el.scrollTop=0;});
+    if(v.type==='home'){
+      L.innerHTML = homeLeft(); R.innerHTML = homeRight();
+      FL.textContent = ''; FR.textContent = '— i —';
+    } else if(v.type==='chapter'){
+      L.innerHTML = chapterLeft(v.i); R.innerHTML = chapterRight(v.i);
+      FL.textContent = `— ${2*v.i+2} —`; FR.textContent = `— ${2*v.i+3} —`;
+    } else if(v.type==='sub'){
+      L.innerHTML = subLeft(v.i,v.k); R.innerHTML = subRight(v.i,v.k);
+      FL.textContent = `— E-${pad(v.i+1)}-${pad(v.k+1)} —`; FR.textContent = `— Chapitre ${roman(v.i+1)} —`;
+    } else {
+      L.innerHTML = ficheLeft(v.f); R.innerHTML = ficheRight(v.f);
+      FL.textContent = `— ${ficheCode(v.f)} —`; FR.textContent = `— Chapitre ${roman(v.f.cat+1)} —`;
+    }
+    prev.disabled = !neighbour(v,-1);
+    next.disabled = !neighbour(v,+1);
+  }
+
+  /* ---------- hauteur fixe : celle de la page la plus longue ---------- */
   function fixHeight(){
     const ref = document.querySelector('.page.left');
     const probe = ref.cloneNode(false);
@@ -740,70 +1118,255 @@
     spread.appendChild(probe);
     let max = 0;
     const measure = html => { inner.innerHTML = html; max = Math.max(max, probe.offsetHeight); };
-    chapters.forEach((_,i)=>measure(chapterLeft(i)));
+    chapters.forEach((_,i)=>{ measure(chapterLeft(i)); measure(chapterRight(i)); });
     measure(homeLeft());
     measure(homeRight());
-    chapters.forEach((_,i)=>measure(chapterRight(i)));
     probe.remove();
     spread.style.height = Math.ceil(max) + 'px';
+    placeQuill();
+  }
+  function placeQuill(){
+    const b = document.getElementById('book');
+    document.documentElement.style.setProperty('--book-bottom', (b.offsetTop + b.offsetHeight) + 'px');
   }
 
-  function current(){
-    const m = location.hash.match(/^#E-(\d{2})$/);
-    if(!m) return -1;
-    const i = parseInt(m[1],10)-1;
-    return (i>=0 && i<chapters.length) ? i : -1;
-  }
+  /* ---------- rendu avec feuille qui tourne ---------- */
+  let shownKey = null, shownPos = 0, first = true;
 
-  let shown = null;          // chapitre actuellement affiché (-1 = sommaire)
-  let first = true;
-
-  function paint(i){
-    [L,R].forEach(el=>{el.style.animation='none';el.offsetHeight;el.style.animation='';});
-    i<0 ? renderHome() : renderChapter(i);
-    shown = i;
-  }
-
-  function render(){
-    const i = current();
-    if(first){ first=false; paint(i); return; }
-    if(i===shown) return;
-    const dir = i > shown ? 'next' : 'prev';
+  function render(force){
+    const v = parseHash();
+    const key = keyOf(v);
+    const pos = position(v);
+    if(first || force === 'instant'){ first=false; paintView(v); shownKey=key; shownPos=pos; return; }
+    if(key===shownKey && !force) return;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(reduce){ paint(i); return; }
+    if(reduce || key===shownKey){ paintView(v); shownKey=key; shownPos=pos; return; }
+    const dir = pos >= shownPos ? 'next' : 'prev';
     const leaf = document.createElement('div');
     leaf.className = 'leaf '+dir;
     spread.appendChild(leaf);
-    setTimeout(()=>paint(i), 280);          // le contenu change quand la feuille passe le pli
+    shownKey = key; shownPos = pos;
+    setTimeout(()=>paintView(v), 280);
     leaf.addEventListener('animationend',()=>leaf.remove());
+  }
+
+  function goView(v){
+    const h = hashOf(v);
+    if(location.hash === h) render(true); else location.hash = h;
   }
 
   // la couverture disparaît une fois ouverte
   document.querySelector('.cover .back').addEventListener('animationend',()=>document.getElementById('book').classList.add('opened'));
 
-  function go(i){
-    location.hash = i<0 ? '#sommaire' : '#E-'+pad(i+1);
-  }
+  prev.onclick = ()=>{ const n=neighbour(parseHash(),-1); if(n) goView(n); };
+  next.onclick = ()=>{ const n=neighbour(parseHash(),+1); if(n) goView(n); };
+  tocBtn.onclick = ()=>goView({type:'home'});
+  window.addEventListener('hashchange',()=>render());
 
-  prev.onclick = ()=>{ const i=current(); go(i-1); };
-  next.onclick = ()=>{ const i=current(); if(i<chapters.length-1) go(i+1); };
-  document.getElementById('toc').onclick = ()=>go(-1);
-  window.addEventListener('hashchange',render);
-  window.addEventListener('popstate',render);
+  // clics à l'intérieur des pages (catégories avec fiches, fiches, boutons)
+  spread.addEventListener('click',e=>{
+    const go = e.target.closest('[data-go]');
+    if(go){ e.preventDefault(); location.hash = '#'+go.dataset.go; return; }
+    const add = e.target.closest('[data-add]');
+    if(add){ const [i,k]=add.dataset.add.split(':').map(Number); openForm(null,{cat:i,sub:k}); return; }
+    const ed = e.target.closest('[data-edit]');
+    if(ed){ openForm(fiches.find(f=>f.id===ed.dataset.edit)); return; }
+    const del = e.target.closest('[data-del]');
+    if(del){ askDelete(fiches.find(f=>f.id===del.dataset.del)); }
+  });
+
   document.addEventListener('keydown',e=>{
+    if(modalOpen()) { if(e.key==='Escape') closeModals(); return; }
+    if(e.target.closest && e.target.closest('input,textarea,select')) return;
     if(e.key==='ArrowRight' && !next.disabled) next.click();
     if(e.key==='ArrowLeft' && !prev.disabled) prev.click();
   });
 
   // glisser du doigt pour tourner les pages (téléphone)
-  let tx=null;
-  spread.addEventListener('touchstart',e=>{tx=e.touches[0].clientX},{passive:true});
+  let tx=null, ty=null;
+  spread.addEventListener('touchstart',e=>{tx=e.touches[0].clientX; ty=e.touches[0].clientY},{passive:true});
   spread.addEventListener('touchend',e=>{
     if(tx===null) return;
-    const dx=e.changedTouches[0].clientX-tx; tx=null;
+    const dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty; tx=null;
+    if(Math.abs(dy) > Math.abs(dx)) return;
     if(dx<-50 && !next.disabled) next.click();
     if(dx>50 && !prev.disabled) prev.click();
   },{passive:true});
+
+  /* =========================================================
+     Formulaire de fiche (plume)
+     ========================================================= */
+  const formModal = document.getElementById('formModal');
+  const confirmModal = document.getElementById('confirmModal');
+  const form = document.getElementById('ficheForm');
+  const fCat = document.getElementById('fCat'), fSub = document.getElementById('fSub');
+  const fNom = document.getElementById('fNom'), fVar = document.getElementById('fVar');
+  const fDesc = document.getElementById('fDesc'), fDom = document.getElementById('fDom');
+  const fSrc = document.getElementById('fSrc'), fExt = document.getElementById('fExt');
+  const fFile = document.getElementById('fFile'), fUrl = document.getElementById('fUrl');
+  const imgPrev = document.getElementById('imgPrev'), imgClear = document.getElementById('imgClear');
+  const codePrev = document.getElementById('codePrev'), formTitle = document.getElementById('formTitle');
+  const formMsg = document.getElementById('formMsg'), storeWarn = document.getElementById('storeWarn');
+  let editing = null, imageData = '';
+
+  fCat.innerHTML = chapters.map((c,i)=>`<option value="${i}">E-${pad(i+1)} — ${c}</option>`).join('');
+  function fillSubs(sel){
+    const i = +fCat.value;
+    fSub.innerHTML = subsOf(i).map((t,k)=>`<option value="${k}">E-${pad(i+1)}-${pad(k+1)} — ${t}</option>`).join('');
+    if(sel!=null) fSub.value = sel;
+    updateCode();
+  }
+  function updateCode(){
+    const i=+fCat.value, k=+fSub.value;
+    let num;
+    if(editing && editing.cat===i && editing.sub===k) num = editing.num;
+    else num = nextNum(i,k);
+    codePrev.textContent = `E-${pad(i+1)}-${pad(k+1)}-${pad3(num)}`;
+  }
+  fCat.addEventListener('change',()=>fillSubs(0));
+  fSub.addEventListener('change',updateCode);
+
+  function setImage(src){
+    imageData = src || '';
+    imgPrev.innerHTML = imageData ? `<img src="${esc(imageData)}" alt="">` : '<span>Aucune image</span>';
+    imgClear.hidden = !imageData;
+  }
+  fFile.addEventListener('change',()=>{
+    const file = fFile.files && fFile.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        const max = 900, s = Math.min(1, max/Math.max(img.width,img.height));
+        const c = document.createElement('canvas');
+        c.width = Math.round(img.width*s); c.height = Math.round(img.height*s);
+        const ctx = c.getContext('2d');
+        ctx.fillStyle = '#efe0bb'; ctx.fillRect(0,0,c.width,c.height);
+        ctx.drawImage(img,0,0,c.width,c.height);
+        setImage(c.toDataURL('image/jpeg',0.82));
+        fUrl.value = '';
+      };
+      img.onerror = () => { formMsg.textContent = "Cette image n'a pas pu être lue."; };
+      img.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+    fFile.value = '';
+  });
+  fUrl.addEventListener('input',()=>{ const u=fUrl.value.trim(); setImage(/^https?:\/\//i.test(u) ? u : (u ? imageData : '')); });
+  imgClear.addEventListener('click',()=>{ setImage(''); fUrl.value=''; });
+
+  function openForm(f, preset){
+    editing = f || null;
+    formMsg.textContent = '';
+    storeWarn.hidden = storageOK;
+    formTitle.textContent = f ? 'Modifier la fiche' : 'Nouvelle fiche';
+    const v = parseHash();
+    const cat = f ? f.cat : preset ? preset.cat : (v.type==='chapter'||v.type==='sub') ? v.i : v.type==='fiche' ? v.f.cat : 0;
+    const sub = f ? f.sub : preset ? preset.sub : v.type==='sub' ? v.k : v.type==='fiche' ? v.f.sub : 0;
+    fCat.value = cat; fillSubs(sub);
+    fNom.value = f ? f.nom : ''; fVar.value = f ? (f.variantes||'') : '';
+    fDesc.value = f ? (f.description||'') : ''; fDom.value = f ? (f.domaines||'') : '';
+    fSrc.value = f ? (f.source||'') : ''; fExt.value = f ? (f.extrait||'') : '';
+    fUrl.value = f && f.image && /^https?:/i.test(f.image) ? f.image : '';
+    setImage(f ? f.image : '');
+    formModal.hidden = false;
+    document.body.classList.add('modal-on');
+    setTimeout(()=>fNom.focus(), 50);
+  }
+
+  form.addEventListener('submit',e=>{ e.preventDefault(); saveForm(); });
+  document.getElementById('saveBtn').addEventListener('click',saveForm);
+  function saveForm(){
+    const nom = fNom.value.trim();
+    if(!nom){ formMsg.textContent = 'Le nom est obligatoire.'; fNom.focus(); return; }
+    const i=+fCat.value, k=+fSub.value;
+    const data = {
+      nom, variantes:fVar.value.trim(), image:imageData,
+      description:fDesc.value.trim(), domaines:fDom.value.trim(),
+      source:fSrc.value.trim(), extrait:fExt.value.trim()
+    };
+    const backup = JSON.stringify(fiches);
+    let f;
+    if(editing){
+      f = fiches.find(x=>x.id===editing.id);
+      if(f.cat!==i || f.sub!==k){ f.num = nextNum(i,k); f.cat=i; f.sub=k; }
+      Object.assign(f,data,{updated:Date.now()});
+    } else {
+      f = Object.assign({id:'f'+Date.now().toString(36)+Math.random().toString(36).slice(2,6), cat:i, sub:k, num:nextNum(i,k), created:Date.now()}, data);
+      fiches.push(f);
+    }
+    const ok = saveFiches();
+    if(ok==='quota'){
+      fiches = JSON.parse(backup);
+      formMsg.textContent = "Plus assez de place pour enregistrer : essaie une image plus légère ou un lien d'image.";
+      return;
+    }
+    closeModals();
+    location.hash = '#'+ficheCode(f);
+    render(true);
+  }
+
+  function askDelete(f){
+    if(!f) return;
+    document.getElementById('confirmText').innerHTML =
+      `Supprimer définitivement la fiche<br><strong>${ficheCode(f)} — ${esc(f.nom)}</strong> ?`;
+    confirmModal.hidden = false;
+    document.body.classList.add('modal-on');
+    document.getElementById('confirmYes').onclick = ()=>{
+      fiches = fiches.filter(x=>x.id!==f.id);
+      saveFiches();
+      closeModals();
+      const left = fichesOfSub(f.cat,f.sub).length;
+      goView(left ? {type:'sub', i:f.cat, k:f.sub} : {type:'chapter', i:f.cat});
+    };
+  }
+
+  const modalOpen = () => !formModal.hidden || !confirmModal.hidden;
+  function closeModals(){
+    formModal.hidden = true; confirmModal.hidden = true;
+    document.body.classList.remove('modal-on');
+  }
+  document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',closeModals));
+  [formModal,confirmModal].forEach(m=>m.addEventListener('click',e=>{ if(e.target===m) closeModals(); }));
+  document.getElementById('quill').addEventListener('click',()=>openForm(null));
+
+  /* ---------- sauvegarde / chargement (fichier) ---------- */
+  document.getElementById('exportBtn').addEventListener('click',()=>{
+    const blob = new Blob([JSON.stringify({codex:'I', fiches}, null, 2)], {type:'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'codex-des-entites-fiches.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 1000);
+  });
+  const importFile = document.getElementById('importFile');
+  document.getElementById('importBtn').addEventListener('click',()=>importFile.click());
+  importFile.addEventListener('change',()=>{
+    const file = importFile.files && importFile.files[0];
+    if(!file) return;
+    const r = new FileReader();
+    r.onload = ()=>{
+      try{
+        const d = JSON.parse(r.result);
+        const list = Array.isArray(d) ? d : d.fiches;
+        if(!Array.isArray(list)) throw 0;
+        const ids = new Set(fiches.map(f=>f.id));
+        list.forEach(f=>{ if(f && f.id && !ids.has(f.id) && chapters[f.cat] && subsOf(f.cat)[f.sub]!==undefined) fiches.push(f); });
+        saveFiches();
+        render(true);
+      }catch(e){ alertBox("Ce fichier n'est pas une sauvegarde du codex."); }
+    };
+    r.readAsText(file);
+    importFile.value='';
+  });
+  function alertBox(msg){
+    document.getElementById('confirmText').textContent = msg;
+    const yes = document.getElementById('confirmYes');
+    yes.textContent = 'OK'; yes.classList.remove('danger');
+    yes.onclick = ()=>{ yes.textContent='Supprimer'; yes.classList.add('danger'); closeModals(); };
+    confirmModal.hidden = false;
+  }
 
   render();
   fixHeight();
