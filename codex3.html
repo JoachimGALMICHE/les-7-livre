@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Codex des Entités</title>
+<title>Codex des Énergies</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Noto+Sans+Runic&display=swap" rel="stylesheet">
@@ -16,8 +16,8 @@
     --red:#7a1a1a;
     --paper:#efe0bb;
     --paper-dark:#d9c393;
-    --leather:#5a1212;
-    --leather-dark:#2e0707;
+    --leather:#1f2f5c;
+    --leather-dark:#0c1530;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{min-height:100%}
@@ -55,7 +55,7 @@
     width:min(1100px,100%);
     position:relative;
     padding:14px;
-    background:linear-gradient(180deg,#6e1818,var(--leather) 40%,var(--leather-dark));
+    background:linear-gradient(180deg,#2c4380,var(--leather) 40%,var(--leather-dark));
     border-radius:10px;
     box-shadow:0 30px 70px rgba(0,0,0,.75), inset 0 0 0 2px rgba(212,168,75,.35), inset 0 0 30px rgba(0,0,0,.6);
     perspective:3200px;
@@ -210,7 +210,7 @@
   .cover .front{
     background:
       radial-gradient(ellipse at 40% 30%,rgba(255,255,255,.12),transparent 60%),
-      linear-gradient(90deg,#3a0909,#6e1818 12%,var(--leather) 60%,var(--leather-dark));
+      linear-gradient(90deg,#0c1530,#2c4380 12%,var(--leather) 60%,var(--leather-dark));
     box-shadow:inset 0 0 0 2px rgba(212,168,75,.45), inset 0 0 0 10px rgba(0,0,0,.15), inset 0 0 40px rgba(0,0,0,.6), 12px 10px 30px rgba(0,0,0,.6);
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
     text-align:center;color:var(--gold);padding:10px;
@@ -223,9 +223,9 @@
   .cover .back{
     transform:rotateY(180deg);border-radius:8px 0 0 8px;
     background:
-      repeating-radial-gradient(circle at 30% 40%,#5b2a2a 0 6px,#4a1d1d 6px 12px,#6a3232 12px 16px),
-      #4a1d1d;
-    box-shadow:inset 0 0 0 10px #3a0e0e, inset 0 0 30px rgba(0,0,0,.6);
+      repeating-radial-gradient(circle at 30% 40%,#2a3a66 0 6px,#1d2a50 6px 12px,#34467a 12px 16px),
+      #1d2a50;
+    box-shadow:inset 0 0 0 10px #0e1838, inset 0 0 30px rgba(0,0,0,.6);
   }
   @keyframes openCover{
     0%{transform:rotateY(0)}
@@ -658,7 +658,7 @@
 
   <div class="topbar">
     <a class="back" href="index.html">← La bibliothèque</a>
-    <span class="label">GRIMOIRES · CODEX I</span>
+    <span class="label">GRIMOIRES · CODEX III</span>
     <div class="tools">
       <button type="button" class="tool" id="exportBtn" title="Télécharger une sauvegarde de toutes les fiches">⤓ Sauvegarder</button>
       <button type="button" class="tool" id="importBtn" title="Charger une sauvegarde de fiches">⤒ Charger</button>
@@ -670,9 +670,9 @@
     <div class="spread" id="spread">
       <div class="cover" aria-hidden="true">
         <div class="face front">
-          <div class="cn">I</div>
+          <div class="cn">III</div>
           <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="48"/><polygon points="60,14 100,83 20,83"/><polygon points="60,106 20,37 100,37"/><circle cx="60" cy="60" r="14"/></svg>
-          <div class="ct">Codex<br>des Entités</div>
+          <div class="ct">Codex<br>des Énergies</div>
         </div>
         <div class="face back"></div>
       </div>
@@ -832,307 +832,410 @@
 <script>
   // ===== Réglages de ce codex =====
   const CODEX = {
-    num: 'I',
-    prefix: 'E',
-    titleHTML: 'Codex<br>des Entités',
-    motto: "Registre des êtres visibles et invisibles, des cieux jusqu'aux abîmes.",
-    storeKey: 'grimoires.codex1.fiches',
-    exportName: 'codex-des-entites-fiches.json'
+    num: 'III',
+    prefix: 'N',
+    titleHTML: 'Codex<br>des Énergies',
+    motto: "Registre des forces qui circulent en toute chose : éléments, corps, nature, astres et esprit.",
+    storeKey: 'grimoires.codex3.fiches',
+    exportName: 'codex-des-energies.json',
+    fiches: false               // plume désactivée pour l'instant (aucune sous-catégorie)
   };
 
-  // Chapitres : ordre alphabétique, "Autres / inclassables" toujours à la fin
-  const raw = [
-    "Anges & créatures célestes",
-    "Dieux & divinités",
-    "Diable, démons & légions",
-    "Élémentaires",
-    "Esprits",
-    "Nature",
-    "Entités féeriques",
-    "Entités mythologiques & folkloriques",
-    "Gardiens, protecteurs & animaux-totems",
-    "Entités psychiques & créées",
-    "Entités cosmiques & primordiales",
-    "Entités planétaires & stellaires",
-    "Entités intermédiaires"
+  // Chapitres (ordre et codes N-01 à N-11 donnés)
+  const chapters = [
+    "Fondements énergétiques",
+    "Énergies élémentaires",
+    "Énergies corporelles",
+    "Énergies naturelles",
+    "Énergies astrales & cosmiques",
+    "Énergies spirituelles",
+    "Énergies émotionnelles & psychiques",
+    "Manipulation & maîtrise énergétique",
+    "Perception & sensibilité énergétique",
+    "Protection & équilibrage énergétique",
+    "Autres systèmes énergétiques"
   ];
-  const coll = new Intl.Collator('fr',{sensitivity:'base'});
-  const chapters = [...raw].sort(coll.compare);
-  chapters.push("Autres / inclassables");
 
-  // Définitions de chaque chapitre (clé = titre exact du chapitre)
-  const definitions = {
-    "Anges & créatures célestes":
-      "Cette catégorie regroupe les êtres décrits comme appartenant aux sphères célestes, aux cieux ou à des réalités spirituelles associées au domaine céleste dans différentes traditions religieuses, mythologiques et ésotériques. Elle comprend notamment les anges, archanges, chérubins, séraphins ainsi que d’autres ordres ou créatures célestes décrits par certaines traditions. Ces entités peuvent être associées à des fonctions telles que la protection, la transmission de messages, la guidance, le jugement ou l’accomplissement d’une fonction divine ou cosmique. Leur nature, leur hiérarchie, leurs fonctions et leur relation avec les divinités varient fortement selon les traditions, les textes et les interprétations. Dans ce codex, chaque entité sera étudiée selon sa tradition d’origine, sa nature, son rang ou sa fonction, ses attributs, ses symboles, ses sources et les différentes conceptions qui lui sont associées.",
-    "Diable, démons & légions":
-      "Cette catégorie regroupe les figures et entités associées aux notions de démon, d’enfer, de tentation, d’opposition ou de forces infernales dans différentes traditions religieuses, démonologiques et ésotériques. Elle comprend notamment le Diable ou les figures équivalentes, les démons individuels ainsi que les groupes, hiérarchies ou « légions » décrits dans certaines sources. Les caractéristiques, fonctions et classifications de ces entités varient considérablement selon les religions, les époques, les textes et les courants occultes qui les décrivent. Certaines traditions les présentent comme des êtres spirituels autonomes, tandis que d’autres les interprètent comme des symboles, des forces ou des représentations du mal et du désordre. Dans ce codex, chaque entité sera étudiée selon sa tradition d’origine, ses sources, son nom, ses attributs, sa fonction et les différentes interprétations qui lui sont associées.",
-    "Dieux & divinités":
-      "Cette catégorie regroupe les êtres considérés comme divins ou sacrés au sein de différentes traditions religieuses, mythologiques et spirituelles. Elle comprend notamment les dieux, déesses, divinités mineures, divinités locales, figures divinisées ainsi que certaines puissances personnifiant des aspects du monde, de la nature ou de l’existence. Une divinité peut être associée à un domaine particulier ou posséder plusieurs fonctions et domaines selon les traditions et les sources. Sa nature, sa place dans la cosmologie, ses attributs et son statut peuvent varier selon les cultures, les époques et les courants qui la décrivent. Dans ce codex, chaque divinité sera étudiée selon sa tradition d’origine, ses noms et formes, ses domaines, ses fonctions, ses attributs, ses symboles et les différentes conceptions qui lui sont associées.",
-    "Élémentaires":
-      "Cette catégorie regroupe les entités traditionnellement associées aux éléments fondamentaux de la nature ou à certaines forces élémentaires dans différentes traditions et systèmes ésotériques. Elle comprend notamment les êtres liés à la Terre, à l’Eau, à l’Air et au Feu, ainsi que, selon certains systèmes, à l’Éther ou à d’autres principes. Les élémentaires peuvent être décrits comme des esprits, des êtres autonomes, des manifestations d’une force naturelle ou des représentations symboliques d’un élément. Leur nature, leur classification, leurs caractéristiques et leurs fonctions varient fortement selon les traditions, les courants ésotériques et les interprétations modernes. Dans ce codex, chaque élémentaire sera étudié selon son élément ou principe associé, sa tradition d’origine, ses caractéristiques, ses fonctions, ses symboles et les différentes conceptions qui lui sont attribuées.",
-    "Entités cosmiques & primordiales":
-      "Cette catégorie regroupe les êtres, puissances ou forces décrits comme liés aux origines, aux fondements ou aux grandes structures de l’existence et du cosmos dans différentes traditions et cosmologies. Elle comprend notamment les entités dites primordiales, associées à des concepts fondamentaux tels que le chaos, le temps, l’espace, la création, la destruction, la lumière, les ténèbres ou les forces originelles. Certaines traditions les présentent comme antérieures aux dieux, tandis que d’autres les considèrent comme des divinités ou des principes cosmiques personnifiés. Leur nature et leur place dans la cosmologie varient fortement selon les traditions ; le terme « primordial » ne possède donc pas de définition universelle. Dans ce codex, chaque entité sera étudiée selon son origine, sa tradition, sa place dans la cosmologie, les principes auxquels elle est associée, ses attributs, ses relations et les différentes interprétations qui lui sont attribuées.",
-    "Entités féeriques":
-      "Cette catégorie regroupe les êtres issus des traditions et folklores décrivant des peuples ou esprits féeriques, souvent associés à des royaumes invisibles, à la nature ou à des lieux particuliers. Elle comprend notamment les fées, elfes, lutins, korrigans, brownies, pixies et autres êtres pouvant être rattachés au monde féerique selon les cultures et les sources. Ces entités peuvent être décrites comme bienveillantes, neutres, malicieuses ou dangereuses, et leurs relations avec les humains varient fortement d’un folklore à l’autre. Le terme « féerique » ne désigne donc pas une espèce unique ni un système universel : les classifications, caractéristiques et noms diffèrent selon les régions et les traditions. Dans ce codex, chaque entité sera étudiée selon sa tradition ou son folklore d’origine, son type, son environnement, ses caractéristiques, ses comportements, ses symboles et les différentes versions rapportées à son sujet.",
-    "Entités intermédiaires":
-      "Cette catégorie regroupe les entités dont la fonction principale est d’assurer un lien, une transmission ou un passage entre différents mondes, plans, domaines ou états d’existence selon les traditions. Elle comprend notamment les messagers, guides, intermédiaires, psychopompes, passeurs et gardiens de portes ou de seuils. Certaines peuvent transmettre des messages, accompagner les défunts, guider des voyageurs ou surveiller l’accès à un lieu ou à un domaine particulier. Leur nature peut être céleste, divine, spirituelle, infernale ou autre : c’est principalement leur fonction d’intermédiaire ou de gardien d’un passage qui justifie leur classement dans cette catégorie. Dans ce codex, chaque entité sera étudiée selon sa fonction, ce qu’elle relie ou protège, sa tradition d’origine, son domaine d’intervention, ses attributs, ses symboles et les différentes conceptions qui lui sont associées.",
-    "Entités mythologiques & folkloriques":
-      "Cette catégorie regroupe les êtres, créatures et figures surnaturelles issus des mythologies, légendes et traditions populaires des différentes cultures. Elle comprend notamment les dragons, géants, créatures hybrides, monstres mythologiques, métamorphes et autres êtres surnaturels qui ne correspondent pas à une catégorie plus spécifique du codex. Les récits qui les décrivent peuvent leur attribuer une nature, une origine, des capacités ou une fonction très différentes selon les époques, les régions et les sources. Cette catégorie accueille également les figures folkloriques dont la classification ne permet pas de les rattacher clairement aux catégories des dieux, démons, élémentaires, esprits ou êtres féeriques. Dans ce codex, chaque entité sera étudiée selon sa culture ou tradition d’origine, son nom et ses variantes, sa nature, ses attributs, ses capacités, son rôle dans les récits et les différentes versions rapportées à son sujet.",
-    "Entités planétaires & stellaires":
-      "Cette catégorie regroupe les entités, intelligences, esprits ou puissances traditionnellement associés aux planètes, aux étoiles, aux constellations et aux autres corps célestes dans différentes traditions astrologiques, religieuses et ésotériques. Elle comprend notamment les êtres ou forces liés au Soleil, à la Lune, aux planètes, aux étoiles et aux constellations considérées comme significatives selon les systèmes qui les décrivent. Selon les traditions, ces entités peuvent être présentées comme des divinités, des intelligences spirituelles, des esprits planétaires ou des représentations symboliques des influences attribuées aux astres. Leur nature, leurs correspondances, leur hiérarchie et leur rôle varient selon les systèmes concernés. Dans ce codex, chaque entité sera étudiée selon l’astre auquel elle est associée, sa tradition ou son système d’origine, ses attributs, ses correspondances, sa fonction, ses symboles et les différentes interprétations qui lui sont associées.",
-    "Entités psychiques & créées":
-      "Cette catégorie regroupe les entités décrites comme étant liées à la pensée, à l’imagination, à la conscience, aux émotions, aux croyances ou à une création intentionnelle dans certains courants ésotériques. Elle comprend notamment les formes-pensées, égrégores, serviteurs, entités créées volontairement et autres formes d’entités dont l’existence est attribuée à une activité mentale individuelle ou collective. Certaines conceptions les présentent comme des constructions psychiques ou symboliques, tandis que d’autres les considèrent comme des entités pouvant acquérir une forme d’autonomie. Cette catégorie permet ainsi de distinguer les entités considérées comme préexistantes des formes décrites comme émergentes, construites ou entretenues par la pensée, l’intention, les émotions ou la croyance. Dans ce codex, chaque entrée sera étudiée selon son origine supposée, son mode de création ou d’émergence, son degré d’autonomie selon les sources, sa fonction et les différentes interprétations qui lui sont associées.",
-    "Esprits":
-      "Cette catégorie regroupe les êtres ou présences décrits comme des entités spirituelles, immatérielles ou non physiques dans différentes traditions, croyances et systèmes ésotériques. Elle peut comprendre notamment les esprits des défunts, les ancêtres, les esprits domestiques, les esprits de lieux, les esprits naturels et d’autres formes d’entités spirituelles qui ne correspondent pas à une famille plus spécifique du codex. La notion d’esprit varie fortement selon les cultures : certains sont considérés comme des êtres autonomes, tandis que d’autres sont décrits comme des présences liées à un lieu, une personne, un événement ou une force particulière. Cette catégorie sert également à accueillir les entités simplement décrites comme des « esprits » par leur tradition d’origine sans classification plus précise. Dans ce codex, chaque esprit sera étudié selon son origine supposée, sa tradition, sa nature, son domaine, ses caractéristiques, ses fonctions, ses symboles et les différentes conceptions qui lui sont associées.",
-    "Gardiens, protecteurs & animaux-totems":
-      "Cette catégorie regroupe les entités, figures ou symboles associés à la protection, à la garde, à l’accompagnement ou à la représentation animale selon différentes traditions. Elle comprend notamment les gardiens spirituels, protecteurs, animaux gardiens et figures animales considérées comme des guides, alliés ou représentants symboliques. Selon les traditions, ces figures peuvent être décrites comme des êtres autonomes, des esprits, des divinités, des ancêtres ou des symboles liés à certaines qualités et fonctions. La notion d’animal-totem possède également des significations différentes selon les cultures et ne doit pas être confondue avec les usages ésotériques modernes ou les interprétations personnelles. Dans ce codex, chaque entrée sera étudiée selon sa tradition d’origine, sa fonction protectrice ou symbolique, sa nature, ses attributs, ses symboles, sa relation avec les humains et les différentes interprétations qui lui sont associées.",
-    "Nature":
-      "Cette catégorie regroupe les entités, êtres ou présences associés au monde naturel, aux écosystèmes, aux paysages et aux différents aspects de la nature dans diverses traditions et croyances. Elle comprend notamment les figures liées aux forêts, montagnes, rivières, animaux, plantes, saisons, phénomènes naturels et territoires particuliers lorsqu’elles ne relèvent pas d’une classification plus spécifique. Certaines peuvent être décrites comme des esprits, des divinités, des gardiens ou des personnifications symboliques de la nature selon les sources. Leur nature, leurs fonctions et leur relation avec l’environnement varient fortement selon les cultures et les traditions. Dans ce codex, chaque entrée sera étudiée selon son environnement ou domaine naturel, sa tradition d’origine, sa nature, ses caractéristiques, ses fonctions, ses symboles et les différentes conceptions qui lui sont associées.",
-    "Autres / inclassables":
-      "Cette catégorie regroupe les entités, figures ou formes de manifestations qui ne peuvent pas être rattachées de manière suffisamment claire à une autre catégorie du codex. Elle peut notamment accueillir les entités atypiques, les figures dont la nature est ambiguë selon les sources ainsi que les cas particuliers qui combinent plusieurs catégories sans pouvoir être classés de façon pertinente dans l’une d’elles. Elle peut également servir de classement temporaire lorsqu’une entrée nécessite davantage de recherches avant de pouvoir être correctement catégorisée. Cette catégorie ne constitue donc pas une classification de nature précise, mais un point d’accueil pour les cas qui échappent aux classifications établies. Dans ce codex, chaque entrée sera étudiée en précisant les sources disponibles, les classifications possibles et les raisons de son classement dans cette catégorie."
+  // Précisions affichées sous le titre d'un chapitre
+  const chapterNotes = {
+    "Fondements énergétiques": "Énergie, flux, circulation, polarités…",
+    "Énergies élémentaires": "Terre, Eau, Air, Feu, éventuellement Éther",
+    "Énergies corporelles": "Chakras, méridiens, aura, etc.",
+    "Énergies naturelles": "Énergie des plantes, des lieux, cycles naturels…"
   };
 
-  // Catégories de chaque chapitre (page de droite)
+  // Définitions de chaque chapitre (clé = titre exact ; une ligne vide = nouveau paragraphe)
+  const definitions = {
+    "Énergies élémentaires":
+      "Les énergies élémentaires désignent, dans différentes traditions ésotériques et spirituelles, les forces ou principes associés aux éléments fondamentaux de la nature. Les quatre éléments généralement concernés sont la Terre, l’Eau, l’Air et le Feu. Certains systèmes ajoutent un cinquième principe, souvent appelé Éther, ainsi que d’autres conceptions similaires.\n\n" +
+      "Chaque élément est traditionnellement associé à certaines qualités symboliques. La Terre peut représenter la stabilité et la matière, l’Eau les émotions et la fluidité, l’Air le mouvement et l’intellect, tandis que le Feu est souvent associé à l’action, à la transformation et à la vitalité. Ces associations varient toutefois selon les traditions et les systèmes utilisés.\n\n" +
+      "Dans certaines pratiques ésotériques, les énergies élémentaires sont considérées comme des forces pouvant interagir avec l’être humain, la nature ou d’autres formes d’énergie. Elles peuvent également être utilisées comme modèles symboliques permettant de comprendre certains phénomènes, états ou qualités.\n\n" +
+      "Dans ce codex, les énergies élémentaires seront étudiées séparément afin de distinguer leurs caractéristiques, leurs symbolismes, leurs interactions et les différentes conceptions traditionnelles qui leur sont associées. Ces notions relèvent de systèmes ésotériques ou symboliques et ne correspondent pas nécessairement aux concepts scientifiques modernes de l’énergie."
+  };
+  const leftLists = {};
+  const refLists = {};
   const subcats = {
-    "Anges & créatures célestes": {
+    "Énergies élémentaires": {
       items: [
-        "Anges & archanges",
-        "Chérubins, séraphins & ordres célestes",
-        "Anges gardiens & protecteurs",
-        "Anges messagers & hérauts",
-        "Anges de la connaissance, sagesse & révélation",
-        "Anges liés aux éléments & à la nature",
-        "Anges liés aux astres & aux sphères célestes",
-        "Anges liés aux humains, peuples & communautés",
-        "Anges du jugement, de la justice & de l’ordre",
-        "Anges de la vie, de la mort & des passages",
-        "Anges déchus, exilés & rebelles",
-        "Créatures célestes ailées & assimilées",
-        "Entités célestes hybrides, composites & assimilées",
-        "Entités célestes mixtes & autres"
-      ]
-    },
-    "Diable, démons & légions": {
-      items: [
-        "Diable & figures diaboliques",
-        "Démons",
-        "Légions & hiérarchies démoniaques",
-        "Princes, rois & chefs infernaux",
-        "Démons spécialisés",
-        "Démons liés aux péchés, vices & tentations",
-        "Démons liés aux lieux, éléments & phénomènes",
-        "Figures infernales & assimilées",
-        "Démons hybrides, composites & assimilés",
-        "Démons liés aux humains, familles & communautés",
-        "Démons liés à la mort & aux mondes souterrains",
-        "Démons liés aux rêves, cauchemars & visions",
-        "Démons déchus & anciens êtres célestes",
-        "Entités infernales mixtes & autres"
-      ]
-    },
-    "Dieux & divinités": {
-      items: [
-        "Dieux & déesses",
-        "Divinités mineures & secondaires",
-        "Divinités locales & tutélaires",
-        "Divinités créatrices & cosmogoniques",
-        "Divinités de la nature & des éléments",
-        "Divinités du ciel & des astres",
-        "Divinités de la vie, fertilité & abondance",
-        "Divinités de la mort & des mondes souterrains",
-        "Divinités de la guerre & du combat",
-        "Divinités de la connaissance, sagesse & arts",
-        "Divinités de la justice, de l’ordre & du destin",
-        "Divinités protectrices & gardiennes",
-        "Divinités liées aux peuples, familles & communautés",
-        "Divinités hybrides, composites & syncrétiques",
-        "Figures divinisées & héros divinisés",
-        "Autres divinités"
-      ]
-    },
-    "Élémentaires": {
-      items: [
-        "Élémentaires liés à la Terre & aux plantes",
-        "Élémentaires liés à l’Air & au vent",
-        "Élémentaires liés à l’Eau, à la glace & à la vapeur",
-        "Élémentaires liés à l’Éther",
-        "Élémentaires liés au Feu",
-        "Élémentaires mixtes & autres"
-      ]
-    },
-    "Entités cosmiques & primordiales": {
-      items: [
-        "Entités de la création & de l’origine",
-        "Entités du chaos & du néant",
-        "Entités de la lumière & des ténèbres cosmiques",
-        "Entités de l’espace & des dimensions",
-        "Entités du temps & de l’éternité",
-        "Entités des forces cosmiques & fondamentales",
-        "Entités des cycles, de la destruction & de la transformation cosmique",
-        "Entités primordiales liées aux éléments & à la matière",
-        "Entités cosmiques hybrides, composites & assimilées",
-        "Entités cosmiques mixtes & autres"
-      ]
-    },
-    "Entités féeriques": {
-      items: [
-        "Fées & êtres féeriques",
-        "Elfes & peuples féeriques",
-        "Lutins, gnomes & petits peuples",
-        "Esprits domestiques & gardiens du foyer",
-        "Êtres féeriques des forêts & de la nature",
-        "Êtres féeriques des eaux & milieux aquatiques",
-        "Êtres féeriques malicieux & farceurs",
-        "Êtres féeriques dangereux & hostiles",
-        "Êtres féeriques royaux, nobles & dirigeants",
-        "Êtres féeriques métamorphes & changeformes",
-        "Êtres féeriques liés aux saisons, aux fêtes & aux cycles",
-        "Peuples & cours féeriques",
-        "Êtres féeriques hybrides, composites & assimilés",
-        "Êtres féeriques mixtes & autres"
-      ]
-    },
-    "Entités intermédiaires": {
-      items: [
-        "Messagers & transmetteurs",
-        "Guides spirituels & accompagnateurs",
-        "Psychopompes & conducteurs des défunts",
-        "Gardiens des seuils & des passages",
-        "Gardiens des portes & frontières entre mondes",
-        "Passeurs & intermédiaires entre plans",
-        "Médiateurs entre humains & entités",
-        "Entités liées aux carrefours, chemins & passages",
-        "Entités intermédiaires hybrides, composites & assimilées",
-        "Entités intermédiaires mixtes & autres"
-      ]
-    },
-    "Entités mythologiques & folkloriques": {
-      items: [
-        "Dragons & créatures draconiques",
-        "Géants & êtres colossaux",
-        "Créatures hybrides & chimériques",
-        "Monstres mythologiques",
-        "Serpents, wyrms & créatures ophidiennes",
-        "Créatures ailées & volantes",
-        "Créatures aquatiques & marines",
-        "Métamorphes & changeformes",
-        "Ogres, cannibales & êtres anthropophages",
-        "Créatures humanoïdes folkloriques",
-        "Créatures animales surnaturelles",
-        "Créatures liées aux morts & revenants",
-        "Créatures liées aux lieux, ruines & territoires",
-        "Créatures légendaires régionales",
-        "Entités mythologiques hybrides, composites & assimilées",
-        "Entités mythologiques & folkloriques mixtes / autres"
-      ]
-    },
-    "Entités planétaires & stellaires": {
-      items: [
-        "Entités liées au Soleil",
-        "Entités liées à la Lune",
-        "Entités liées à Mercure",
-        "Entités liées à Vénus",
-        "Entités liées à Mars",
-        "Entités liées à Jupiter",
-        "Entités liées à Saturne",
-        "Entités liées aux planètes modernes",
-        "Entités liées aux étoiles",
-        "Entités liées aux constellations",
-        "Entités liées aux astres mineurs & autres corps célestes",
-        "Entités liées aux cycles & mouvements célestes",
-        "Entités planétaires & stellaires hybrides, composites & assimilées",
-        "Entités planétaires & stellaires mixtes / autres"
-      ]
-    },
-    "Entités psychiques & créées": {
-      items: [
-        "Formes-pensées",
-        "Égrégores",
-        "Serviteurs & entités programmées",
-        "Entités créées individuellement",
-        "Entités créées collectivement",
-        "Entités issues des émotions & de l’affect",
-        "Entités issues de l’imagination & de la visualisation",
-        "Entités liées aux croyances & représentations",
-        "Entités psychiques autonomisées",
-        "Entités psychiques hybrides, composites & assimilées",
-        "Entités psychiques mixtes & autres"
-      ]
-    },
-    "Esprits": {
-      items: [
-        "Esprits des défunts & revenants",
-        "Esprits ancestraux & ancêtres",
-        "Esprits élémentaires",
-        "Esprits célestes",
-        "Esprits cosmiques & primordiaux",
-        "Esprits & entités naturels",
-        "Esprits liés aux lieux & territoires",
-        "Esprits domestiques & du foyer",
-        "Esprits liés aux objets & artefacts",
-        "Esprits liés aux rêves, visions & expériences",
-        "Esprits protecteurs & accompagnateurs",
-        "Esprits errants & sans lieu fixe",
-        "Esprits hybrides, composites & assimilés",
-        "Esprits mixtes & autres"
-      ]
-    },
-    "Gardiens, protecteurs & animaux-totems": {
-      items: [
-        "Gardiens & protecteurs personnels",
-        "Gardiens des lieux & territoires",
-        "Gardiens des temples, sanctuaires & lieux sacrés",
-        "Protecteurs des foyers & des familles",
-        "Protecteurs des voyageurs & des chemins",
-        "Animaux gardiens & protecteurs",
-        "Animaux-totems & figures animales symboliques",
-        "Animaux alliés & compagnons spirituels",
-        "Gardiens des seuils, portes & frontières",
-        "Gardiens liés aux éléments & à la nature",
-        "Gardiens hybrides, composites & assimilés",
-        "Gardiens, protecteurs & animaux-totems mixtes / autres"
-      ]
-    },
-    "Nature": {
-      items: [
-        "Esprits des forêts & des bois",
-        "Entités des arbres & des plantes",
-        "Entités des montagnes, rochers & reliefs",
-        "Entités des rivières, sources & lacs",
-        "Entités des mers & océans",
-        "Entités des animaux & de la faune",
-        "Entités des saisons & des cycles naturels",
-        "Entités du climat & des phénomènes naturels",
-        "Entités des paysages & territoires sauvages",
-        "Gardiens & protecteurs de la nature",
-        "Entités végétales & florales",
-        "Entités naturelles hybrides, composites & assimilées",
-        "Entités naturelles régionales & folkloriques",
-        "Entités de la nature mixtes / autres"
-      ]
-    },
-    "Autres / inclassables": {
-      items: [
-        "Entités inclassables",
-        "Entités dont la nature est inconnue",
-        "Entités aux origines incertaines",
-        "Entités aux classifications contradictoires",
-        "Entités sans tradition clairement identifiée",
-        "Entités combinant plusieurs familles",
-        "Entités atypiques ou uniques",
-        "Entités contemporaines & modernes",
-        "Entités hybrides, composites & assimilées",
-        "Autres entités"
+        "Feu",
+        "Eau (toutes ses formes)",
+        "Air",
+        "Terre",
+        "Éther"
       ]
     }
   };
-
-  // (pas de listes de tirages, de listes de référence ni de sous-catégories personnalisées dans ce codex)
-  const leftLists = {};
-  const refLists = {};
   const customSubs = {};
   const rightTexts = {};
 
+
+  /* ===== Textes longs : un chapitre qui s'étend sur plusieurs doubles pages ===== */
+  const H  = (n, sym, t) => `<h4 class="lt-h"><span class="lt-n">${n}</span><span class="lt-sym">${sym}</span>${t}</h4>`;
+  const P  = t => `<p class="lt-p">${t}</p>`;
+  const LI = (k, t) => `<div class="lt-li"><strong>${k}</strong> ${t}</div>`;
+  const NOTE = t => `<div class="lt-note">${t}</div>`;
+  const FIG = (svg, cap) => `<figure class="lt-fig">${svg}${cap ? `<figcaption>${cap}</figcaption>` : ''}</figure>`;
+
+  const SVG_FLUX = `<svg viewBox="0 0 320 90" class="fig-flux" aria-hidden="true">
+    <g transform="translate(40,38)"><circle r="22" class="ln"/><path d="M22 0 l-6 -6 M22 0 l6 -6" class="ln"/><path d="M-22 0 l-6 6 M-22 0 l6 6" class="ln"/></g>
+    <g transform="translate(120,38)"><circle r="6" class="fl"/><circle r="13" class="ln"/><circle r="20" class="ln dim"/></g>
+    <g transform="translate(200,38)"><circle r="5" class="fl"/>${[0,45,90,135,180,225,270,315].map(a=>`<line x1="0" y1="0" x2="${(22*Math.cos(a*Math.PI/180)).toFixed(1)}" y2="${(22*Math.sin(a*Math.PI/180)).toFixed(1)}" class="ln" stroke-dasharray="3 3"/>`).join('')}</g>
+    <g transform="translate(280,38)"><path d="M-22 -7 H18 l-6 -6 M18 -7 l-6 6" class="ln"/><path d="M22 7 H-18 l6 -6 M-18 7 l6 6" class="ln"/></g>
+    <g class="lb"><text x="40" y="84">Circulation</text><text x="120" y="84">Accumulation</text><text x="200" y="84">Dispersion</text><text x="280" y="84">Échange</text></g>
+  </svg>`;
+
+  const SVG_YINYANG = `<svg viewBox="0 0 120 120" class="fig-yy" aria-hidden="true">
+    <circle cx="60" cy="60" r="54" fill="#2b1a0e"/>
+    <path d="M60 6 A54 54 0 0 1 60 114 A27 27 0 0 1 60 60 A27 27 0 0 0 60 6Z" fill="#f4e8c8"/>
+    <circle cx="60" cy="33" r="8" fill="#2b1a0e"/><circle cx="60" cy="87" r="8" fill="#f4e8c8"/>
+    <circle cx="60" cy="60" r="54" fill="none" stroke="#7a1a1a" stroke-width="2"/>
+  </svg>`;
+
+  const SVG_ELEMENTS = `<svg viewBox="0 0 320 96" class="fig-el" aria-hidden="true">
+    <g transform="translate(40,40)"><path d="M0 -24 L22 16 H-22Z" class="ln"/></g>
+    <g transform="translate(120,40)"><path d="M0 24 L22 -16 H-22Z" class="ln"/></g>
+    <g transform="translate(200,40)"><path d="M0 -24 L22 16 H-22Z" class="ln"/><line x1="-14" y1="2" x2="14" y2="2" class="ln"/></g>
+    <g transform="translate(280,40)"><path d="M0 24 L22 -16 H-22Z" class="ln"/><line x1="-14" y1="-2" x2="14" y2="-2" class="ln"/></g>
+    <g class="lb"><text x="40" y="88">Feu</text><text x="120" y="88">Eau</text><text x="200" y="88">Air</text><text x="280" y="88">Terre</text></g>
+  </svg>`;
+
+  const SVG_CHAKRAS = `<svg viewBox="0 0 220 200" class="fig-ch" aria-hidden="true">
+    <line x1="70" y1="12" x2="70" y2="188" class="ln dim"/>
+    ${[["Couronne","#8e5bb5"],["Troisième œil","#4b4fa8"],["Gorge","#3a86b8"],["Cœur","#3f9a57"],["Plexus solaire","#d4a82b"],["Sacré","#d9772b"],["Racine","#b0302c"]]
+      .map((c,j)=>`<circle cx="70" cy="${18+j*27.5}" r="9" fill="${c[1]}" stroke="#2b1a0e" stroke-width=".8"/><text x="88" y="${22+j*27.5}" class="lbl">${c[0]}</text>`).join('')}
+  </svg>`;
+
+  const longTexts = {
+    "Fondements énergétiques": [
+      `<p class="lt-p lettrine">Ce chapitre pose les bases communes à tout le codex : ce que recouvre le mot « énergie », comment les traditions décrivent sa nature, sa circulation et ses équilibres, et où passe la frontière entre croyance, lecture psychologique et connaissance scientifique.</p>`,
+
+      H(1,"☉","Définition de l’énergie"),
+      P("Le mot vient du grec <em>energeia</em>, « activité, force en action », employé par Aristote. Il désigne aujourd’hui des choses très différentes selon le contexte : il faut donc toujours préciser de quel sens on parle."),
+      LI("Sens scientifique —","en physique, l’énergie est une grandeur mesurable (en joules) qui caractérise la capacité d’un système à produire un travail, de la chaleur ou un changement. Elle se conserve et prend des formes définies : cinétique, thermique, électrique, chimique, nucléaire, rayonnante…"),
+      LI("Sens ésotérique —","une force subtile, invisible et non mesurable par les instruments, qui animerait les êtres, les lieux et les objets, et que certaines pratiques disent percevoir, diriger ou transmettre."),
+      LI("Sens spirituel —","un principe vital ou sacré (souffle, grâce, puissance divine) lié à la vie intérieure et au lien avec le divin ou le cosmos."),
+      NOTE("Dans ce codex, « énergie » est employé au sens ésotérique et spirituel, sauf mention contraire. Emprunter le vocabulaire de la physique ne rend pas ces notions scientifiques : le même mot recouvre deux réalités distinctes."),
+
+      H(2,"✧","Nature de l’énergie"),
+      P("Les traditions ne s’accordent pas sur ce qu’est l’énergie. On retrouve cinq grandes façons de la concevoir :"),
+      LI("Une force —","une puissance qui agit et met en mouvement : la « force vitale »."),
+      LI("Une substance —","une matière subtile, plus fine que la matière ordinaire, qui peut s’accumuler, se transmettre ou s’épuiser (le « fluide » de Mesmer, l’« od » de Reichenbach)."),
+      LI("Un flux —","un courant qui circule dans le corps et dans le monde : le qi dans les méridiens, le prana dans les nadis."),
+      LI("Une vibration —","un état de mouvement plus ou moins « élevé » ou « subtil », selon les courants ésotériques modernes."),
+      LI("Un principe symbolique —","non pas une chose, mais une manière de nommer et d’ordonner l’expérience : vitalité, humeur, lien, dynamisme."),
+      P("Ces conceptions se mêlent souvent : la médecine chinoise voit le qi à la fois comme souffle, matière et fonction ; l’hindouisme fait du prana un souffle de vie ; en Polynésie, le mana est à la fois puissance efficace et prestige."),
+
+      H(3,"≈","Flux énergétiques"),
+      P("La plupart des systèmes décrivent l’énergie comme quelque chose qui bouge. Quatre mouvements reviennent :"),
+      FIG(SVG_FLUX,""),
+      LI("Circulation —","l’énergie parcourt des voies (canaux, méridiens, courants). Une bonne circulation est associée à la santé et à la fluidité."),
+      LI("Accumulation —","elle se concentre dans un lieu, un objet, un centre du corps ou une personne : réservoir, charge, « lieu chargé »."),
+      LI("Dispersion —","elle se perd, s’éparpille ou s’épuise : fatigue, dispersion mentale, « fuite d’énergie »."),
+      LI("Échange —","elle passe d’un être à un autre, d’un lieu à une personne, lors d’un soin, d’un rituel ou d’une relation."),
+      P("Le <em>blocage</em> ou la <em>stagnation</em>, c’est-à-dire une circulation empêchée, est une notion centrale de nombreuses pratiques (acupuncture, reiki, yoga)."),
+
+      H(4,"☯","Polarités énergétiques"),
+      FIG(SVG_YINYANG,"Le taijitu : yin et yang, chacun contenant le germe de l’autre."),
+      P("Beaucoup de traditions décrivent l’énergie comme la rencontre de deux pôles complémentaires plutôt qu’opposés :"),
+      LI("Positif / négatif —","vocabulaire emprunté à l’électricité ; en ésotérisme, souvent confondu à tort avec « bon / mauvais »."),
+      LI("Actif / réceptif —","émettre et recevoir, agir et accueillir. Les textes anciens disent parfois « masculin / féminin » : un vocabulaire symbolique, à ne pas prendre au sens biologique."),
+      LI("Expansion / contraction —","s’ouvrir et se resserrer, comme la respiration, le cœur ou les saisons."),
+      LI("Autres systèmes —","yin et yang (Chine), ida et pingala, canaux lunaire et solaire (yoga), soufre et mercure (alchimie), colonnes de la Rigueur et de la Miséricorde (Kabbale)."),
+      P("Point commun : l’équilibre naît de l’interaction des pôles, pas de la victoire de l’un sur l’autre."),
+
+      H(5,"⚖","Équilibre énergétique"),
+      LI("Harmonie —","circulation fluide, pôles équilibrés, accord entre l’être et son environnement."),
+      LI("Déséquilibre —","rupture de cette harmonie, décrite comme source de malaise, de fatigue ou de conflit."),
+      LI("Excès —","trop d’énergie ou trop d’un pôle : agitation, colère, surchauffe, « trop de feu »."),
+      LI("Manque —","pas assez d’énergie : fatigue, froid, vide, « énergie basse »."),
+      P("Ce schéma rappelle les anciennes médecines des humeurs (Hippocrate, Galien), les trois doshas de l’ayurveda ou le couple vide / plénitude de la médecine chinoise. Ces lectures aident à mettre des mots sur un ressenti, mais ne remplacent pas un avis médical."),
+
+      H(6,"∿","Vibration & fréquence"),
+      P("Dans les courants ésotériques modernes (théosophie, New Age), tout serait vibration : plus un état serait « élevé », plus sa vibration serait rapide ou subtile. On parle d’« élever sa vibration », ou de la « fréquence » d’une émotion, d’un lieu, d’une pierre."),
+      P("En physique, ces mots ont un sens précis et mesurable : une vibration est un mouvement périodique, et sa fréquence le nombre de cycles par seconde, en hertz (Hz). Le « taux vibratoire » d’une personne ou d’une émotion n’a, lui, aucune définition mesurable : c’est un usage métaphorique."),
+      NOTE("À retenir : dans ce codex, « vibration » et « fréquence » sont employées au sens symbolique. Un chiffre en hertz attribué à une émotion, à une couleur spirituelle ou à un objet ne correspond pas à une mesure scientifique."),
+
+      H(7,"✺","Sources d’énergie"),
+      FIG(SVG_ELEMENTS,"Symboles alchimiques des quatre éléments."),
+      P("Selon les traditions, l’énergie peut provenir :"),
+      LI("du corps —","souffle, alimentation, sommeil, mouvement. La médecine chinoise distingue un qi « inné », hérité, et un qi « acquis » par l’air et la nourriture ;"),
+      LI("de la nature —","plantes, arbres, eau, montagnes, lieux dits « chargés » : sources, forêts, sites sacrés (voir N-04) ;"),
+      LI("des éléments —","Terre, Eau, Air, Feu et parfois Éther, chacun porteur d’une qualité propre (voir N-02) ;"),
+      LI("des astres —","Soleil, Lune, planètes et cycles célestes (voir N-05) ;"),
+      LI("des émotions —","joie, peur ou colère décrites comme des énergies qui circulent, se bloquent ou se libèrent (voir N-07) ;"),
+      LI("de la spiritualité —","prière, méditation, grâce, lien avec le divin ou les esprits (voir N-06)."),
+
+      H(8,"⊚","Canaux & réservoirs énergétiques"),
+      FIG(SVG_CHAKRAS,"Les sept chakras du système moderne le plus répandu."),
+      LI("Aura —","champ lumineux ou coloré qui entourerait le corps, souvent décrit en plusieurs couches."),
+      LI("Chakras —","« roues » en sanskrit : centres d’énergie alignés le long de la colonne. Le système à sept chakras est le plus répandu aujourd’hui ; les textes tantriques anciens en comptent parfois moins ou davantage."),
+      LI("Méridiens —","en médecine chinoise, douze méridiens principaux et huit « vaisseaux merveilleux », jalonnés de points d’acupuncture."),
+      LI("Nadis —","dans le yoga, réseau de canaux (72 000 selon certains textes), dont trois principaux : ida, pingala et sushumna."),
+      LI("Centres énergétiques —","les dantian (« champs de cinabre ») du taoïsme et du qigong ; le hara japonais, sous le nombril."),
+      LI("Autres systèmes —","les sephiroth de l’arbre de vie kabbalistique ; les corps subtils de la théosophie (éthérique, astral, mental)."),
+      P("Ces structures n’ont pas de correspondance anatomique démontrée : elles sont décrites comme « subtiles », c’est-à-dire non physiques."),
+
+      H(9,"⇄","Interactions énergétiques"),
+      LI("Échange —","don et réception entre deux êtres : soin, relation, rituel."),
+      LI("Influence —","une énergie en modifie une autre : un lieu apaisant, une présence « lourde »."),
+      LI("Affinité —","attirance ou résonance entre énergies semblables (la « sympathie » des anciens)."),
+      LI("Résistance —","opposition, blocage, ou protection contre une influence."),
+      LI("Accumulation ou dissipation —","une énergie se renforce en se concentrant, ou s’affaiblit en se dispersant."),
+      P("Ces notions rejoignent un principe très ancien, la <em>sympathie universelle</em> : tout serait relié par des correspondances. Elle est au cœur de la magie de la Renaissance et de l’alchimie."),
+
+      H(10,"◉","Perception énergétique"),
+      LI("Sensations corporelles —","chaleur, froid, fourmillements, pression, picotements dans les mains."),
+      LI("Imagerie mentale —","couleurs, lumières ou formes perçues en visualisation."),
+      LI("Intuition —","impression soudaine, « ressenti », sentiment de savoir."),
+      LI("Perceptions rapportées —","voir l’aura, « sentir » un lieu, percevoir une présence ; leur description varie selon les cultures et les pratiques."),
+      P("Ces expériences sont réelles en tant que vécu. Leur interprétation, elle, varie : lecture énergétique, effets de l’attention et de la suggestion, réactions du système nerveux (circulation sanguine, respiration), attentes. Les études contrôlées n’ont pas montré que ces perceptions détectent un champ extérieur à la personne : par exemple l’expérience d’Emily Rosa sur le « toucher thérapeutique », publiée en 1998."),
+
+      H(11,"✎","Terminologie"),
+      LI("Qi / Ki —","(Chine / Japon) souffle vital qui circule dans le corps et l’univers ; base de la médecine chinoise, du qigong, des arts martiaux et du reiki."),
+      LI("Prana —","(Inde) « souffle vital » en sanskrit ; divisé en cinq vayus (souffles) et travaillé par le pranayama."),
+      LI("Mana —","(Polynésie, Mélanésie) puissance surnaturelle efficace présente dans les personnes, les objets et les lieux ; aussi prestige et autorité."),
+      LI("Éther —","cinquième élément (quintessence) de la philosophie grecque, milieu subtil en ésotérisme ; en physique, hypothèse abandonnée au début du XXe siècle."),
+      LI("Force vitale —","principe propre aux êtres vivants, défendu par le vitalisme jusqu’au XIXe siècle."),
+      LI("Pneuma —","(Grèce) souffle, esprit ; principe de vie chez les stoïciens et les médecins antiques."),
+      LI("Ruach —","(hébreu) souffle, vent, esprit."),
+      LI("Baraka —","(monde arabo-musulman) bénédiction, grâce transmise par les saints, les lieux ou les objets."),
+      LI("Kundalini —","(tantrisme) énergie décrite comme enroulée à la base de la colonne, qui s’élèverait à travers les chakras."),
+      LI("Magnétisme animal —","« fluide » supposé par Mesmer (XVIIIe siècle) ; une commission royale de 1784, avec Franklin et Lavoisier, conclut que ses effets venaient de l’imagination."),
+      LI("Od / Orgone —","forces hypothétiques proposées par Karl von Reichenbach (XIXe) et Wilhelm Reich (XXe), jamais confirmées."),
+
+      H(12,"◈","Limites & interprétations"),
+      LI("Ce qui relève d’une tradition ou d’une croyance —","l’existence d’une énergie subtile (qi, prana, chakras, aura) et ses lois. Ces systèmes ont leur cohérence interne et leur valeur culturelle, sans être démontrés."),
+      LI("Ce qui peut s’interpréter psychologiquement —","relaxation, attention portée au corps, respiration, suggestion, effet placebo, sentiment de sens et de contrôle, régulation des émotions. Beaucoup d’effets ressentis s’expliquent ainsi ; on dit d’ailleurs souvent « énergie » pour parler d’humeur ou de vitalité."),
+      LI("Ce qui est établi scientifiquement —","l’énergie physique (mesurable, conservée) ; les effets documentés de la respiration, de la méditation ou de l’activité physique sur le stress et le bien-être."),
+      LI("Ce qui n’est pas établi —","une énergie subtile mesurable, les méridiens ou les chakras comme structures anatomiques, les « fréquences » des émotions."),
+      NOTE("Ce codex décrit ces systèmes pour les connaître et les comparer, non pour les présenter comme des faits. Pour toute question de santé, l’avis d’un professionnel reste indispensable.")
+    ]
+  };
+
+
+  // elements_text
+
+  /* ===== Pages des cinq éléments (N-02-01 à N-02-05) ===== */
+  const TRI = (up, bar, label) => `<svg viewBox="0 0 120 110" class="fig-tri" aria-hidden="true">
+      <path d="${up ? 'M60 10 L106 92 H14Z' : 'M60 100 L106 18 H14Z'}" class="ln"/>
+      ${bar ? `<line x1="${up?35:35}" y1="${up?62:48}" x2="${up?85:85}" y2="${up?62:48}" class="ln"/>` : ''}
+    </svg>`;
+  const SVG_ETHER = `<svg viewBox="0 0 120 120" class="fig-tri" aria-hidden="true">
+      <circle cx="60" cy="60" r="48" class="ln"/>
+      <polygon points="60,14 87,96 17,45 103,45 33,96" class="ln"/>
+      <circle cx="60" cy="14" r="4" class="fl"/>
+    </svg>`;
+  const EHEAD = (svg, tag) => `<figure class="lt-fig el-head">${svg}<figcaption>${tag}</figcaption></figure>`;
+  const CORR = rows => `<div class="corr">${rows.map(r=>`<div class="corr-row"><span class="corr-k">${r[0]}</span><span class="corr-v">${r[1]}</span></div>`).join('')}</div>`;
+  const CORR_NOTE = NOTE("Ces correspondances sont celles de l’ésotérisme occidental (surtout l’ordre de la Golden Dawn, XIXe siècle) et de la tradition hindoue ; elles varient selon les écoles.");
+
+  const subTexts = {
+    "Énergies élémentaires": {
+      /* ---------------- FEU ---------------- */
+      0: [
+        EHEAD(TRI(true,false), "Triangle pointe en haut : ce qui monte, rayonne et transforme."),
+        H(1,"△","Définition"),
+        `<p class="lt-p lettrine">Le Feu est l’élément de l’action, de la transformation et de la vitalité. Chaud et sec selon la tradition grecque, il éclaire, réchauffe, purifie et détruit à la fois : il change la nature de ce qu’il touche, sans retour possible.</p>`,
+        P("Sur le plan symbolique, il représente la volonté, le courage, la passion, le désir, l’inspiration et l’élan créateur. Il est l’élément du Soleil, de l’été et du midi, de la foudre et du foyer."),
+        H(2,"✦","Correspondances"),
+        CORR([
+          ["Qualités","chaud et sec (Aristote)"],
+          ["Tempérament","colérique (bile jaune)"],
+          ["Direction · saison","Sud · été · midi"],
+          ["Couleur","rouge, orangé, or"],
+          ["Signes","Bélier, Lion, Sagittaire"],
+          ["Tarot · outil","Bâtons · baguette"],
+          ["Êtres élémentaires","salamandres (Paracelse)"],
+          ["Archange","Michel"],
+          ["Chakra · sens","plexus solaire (Manipura) · la vue"],
+          ["Solide de Platon","tétraèdre"]
+        ]),
+        CORR_NOTE,
+        H(3,"☀","Comment l’utiliser"),
+        P("Dans les pratiques ésotériques, on fait appel au Feu pour trouver de l’élan, du courage, de la clarté ou pour marquer une transformation :"),
+        LI("Contemplation d’une flamme —","fixer calmement la flamme d’une bougie quelques minutes (le <em>trataka</em> du yoga), puis garder son image les yeux fermés."),
+        LI("Visualisation —","imaginer une chaleur ou une lumière dorée au niveau du plexus solaire, qui se diffuse dans le corps."),
+        LI("Rituel de transformation —","écrire ce que l’on veut laisser derrière soi, puis brûler le papier en sécurité (coupelle, extérieur ou évier)."),
+        LI("Mouvement & soleil —","danse, sport, marche au soleil : le Feu se vit aussi par le corps et la chaleur."),
+        LI("Intention —","l’associer aux projets à lancer, aux décisions et aux moments où il faut oser."),
+        LI("Excès / manque —","trop de Feu : colère, impatience, épuisement, « brûler la chandelle par les deux bouts ». Pas assez : fatigue, manque d’envie, froideur, procrastination."),
+        NOTE("Sécurité : ne jamais laisser une flamme sans surveillance, l’éloigner des tissus et des papiers, et garder de l’eau à portée."),
+        H(4,"⌛","D’où vient-il"),
+        P("La maîtrise du feu, il y a plusieurs centaines de milliers d’années, a profondément marqué l’humanité : lumière, chaleur, cuisson, protection. De nombreuses cultures en ont fait un élément sacré, avec leurs divinités du feu : Agni en Inde, Héphaïstos chez les Grecs (Vulcain à Rome), Brigid chez les Celtes, Pele à Hawaï ; et le feu sacré du zoroastrisme."),
+        P("En Grèce, Héraclite (VIe – Ve siècle av. J.-C.) fait du feu le principe de toute chose : le monde est « un feu toujours vivant ». Empédocle le range ensuite parmi les quatre « racines » de toute matière, et Aristote lui donne ses qualités de chaud et de sec."),
+        P("L’Inde l’appelle <em>agni</em> ou <em>tejas</em>, l’un des cinq grands éléments (<em>pañca mahābhūta</em>), lié à la vue et à la forme. La Chine le compte parmi les cinq phases (<em>wuxing</em>), associé au sud, à l’été, au rouge et au cœur. L’ésotérisme occidental moderne (Golden Dawn, puis Wicca) a fixé les correspondances ci-dessus.")
+      ],
+
+      /* ---------------- EAU ---------------- */
+      1: [
+        EHEAD(TRI(false,false), "Triangle pointe en bas : ce qui descend, remplit et épouse les formes."),
+        H(1,"▽","Définition"),
+        `<p class="lt-p lettrine">L’Eau est l’élément des émotions, de l’intuition et de la fluidité. Froide et humide selon la tradition grecque, elle épouse toutes les formes, s’infiltre, nourrit, purifie et relie. Elle est à la fois douceur et puissance : la goutte creuse la pierre.</p>`,
+        P("Sur le plan symbolique, elle représente la sensibilité, l’amour, les rêves, l’inconscient, la mémoire, la fertilité, la purification et le passage. Elle est l’élément de la Lune, des marées et de la nuit."),
+        H(2,"≋","Toutes ses formes"),
+        P("L’Eau change d’état sans changer de nature ; chaque forme porte un symbolisme propre :"),
+        LI("Eau liquide —","le flux, l’adaptation, les émotions qui circulent."),
+        LI("Source —","l’origine, la naissance, la pureté ; les sources sacrées et guérisseuses."),
+        LI("Rivière & fleuve —","le cours de la vie, le temps qui passe, la frontière à franchir (le Styx, le Jourdain)."),
+        LI("Mer & océan —","l’immensité, l’inconscient, l’origine de la vie, l’inconnu."),
+        LI("Lac & eau dormante —","le reflet, la contemplation, les profondeurs cachées."),
+        LI("Pluie —","la fertilité, la purification, le don du ciel."),
+        LI("Rosée —","la grâce subtile ; en alchimie, une eau céleste recueillie à l’aube."),
+        LI("Brume & brouillard —","le mystère, le passage entre les mondes, l’incertitude."),
+        LI("Vapeur —","l’eau qui s’élève vers l’Air : transformation et purification (bains de vapeur, sudations rituelles)."),
+        LI("Glace & neige —","l’immobilité, la conservation, le silence, l’émotion figée ; la patience avant le dégel."),
+        LI("Larmes —","la libération émotionnelle, le deuil, le soulagement."),
+        H(3,"✦","Correspondances"),
+        CORR([
+          ["Qualités","froide et humide (Aristote)"],
+          ["Tempérament","flegmatique (flegme)"],
+          ["Direction · saison","Ouest · automne · crépuscule"],
+          ["Couleur","bleu, bleu-vert, argent"],
+          ["Signes","Cancer, Scorpion, Poissons"],
+          ["Tarot · outil","Coupes · coupe, calice"],
+          ["Êtres élémentaires","ondines (Paracelse)"],
+          ["Archange","Gabriel"],
+          ["Chakra · sens","sacré (Svadhisthana) · le goût"],
+          ["Solide de Platon","icosaèdre"]
+        ]),
+        CORR_NOTE,
+        H(4,"☽","Comment l’utiliser"),
+        P("On fait appel à l’Eau pour apaiser, purifier, ressentir et laisser circuler les émotions :"),
+        LI("Bain ou douche rituels —","se laver avec l’intention de se « purifier » d’une journée ou d’une émotion, parfois avec du sel ou des plantes."),
+        LI("Eau de lune —","laisser un récipient d’eau sous la pleine lune et l’utiliser le lendemain (boisson, arrosage, rituel)."),
+        LI("Près de l’eau —","marcher au bord d’une rivière, de la mer ou d’un lac ; écouter la pluie."),
+        LI("Visualisation —","imaginer une vague qui monte à l’inspiration et redescend à l’expiration, ou une eau claire qui traverse le corps."),
+        LI("Travail émotionnel —","écrire ce que l’on ressent, pleurer, se confier : laisser couler plutôt que retenir."),
+        LI("Boire en conscience —","prendre un verre d’eau lentement, en y associant une intention."),
+        LI("Excès / manque —","trop d’Eau : submersion émotionnelle, hypersensibilité, confusion, repli. Pas assez : froideur, rigidité, difficulté à ressentir ou à pleurer."),
+        H(5,"⌛","D’où vient-elle"),
+        P("Presque toutes les mythologies placent l’eau à l’origine du monde : le Noun, océan primordial des Égyptiens ; Apsû et Tiamat en Mésopotamie ; les eaux sur lesquelles plane l’esprit dans la Genèse ; l’océan de lait de l’hindouisme. Elle est aussi l’eau qui lave : baptême chrétien, ablutions de l’islam, bains rituels du judaïsme (<em>mikvé</em>), bain dans le Gange."),
+        P("En Grèce, Thalès de Milet (VIe siècle av. J.-C.) fait de l’eau le principe de toutes choses. Empédocle l’inclut dans ses quatre racines, et Aristote lui donne ses qualités de froid et d’humide."),
+        P("L’Inde l’appelle <em>āpas</em> ou <em>jala</em>, liée au goût. En Chine, l’Eau est l’une des cinq phases, associée au nord, à l’hiver, au noir et aux reins. Au XVIe siècle, Paracelse peuple l’eau d’ondines ; l’ésotérisme moderne fixe ensuite les correspondances ci-dessus.")
+      ],
+
+      /* ---------------- AIR ---------------- */
+      2: [
+        EHEAD(TRI(true,true), "Triangle pointe en haut, barré : le Feu tempéré, ce qui s’élève et se répand."),
+        H(1,"△","Définition"),
+        `<p class="lt-p lettrine">L’Air est l’élément du souffle, du mouvement et de l’esprit. Chaud et humide selon la tradition grecque, il est invisible mais partout : il porte les sons, les odeurs, les graines et les nuages, et c’est lui que l’on respire à chaque instant.</p>`,
+        P("Sur le plan symbolique, il représente la pensée, l’intellect, la parole, la communication, la liberté, l’inspiration et le lien entre les êtres. Il est l’élément du vent, de l’aube et du printemps."),
+        H(2,"✦","Correspondances"),
+        CORR([
+          ["Qualités","chaud et humide (Aristote)"],
+          ["Tempérament","sanguin (sang)"],
+          ["Direction · saison","Est · printemps · aube"],
+          ["Couleur","jaune, bleu ciel, blanc"],
+          ["Signes","Gémeaux, Balance, Verseau"],
+          ["Tarot · outil","Épées · dague (athamé)"],
+          ["Êtres élémentaires","sylphes (Paracelse)"],
+          ["Archange","Raphaël"],
+          ["Chakra · sens","cœur (Anahata) · le toucher"],
+          ["Solide de Platon","octaèdre"]
+        ]),
+        CORR_NOTE,
+        H(3,"≈","Comment l’utiliser"),
+        P("On fait appel à l’Air pour clarifier l’esprit, communiquer, apprendre et se libérer :"),
+        LI("Respiration consciente —","inspirer 4 temps, retenir 4, expirer 4, retenir 4 (respiration « carrée ») ; ou les exercices de <em>pranayama</em> du yoga."),
+        LI("Fumigation & encens —","faire circuler une fumée parfumée dans une pièce pour la « purifier » symboliquement, fenêtre entrouverte."),
+        LI("Sons —","cloches, carillons, chant, voix : l’Air porte les vibrations sonores."),
+        LI("Plein air —","marcher dans le vent, aérer la maison, observer les oiseaux et les nuages."),
+        LI("Parole & écriture —","noter ses idées, formuler une intention à voix haute, écrire une lettre."),
+        LI("Excès / manque —","trop d’Air : dispersion, pensées qui tournent, anxiété, bavardage, difficulté à se poser. Pas assez : confusion, difficulté à s’exprimer, esprit étouffé."),
+        NOTE("Pour l’encens et les fumigations : aérer la pièce et éviter chez les personnes asthmatiques, les jeunes enfants et les animaux."),
+        H(4,"⌛","D’où vient-il"),
+        P("Dans de nombreuses langues, un même mot désigne le souffle, le vent et l’esprit : <em>pneuma</em> en grec, <em>ruach</em> en hébreu, <em>spiritus</em> en latin, <em>prāṇa</em> en sanskrit. Les divinités du vent sont partout : Éole chez les Grecs, Shou en Égypte, Enlil à Sumer, Vāyu en Inde."),
+        P("En Grèce, Anaximène (VIe siècle av. J.-C.) fait de l’air le principe premier, qui se condense ou se raréfie pour former toutes choses. Empédocle l’inclut dans ses quatre racines, et Aristote lui donne ses qualités de chaud et d’humide."),
+        P("L’Inde l’appelle <em>vāyu</em>, lié au toucher. La Chine, en revanche, n’a pas d’élément Air dans ses cinq phases : on y trouve le Bois et le Métal, et le souffle y est pensé comme <em>qi</em>. Paracelse peuple l’air de sylphes, et l’ésotérisme moderne fixe les correspondances ci-dessus.")
+      ],
+
+      /* ---------------- TERRE ---------------- */
+      3: [
+        EHEAD(TRI(false,true), "Triangle pointe en bas, barré : l’Eau épaissie, ce qui se pose et se solidifie."),
+        H(1,"▽","Définition"),
+        `<p class="lt-p lettrine">La Terre est l’élément de la matière, de la stabilité et de l’ancrage. Froide et sèche selon la tradition grecque, elle porte, nourrit, protège et conserve. C’est l’élément le plus dense et le plus lent : celui du corps, du sol, des pierres et des racines.</p>`,
+        P("Sur le plan symbolique, elle représente la sécurité, la patience, la persévérance, le concret, l’abondance matérielle, la fertilité et les cycles de la vie et de la mort. Elle est l’élément de l’hiver, de la nuit et de la montagne."),
+        H(2,"✦","Correspondances"),
+        CORR([
+          ["Qualités","froide et sèche (Aristote)"],
+          ["Tempérament","mélancolique (bile noire)"],
+          ["Direction · saison","Nord · hiver · minuit"],
+          ["Couleur","vert, brun, noir"],
+          ["Signes","Taureau, Vierge, Capricorne"],
+          ["Tarot · outil","Deniers · pentacle"],
+          ["Êtres élémentaires","gnomes (Paracelse)"],
+          ["Archange","Uriel"],
+          ["Chakra · sens","racine (Muladhara) · l’odorat"],
+          ["Solide de Platon","cube"]
+        ]),
+        CORR_NOTE,
+        H(3,"⛰","Comment l’utiliser"),
+        P("On fait appel à la Terre pour s’ancrer, se stabiliser, se protéger et construire dans la durée :"),
+        LI("Ancrage —","marcher pieds nus sur l’herbe ou la terre, ou visualiser des racines qui descendent de ses pieds dans le sol."),
+        LI("Méditation de l’arbre —","debout, pieds bien posés, imaginer son corps comme un tronc solide, relié au sol et au ciel."),
+        LI("Jardinage —","planter, rempoter, toucher la terre : le contact direct avec la matière."),
+        LI("Pierres & sel —","garder une pierre dans la main pour se recentrer ; le sel est traditionnellement utilisé comme protection symbolique."),
+        LI("Routine & corps —","repas réguliers, sommeil, rangement, marche : tout ce qui rend le quotidien stable."),
+        LI("Excès / manque —","trop de Terre : lourdeur, rigidité, entêtement, attachement matériel, inertie. Pas assez : dispersion, insécurité, difficulté à concrétiser, sentiment de « flotter »."),
+        H(4,"⌛","D’où vient-elle"),
+        P("La Terre est l’une des plus anciennes figures sacrées : la Terre-Mère, qui donne la vie et la reprend. On la retrouve sous les noms de Gaïa chez les Grecs, Prithvī en Inde, Jörd chez les Scandinaves, Pachamama dans les Andes. Les rites agricoles, les tombes et les offrandes au sol témoignent de ce lien."),
+        P("En Grèce, Xénophane (VIe siècle av. J.-C.) écrit que « tout vient de la terre et tout finit en terre ». Empédocle en fait l’une des quatre racines, Aristote lui donne ses qualités de froid et de sec, et Platon l’associe au cube, la forme la plus stable."),
+        P("L’Inde l’appelle <em>pṛthvī</em>, liée à l’odorat. En Chine, la Terre est la phase du centre et des intersaisons, associée au jaune et à la rate. Paracelse peuple la terre de gnomes, et l’ésotérisme moderne fixe les correspondances ci-dessus.")
+      ],
+
+      /* ---------------- ÉTHER ---------------- */
+      4: [
+        EHEAD(SVG_ETHER, "Le pentagramme : l’Esprit à la pointe supérieure, au-dessus des quatre éléments."),
+        H(1,"◯","Définition"),
+        `<p class="lt-p lettrine">L’Éther est le cinquième élément, celui qui contient ou unit les quatre autres. Selon les traditions, il est l’espace, le ciel, le vide ou l’esprit : ce dans quoi les autres éléments existent, et ce qui les relie. On l’appelle aussi quintessence (« cinquième essence »), Esprit ou <em>ākāśa</em>.</p>`,
+        P("Sur le plan symbolique, il représente la spiritualité, la conscience, l’unité, le sacré, le son primordial et le lien entre le visible et l’invisible. Il n’a pas de qualités tangibles comme les quatre autres : il est l’élément du centre et de la synthèse."),
+        H(2,"✦","Correspondances"),
+        CORR([
+          ["Qualités","ni chaud ni froid, ni sec ni humide (Aristote)"],
+          ["Direction","le centre, ou l’axe haut / bas"],
+          ["Couleur","violet, blanc, noir ou indigo selon les systèmes"],
+          ["Symbole","cercle ; pointe supérieure du pentagramme"],
+          ["Tarot","parfois les arcanes majeurs"],
+          ["Chakra · sens","gorge (Vishuddha) · l’ouïe"],
+          ["Solide de Platon","dodécaèdre, associé au cosmos"],
+          ["Êtres élémentaires","aucun dans le système de Paracelse"]
+        ]),
+        CORR_NOTE,
+        H(3,"✧","Comment l’utiliser"),
+        P("On fait appel à l’Éther pour se relier, unifier, méditer et donner du sens :"),
+        LI("Méditation silencieuse —","s’asseoir et porter l’attention sur l’espace entre les pensées, ou sur l’espace autour de soi."),
+        LI("Son —","chant, mantra (comme « Om »), bol chantant : l’ākāśa est traditionnellement lié au son."),
+        LI("Contemplation du ciel —","observer le ciel nocturne et les étoiles, prendre conscience de l’immensité."),
+        LI("Équilibre des éléments —","tracer ou visualiser un pentagramme, ou faire appel successivement aux quatre éléments puis à leur centre."),
+        LI("Prière & intention —","tout ce qui relie à ce que l’on considère comme sacré."),
+        LI("Excès / manque —","trop d’Éther : détachement du concret, fuite dans le spirituel, difficulté à agir. Pas assez : perte de sens, sentiment de vide, matérialisme exclusif."),
+        H(4,"⌛","D’où vient-il"),
+        P("Pour les Grecs, l’<em>aithēr</em> est l’air pur et lumineux des hauteurs, où vivent les dieux. Platon associe le dodécaèdre à l’ensemble du cosmos ; Aristote fait de l’éther un cinquième élément, dont sont faits les astres, incorruptible et animé d’un mouvement circulaire éternel."),
+        P("L’Inde en fait le cinquième grand élément, <em>ākāśa</em> (l’espace), lié au son et à l’ouïe ; le Japon parle de <em>kū</em>, le vide, dans ses cinq éléments (<em>godai</em>). Les alchimistes médiévaux cherchent à extraire la « quintessence » des choses, et l’ésotérisme moderne place l’Esprit au sommet du pentagramme."),
+        P("En physique, l’« éther luminifère » fut longtemps imaginé comme le milieu où voyage la lumière. L’expérience de Michelson et Morley (1887) puis la relativité d’Einstein (1905) ont conduit à abandonner cette hypothèse : l’éther ésotérique relève donc du symbolique.")
+      ]
+    }
+  };
   const PFX = CODEX.prefix;
   const pad = n => String(n).padStart(2,'0');
   const pad3 = n => String(n).padStart(3,'0');

@@ -460,6 +460,56 @@
     .numtable .nt-v{font-size:.56rem;line-height:1.3}
   }
 
+  .ch-note{margin:10px auto 0;max-width:34ch;font-style:italic;color:var(--ink-soft);font-size:.98rem;line-height:1.4}
+  @media (max-width:640px){ .ch-note{font-size:.58rem;margin-top:5px} }
+
+  /* ---------- texte long (traité) ---------- */
+  .lt-h{display:flex;align-items:center;gap:8px;font-family:'Cinzel',serif;font-weight:700;font-size:1.08rem;color:var(--red);
+    margin:14px 0 8px;padding-bottom:4px;border-bottom:1px solid rgba(122,26,26,.3)}
+  .lt-n{flex:0 0 24px;height:24px;border-radius:50%;background:var(--red);color:var(--paper);display:grid;place-items:center;font-size:.72rem}
+  .lt-sym{font-size:1.1rem;color:var(--ink-soft);width:18px;text-align:center}
+  .lt-p{font-size:1rem;line-height:1.55;text-align:justify;hyphens:auto;margin-bottom:8px}
+  .lt-p.lettrine::first-letter{font-size:2.8rem}
+  .lt-li{font-size:.98rem;line-height:1.5;padding:3px 0 3px 14px;position:relative}
+  .lt-li::before{content:"✦";position:absolute;left:0;top:4px;font-size:.6rem;color:var(--red)}
+  .lt-li strong{font-family:'Cinzel',serif;font-size:.86rem;color:var(--ink);letter-spacing:.02em}
+  .lt-note{margin:8px 0 10px;padding:8px 12px;border-left:3px solid var(--red);background:rgba(122,26,26,.07);font-style:italic;font-size:.95rem;line-height:1.45}
+  .lt-fig{margin:6px auto 10px;text-align:center}
+  .lt-fig svg{display:block;margin:0 auto;max-width:100%;height:auto}
+  .lt-fig figcaption{font-style:italic;font-size:.82rem;color:var(--ink-soft);margin-top:3px}
+  .fig-flux{width:320px}.fig-el{width:300px}.fig-yy{width:96px}.fig-ch{width:190px}
+  .lt-fig .ln{fill:none;stroke:var(--red);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .lt-fig .ln.dim{stroke:rgba(122,26,26,.35)}
+  .lt-fig .fl{fill:var(--red)}
+  .lt-fig .lb text{font-family:'IM Fell English',serif;font-size:12px;fill:var(--ink-soft);text-anchor:middle}
+  .lt-fig .lbl{font-family:'IM Fell English',serif;font-size:13px;fill:var(--ink)}
+  @media (max-width:640px){
+    .lt-h{font-size:.62rem;gap:4px;margin:7px 0 4px;padding-bottom:2px}
+    .lt-n{flex-basis:13px;height:13px;font-size:.42rem}
+    .lt-sym{font-size:.6rem;width:10px}
+    .lt-p{font-size:.6rem;line-height:1.4;text-align:left;margin-bottom:4px}
+    .lt-p.lettrine::first-letter{font-size:1.5rem}
+    .lt-li{font-size:.58rem;line-height:1.35;padding:1px 0 1px 8px}
+    .lt-li::before{font-size:.35rem;top:3px}
+    .lt-li strong{font-size:.52rem}
+    .lt-note{font-size:.56rem;padding:4px 6px;margin:4px 0 6px;border-left-width:2px}
+    .lt-fig figcaption{font-size:.5rem}
+    .fig-flux,.fig-el{width:150px}.fig-yy{width:50px}.fig-ch{width:100px}
+  }
+
+  /* ---------- fiches d'élément ---------- */
+  .el-head{margin:0 auto 4px}
+  .fig-tri{width:74px}
+  .corr{margin:2px 0 6px}
+  .corr-row{display:flex;gap:10px;padding:3px 0;border-bottom:1px dotted rgba(90,63,36,.28);font-size:.95rem;line-height:1.35}
+  .corr-row:last-child{border-bottom:none}
+  .corr-k{flex:0 0 42%;font-family:'Cinzel',serif;font-size:.74rem;font-weight:700;color:var(--red);letter-spacing:.03em;padding-top:2px}
+  @media (max-width:640px){
+    .fig-tri{width:38px}
+    .corr-row{gap:4px;padding:1px 0;font-size:.56rem}
+    .corr-k{font-size:.44rem;padding-top:1px}
+  }
+
   /* ---------- outils (sauvegarde) ---------- */
   .tools{display:flex;gap:8px}
   .tool{font-family:'Cinzel',serif;font-weight:700;font-size:.72rem;letter-spacing:.08em;color:var(--gold);
@@ -1308,6 +1358,7 @@
   const subsOf = i => isCustom(i)
     ? customList(i).map(o => o.deleted ? null : esc(o.name))
     : (subcats[chapters[i]] || {items:[]}).items;
+  const notesOf = i => (typeof chapterNotes !== 'undefined' && chapterNotes[chapters[i]]) || '';
   const liveSubs = i => subsOf(i).filter(x=>x!=null).length;
   const spreadsOf = i => ((leftLists[chapters[i]] || {items:[]}).items).filter(t=>t.positions);
   function refOf(i,k){
@@ -1351,7 +1402,8 @@
   const ficheCode = f => `${PFX}-${pad(f.cat+1)}-${pad(f.sub+1)}-${pad3(f.num)}`;
   const fichesOfSub = (i,k) => fiches.filter(f=>f.cat===i && f.sub===k).sort((a,b)=>a.num-b.num);
   const nextNum = (i,k) => fichesOfSub(i,k).reduce((m,f)=>Math.max(m,f.num),0) + 1;
-  const hasContent = (i,k) => !!refOf(i,k) || fichesOfSub(i,k).length > 0;
+  const subTextOf = (i,k) => (typeof subTexts !== 'undefined' && (subTexts[chapters[i]]||{})[k]) || null;
+  const hasContent = (i,k) => !!refOf(i,k) || !!subTextOf(i,k) || fichesOfSub(i,k).length > 0;
 
   /* =========================================================
      Contenu des pages
@@ -1382,17 +1434,22 @@
           </li>`).join('')}
       </ol>`;
 
+  const longOf = i => (typeof longTexts !== 'undefined' && longTexts[chapters[i]]) || null;
+  function chapterHead(i){
+    return `
+      <div class="chapter-head">
+        <div class="kicker">CHAPITRE ${roman(i+1)}</div>
+        <h3>${chapters[i]}</h3>
+        <div class="code">${PFX}-${pad(i+1)}</div>
+        ${notesOf(i) ? `<p class="ch-note">${notesOf(i)}</p>` : ''}
+      </div>
+      <div class="rule"></div>`;
+  }
   function chapterLeft(i){
     const c = chapters[i], code = PFX+'-'+pad(i+1);
     const def = definitions[c];
     const ll = leftLists[c];
-    return `
-      <div class="chapter-head">
-        <div class="kicker">CHAPITRE ${roman(i+1)}</div>
-        <h3>${c}</h3>
-        <div class="code">${code}</div>
-      </div>
-      <div class="rule"></div>
+    return `${chapterHead(i)}
       ${def || !ll ? `
       <div class="definition">
         <div class="def-label">Définition</div>
@@ -1438,6 +1495,7 @@
           const ref = refOf(i,k);
           const code = `${PFX}-${pad(i+1)}-${pad(k+1)}`;
           const meta = (ref ? `<span class="refcount">${ref.cards.length} ${ref.unit||'entrées'}</span>` : '')
+                     + (!ref && subTextOf(i,k) ? `<span class="refcount">lire →</span>` : '')
                      + (n ? `<span class="count" title="${n} fiche${n>1?'s':''}">${n}</span>` : '');
           return hasContent(i,k)
             ? `<li><a class="cat has" href="#${code}" data-go="${code}">
@@ -1520,6 +1578,7 @@
       </div>
       ${ref.cards.length ? `<div class="def-label">${ref.cards.length} carte${ref.cards.length>1?'s':''}</div>`
                          : `<p class="empty-note">Aucune carte pour l’instant : utilise « Ajouter des cartes ».</p>`}` : ''}`];
+    if(subTextOf(i,k)) subTextOf(i,k).forEach(b=>blocks.push(b));
     if(ref){
       ref.cards.forEach(c=>blocks.push(c.rows ? `
         <div class="card-entry${ref.glyph ? ' glyphs' : ''}">
@@ -1554,6 +1613,7 @@
   const pageCache = new Map();
   const invalidate = () => pageCache.clear();
   // découpe une suite de blocs en pages de la hauteur du livre (gauche, droite, gauche…)
+  const keepWithNext = b => /^\s*<(h4 class="lt-h"|div class="def-label)/.test(b);
   function paginate(key, makeBlocks){
     if(pageCache.has(key)) return pageCache.get(key);
     const ref = document.querySelector('.page.left');
@@ -1571,8 +1631,11 @@
       if(b === BREAK){ if(cur.length){ pages.push(cur.join('')); cur=[]; } return; }
       inner.innerHTML = cur.concat(b).join('');
       if(cur.length && inner.scrollHeight > inner.clientHeight + 1){
+        // un titre ne reste jamais seul en bas de page : il suit son contenu
+        const carry = [];
+        while(cur.length > 1 && keepWithNext(cur[cur.length-1])) carry.unshift(cur.pop());
         pages.push(cur.join(''));
-        cur = [b];
+        cur = carry.concat(b);
       } else cur.push(b);
     });
     if(cur.length) pages.push(cur.join(''));
@@ -1581,6 +1644,8 @@
     return pages;
   }
   const subPages = (i,k) => paginate('s'+i+':'+k, ()=>subBlocks(i,k));
+  const chapterPages = i => paginate('c'+i, ()=>[chapterHead(i), ...longOf(i)]);
+  const chapterSpreadCount = i => longOf(i) ? Math.ceil(chapterPages(i).length/2) : 1;
   const subSpreadCount = (i,k) => Math.ceil(subPages(i,k).length / 2);
   const spreadSpreadCount = (i,s) => Math.ceil(spreadPages(i,s).length / 2);
 
@@ -1643,16 +1708,16 @@
       const s = chapters[i] ? spreadsOf(i).findIndex(t=>t.id===m[2]) : -1;
       if(s>=0) return {type:'spread', i, s, p:Math.max(0, Math.min((+m[3]||1)-1, spreadSpreadCount(i,s)-1))};
     }
-    if((m = h.match(new RegExp('^#'+PFX+'-(\\d{2})$')))){
+    if((m = h.match(new RegExp('^#'+PFX+'-(\\d{2})(?:~(\\d+))?$')))){
       const i=+m[1]-1;
-      if(chapters[i]) return {type:'chapter', i};
+      if(chapters[i]) return {type:'chapter', i, p: Math.max(0, Math.min((+m[2]||1)-1, chapterSpreadCount(i)-1))};
     }
     return {type:'home'};
   }
-  const keyOf = v => v.type==='home' ? 'home' : v.type==='chapter' ? 'c'+v.i : v.type==='spread' ? `t${v.i}-${v.s}-${v.p}`
+  const keyOf = v => v.type==='home' ? 'home' : v.type==='chapter' ? `c${v.i}-${v.p||0}` : v.type==='spread' ? `t${v.i}-${v.s}-${v.p}`
                    : v.type==='sub' ? `s${v.i}-${v.k}-${v.p}` : 'f'+v.f.id;
   const hashOf = v => v.type==='home' ? '#sommaire'
-                   : v.type==='chapter' ? '#'+PFX+'-'+pad(v.i+1)
+                   : v.type==='chapter' ? '#'+PFX+'-'+pad(v.i+1)+(v.p ? '~'+(v.p+1) : '')
                    : v.type==='spread' ? `#${PFX}-${pad(v.i+1)}-${spreadsOf(v.i)[v.s].id}${v.p ? '~'+(v.p+1) : ''}`
                    : v.type==='sub' ? `#${PFX}-${pad(v.i+1)}-${pad(v.k+1)}${v.p ? '~'+(v.p+1) : ''}`
                    : '#'+ficheCode(v.f);
@@ -1662,7 +1727,7 @@
   function sequence(){
     const seq=[{type:'home'}];
     chapters.forEach((_,i)=>{
-      seq.push({type:'chapter', i});
+      for(let p=0;p<chapterSpreadCount(i);p++) seq.push({type:'chapter', i, p});
       spreadsOf(i).forEach((_,s)=>{ const n=spreadSpreadCount(i,s); for(let p=0;p<n;p++) seq.push({type:'spread', i, s, p}); });
       subsOf(i).forEach((t,k)=>{
         if(t==null || !hasContent(i,k)) return;
@@ -1677,7 +1742,7 @@
     const seq = sequence();
     const idx = seq.findIndex(s=>keyOf(s)===keyOf(v));
     if(idx>=0) return idx;
-    if(v.type==='sub') return seq.findIndex(s=>s.type==='chapter'&&s.i===v.i) + 0.5;
+    if(v.type==='sub') return seq.findIndex(s=>s.type==='chapter'&&s.i===v.i&&!s.p) + 0.5;
     return 0;
   }
   function neighbour(v, dir){
@@ -1692,6 +1757,11 @@
     if(v.type==='home'){
       L.innerHTML = homeLeft(); R.innerHTML = homeRight();
       FL.textContent = ''; FR.textContent = '— i —';
+    } else if(v.type==='chapter' && longOf(v.i)){
+      const pages = chapterPages(v.i), n = Math.ceil(pages.length/2), p = v.p||0;
+      L.innerHTML = pages[2*p] || ''; R.innerHTML = pages[2*p+1] || '';
+      FL.textContent = p ? `— ${PFX}-${pad(v.i+1)} —` : `— ${2*v.i+2} —`;
+      FR.textContent = n>1 ? `— ${p+1} / ${n} —` : `— ${2*v.i+3} —`;
     } else if(v.type==='chapter'){
       L.innerHTML = chapterLeft(v.i); R.innerHTML = chapterRight(v.i);
       FL.textContent = `— ${2*v.i+2} —`; FR.textContent = `— ${2*v.i+3} —`;
@@ -1723,7 +1793,7 @@
     spread.appendChild(probe);
     let max = 0;
     const measure = html => { inner.innerHTML = html; max = Math.max(max, probe.offsetHeight); };
-    chapters.forEach((_,i)=>{ measure(chapterLeft(i)); measure(chapterRight(i)); });
+    chapters.forEach((_,i)=>{ if(longOf(i)) { measure(chapterHead(i)); return; } measure(chapterLeft(i)); measure(chapterRight(i)); });
     measure(homeLeft());
     measure(homeRight());
     probe.remove();
