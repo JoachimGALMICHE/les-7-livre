@@ -512,12 +512,14 @@
 
   /* ---------- figures du corps ---------- */
   .fig-aura{width:110px}
+  .fig-moon{width:290px}
   .fig-clock{width:230px}
   .lt-fig .lbl.sm{font-size:10.5px;text-anchor:middle}
   .lt-fig .lbl.hr{font-size:8px;text-anchor:middle;fill:var(--ink-soft)}
   .big-glyph{font-size:4rem;line-height:1.1;color:var(--red);font-family:'Noto Serif SC','Songti SC','SimSun',serif}
   @media (max-width:640px){
     .fig-aura{width:60px}
+    .fig-moon{width:160px}
     .fig-clock{width:140px}
     .big-glyph{font-size:2.2rem}
   }
@@ -878,6 +880,12 @@
 
   // Définitions de chaque chapitre (clé = titre exact ; une ligne vide = nouveau paragraphe)
   const definitions = {
+    "Énergies naturelles":
+      "Les énergies naturelles désignent, dans différentes traditions spirituelles et ésotériques, les forces ou qualités énergétiques attribuées aux êtres vivants, aux paysages, aux phénomènes naturels et aux cycles de la nature.\n\n" +
+      "Elles peuvent être associées notamment aux plantes, arbres, animaux, forêts, montagnes, cours d’eau, océans, saisons, cycles lunaires, phénomènes météorologiques ou encore à certains lieux considérés comme particuliers.\n\n" +
+      "Selon les traditions, ces énergies peuvent être conçues comme des forces naturelles, des manifestations d’un principe vital, des influences symboliques ou comme des présences spirituelles associées à certains éléments de la nature.\n\n" +
+      "Les énergies naturelles ne constituent donc pas un système universel : leurs caractéristiques et leur interprétation dépendent fortement de la tradition ou du système ésotérique considéré.\n\n" +
+      "Dans ce codex, elles seront étudiées selon leur origine naturelle, leurs caractéristiques attribuées, leurs cycles, leurs interactions et leur symbolisme. Les conceptions spirituelles ou ésotériques seront distinguées des phénomènes physiques et biologiques étudiés par les sciences modernes.",
     "Énergies corporelles":
       "Les énergies corporelles désignent, dans différentes traditions spirituelles, médicales traditionnelles et ésotériques, les forces ou principes énergétiques associés au corps humain et à son fonctionnement.\n\n" +
       "Selon les systèmes concernés, ces énergies peuvent être décrites comme une force vitale circulant dans le corps, comme des centres ou des réseaux énergétiques, ou encore comme différents niveaux subtils associés au corps physique. Parmi les conceptions les plus connues figurent le Qi ou Ki, le Prana, les chakras, les méridiens, les corps subtils et la Kundalini.\n\n" +
@@ -892,6 +900,29 @@
   const leftLists = {};
   const refLists = {};
   const subcats = {
+    "Énergies naturelles": {
+      items: [
+        "Énergie des plantes",
+        "Énergie des arbres",
+        "Énergie des fleurs",
+        "Énergie des animaux",
+        "Énergie des forêts",
+        "Énergie des montagnes",
+        "Énergie des roches & minéraux",
+        "Énergie des rivières & sources",
+        "Énergie des lacs",
+        "Énergie des mers & océans",
+        "Énergie du Soleil",
+        "Énergie de la Lune",
+        "Énergie des saisons",
+        "Énergie des cycles naturels",
+        "Énergie des phénomènes météorologiques",
+        "Énergie des lieux naturels",
+        "Énergie des paysages",
+        "Énergies naturelles hybrides & mixtes",
+        "Autres énergies naturelles"
+      ]
+    },
     "Énergies corporelles": {
       items: [
         "Chakras",
@@ -1671,6 +1702,455 @@
   );
 
   subTexts["Énergies corporelles"] = Object.fromEntries(bodyTexts.map((b,k)=>[k,b]));
+
+  // nature_text
+
+  /* ===== Pages des énergies naturelles (N-04-01 à N-04-19) ===== */
+  const LEAD = t => `<p class="lt-p lettrine">${t}</p>`;
+  const SVG_MOON = `<svg viewBox="0 0 300 74" class="fig-moon" aria-hidden="true">
+      <circle cx="37" cy="30" r="16" fill="#2b1a0e" stroke="#7a1a1a"/>
+      <circle cx="112" cy="30" r="16" fill="#2b1a0e" stroke="#7a1a1a"/><path d="M112 14 A16 16 0 0 1 112 46Z" fill="#f4e8c8"/>
+      <circle cx="187" cy="30" r="16" fill="#f4e8c8" stroke="#7a1a1a"/>
+      <circle cx="262" cy="30" r="16" fill="#2b1a0e" stroke="#7a1a1a"/><path d="M262 14 A16 16 0 0 0 262 46Z" fill="#f4e8c8"/>
+      <g class="lb"><text x="37" y="66">nouvelle</text><text x="112" y="66">1er quartier</text><text x="187" y="66">pleine</text><text x="262" y="66">dernier quartier</text></g>
+    </svg>`;
+  const SVG_SUN = `<svg viewBox="0 0 120 120" class="fig-tri" aria-hidden="true">
+      <circle cx="60" cy="60" r="22" class="ln"/><circle cx="60" cy="60" r="4" class="fl"/>
+      ${Array.from({length:12},(_,j)=>{const a=j*30*Math.PI/180;return `<line x1="${(60+30*Math.cos(a)).toFixed(1)}" y1="${(60+30*Math.sin(a)).toFixed(1)}" x2="${(60+46*Math.cos(a)).toFixed(1)}" y2="${(60+46*Math.sin(a)).toFixed(1)}" class="ln"/>`}).join('')}
+    </svg>`;
+  const SVG_WHEEL = `<svg viewBox="0 0 220 220" class="fig-clock" aria-hidden="true">
+      <circle cx="110" cy="110" r="92" class="ln"/><circle cx="110" cy="110" r="10" class="fl"/>
+      ${["Yule · solstice d’hiver","Imbolc","Ostara · équinoxe","Beltaine","Litha · solstice d’été","Lugnasad","Mabon · équinoxe","Samain"].map((t,j)=>{
+        const a=(90+j*45)*Math.PI/180, x=110+92*Math.cos(a), y=110+92*Math.sin(a);
+        const tx=110+62*Math.cos(a), ty=110+62*Math.sin(a);
+        return `<line x1="110" y1="110" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" class="ln dim"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" class="fl"/><text x="${tx.toFixed(1)}" y="${(ty+3).toFixed(1)}" class="lbl sm">${t.split(' · ')[0]}</text>`;
+      }).join('')}
+    </svg>`;
+
+  const natureTexts = [
+    /* 01 — PLANTES */
+    [
+      H(1,"❦","Définition"),
+      LEAD("L’énergie des plantes désigne les forces, vertus ou qualités que les traditions attribuent au monde végétal. Nourricières, médicinales, toxiques ou sacrées, les plantes ont toujours été perçues comme porteuses de pouvoirs : guérir, protéger, purifier, relier aux esprits ou aux dieux."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      P("Quelques plantes chargées de symboles dans les traditions européennes :"),
+      CORR([
+        ["Verveine","« herbe sacrée » des Romains et des druides ; purification, paix"],
+        ["Armoise","plante des voyageurs et des rêves ; liée à la Lune"],
+        ["Sauge","sagesse, purification (<em>salvia</em> : « sauver »)"],
+        ["Millepertuis","herbe de la Saint-Jean, récoltée au solstice ; protection"],
+        ["Gui","plante sacrée des druides, cueillie sur le chêne (selon Pline)"],
+        ["Romarin","mémoire, fidélité, protection"],
+        ["Rue","protection contre le mauvais œil"],
+        ["Basilic","plante royale, amour, prospérité"]
+      ]),
+      P("La « doctrine des signatures » affirmait que la forme d’une plante révélait son usage (la noix, qui ressemble au cerveau, pour la tête). L’astrologie associait aussi chaque plante à une planète."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Sachets & bouquets —","herbes séchées dans un tissu, bouquet suspendu à la porte, avec une intention."),
+      LI("Jardin —","cultiver quelques plantes aromatiques et les observer au fil des saisons."),
+      LI("Herbier & journal —","cueillir, identifier, sécher et noter les usages traditionnels."),
+      LI("Cueillette respectueuse —","ne prendre que peu, jamais une espèce protégée, et remercier."),
+      NOTE("Sécurité : ne jamais consommer une plante sans identification certaine. Certaines sont très toxiques (digitale, if, datura, laurier-rose), et d’autres interagissent avec des médicaments (le millepertuis notamment). Demander l’avis d’un pharmacien ou d’un médecin."),
+      H(4,"⌛","D’où vient-elle"),
+      P("L’herboristerie est aussi ancienne que l’humanité. Dioscoride (<em>De materia medica</em>, Ier siècle) et Pline l’Ancien recensent des centaines de plantes ; Hildegarde de Bingen (XIIe siècle) les décrit au Moyen Âge ; Paracelse et Jakob Böhme développent la doctrine des signatures ; Nicholas Culpeper relie plantes et planètes (1652)."),
+      SCI("les plantes contiennent de vraies molécules actives : l’aspirine vient du saule, la digitaline de la digitale. Ces effets sont chimiques ; une « énergie » végétale distincte n’est pas mesurée.")
+    ],
+
+    /* 02 — ARBRES */
+    [
+      H(1,"♣","Définition"),
+      LEAD("L’énergie des arbres désigne la force, la stabilité et la sagesse que de nombreuses cultures prêtent aux arbres. Enracinés dans la terre et tendus vers le ciel, vivant parfois des siècles, ils sont vus comme des ponts entre les mondes et des témoins du temps."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      P("L’arbre du monde relie les mondes dans plusieurs traditions : Yggdrasil, le frêne des Scandinaves ; l’Aśvattha, le figuier sacré de l’Inde ; l’arbre de vie de la Bible et de la Kabbale."),
+      CORR([
+        ["Chêne","force, durée, royauté ; arbre de Zeus, de Thor et des druides"],
+        ["Bouleau","renouveau, commencement, purification"],
+        ["Frêne","lien entre les mondes (Yggdrasil)"],
+        ["If","mort et immortalité ; planté près des églises"],
+        ["Saule","Lune, eau, souplesse, deuil"],
+        ["Noisetier","sagesse, divination ; baguette des sourciers"],
+        ["Pommier","amour, immortalité (l’île d’Avalon)"],
+        ["Olivier","paix, sagesse ; arbre d’Athéna"]
+      ]),
+      P("L’alphabet ogham des Celtes irlandais donne à plusieurs lettres des noms d’arbres (<em>beith</em>, le bouleau…). Le « calendrier celtique des arbres », lui, est une invention moderne du poète Robert Graves (1948)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("S’adosser à un arbre —","s’asseoir contre un tronc, sentir son appui et respirer lentement."),
+      LI("Méditation de l’arbre —","se tenir debout comme un arbre, racines imaginaires dans le sol (voir N-03-04)."),
+      LI("Arbre compagnon —","choisir un arbre proche et l’observer à chaque saison."),
+      LI("Planter —","planter ou parrainer un arbre pour marquer une étape de vie."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Le culte des arbres est universel : bois sacrés (<em>nemeton</em>) des Celtes, chênes oraculaires de Dodone en Grèce, arbres à palabres d’Afrique, arbres sacrés shintō entourés d’une corde (<em>shimenawa</em>)."),
+      SCI("les arbres échangent réellement des substances et des signaux chimiques, notamment par les réseaux de champignons de leurs racines (mycorhizes), même si l’ampleur de cette « communication » est discutée. Le calme ressenti près d’eux est documenté ; une énergie propre ne l’est pas.")
+    ],
+
+    /* 03 — FLEURS */
+    [
+      H(1,"✿","Définition"),
+      LEAD("L’énergie des fleurs désigne les qualités symboliques, émotionnelles ou subtiles attribuées aux fleurs. Éphémères et parfumées, elles incarnent la beauté, l’épanouissement, l’amour et le passage du temps, et servent depuis toujours d’offrandes."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Lotus","pureté, éveil : il naît de la boue et s’ouvre propre (Inde, Égypte)"],
+        ["Rose","amour ; rouge la passion, blanche la pureté ; symbole mystique (Rose-Croix)"],
+        ["Lys","pureté, royauté (fleur de lys)"],
+        ["Violette","modestie, discrétion"],
+        ["Chrysanthème","en France le deuil ; au Japon la famille impériale"],
+        ["Tournesol","fidélité au Soleil, vitalité"],
+        ["Pavot","sommeil, oubli, souvenir"]
+      ]),
+      P("Le « langage des fleurs » permet d’envoyer un message par un bouquet. Au XXe siècle, le médecin Edward Bach crée 38 « élixirs floraux » censés agir sur les émotions."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Bouquet intentionnel —","choisir des fleurs pour leur symbolisme et les offrir ou les placer chez soi."),
+      LI("Contemplation —","observer une fleur longuement : forme, couleur, parfum."),
+      LI("Offrande —","déposer des fleurs sur un autel, une tombe, dans un lieu naturel."),
+      LI("Séchage —","conserver une fleur liée à un moment important."),
+      NOTE("Plusieurs fleurs courantes sont toxiques (muguet, laurier-rose, digitale) : ne pas les consommer, et les garder hors de portée des enfants et des animaux."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Le lotus est sacré en Égypte et en Inde depuis l’Antiquité. Le « langage des fleurs » vient en partie du <em>sélam</em> ottoman et se répand en Europe au XIXe siècle, notamment avec <em>Le Langage des fleurs</em> de Charlotte de La Tour (1819). Les élixirs de Bach datent des années 1930."),
+      SCI("les parfums et les couleurs agissent sur l’humeur par les sens. Les études sur les élixirs de Bach n’ont pas montré d’effet supérieur à celui d’un placebo.")
+    ],
+
+    /* 04 — ANIMAUX */
+    [
+      H(1,"❂","Définition"),
+      LEAD("L’énergie des animaux désigne les qualités, forces et enseignements que les traditions attribuent aux animaux. Chaque espèce incarne des traits (force, ruse, vision, patience) que l’on peut observer, honorer ou chercher à développer en soi."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Loup","instinct, loyauté, clan"],
+        ["Ours","force, guérison, repos (hibernation)"],
+        ["Aigle","vision, hauteur, lien avec le ciel"],
+        ["Serpent","transformation (la mue), guérison, énergie vitale"],
+        ["Cerf","renouveau (ses bois repoussent), noblesse"],
+        ["Chouette","sagesse, vision dans la nuit"],
+        ["Corbeau","messager ; Hugin et Munin, les corbeaux d’Odin"],
+        ["Cheval","liberté, puissance, voyage entre les mondes"]
+      ]),
+      P("Le chamanisme parle d’« animal de pouvoir », le totémisme d’un animal lié à un clan. Voir aussi le Codex I, E-12 (gardiens & animaux-totems)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Observation —","regarder vivre les animaux, dans la nature ou au jardin, sans les déranger."),
+      LI("Journal des rencontres —","noter les animaux croisés et ce qu’ils évoquent à ce moment de sa vie."),
+      LI("Visualisation —","imaginer un animal allié et les qualités qu’il apporte."),
+      LI("Respect —","ne pas nourrir ni approcher la faune sauvage ; ne pas ramasser plumes ou restes d’espèces protégées (c’est souvent interdit par la loi)."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les animaux dominent l’art préhistorique (grottes Chauvet et Lascaux). Le <em>Physiologus</em> (IIe siècle) puis les bestiaires médiévaux leur prêtent des sens moraux ; le chamanisme sibérien et amérindien et le totémisme étudié par les anthropologues en font des alliés spirituels."),
+      SCI("le comportement animal est bien étudié, et le contact avec les animaux réduit le stress (zoothérapie). Les qualités symboliques, elles, sont culturelles.")
+    ],
+
+    /* 05 — FORÊTS */
+    [
+      H(1,"♠","Définition"),
+      LEAD("L’énergie des forêts désigne l’atmosphère particulière attribuée aux forêts : un monde à part, ombre et lumière mêlées, où l’on se ressource, se perd ou se transforme. Plus qu’une somme d’arbres, la forêt est vue comme un être vivant collectif."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Lieu d’initiation —","dans les contes, on entre en forêt pour se perdre, affronter l’épreuve et en ressortir changé."),
+      LI("Lieu du sauvage —","le domaine des esprits, des fées, des ermites, hors de l’ordre du village."),
+      LI("Sanctuaire —","les bois sacrés, où l’on ne coupait pas d’arbre."),
+      LI("Refuge —","calme, silence, fraîcheur ; retraite loin du monde."),
+      P("Forêts légendaires : Brocéliande, liée à Merlin et Viviane ; la forêt Noire des contes allemands ; les forêts sacrées d’Afrique de l’Ouest."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Bain de forêt (shinrin-yoku) —","marcher lentement, en silence, en portant attention aux sons, aux odeurs et aux textures."),
+      LI("S’asseoir et écouter —","rester immobile quinze minutes et observer ce qui se passe."),
+      LI("Marche des sens —","toucher une écorce, sentir la terre, écouter les oiseaux."),
+      NOTE("Sécurité : prévenir quelqu’un de son itinéraire, se méfier des tiques (vérifier sa peau au retour) et respecter les règles des forêts (feux, cueillette, zones protégées)."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les bois sacrés existent chez les Celtes, les Germains, les Grecs et les Romains. Le <em>shinrin-yoku</em> (« bain de forêt ») a été promu par l’Agence des forêts du Japon en 1982."),
+      SCI("des études japonaises et d’ailleurs associent les bains de forêt à une baisse du stress, du rythme cardiaque et de la pression artérielle. Le rôle des substances émises par les arbres (phytoncides) est étudié, avec des résultats encore limités.")
+    ],
+
+    /* 06 — MONTAGNES */
+    [
+      H(1,"▲","Définition"),
+      LEAD("L’énergie des montagnes désigne la puissance, l’élévation et la stabilité attribuées aux sommets. Proches du ciel, difficiles d’accès, immuables à l’échelle humaine, les montagnes sont vues comme la demeure des dieux et des lieux d’épreuve et de révélation."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Axe du monde —","le mont Meru de l’Inde, centre de l’univers ; l’Olympe des Grecs."),
+      LI("Lieu de révélation —","le Sinaï (Moïse), le mont Tabor ; les ermites et les monastères d’altitude."),
+      LI("Montagne sacrée —","le Kailash, sacré pour quatre religions ; le Fuji au Japon ; le Tai Shan en Chine."),
+      LI("Épreuve et dépassement —","l’ascension comme chemin intérieur."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Randonnée méditative —","monter lentement, en rythme avec la respiration."),
+      LI("Contemplation d’un sommet —","le regarder longuement, en sentant sa stabilité."),
+      LI("Méditation de la montagne —","s’asseoir, imaginer être une montagne : le temps change autour, elle demeure."),
+      LI("Pèlerinage —","faire le tour d’une montagne sacrée (la <em>kora</em> du Kailash)."),
+      NOTE("Sécurité : vérifier la météo, partir équipé, prévenir de son itinéraire, respecter ses limites et redescendre en cas de malaise d’altitude."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les montagnes sacrées existent sur tous les continents. Au Japon, le <em>shugendō</em> fait de l’ascèse en montagne une voie spirituelle ; dans les Andes, les sommets (<em>apus</em>) sont des esprits protecteurs."),
+      SCI("l’altitude a des effets physiologiques réels (moins d’oxygène). Le sentiment d’émerveillement devant un grand paysage (<em>awe</em>) est étudié en psychologie et associé au bien-être.")
+    ],
+
+    /* 07 — ROCHES & MINÉRAUX */
+    [
+      H(1,"◆","Définition"),
+      LEAD("L’énergie des roches et des minéraux désigne les propriétés attribuées aux pierres, aux cristaux et aux métaux. Durables, parfois lumineuses ou rares, les pierres sont vues comme des concentrés de la force de la terre, capables de protéger, soigner ou amplifier une intention."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Améthyste","calme, sobriété (du grec <em>amethystos</em>, « non ivre »)"],
+        ["Quartz clair","clarté, « amplification »"],
+        ["Quartz rose","amour, douceur"],
+        ["Obsidienne","protection, vérité"],
+        ["Tourmaline noire","protection"],
+        ["Citrine","joie, abondance"]
+      ]),
+      P("L’alchimie associait sept métaux aux sept astres : or – Soleil, argent – Lune, mercure – Mercure, cuivre – Vénus, fer – Mars, étain – Jupiter, plomb – Saturne. Les mégalithes (Carnac, Stonehenge) et les pierres sacrées (la pierre noire de la Kaaba, l’omphalos de Delphes) montrent le caractère sacré de la pierre."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Pierre de méditation —","tenir une pierre dans la main pour se recentrer."),
+      LI("Pierre d’intention —","associer une pierre à un projet et la garder sur soi ou sur un autel."),
+      LI("« Purification » —","eau, lumière de lune, fumée ou sel, selon les pratiques."),
+      NOTE("Attention : certaines pierres s’abîment dans l’eau (sélénite, malachite…). Ne jamais préparer d’« élixir » avec des pierres toxiques (malachite, cinabre, orpiment…). Aucune pierre ne remplace un traitement."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les lapidaires antiques (Théophraste, Pline l’Ancien) décrivent déjà les vertus des pierres ; au Moyen Âge, Marbode de Rennes (XIe siècle) et Hildegarde de Bingen leur attribuent des pouvoirs de guérison. La lithothérapie moderne se développe avec le New Age dans les années 1980."),
+      SCI("certaines propriétés physiques sont réelles, comme la piézoélectricité du quartz (utilisée dans les montres), mais elles n’impliquent aucun effet de guérison. Une étude de 2001 (Christopher French) a montré que de faux cristaux produisaient les mêmes sensations que de vrais : l’effet vient de la suggestion.")
+    ],
+
+    /* 08 — RIVIÈRES & SOURCES */
+    [
+      H(1,"≈","Définition"),
+      LEAD("L’énergie des rivières et des sources désigne les qualités attribuées aux eaux vives. La source est l’origine, la pureté et la guérison ; la rivière est le passage, le temps qui coule, la frontière entre deux rives et parfois entre deux mondes."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Sources sacrées —","dédiées à des divinités (Sequana, déesse de la Seine), puis à des saints ; eaux guérisseuses et lieux de pèlerinage (Lourdes)."),
+      LI("Rivières frontières —","le Styx et le Léthé (l’oubli) chez les Grecs ; le Jourdain du baptême."),
+      LI("Fleuves sacrés —","le Gange (Gangā), déesse et fleuve purificateur ; le Nil, source de vie de l’Égypte."),
+      LI("Offrandes —","pièces, rubans, ex-voto déposés près des sources."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Marcher le long de l’eau —","suivre le courant du regard et laisser les pensées s’écouler."),
+      LI("Rituel de lâcher-prise —","confier au courant une feuille ou une fleur représentant ce que l’on laisse partir."),
+      LI("Écouter —","le bruit d’une source ou d’une cascade comme support de méditation."),
+      NOTE("Sécurité : ne pas boire l’eau d’une source sans savoir si elle est potable ; se méfier des courants et des berges glissantes."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Le culte des eaux est très ancien en Europe : les Gallo-Romains dédiaient les sources à des divinités, et beaucoup ont été christianisées en « fontaines de saints ». En Inde, le bain dans le Gange et la Kumbh Mela rassemblent des millions de pèlerins."),
+      SCI("les eaux thermales ont des effets étudiés, liés à la chaleur et aux minéraux (crénothérapie). L’effet des « ions négatifs » des cascades sur l’humeur n’est pas solidement démontré ; le calme des paysages d’eau, lui, est documenté.")
+    ],
+
+    /* 09 — LACS */
+    [
+      H(1,"◯","Définition"),
+      LEAD("L’énergie des lacs désigne le calme, la profondeur et le mystère attribués aux eaux dormantes. Surface miroir qui reflète le ciel, profondeur cachée qui garde ses secrets, le lac est un symbole de contemplation et de passage vers l’autre monde."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Miroir —","reflet du ciel, de soi ; calme de l’esprit apaisé."),
+      LI("Profondeur —","l’inconscient, ce qui dort sous la surface."),
+      LI("Porte de l’autre monde —","la Dame du Lac des légendes arthuriennes, qui confie Excalibur ; l’île d’Avalon."),
+      LI("Lacs sacrés —","Manasarovar au Tibet, Titicaca dans les Andes, Guatavita (la légende d’El Dorado)."),
+      LI("Créatures —","monstres et esprits des lacs, de Nessie aux nixes germaniques."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Contempler le reflet —","observer la surface calme et laisser l’esprit se poser."),
+      LI("Méditation au bord de l’eau —","synchroniser sa respiration avec le clapotis."),
+      LI("Écriture —","noter ce qui « remonte » en restant au calme près de l’eau."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les Celtes déposaient des offrandes dans les lacs (site de La Tène, en Suisse) ; les Muiscas jetaient de l’or dans le lac Guatavita ; les légendes arthuriennes font du lac un lieu de magie."),
+      SCI("les paysages d’eau (« espaces bleus ») sont associés dans plusieurs études à un meilleur bien-être et à moins de stress.")
+    ],
+
+    /* 10 — MERS & OCÉANS */
+    [
+      H(1,"∿","Définition"),
+      LEAD("L’énergie des mers et des océans désigne l’immensité, la puissance et le rythme attribués au monde marin. Origine de la vie, espace sans limite, rythmé par les marées et les vagues, l’océan symbolise l’inconscient, l’infini et le mouvement perpétuel."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Immensité —","l’infini, l’inconnu, l’aventure."),
+      LI("Rythme —","les vagues et les marées, respiration de la Terre, réglées par la Lune."),
+      LI("Sel —","la mer purifie ; le sel marin sert de protection symbolique."),
+      LI("Divinités —","Poséidon et Neptune, Njörd, Yemanjá (Yemaya), Varuna."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Respirer avec les vagues —","inspirer quand la vague monte, expirer quand elle se retire."),
+      LI("Écouter —","le ressac comme bruit de fond apaisant."),
+      LI("Bain de mer —","entrer dans l’eau avec l’intention de se « laver »."),
+      LI("Offrande naturelle —","fleurs ou coquillages, sans jamais laisser de déchet."),
+      NOTE("Sécurité : se baigner dans les zones surveillées, respecter les drapeaux et se méfier des courants et des marées."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les mythologies du monde entier font naître la vie des eaux. Le culte de Yemanjá, venu des Yoruba, est très vivant au Brésil, où l’on lui offre des fleurs sur la plage. La thalassothérapie se développe en Europe au XIXe siècle."),
+      SCI("les marées résultent de l’attraction de la Lune et du Soleil. Les bienfaits du bord de mer sur le moral sont documentés ; ils passent par le paysage, le bruit, l’activité et la lumière.")
+    ]
+  ];
+
+  natureTexts.push(
+    /* 11 — SOLEIL */
+    [
+      HEAD2(SVG_SUN, "Le Soleil, source de lumière, de chaleur et de vie."),
+      H(1,"☉","Définition"),
+      LEAD("L’énergie du Soleil désigne la force de vie, de lumière et de conscience attribuée à l’astre du jour. Il fait croître les plantes, rythme les jours et les saisons, et symbolise partout la vitalité, la vérité, la clarté et souvent la royauté ou le divin."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Vie et vitalité —","chaleur, croissance, énergie, santé."),
+      LI("Lumière et conscience —","clarté, vérité, ce qui est vu et su."),
+      LI("Cycles —","lever et coucher ; solstices et équinoxes qui rythment l’année."),
+      LI("Divinités —","Râ en Égypte, Hélios et Apollon en Grèce, Sūrya en Inde, Inti chez les Incas ; il est aussi féminin : Amaterasu au Japon, Sól chez les Scandinaves."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Salutation au soleil —","l’enchaînement de yoga <em>sūrya namaskāra</em>, idéalement le matin."),
+      LI("Accueillir l’aube —","regarder le ciel s’éclairer, marquer le début de la journée par une intention."),
+      LI("Fêter les solstices —","célébrer le jour le plus long et le plus court de l’année."),
+      LI("Lumière du matin —","s’exposer quelques minutes à la lumière naturelle au réveil."),
+      NOTE("Sécurité : ne jamais regarder le Soleil directement, même un court instant (risque de lésions de la rétine), et se protéger des UV."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les cultes solaires sont présents dans presque toutes les civilisations. Des monuments préhistoriques sont alignés sur les solstices : Stonehenge sur le lever du solstice d’été, Newgrange (Irlande) sur celui du solstice d’hiver. Rome célébrait le <em>Sol Invictus</em>, le « Soleil invaincu »."),
+      SCI("l’énergie du Soleil est bien réelle et mesurable : elle vient de la fusion nucléaire. Sa lumière règle notre horloge biologique, permet la fabrication de vitamine D et influence l’humeur (la luminothérapie traite la dépression saisonnière).")
+    ],
+
+    /* 12 — LUNE */
+    [
+      HEAD2(SVG_MOON, ""),
+      H(1,"☽","Définition"),
+      LEAD("L’énergie de la Lune désigne les influences attribuées à l’astre de la nuit et à ses phases. Changeante, cyclique, liée aux marées, la Lune symbolise le temps qui passe, l’intuition, les rêves, les émotions, la fécondité et le monde de l’invisible."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Nouvelle lune","commencement, intentions, semer"],
+        ["Lune croissante","croissance, construction, action"],
+        ["Pleine lune","accomplissement, intensité, clarté, « charge »"],
+        ["Lune décroissante","lâcher-prise, nettoyage, repos"]
+      ]),
+      LI("Divinités —","Séléné, Artémis et Hécate chez les Grecs, Chang’e en Chine ; mais aussi des dieux lunaires masculins : Máni (Scandinavie), Thot (Égypte), Tsukuyomi (Japon)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Journal lunaire —","noter son humeur, ses rêves et son énergie selon les phases."),
+      LI("Rituels de phase —","poser une intention à la nouvelle lune, faire le point à la pleine lune."),
+      LI("Eau de lune —","laisser de l’eau sous la pleine lune (voir N-02-02)."),
+      LI("Jardinage lunaire —","semer et planter selon le calendrier lunaire, comme le fait la biodynamie."),
+      H(4,"⌛","D’où vient-elle"),
+      P("La Lune a servi de premier calendrier : les calendriers musulman et hébreu, ainsi que le calendrier chinois traditionnel, reposent encore sur ses cycles. Elle est présente dans toutes les mythologies et dans la sorcellerie moderne (le culte de la Déesse, les rituels d’<em>esbat</em>)."),
+      SCI("la Lune provoque les marées. Son influence sur le sommeil est discutée (quelques études suggèrent un léger effet) ; aucun effet n’a été démontré sur les naissances, les comportements ou la croissance des plantes cultivées selon ses phases.")
+    ],
+
+    /* 13 — SAISONS */
+    [
+      HEAD2(SVG_WHEEL, "La roue de l’année du néopaganisme : huit fêtes, solstices, équinoxes et fêtes celtiques."),
+      H(1,"❋","Définition"),
+      LEAD("L’énergie des saisons désigne les qualités attribuées à chaque période de l’année : naissance, plénitude, récolte et repos. Elles rythment la vie de la nature et, dans de nombreuses traditions, celle des êtres humains."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Printemps","renaissance, jeunesse, élan ; Air (Occident), Bois (Chine)"],
+        ["Été","plénitude, chaleur, action ; Feu"],
+        ["Automne","récolte, gratitude, lâcher-prise ; Eau (Occident), Métal (Chine)"],
+        ["Hiver","repos, intériorité, mort et germination cachée ; Terre (Occident), Eau (Chine)"]
+      ]),
+      P("Les fêtes celtiques (Samain, Imbolc, Beltaine, Lugnasad) marquent les débuts de saison ; le néopaganisme y ajoute les solstices et les équinoxes pour former la « roue de l’année » à huit fêtes. La Chine divise l’année en 24 « termes solaires » (<em>jieqi</em>)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Vivre au rythme des saisons —","plus d’activité en été, plus de repos en hiver."),
+      LI("Manger de saison —","légumes et fruits du moment."),
+      LI("Fêter les passages —","marquer chaque saison par un repas, une marche, une décoration."),
+      LI("Bilan saisonnier —","à chaque changement, noter ce que l’on sème, fait mûrir, récolte, laisse reposer."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Des calendriers agricoles de toutes les civilisations. Les fêtes celtiques sont attestées en Irlande médiévale ; la roue de l’année à huit sabbats a été formalisée au milieu du XXe siècle par la Wicca (Gerald Gardner) et le druidisme moderne (Ross Nichols)."),
+      SCI("les saisons viennent de l’inclinaison de l’axe de la Terre. La durée du jour influence réellement l’humeur, le sommeil et les rythmes biologiques.")
+    ],
+
+    /* 14 — CYCLES NATURELS */
+    [
+      H(1,"↻","Définition"),
+      LEAD("L’énergie des cycles naturels désigne la force attribuée aux rythmes qui se répètent : le jour et la nuit, la lunaison, l’année, la naissance, la croissance, la mort et le renouveau. Ces cycles enseignent que tout passe et tout revient."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Cycle du jour —","aube (commencement), midi (plénitude), crépuscule (déclin), nuit (repos)."),
+      LI("Cycle de la vie —","naissance, croissance, maturité, déclin, mort, renouveau."),
+      LI("Cycle de l’eau —","évaporation, nuage, pluie, rivière, mer."),
+      LI("Grands cycles —","la précession des équinoxes (environ 25 800 ans) et les « ères » astrologiques ; les âges du monde (<em>yuga</em>) de l’Inde."),
+      LI("Symboles —","l’ouroboros (le serpent qui se mord la queue), la roue, la spirale."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("S’aligner sur le jour —","se lever avec la lumière, ralentir le soir."),
+      LI("Observer —","suivre un même lieu au fil des jours, des lunes et des saisons."),
+      LI("Rituels de passage —","marquer les fins et les débuts dans sa propre vie."),
+      H(4,"⌛","D’où vient-elle"),
+      P("De nombreuses philosophies pensent le temps comme cyclique : les <em>yuga</em> de l’Inde, l’« éternel retour » des stoïciens, les grands cycles du calendrier maya. Elles s’opposent à la vision linéaire du temps, qui va d’un commencement vers une fin."),
+      SCI("les rythmes biologiques sont bien réels : l’horloge circadienne a valu le prix Nobel 2017 à Jeffrey Hall, Michael Rosbash et Michael Young. Les cycles de l’eau et du carbone sont étudiés par les sciences de la Terre.")
+    ],
+
+    /* 15 — PHÉNOMÈNES MÉTÉOROLOGIQUES */
+    [
+      H(1,"ϟ","Définition"),
+      LEAD("L’énergie des phénomènes météorologiques désigne la puissance attribuée à l’orage, à la pluie, au vent, à la neige, au brouillard ou à l’arc-en-ciel. Imprévisibles et parfois violents, ils ont été vus comme la manifestation directe des dieux ou des esprits."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Orage & foudre","puissance divine, révélation soudaine (Zeus, Thor, Indra, Shango)"],
+        ["Pluie","fertilité, bénédiction, purification"],
+        ["Vent","souffle, message, changement"],
+        ["Neige","silence, pureté, repos"],
+        ["Brouillard","mystère, passage entre les mondes"],
+        ["Arc-en-ciel","pont entre ciel et terre (Bifröst), alliance (Genèse), serpent arc-en-ciel (Australie)"],
+        ["Tempête","chaos, crise, purification violente"]
+      ]),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Méditer sous la pluie —","écouter la pluie à l’abri, comme un bruit qui nettoie."),
+      LI("Écouter le vent —","le laisser « emporter » une pensée."),
+      LI("Observer le ciel —","noter ses changements et l’humeur qu’ils provoquent."),
+      LI("Rites de la pluie —","danses et prières pour la pluie existent dans de nombreuses cultures."),
+      NOTE("Sécurité : ne jamais rester dehors, sous un arbre isolé ou dans l’eau pendant un orage ; respecter les alertes météo."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les dieux de l’orage sont souvent les rois des panthéons indo-européens. Au Moyen Âge, on accusait certains sorciers, les « tempestaires », de déclencher la grêle ; les chamans de nombreuses cultures étaient chargés de faire venir la pluie."),
+      SCI("la météorologie explique ces phénomènes. Le ressenti d’un « air qui change » avant l’orage est réel : il vient de la pression, de l’humidité et de la température.")
+    ],
+
+    /* 16 — LIEUX NATURELS */
+    [
+      H(1,"⌖","Définition"),
+      LEAD("L’énergie des lieux naturels désigne l’atmosphère particulière attribuée à certains endroits précis : une grotte, une clairière, une cascade, un rocher, une île, un sommet. Certains lieux sont dits « chargés », propices au recueillement, à la guérison ou à l’inspiration."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Sanctuaires naturels —","Uluru en Australie, Delphes en Grèce, la forêt de Brocéliande."),
+      LI("Grottes —","matrice de la terre, lieux d’initiation et de retraite."),
+      LI("Lignes ley —","alignements de sites anciens repérés par Alfred Watkins (1921) ; l’idée qu’il s’agirait de lignes d’énergie est plus tardive."),
+      LI("Réseaux géobiologiques —","les « réseaux » Hartmann et Curry de la géobiologie (années 1950)."),
+      LI("Vortex —","lieux censés concentrer l’énergie, comme Sedona (États-Unis), dans le New Age."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Visite attentive —","arriver lentement, observer, ressentir, noter ses impressions."),
+      LI("Laisser le lieu intact —","ne rien prendre, ne rien laisser."),
+      LI("Respecter le sacré des autres —","certains lieux sont sacrés pour des peuples vivants : l’ascension d’Uluru est interdite depuis 2019 par respect pour les Anangu."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les sanctuaires naturels sont les plus anciens lieux de culte. Les lignes ley viennent d’Alfred Watkins (<em>The Old Straight Track</em>, 1925) ; leur lecture énergétique date des années 1960. La géobiologie se développe au XXe siècle."),
+      SCI("les réseaux Hartmann et Curry n’ont jamais été mis en évidence par des mesures. Les alignements de sites peuvent s’expliquer par le hasard. L’effet des lieux passe par la beauté, le calme, l’histoire et l’émerveillement.")
+    ],
+
+    /* 17 — PAYSAGES */
+    [
+      H(1,"⛰","Définition"),
+      LEAD("L’énergie des paysages désigne l’ambiance propre à un grand ensemble naturel (désert, steppe, marais, littoral, bocage, vallée), plus qu’à un lieu précis. Les Romains parlaient du <em>genius loci</em>, le « génie du lieu » : l’esprit particulier d’un paysage."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Désert","dépouillement, épreuve, retraite spirituelle (les Pères du désert)"],
+        ["Plaine & steppe","ouverture, horizon, liberté"],
+        ["Marais","entre-deux, mystère, ni terre ni eau"],
+        ["Littoral","seuil entre deux mondes"],
+        ["Vallée","refuge, abri, fertilité"]
+      ]),
+      P("Le <em>feng shui</em> chinois lit le paysage comme un corps traversé par des « veines du dragon » et cherche l’équilibre entre montagnes et eaux. Les peuples aborigènes d’Australie suivent des « pistes chantées » (<em>songlines</em>), récits qui parcourent le paysage."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Marche contemplative —","traverser un paysage en observant comment il change l’humeur."),
+      LI("Dessiner, photographier —","fixer ce qui fait la singularité d’un paysage."),
+      LI("Feng shui —","orienter un lieu de vie en tenant compte du relief, de l’eau, de la lumière."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Le <em>genius loci</em> est romain ; le feng shui remonte à la Chine ancienne (le <em>Zangshu</em> attribué à Guo Pu, IVe siècle) ; les <em>songlines</em> appartiennent aux traditions aborigènes. Le romantisme européen (XIXe siècle) a fait du paysage « sublime » une expérience spirituelle."),
+      SCI("la psychologie de l’environnement étudie l’effet des paysages : la « théorie de la restauration de l’attention » (Rachel et Stephen Kaplan) montre que la nature aide à récupérer de la fatigue mentale.")
+    ],
+
+    /* 18 — HYBRIDES & MIXTES */
+    [
+      H(1,"⧉","Définition"),
+      LEAD("Les énergies naturelles hybrides et mixtes naissent de la rencontre de plusieurs sources : un arbre près d’une source, la pleine lune sur la mer, un orage en montagne, une pierre polie par la rivière, l’aube au bord d’un lac. Les traditions valorisent particulièrement ces rencontres et ces « seuils »."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Confluences —","lieux où deux rivières se rejoignent, souvent sacrés : le Sangam de Prayagraj en Inde (Gange, Yamuna et la mythique Sarasvati) ; Lyon, l’antique <em>Lugdunum</em>."),
+      LI("Lisières —","entre forêt et clairière, entre terre et mer : zones de passage."),
+      LI("Moments-seuils —","aube, crépuscule, marée haute, équinoxe : ni l’un ni l’autre."),
+      LI("Correspondances —","plantes associées aux planètes, pierres associées aux signes, arbres associés aux lettres."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Combiner —","choisir un lieu, un moment et un élément qui s’accordent pour une même intention (une source au lever du jour, par exemple)."),
+      LI("Chercher les seuils —","se rendre à une lisière, une confluence ou un rivage à l’aube ou au crépuscule."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Du principe ancien de sympathie universelle (tout est relié par des correspondances), de l’astrologie des plantes (Culpeper) et des pèlerinages aux confluences, comme la Kumbh Mela."),
+      SCI("les lisières et zones de transition (« écotones ») sont réellement des milieux riches en biodiversité. Les correspondances symboliques, elles, relèvent de systèmes traditionnels.")
+    ],
+
+    /* 19 — AUTRES */
+    [
+      H(1,"✧","Définition"),
+      LEAD("Cette section rassemble des énergies naturelles moins courantes ou difficiles à classer : phénomènes rares, milieux particuliers, forces spectaculaires de la nature."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Champignons —","réseaux souterrains, décomposition et renaissance ; parfois plantes « magiques » des contes."),
+      LI("Volcans —","feu de la terre, création et destruction ; Pele, déesse des volcans d’Hawaï."),
+      LI("Aurores polaires —","esprits des ancêtres pour certains Inuits ; « feux du renard » (<em>revontulet</em>) en Finlande."),
+      LI("Éclipses —","dragon ou démon qui dévore le Soleil ou la Lune dans de nombreux mythes ; présages."),
+      LI("Étoiles filantes —","vœux, âmes qui passent."),
+      LI("Bioluminescence —","lumière vivante des lucioles et de la mer ; esprits, âmes errantes."),
+      LI("Séismes —","colère des dieux ; au Japon, le poisson-chat géant Namazu qui s’agite sous la terre."),
+      LI("Feux follets —","lueurs des marais, âmes perdues dans les légendes européennes."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Observer les phénomènes rares —","noter la date, le lieu et ce qu’ils ont évoqué."),
+      LI("Honorer sans risque —","regarder une éclipse uniquement avec des lunettes spéciales ; ne jamais consommer de champignon sauvage sans identification par un expert."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Ces phénomènes, rares ou impressionnants, ont toujours frappé les esprits et nourri mythes, présages et récits."),
+      SCI("tous ont une explication naturelle : réactions chimiques pour la bioluminescence, particules du vent solaire pour les aurores, gaz des marais pour les feux follets, mouvements des plaques pour les séismes.")
+    ]
+  );
+
+  subTexts["Énergies naturelles"] = Object.fromEntries(natureTexts.map((b,k)=>[k,b]));
   const PFX = CODEX.prefix;
   const pad = n => String(n).padStart(2,'0');
   const pad3 = n => String(n).padStart(3,'0');
