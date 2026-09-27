@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Codex des Entités</title>
+<title>Codex de la Divination</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700&family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Noto+Sans+Runic&display=swap" rel="stylesheet">
@@ -16,8 +16,8 @@
     --red:#7a1a1a;
     --paper:#efe0bb;
     --paper-dark:#d9c393;
-    --leather:#5a1212;
-    --leather-dark:#2e0707;
+    --leather:#1d4a2e;
+    --leather-dark:#0b2415;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{min-height:100%}
@@ -55,7 +55,7 @@
     width:min(1100px,100%);
     position:relative;
     padding:14px;
-    background:linear-gradient(180deg,#6e1818,var(--leather) 40%,var(--leather-dark));
+    background:linear-gradient(180deg,#2a6040,var(--leather) 40%,var(--leather-dark));
     border-radius:10px;
     box-shadow:0 30px 70px rgba(0,0,0,.75), inset 0 0 0 2px rgba(212,168,75,.35), inset 0 0 30px rgba(0,0,0,.6);
     perspective:3200px;
@@ -210,7 +210,7 @@
   .cover .front{
     background:
       radial-gradient(ellipse at 40% 30%,rgba(255,255,255,.12),transparent 60%),
-      linear-gradient(90deg,#3a0909,#6e1818 12%,var(--leather) 60%,var(--leather-dark));
+      linear-gradient(90deg,#0b2415,#2a6040 12%,var(--leather) 60%,var(--leather-dark));
     box-shadow:inset 0 0 0 2px rgba(212,168,75,.45), inset 0 0 0 10px rgba(0,0,0,.15), inset 0 0 40px rgba(0,0,0,.6), 12px 10px 30px rgba(0,0,0,.6);
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
     text-align:center;color:var(--gold);padding:10px;
@@ -223,9 +223,9 @@
   .cover .back{
     transform:rotateY(180deg);border-radius:8px 0 0 8px;
     background:
-      repeating-radial-gradient(circle at 30% 40%,#5b2a2a 0 6px,#4a1d1d 6px 12px,#6a3232 12px 16px),
-      #4a1d1d;
-    box-shadow:inset 0 0 0 10px #3a0e0e, inset 0 0 30px rgba(0,0,0,.6);
+      repeating-radial-gradient(circle at 30% 40%,#2a4a36 0 6px,#1d3a28 6px 12px,#325a40 12px 16px),
+      #1d3a28;
+    box-shadow:inset 0 0 0 10px #0e2a18, inset 0 0 30px rgba(0,0,0,.6);
   }
   @keyframes openCover{
     0%{transform:rotateY(0)}
@@ -608,7 +608,7 @@
 
   <div class="topbar">
     <a class="back" href="index.html">← La bibliothèque</a>
-    <span class="label">GRIMOIRES · CODEX I</span>
+    <span class="label">GRIMOIRES · CODEX II</span>
     <div class="tools">
       <button type="button" class="tool" id="exportBtn" title="Télécharger une sauvegarde de toutes les fiches">⤓ Sauvegarder</button>
       <button type="button" class="tool" id="importBtn" title="Charger une sauvegarde de fiches">⤒ Charger</button>
@@ -620,9 +620,9 @@
     <div class="spread" id="spread">
       <div class="cover" aria-hidden="true">
         <div class="face front">
-          <div class="cn">I</div>
+          <div class="cn">II</div>
           <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="56"/><circle cx="60" cy="60" r="48"/><polygon points="60,14 100,83 20,83"/><polygon points="60,106 20,37 100,37"/><circle cx="60" cy="60" r="14"/></svg>
-          <div class="ct">Codex<br>des Entités</div>
+          <div class="ct">Codex<br>de la Divination</div>
         </div>
         <div class="face back"></div>
       </div>
@@ -782,306 +782,508 @@
 <script>
   // ===== Réglages de ce codex =====
   const CODEX = {
-    num: 'I',
-    prefix: 'E',
-    titleHTML: 'Codex<br>des Entités',
-    motto: "Registre des êtres visibles et invisibles, des cieux jusqu'aux abîmes.",
-    storeKey: 'grimoires.codex1.fiches',
-    exportName: 'codex-des-entites-fiches.json'
+    num: 'II',
+    prefix: 'D',
+    titleHTML: 'Codex<br>de la Divination',
+    motto: "Registre des arts qui lisent les cartes, les signes, les nombres et les astres.",
+    storeKey: 'grimoires.codex2.fiches',
+    exportName: 'codex-de-la-divination.json',
+    fiches: false               // pas de plume ni de fiches dans ce codex
   };
 
-  // Chapitres : ordre alphabétique, "Autres / inclassables" toujours à la fin
-  const raw = [
-    "Anges & créatures célestes",
-    "Dieux & divinités",
-    "Diable, démons & légions",
-    "Élémentaires",
-    "Esprits",
-    "Nature",
-    "Entités féeriques",
-    "Entités mythologiques & folkloriques",
-    "Gardiens, protecteurs & animaux-totems",
-    "Entités psychiques & créées",
-    "Entités cosmiques & primordiales",
-    "Entités planétaires & stellaires",
-    "Entités intermédiaires"
+  // Chapitres (ordre et codes D-01 à D-06)
+  const chapters = [
+    "Tarot",
+    "Oracles",
+    "Runes",
+    "Pendule",
+    "Astrologie divinatoire",
+    "Numérologie"
   ];
-  const coll = new Intl.Collator('fr',{sensitivity:'base'});
-  const chapters = [...raw].sort(coll.compare);
-  chapters.push("Autres / inclassables");
 
-  // Définitions de chaque chapitre (clé = titre exact du chapitre)
+  // Définitions de chaque chapitre (clé = titre exact du chapitre ; une ligne vide = nouveau paragraphe)
   const definitions = {
-    "Anges & créatures célestes":
-      "Cette catégorie regroupe les êtres décrits comme appartenant aux sphères célestes, aux cieux ou à des réalités spirituelles associées au domaine céleste dans différentes traditions religieuses, mythologiques et ésotériques. Elle comprend notamment les anges, archanges, chérubins, séraphins ainsi que d’autres ordres ou créatures célestes décrits par certaines traditions. Ces entités peuvent être associées à des fonctions telles que la protection, la transmission de messages, la guidance, le jugement ou l’accomplissement d’une fonction divine ou cosmique. Leur nature, leur hiérarchie, leurs fonctions et leur relation avec les divinités varient fortement selon les traditions, les textes et les interprétations. Dans ce codex, chaque entité sera étudiée selon sa tradition d’origine, sa nature, son rang ou sa fonction, ses attributs, ses symboles, ses sources et les différentes conceptions qui lui sont associées.",
-    "Diable, démons & légions":
-      "Cette catégorie regroupe les figures et entités associées aux notions de démon, d’enfer, de tentation, d’opposition ou de forces infernales dans différentes traditions religieuses, démonologiques et ésotériques. Elle comprend notamment le Diable ou les figures équivalentes, les démons individuels ainsi que les groupes, hiérarchies ou « légions » décrits dans certaines sources. Les caractéristiques, fonctions et classifications de ces entités varient considérablement selon les religions, les époques, les textes et les courants occultes qui les décrivent. Certaines traditions les présentent comme des êtres spirituels autonomes, tandis que d’autres les interprètent comme des symboles, des forces ou des représentations du mal et du désordre. Dans ce codex, chaque entité sera étudiée selon sa tradition d’origine, ses sources, son nom, ses attributs, sa fonction et les différentes interprétations qui lui sont associées.",
-    "Dieux & divinités":
-      "Cette catégorie regroupe les êtres considérés comme divins ou sacrés au sein de différentes traditions religieuses, mythologiques et spirituelles. Elle comprend notamment les dieux, déesses, divinités mineures, divinités locales, figures divinisées ainsi que certaines puissances personnifiant des aspects du monde, de la nature ou de l’existence. Une divinité peut être associée à un domaine particulier ou posséder plusieurs fonctions et domaines selon les traditions et les sources. Sa nature, sa place dans la cosmologie, ses attributs et son statut peuvent varier selon les cultures, les époques et les courants qui la décrivent. Dans ce codex, chaque divinité sera étudiée selon sa tradition d’origine, ses noms et formes, ses domaines, ses fonctions, ses attributs, ses symboles et les différentes conceptions qui lui sont associées.",
-    "Élémentaires":
-      "Cette catégorie regroupe les entités traditionnellement associées aux éléments fondamentaux de la nature ou à certaines forces élémentaires dans différentes traditions et systèmes ésotériques. Elle comprend notamment les êtres liés à la Terre, à l’Eau, à l’Air et au Feu, ainsi que, selon certains systèmes, à l’Éther ou à d’autres principes. Les élémentaires peuvent être décrits comme des esprits, des êtres autonomes, des manifestations d’une force naturelle ou des représentations symboliques d’un élément. Leur nature, leur classification, leurs caractéristiques et leurs fonctions varient fortement selon les traditions, les courants ésotériques et les interprétations modernes. Dans ce codex, chaque élémentaire sera étudié selon son élément ou principe associé, sa tradition d’origine, ses caractéristiques, ses fonctions, ses symboles et les différentes conceptions qui lui sont attribuées.",
-    "Entités cosmiques & primordiales":
-      "Cette catégorie regroupe les êtres, puissances ou forces décrits comme liés aux origines, aux fondements ou aux grandes structures de l’existence et du cosmos dans différentes traditions et cosmologies. Elle comprend notamment les entités dites primordiales, associées à des concepts fondamentaux tels que le chaos, le temps, l’espace, la création, la destruction, la lumière, les ténèbres ou les forces originelles. Certaines traditions les présentent comme antérieures aux dieux, tandis que d’autres les considèrent comme des divinités ou des principes cosmiques personnifiés. Leur nature et leur place dans la cosmologie varient fortement selon les traditions ; le terme « primordial » ne possède donc pas de définition universelle. Dans ce codex, chaque entité sera étudiée selon son origine, sa tradition, sa place dans la cosmologie, les principes auxquels elle est associée, ses attributs, ses relations et les différentes interprétations qui lui sont attribuées.",
-    "Entités féeriques":
-      "Cette catégorie regroupe les êtres issus des traditions et folklores décrivant des peuples ou esprits féeriques, souvent associés à des royaumes invisibles, à la nature ou à des lieux particuliers. Elle comprend notamment les fées, elfes, lutins, korrigans, brownies, pixies et autres êtres pouvant être rattachés au monde féerique selon les cultures et les sources. Ces entités peuvent être décrites comme bienveillantes, neutres, malicieuses ou dangereuses, et leurs relations avec les humains varient fortement d’un folklore à l’autre. Le terme « féerique » ne désigne donc pas une espèce unique ni un système universel : les classifications, caractéristiques et noms diffèrent selon les régions et les traditions. Dans ce codex, chaque entité sera étudiée selon sa tradition ou son folklore d’origine, son type, son environnement, ses caractéristiques, ses comportements, ses symboles et les différentes versions rapportées à son sujet.",
-    "Entités intermédiaires":
-      "Cette catégorie regroupe les entités dont la fonction principale est d’assurer un lien, une transmission ou un passage entre différents mondes, plans, domaines ou états d’existence selon les traditions. Elle comprend notamment les messagers, guides, intermédiaires, psychopompes, passeurs et gardiens de portes ou de seuils. Certaines peuvent transmettre des messages, accompagner les défunts, guider des voyageurs ou surveiller l’accès à un lieu ou à un domaine particulier. Leur nature peut être céleste, divine, spirituelle, infernale ou autre : c’est principalement leur fonction d’intermédiaire ou de gardien d’un passage qui justifie leur classement dans cette catégorie. Dans ce codex, chaque entité sera étudiée selon sa fonction, ce qu’elle relie ou protège, sa tradition d’origine, son domaine d’intervention, ses attributs, ses symboles et les différentes conceptions qui lui sont associées.",
-    "Entités mythologiques & folkloriques":
-      "Cette catégorie regroupe les êtres, créatures et figures surnaturelles issus des mythologies, légendes et traditions populaires des différentes cultures. Elle comprend notamment les dragons, géants, créatures hybrides, monstres mythologiques, métamorphes et autres êtres surnaturels qui ne correspondent pas à une catégorie plus spécifique du codex. Les récits qui les décrivent peuvent leur attribuer une nature, une origine, des capacités ou une fonction très différentes selon les époques, les régions et les sources. Cette catégorie accueille également les figures folkloriques dont la classification ne permet pas de les rattacher clairement aux catégories des dieux, démons, élémentaires, esprits ou êtres féeriques. Dans ce codex, chaque entité sera étudiée selon sa culture ou tradition d’origine, son nom et ses variantes, sa nature, ses attributs, ses capacités, son rôle dans les récits et les différentes versions rapportées à son sujet.",
-    "Entités planétaires & stellaires":
-      "Cette catégorie regroupe les entités, intelligences, esprits ou puissances traditionnellement associés aux planètes, aux étoiles, aux constellations et aux autres corps célestes dans différentes traditions astrologiques, religieuses et ésotériques. Elle comprend notamment les êtres ou forces liés au Soleil, à la Lune, aux planètes, aux étoiles et aux constellations considérées comme significatives selon les systèmes qui les décrivent. Selon les traditions, ces entités peuvent être présentées comme des divinités, des intelligences spirituelles, des esprits planétaires ou des représentations symboliques des influences attribuées aux astres. Leur nature, leurs correspondances, leur hiérarchie et leur rôle varient selon les systèmes concernés. Dans ce codex, chaque entité sera étudiée selon l’astre auquel elle est associée, sa tradition ou son système d’origine, ses attributs, ses correspondances, sa fonction, ses symboles et les différentes interprétations qui lui sont associées.",
-    "Entités psychiques & créées":
-      "Cette catégorie regroupe les entités décrites comme étant liées à la pensée, à l’imagination, à la conscience, aux émotions, aux croyances ou à une création intentionnelle dans certains courants ésotériques. Elle comprend notamment les formes-pensées, égrégores, serviteurs, entités créées volontairement et autres formes d’entités dont l’existence est attribuée à une activité mentale individuelle ou collective. Certaines conceptions les présentent comme des constructions psychiques ou symboliques, tandis que d’autres les considèrent comme des entités pouvant acquérir une forme d’autonomie. Cette catégorie permet ainsi de distinguer les entités considérées comme préexistantes des formes décrites comme émergentes, construites ou entretenues par la pensée, l’intention, les émotions ou la croyance. Dans ce codex, chaque entrée sera étudiée selon son origine supposée, son mode de création ou d’émergence, son degré d’autonomie selon les sources, sa fonction et les différentes interprétations qui lui sont associées.",
-    "Esprits":
-      "Cette catégorie regroupe les êtres ou présences décrits comme des entités spirituelles, immatérielles ou non physiques dans différentes traditions, croyances et systèmes ésotériques. Elle peut comprendre notamment les esprits des défunts, les ancêtres, les esprits domestiques, les esprits de lieux, les esprits naturels et d’autres formes d’entités spirituelles qui ne correspondent pas à une famille plus spécifique du codex. La notion d’esprit varie fortement selon les cultures : certains sont considérés comme des êtres autonomes, tandis que d’autres sont décrits comme des présences liées à un lieu, une personne, un événement ou une force particulière. Cette catégorie sert également à accueillir les entités simplement décrites comme des « esprits » par leur tradition d’origine sans classification plus précise. Dans ce codex, chaque esprit sera étudié selon son origine supposée, sa tradition, sa nature, son domaine, ses caractéristiques, ses fonctions, ses symboles et les différentes conceptions qui lui sont associées.",
-    "Gardiens, protecteurs & animaux-totems":
-      "Cette catégorie regroupe les entités, figures ou symboles associés à la protection, à la garde, à l’accompagnement ou à la représentation animale selon différentes traditions. Elle comprend notamment les gardiens spirituels, protecteurs, animaux gardiens et figures animales considérées comme des guides, alliés ou représentants symboliques. Selon les traditions, ces figures peuvent être décrites comme des êtres autonomes, des esprits, des divinités, des ancêtres ou des symboles liés à certaines qualités et fonctions. La notion d’animal-totem possède également des significations différentes selon les cultures et ne doit pas être confondue avec les usages ésotériques modernes ou les interprétations personnelles. Dans ce codex, chaque entrée sera étudiée selon sa tradition d’origine, sa fonction protectrice ou symbolique, sa nature, ses attributs, ses symboles, sa relation avec les humains et les différentes interprétations qui lui sont associées.",
-    "Nature":
-      "Cette catégorie regroupe les entités, êtres ou présences associés au monde naturel, aux écosystèmes, aux paysages et aux différents aspects de la nature dans diverses traditions et croyances. Elle comprend notamment les figures liées aux forêts, montagnes, rivières, animaux, plantes, saisons, phénomènes naturels et territoires particuliers lorsqu’elles ne relèvent pas d’une classification plus spécifique. Certaines peuvent être décrites comme des esprits, des divinités, des gardiens ou des personnifications symboliques de la nature selon les sources. Leur nature, leurs fonctions et leur relation avec l’environnement varient fortement selon les cultures et les traditions. Dans ce codex, chaque entrée sera étudiée selon son environnement ou domaine naturel, sa tradition d’origine, sa nature, ses caractéristiques, ses fonctions, ses symboles et les différentes conceptions qui lui sont associées.",
-    "Autres / inclassables":
-      "Cette catégorie regroupe les entités, figures ou formes de manifestations qui ne peuvent pas être rattachées de manière suffisamment claire à une autre catégorie du codex. Elle peut notamment accueillir les entités atypiques, les figures dont la nature est ambiguë selon les sources ainsi que les cas particuliers qui combinent plusieurs catégories sans pouvoir être classés de façon pertinente dans l’une d’elles. Elle peut également servir de classement temporaire lorsqu’une entrée nécessite davantage de recherches avant de pouvoir être correctement catégorisée. Cette catégorie ne constitue donc pas une classification de nature précise, mais un point d’accueil pour les cas qui échappent aux classifications établies. Dans ce codex, chaque entrée sera étudiée en précisant les sources disponibles, les classifications possibles et les raisons de son classement dans cette catégorie."
+    "Oracles":
+      "Un oracle est un outil ou un système de divination utilisé pour obtenir une interprétation, une réflexion ou une réponse symbolique à partir d’un tirage ou d’une sélection de cartes, de symboles ou d’autres supports.\n\n" +
+      "Contrairement au tarot, qui possède généralement une structure et une tradition relativement définies, un oracle peut prendre des formes très variées. Son fonctionnement, son nombre de cartes, ses symboles et ses méthodes d’interprétation dépendent du jeu et de son créateur.\n\n" +
+      "Dans les pratiques divinatoires, les cartes d’un oracle sont généralement associées à des mots-clés, images, concepts, situations ou messages symboliques. L’interprétation peut se faire à partir de la signification attribuée à chaque carte, de sa position dans le tirage, de ses relations avec les autres cartes et, selon la pratique de la personne, de son intuition.\n\n" +
+      "Les oracles peuvent être utilisés pour explorer une question, réfléchir à une situation ou obtenir une lecture symbolique. Leur interprétation relève d’une pratique divinatoire et ne constitue pas en elle-même une méthode permettant d’établir des faits avec certitude."
   };
 
-  // Catégories de chaque chapitre (page de droite)
-  const subcats = {
-    "Anges & créatures célestes": {
-      items: [
-        "Anges & archanges",
-        "Chérubins, séraphins & ordres célestes",
-        "Anges gardiens & protecteurs",
-        "Anges messagers & hérauts",
-        "Anges de la connaissance, sagesse & révélation",
-        "Anges liés aux éléments & à la nature",
-        "Anges liés aux astres & aux sphères célestes",
-        "Anges liés aux humains, peuples & communautés",
-        "Anges du jugement, de la justice & de l’ordre",
-        "Anges de la vie, de la mort & des passages",
-        "Anges déchus, exilés & rebelles",
-        "Créatures célestes ailées & assimilées",
-        "Entités célestes hybrides, composites & assimilées",
-        "Entités célestes mixtes & autres"
+  definitions["Runes"] =
+      "Les runes sont des signes appartenant à différents systèmes d’écriture utilisés historiquement par plusieurs peuples germaniques et nordiques. Le terme ne désigne donc pas un alphabet unique : plusieurs systèmes runiques se sont développés au cours du temps, notamment le Futhark ancien, le Futhorc anglo-saxon et le Futhark récent.\n\n" +
+      "À l’origine, les runes sont principalement des systèmes d’écriture. Elles apparaissent sur différents supports, notamment des objets, des pierres, des armes et des monuments.\n\n" +
+      "Dans les pratiques ésotériques modernes, les runes sont également utilisées comme supports de divination et d’interprétation symbolique. Les significations qui leur sont attribuées peuvent varier selon les systèmes, les sources historiques et les méthodes modernes utilisées.\n\n" +
+      "Dans ce codex, les différents systèmes runiques seront donc distingués de leurs usages divinatoires, afin de séparer les données historiques des interprétations ésotériques plus récentes.";
+
+  definitions["Pendule"] =
+      "Un pendule divinatoire est un objet suspendu à une chaîne ou à un fil, utilisé dans certaines pratiques de divination pour obtenir des réponses à travers ses mouvements.\n\n" +
+      "Le pendule peut être constitué de différents matériaux et prendre différentes formes. Dans la pratique divinatoire, ses mouvements sont généralement interprétés comme des réponses telles que « oui », « non », « peut-être » ou « indéterminé ».\n\n" +
+      "Selon les conceptions ésotériques, le mouvement peut être attribué à l’intuition, à l’énergie, à une influence spirituelle ou à d’autres mécanismes. D’un point de vue scientifique, les mouvements peuvent notamment être expliqués par de petits mouvements musculaires inconscients, phénomène appelé effet idéomoteur.\n\n" +
+      "Dans ce codex, le pendule est donc considéré comme un support de divination et d’interprétation symbolique, et non comme une méthode permettant d’établir des faits avec certitude.";
+
+  definitions["Astrologie divinatoire"] =
+      "L’astrologie divinatoire est une pratique qui utilise la position apparente des astres et leur relation entre eux pour produire une interprétation symbolique d’une situation, d’une période ou d’une personne.\n\n" +
+      "Elle s’appuie notamment sur les signes du zodiaque, les planètes, les maisons astrologiques, les aspects et différents types de cartes du ciel. Selon les systèmes utilisés, ces éléments sont interprétés afin d’explorer des tendances, des cycles, des influences symboliques ou des événements possibles.\n\n" +
+      "L’astrologie comprend différentes approches, notamment l’astrologie natale, l’astrologie horaire, l’astrologie mondiale et l’astrologie élective. Les méthodes, les systèmes de calcul et les interprétations peuvent varier selon les traditions et les écoles astrologiques.\n\n" +
+      "Dans ce codex, l’astrologie divinatoire sera étudiée comme un système symbolique de divination. Ses interprétations ne constituent pas une méthode scientifique permettant de prédire les événements avec certitude.";
+
+  definitions["Numérologie"] =
+      "La numérologie est une pratique symbolique et divinatoire qui attribue des significations particulières aux nombres et à leurs relations avec différents aspects de l’existence.\n\n" +
+      "Elle utilise notamment les nombres associés à une date de naissance, à un nom ou à d’autres informations personnelles pour effectuer différents calculs. Ces calculs permettent d’obtenir des nombres auxquels certaines traditions numérologiques attribuent des caractéristiques, des tendances ou des significations symboliques.\n\n" +
+      "Il existe plusieurs systèmes de numérologie, dont les méthodes de calcul et les significations peuvent varier selon les traditions et les écoles. Certains systèmes accordent également une importance particulière à certains nombres, appelés nombres maîtres ou nombres symboliques.\n\n" +
+      "Dans ce codex, la numérologie sera étudiée comme un système de divination et d’interprétation symbolique. Les significations attribuées aux nombres varient selon les systèmes et ne constituent pas une méthode scientifique permettant de prédire les événements avec certitude.";
+
+  // Textes affichés sur la page de droite d'un chapitre (à la place des catégories)
+  const rightTexts = {
+    "Numérologie": {
+      title: "Les nombres",
+      sections: [
+        { label: "Signification symbolique", rows: [
+          ["1","Individualité, initiative, volonté, autonomie, commencement"],
+          ["2","Coopération, équilibre, dualité, sensibilité, relation"],
+          ["3","Créativité, expression, communication, joie, sociabilité"],
+          ["4","Structure, stabilité, travail, discipline, fondations"],
+          ["5","Liberté, changement, mouvement, aventure, adaptation"],
+          ["6","Harmonie, responsabilité, famille, protection, compassion"],
+          ["7","Introspection, recherche, spiritualité, connaissance, mystère"],
+          ["8","Pouvoir, ambition, matérialisation, autorité, réussite matérielle"],
+          ["9","Accomplissement, compassion, sagesse, humanisme, fin de cycle"]
+        ]},
+        { label: "Nombres maîtres", rows: [
+          ["11","Intuition, inspiration, vision, sensibilité, éveil"],
+          ["22","Construction, réalisation, organisation, grands projets, matérialisation"],
+          ["33","Compassion, transmission, service, guérison symbolique, amour universel"]
+        ]}
       ]
     },
-    "Diable, démons & légions": {
+    "Pendule": {
+      title: "Comment utiliser un pendule",
+      intro: "Pour une pratique simple :",
+      steps: [
+        "Installe-toi calmement et tiens la chaîne entre le pouce et l’index.",
+        "Laisse le pendule immobile quelques secondes.",
+        "Détermine tes mouvements de réponse : demande par exemple « Montre-moi oui », puis « Montre-moi non ». Observe les mouvements qui apparaissent.",
+        "Pose une question claire, idéalement avec une réponse qui peut réellement être « oui » ou « non ».",
+        "Laisse le pendule bouger naturellement et observe sa direction.",
+        "Interprète le mouvement selon le code que tu as établi au départ.",
+        "Si le mouvement est faible, irrégulier ou difficile à interpréter, considère la réponse comme indéterminée plutôt que de forcer une interprétation."
+      ],
+      warning: "Pour les décisions importantes (santé, sécurité, argent, etc.), mieux vaut utiliser le pendule comme outil de réflexion personnelle et vérifier les informations par des moyens fiables."
+    }
+  };
+
+  // Chapitres dont les sous-catégories sont créées par l'utilisateur (bouton « Ajouter »)
+  const customSubs = {
+    "Oracles": { title: "Jeux d’oracle", noun: "oracle", add: "Ajouter un oracle", empty: "Aucun oracle pour l’instant." }
+  };
+
+  // Listes affichées sur la page de gauche d'un chapitre (chaque entrée ouvre sa propre double page)
+  const leftLists = {
+    "Tarot": {
+      title: "Tirages",
       items: [
-        "Diable & figures diaboliques",
-        "Démons",
-        "Légions & hiérarchies démoniaques",
-        "Princes, rois & chefs infernaux",
-        "Démons spécialisés",
-        "Démons liés aux péchés, vices & tentations",
-        "Démons liés aux lieux, éléments & phénomènes",
-        "Figures infernales & assimilées",
-        "Démons hybrides, composites & assimilés",
-        "Démons liés aux humains, familles & communautés",
-        "Démons liés à la mort & aux mondes souterrains",
-        "Démons liés aux rêves, cauchemars & visions",
-        "Démons déchus & anciens êtres célestes",
-        "Entités infernales mixtes & autres"
-      ]
-    },
-    "Dieux & divinités": {
-      items: [
-        "Dieux & déesses",
-        "Divinités mineures & secondaires",
-        "Divinités locales & tutélaires",
-        "Divinités créatrices & cosmogoniques",
-        "Divinités de la nature & des éléments",
-        "Divinités du ciel & des astres",
-        "Divinités de la vie, fertilité & abondance",
-        "Divinités de la mort & des mondes souterrains",
-        "Divinités de la guerre & du combat",
-        "Divinités de la connaissance, sagesse & arts",
-        "Divinités de la justice, de l’ordre & du destin",
-        "Divinités protectrices & gardiennes",
-        "Divinités liées aux peuples, familles & communautés",
-        "Divinités hybrides, composites & syncrétiques",
-        "Figures divinisées & héros divinisés",
-        "Autres divinités"
-      ]
-    },
-    "Élémentaires": {
-      items: [
-        "Élémentaires liés à la Terre & aux plantes",
-        "Élémentaires liés à l’Air & au vent",
-        "Élémentaires liés à l’Eau, à la glace & à la vapeur",
-        "Élémentaires liés à l’Éther",
-        "Élémentaires liés au Feu",
-        "Élémentaires mixtes & autres"
-      ]
-    },
-    "Entités cosmiques & primordiales": {
-      items: [
-        "Entités de la création & de l’origine",
-        "Entités du chaos & du néant",
-        "Entités de la lumière & des ténèbres cosmiques",
-        "Entités de l’espace & des dimensions",
-        "Entités du temps & de l’éternité",
-        "Entités des forces cosmiques & fondamentales",
-        "Entités des cycles, de la destruction & de la transformation cosmique",
-        "Entités primordiales liées aux éléments & à la matière",
-        "Entités cosmiques hybrides, composites & assimilées",
-        "Entités cosmiques mixtes & autres"
-      ]
-    },
-    "Entités féeriques": {
-      items: [
-        "Fées & êtres féeriques",
-        "Elfes & peuples féeriques",
-        "Lutins, gnomes & petits peuples",
-        "Esprits domestiques & gardiens du foyer",
-        "Êtres féeriques des forêts & de la nature",
-        "Êtres féeriques des eaux & milieux aquatiques",
-        "Êtres féeriques malicieux & farceurs",
-        "Êtres féeriques dangereux & hostiles",
-        "Êtres féeriques royaux, nobles & dirigeants",
-        "Êtres féeriques métamorphes & changeformes",
-        "Êtres féeriques liés aux saisons, aux fêtes & aux cycles",
-        "Peuples & cours féeriques",
-        "Êtres féeriques hybrides, composites & assimilés",
-        "Êtres féeriques mixtes & autres"
-      ]
-    },
-    "Entités intermédiaires": {
-      items: [
-        "Messagers & transmetteurs",
-        "Guides spirituels & accompagnateurs",
-        "Psychopompes & conducteurs des défunts",
-        "Gardiens des seuils & des passages",
-        "Gardiens des portes & frontières entre mondes",
-        "Passeurs & intermédiaires entre plans",
-        "Médiateurs entre humains & entités",
-        "Entités liées aux carrefours, chemins & passages",
-        "Entités intermédiaires hybrides, composites & assimilées",
-        "Entités intermédiaires mixtes & autres"
-      ]
-    },
-    "Entités mythologiques & folkloriques": {
-      items: [
-        "Dragons & créatures draconiques",
-        "Géants & êtres colossaux",
-        "Créatures hybrides & chimériques",
-        "Monstres mythologiques",
-        "Serpents, wyrms & créatures ophidiennes",
-        "Créatures ailées & volantes",
-        "Créatures aquatiques & marines",
-        "Métamorphes & changeformes",
-        "Ogres, cannibales & êtres anthropophages",
-        "Créatures humanoïdes folkloriques",
-        "Créatures animales surnaturelles",
-        "Créatures liées aux morts & revenants",
-        "Créatures liées aux lieux, ruines & territoires",
-        "Créatures légendaires régionales",
-        "Entités mythologiques hybrides, composites & assimilées",
-        "Entités mythologiques & folkloriques mixtes / autres"
-      ]
-    },
-    "Entités planétaires & stellaires": {
-      items: [
-        "Entités liées au Soleil",
-        "Entités liées à la Lune",
-        "Entités liées à Mercure",
-        "Entités liées à Vénus",
-        "Entités liées à Mars",
-        "Entités liées à Jupiter",
-        "Entités liées à Saturne",
-        "Entités liées aux planètes modernes",
-        "Entités liées aux étoiles",
-        "Entités liées aux constellations",
-        "Entités liées aux astres mineurs & autres corps célestes",
-        "Entités liées aux cycles & mouvements célestes",
-        "Entités planétaires & stellaires hybrides, composites & assimilées",
-        "Entités planétaires & stellaires mixtes / autres"
-      ]
-    },
-    "Entités psychiques & créées": {
-      items: [
-        "Formes-pensées",
-        "Égrégores",
-        "Serviteurs & entités programmées",
-        "Entités créées individuellement",
-        "Entités créées collectivement",
-        "Entités issues des émotions & de l’affect",
-        "Entités issues de l’imagination & de la visualisation",
-        "Entités liées aux croyances & représentations",
-        "Entités psychiques autonomisées",
-        "Entités psychiques hybrides, composites & assimilées",
-        "Entités psychiques mixtes & autres"
-      ]
-    },
-    "Esprits": {
-      items: [
-        "Esprits des défunts & revenants",
-        "Esprits ancestraux & ancêtres",
-        "Esprits élémentaires",
-        "Esprits célestes",
-        "Esprits cosmiques & primordiaux",
-        "Esprits & entités naturels",
-        "Esprits liés aux lieux & territoires",
-        "Esprits domestiques & du foyer",
-        "Esprits liés aux objets & artefacts",
-        "Esprits liés aux rêves, visions & expériences",
-        "Esprits protecteurs & accompagnateurs",
-        "Esprits errants & sans lieu fixe",
-        "Esprits hybrides, composites & assimilés",
-        "Esprits mixtes & autres"
-      ]
-    },
-    "Gardiens, protecteurs & animaux-totems": {
-      items: [
-        "Gardiens & protecteurs personnels",
-        "Gardiens des lieux & territoires",
-        "Gardiens des temples, sanctuaires & lieux sacrés",
-        "Protecteurs des foyers & des familles",
-        "Protecteurs des voyageurs & des chemins",
-        "Animaux gardiens & protecteurs",
-        "Animaux-totems & figures animales symboliques",
-        "Animaux alliés & compagnons spirituels",
-        "Gardiens des seuils, portes & frontières",
-        "Gardiens liés aux éléments & à la nature",
-        "Gardiens hybrides, composites & assimilés",
-        "Gardiens, protecteurs & animaux-totems mixtes / autres"
-      ]
-    },
-    "Nature": {
-      items: [
-        "Esprits des forêts & des bois",
-        "Entités des arbres & des plantes",
-        "Entités des montagnes, rochers & reliefs",
-        "Entités des rivières, sources & lacs",
-        "Entités des mers & océans",
-        "Entités des animaux & de la faune",
-        "Entités des saisons & des cycles naturels",
-        "Entités du climat & des phénomènes naturels",
-        "Entités des paysages & territoires sauvages",
-        "Gardiens & protecteurs de la nature",
-        "Entités végétales & florales",
-        "Entités naturelles hybrides, composites & assimilées",
-        "Entités naturelles régionales & folkloriques",
-        "Entités de la nature mixtes / autres"
-      ]
-    },
-    "Autres / inclassables": {
-      items: [
-        "Entités inclassables",
-        "Entités dont la nature est inconnue",
-        "Entités aux origines incertaines",
-        "Entités aux classifications contradictoires",
-        "Entités sans tradition clairement identifiée",
-        "Entités combinant plusieurs familles",
-        "Entités atypiques ou uniques",
-        "Entités contemporaines & modernes",
-        "Entités hybrides, composites & assimilées",
-        "Autres entités"
+        {
+          id: "T3", name: "Tirage en 3 cartes", cards: 3,
+          theme: "Passé · Présent · Futur",
+          layout: "row3",
+          intro: "Le tirage le plus simple et le plus direct. Il éclaire une situation dans le temps : ce qui l’a amenée, ce qui se joue aujourd’hui et la direction qu’elle prend. Idéal pour une question précise ou un premier regard sur une situation.",
+          how: "Mélange le jeu en te concentrant sur ta question, puis tire trois cartes et pose-les de gauche à droite.",
+          positions: [
+            { name: "Passé",   meaning: "Les influences, événements ou choix passés qui ont conduit à la situation actuelle." },
+            { name: "Présent", meaning: "La situation telle qu’elle est aujourd’hui, les énergies et enjeux en présence." },
+            { name: "Futur",   meaning: "L’évolution la plus probable si les choses suivent leur cours actuel." }
+          ]
+        },
+        {
+          id: "T5", name: "Tirage en 5 cartes", cards: 5,
+          theme: "Les cinq éléments",
+          layout: "penta5",
+          intro: "Ce tirage examine une situation à travers les cinq éléments. Chaque carte éclaire un plan de la vie : matériel, émotionnel, mental, énergétique et spirituel. Il donne une vision complète et équilibrée d’une question ou d’une période.",
+          how: "Pose les cartes sur les pointes d’un pentagramme : la Terre en bas à gauche, l’Eau en haut à droite, l’Air en haut à gauche, le Feu en bas à droite et l’Éther au sommet.",
+          positions: [
+            { name: "Terre", meaning: "Le plan matériel et concret : corps, santé, travail, argent, stabilité et ancrage." },
+            { name: "Eau",   meaning: "Le plan émotionnel : sentiments, relations, sensibilité et intuition." },
+            { name: "Air",   meaning: "Le plan mental : pensées, communication, idées et décisions à prendre." },
+            { name: "Feu",   meaning: "Le plan de l’énergie : volonté, passion, motivation et capacité d’action." },
+            { name: "Éther", meaning: "Le plan spirituel : le sens profond de la situation et la synthèse des quatre autres éléments." }
+          ]
+        },
+        {
+          id: "T7", name: "Tirage en 7 cartes", cards: 7,
+          theme: "Les sept chakras",
+          layout: "column7",
+          intro: "Ce tirage suit les sept chakras, les centres d’énergie décrits dans les traditions indiennes et repris par l’ésotérisme moderne. Chaque carte éclaire un aspect de l’être, de l’ancrage matériel jusqu’à la dimension spirituelle. Il sert à faire un bilan personnel ou à repérer ce qui est bloqué ou au contraire rayonnant.",
+          how: "Pose les cartes en colonne, de bas en haut : la première carte (Racine) en bas, la septième (Couronne) au sommet.",
+          positions: [
+            { name: "Racine — Muladhara",           meaning: "Sécurité, ancrage, besoins de base, rapport au corps et au matériel." },
+            { name: "Sacré — Svadhisthana",         meaning: "Émotions, plaisir, créativité et sexualité." },
+            { name: "Plexus solaire — Manipura",    meaning: "Confiance en soi, volonté, pouvoir personnel et estime de soi." },
+            { name: "Cœur — Anahata",               meaning: "Amour, relations, compassion et capacité à donner et recevoir." },
+            { name: "Gorge — Vishuddha",            meaning: "Expression, communication, affirmation de sa vérité." },
+            { name: "Troisième œil — Ajna",         meaning: "Intuition, clairvoyance, compréhension et vision intérieure." },
+            { name: "Couronne — Sahasrara",         meaning: "Spiritualité, connexion à plus grand que soi, sens de la vie." }
+          ]
+        },
+        {
+          id: "T13", name: "Tirage en 13 cartes", cards: 13,
+          theme: "La roue du zodiaque",
+          layout: "zodiac13",
+          intro: "Ce tirage dessine une roue astrologique : douze cartes pour les douze signes, chacun associé à un domaine de la vie (celui de la maison astrologique correspondante), et une treizième carte au centre. Il offre un panorama complet, souvent utilisé pour une année à venir ou un bilan général.",
+          how: "Pose les douze premières cartes en cercle dans le sens inverse des aiguilles d’une montre, en commençant par le Bélier à gauche (position de l’ascendant). Place la treizième au centre.",
+          note: "Le Serpentaire (Ophiuchus) est parfois présenté comme un treizième signe. Dans de nombreuses pratiques, la carte centrale est aussi lue comme la carte de synthèse du tirage.",
+          positions: [
+            { name: "Bélier",     meaning: "L’identité, la personnalité, l’élan et la façon de se lancer." },
+            { name: "Taureau",    meaning: "Les ressources, l’argent, les possessions et la sécurité matérielle." },
+            { name: "Gémeaux",    meaning: "La communication, les échanges, les études courtes et l’entourage proche." },
+            { name: "Cancer",     meaning: "Le foyer, la famille, les racines et la vie intime." },
+            { name: "Lion",       meaning: "La créativité, le plaisir, les amours, les enfants et l’expression de soi." },
+            { name: "Vierge",     meaning: "Le travail quotidien, la santé, les habitudes et l’organisation." },
+            { name: "Balance",    meaning: "Le couple, les partenariats, les associations et les contrats." },
+            { name: "Scorpion",   meaning: "Les transformations, les crises, l’intimité profonde et les héritages." },
+            { name: "Sagittaire", meaning: "Les voyages, les études supérieures, les croyances et la quête de sens." },
+            { name: "Capricorne", meaning: "La carrière, les ambitions, le statut social et les responsabilités." },
+            { name: "Verseau",    meaning: "Les amitiés, les groupes, les projets et les espoirs." },
+            { name: "Poissons",   meaning: "L’inconscient, les épreuves cachées, la spiritualité et le lâcher-prise." },
+            { name: "Serpentaire — centre", meaning: "La guérison, le savoir caché et la transformation profonde ; la synthèse de l’ensemble du tirage." }
+          ]
+        }
       ]
     }
   };
 
-  // (pas de listes de tirages, de listes de référence ni de sous-catégories personnalisées dans ce codex)
-  const leftLists = {};
-  const refLists = {};
-  const customSubs = {};
-  const rightTexts = {};
+  // Listes de référence d'une sous-catégorie (ici : les cartes du tarot, sens droit et inversé)
+  const suitNames = ["As","Deux","Trois","Quatre","Cinq","Six","Sept","Huit","Neuf","Dix","Valet","Cavalier","Reine","Roi"];
+  const suitNums  = ["As","II","III","IIII","V","VI","VII","VIII","VIIII","X","V","C","R","R"];
+  const suit = (label, of, rows) => rows.map((r,j)=>({
+    num: j===0 ? 'As' : j<10 ? ['','II','III','IIII','V','VI','VII','VIII','VIIII','X'][j] : ['Va','Ca','Re','Ro'][j-10],
+    name: `${suitNames[j]} ${of}`, droit: r[0], inverse: r[1]
+  }));
+
+  const refLists = {
+    "Tarot": {
+      0: {
+        intro: "Les 22 arcanes majeurs forment le cœur du tarot. Ils représentent les grandes étapes, forces et leçons de la vie. Numérotation du tarot de Marseille.",
+        unit: "arcanes",
+        cards: [
+          { num: "—",     name: "Le Mat",              droit: "Liberté, nouveau départ, spontanéité, aventure.",                 inverse: "Imprudence, errance, décisions irréfléchies." },
+          { num: "I",     name: "Le Bateleur",         droit: "Commencement, habileté, initiative, potentiel.",                  inverse: "Manipulation, manque de confiance, talents inexploités." },
+          { num: "II",    name: "La Papesse",          droit: "Intuition, savoir caché, patience, introspection.",               inverse: "Secrets, intuition bloquée, repli sur soi." },
+          { num: "III",   name: "L’Impératrice",       droit: "Créativité, fécondité, expression, abondance.",                   inverse: "Blocage créatif, dépendance, vanité." },
+          { num: "IIII",  name: "L’Empereur",          droit: "Autorité, stabilité, structure, protection.",                     inverse: "Rigidité, domination, perte de contrôle." },
+          { num: "V",     name: "Le Pape",             droit: "Tradition, transmission, conseil, spiritualité.",                 inverse: "Dogmatisme, mauvais conseil, rébellion." },
+          { num: "VI",    name: "L’Amoureux",          droit: "Choix, union, harmonie, sentiments.",                             inverse: "Indécision, désaccord, choix difficile." },
+          { num: "VII",   name: "Le Chariot",          droit: "Victoire, maîtrise, progression, détermination.",                 inverse: "Perte de direction, obstacles, agressivité." },
+          { num: "VIII",  name: "La Justice",          droit: "Équité, vérité, équilibre, responsabilité.",                      inverse: "Injustice, déséquilibre, malhonnêteté." },
+          { num: "VIIII", name: "L’Hermite",           droit: "Sagesse, recherche intérieure, prudence, solitude choisie.",      inverse: "Isolement, repli excessif, refus d’aide." },
+          { num: "X",     name: "La Roue de Fortune",  droit: "Changement, cycles, opportunité, destin.",                        inverse: "Malchance, résistance au changement, stagnation." },
+          { num: "XI",    name: "La Force",            droit: "Courage, maîtrise de soi, douceur, confiance.",                   inverse: "Doute, faiblesse, impulsivité." },
+          { num: "XII",   name: "Le Pendu",            droit: "Pause, lâcher-prise, nouveau regard, sacrifice.",                 inverse: "Blocage, attente stérile, résistance." },
+          { num: "XIII",  name: "L’Arcane sans nom",   droit: "Transformation, fin d’un cycle, renouveau.",                      inverse: "Peur du changement, stagnation, deuil difficile." },
+          { num: "XIIII", name: "Tempérance",          droit: "Équilibre, modération, guérison, patience.",                      inverse: "Excès, déséquilibre, impatience." },
+          { num: "XV",    name: "Le Diable",           droit: "Désir, attachements, passion, pouvoir.",                          inverse: "Libération, prise de conscience, chaînes brisées." },
+          { num: "XVI",   name: "La Maison Dieu",      droit: "Bouleversement, révélation soudaine, libération.",                inverse: "Crise évitée de justesse, peur du changement, crise intérieure." },
+          { num: "XVII",  name: "L’Étoile",            droit: "Espoir, inspiration, sérénité, guérison.",                        inverse: "Découragement, manque de foi, déconnexion." },
+          { num: "XVIII", name: "La Lune",             droit: "Intuition, rêves, inconscient, illusions.",                       inverse: "Confusion qui se dissipe, peurs révélées, vérité qui émerge." },
+          { num: "XVIIII",name: "Le Soleil",           droit: "Joie, réussite, clarté, vitalité.",                               inverse: "Optimisme excessif, succès retardé, manque d’éclat." },
+          { num: "XX",    name: "Le Jugement",         droit: "Renaissance, appel, bilan, éveil.",                               inverse: "Doute de soi, refus d’avancer, regrets." },
+          { num: "XXI",   name: "Le Monde",            droit: "Accomplissement, réussite, plénitude, voyage.",                   inverse: "Inachèvement, retard, manque de clôture." }
+        ]
+      },
+      1: {
+        intro: "Les Bâtons sont liés à l’élément Feu : l’énergie, l’action, la volonté, les projets et la créativité.",
+        unit: "cartes",
+        cards: suit("Bâtons","de Bâton",[
+          ["Inspiration, nouveau projet, élan créatif.",              "Retard, manque de motivation, projet avorté."],
+          ["Planification, choix d’avenir, découverte.",             "Peur de l’inconnu, mauvaise planification."],
+          ["Expansion, perspectives, premiers résultats.",           "Retards, obstacles, manque de vision."],
+          ["Célébration, stabilité, foyer heureux.",                 "Tensions familiales, instabilité, transition."],
+          ["Compétition, conflits, rivalités stimulantes.",          "Évitement du conflit, tensions internes."],
+          ["Victoire, reconnaissance, succès public.",               "Orgueil, manque de reconnaissance, chute."],
+          ["Défense, persévérance, tenir sa position.",              "Épuisement, sentiment d’être dépassé, abandon."],
+          ["Rapidité, mouvement, nouvelles qui arrivent.",           "Retards, précipitation, frustration."],
+          ["Résilience, vigilance, dernier effort.",                 "Épuisement, méfiance excessive, découragement."],
+          ["Fardeau, lourdes responsabilités, surcharge.",           "Délégation, se libérer d’un poids, épuisement."],
+          ["Enthousiasme, exploration, message prometteur.",         "Impatience, projets dispersés, mauvaise nouvelle."],
+          ["Énergie, audace, départ, aventure.",                     "Impulsivité, colère, précipitation."],
+          ["Confiance, charisme, détermination, chaleur.",           "Jalousie, exigence, manque d’assurance."],
+          ["Leadership, vision, esprit d’entreprise.",               "Autoritarisme, impulsivité, attentes démesurées."]
+        ])
+      },
+      2: {
+        intro: "Les Coupes sont liées à l’élément Eau : les émotions, l’amour, les relations et l’intuition.",
+        unit: "cartes",
+        cards: suit("Coupes","de Coupe",[
+          ["Amour naissant, émotions, intuition, compassion.",       "Émotions bloquées, vide affectif."],
+          ["Union, partenariat, attirance mutuelle.",                "Déséquilibre relationnel, rupture, malentendu."],
+          ["Amitié, célébration, communauté.",                       "Excès, commérages, isolement."],
+          ["Introspection, lassitude, occasions ignorées.",          "Nouvel intérêt, sortie de l’apathie."],
+          ["Déception, regret, perte.",                              "Acceptation, pardon, aller de l’avant."],
+          ["Nostalgie, souvenirs, innocence.",                       "Rester bloqué dans le passé, idéalisation."],
+          ["Rêves, choix multiples, illusions.",                     "Clarté, décision, retour au réel."],
+          ["Départ, quête de sens, laisser ce qui ne convient plus.","Peur de partir, stagnation, errance."],
+          ["Satisfaction, vœu exaucé, bien-être.",                   "Insatisfaction, excès, suffisance."],
+          ["Bonheur familial, harmonie, accomplissement affectif.",  "Tensions familiales, idéal brisé."],
+          ["Message affectif, sensibilité, intuition créative.",     "Immaturité émotionnelle, déception."],
+          ["Romantisme, proposition, idéalisme.",                    "Illusions, promesses vaines, humeur changeante."],
+          ["Empathie, douceur, intuition.",                          "Hypersensibilité, dépendance affective."],
+          ["Équilibre émotionnel, bienveillance, diplomatie.",       "Manipulation émotionnelle, froideur, instabilité."]
+        ])
+      },
+      3: {
+        intro: "Les Deniers sont liés à l’élément Terre : le matériel, l’argent, le travail, le corps et la stabilité.",
+        unit: "cartes",
+        cards: suit("Deniers","de Denier",[
+          ["Opportunité matérielle, prospérité, départ concret.",    "Occasion manquée, mauvaise gestion."],
+          ["Équilibre, adaptation, jongler avec les priorités.",     "Désorganisation, surcharge, difficultés financières."],
+          ["Travail d’équipe, savoir-faire, reconnaissance.",        "Manque de coopération, travail bâclé."],
+          ["Sécurité, épargne, contrôle.",                           "Avarice, peur de perdre, blocage."],
+          ["Difficultés matérielles, précarité, exclusion.",         "Rétablissement, aide reçue, sortie de crise."],
+          ["Générosité, partage, équilibre entre donner et recevoir.","Dettes, dépendance, générosité intéressée."],
+          ["Patience, investissement, évaluation.",                  "Impatience, efforts sans résultat."],
+          ["Apprentissage, application, maîtrise d’un métier.",      "Perfectionnisme, ennui, manque de rigueur."],
+          ["Indépendance, confort, réussite personnelle.",           "Dépendance financière, dépenses excessives."],
+          ["Patrimoine, héritage, stabilité familiale.",             "Conflits d’héritage, pertes financières."],
+          ["Étude, projet concret, ambition.",                       "Manque de concentration, procrastination."],
+          ["Fiabilité, travail régulier, persévérance.",             "Routine, lenteur, entêtement."],
+          ["Sens pratique, générosité, confort du foyer.",           "Négligence de soi, déséquilibre travail / foyer."],
+          ["Abondance, sécurité, réussite matérielle.",              "Matérialisme, avidité, rigidité."]
+        ])
+      },
+      4: {
+        intro: "Les Épées sont liées à l’élément Air : la pensée, la vérité, les décisions, mais aussi les conflits et les épreuves.",
+        unit: "cartes",
+        cards: suit("Épées","d’Épée",[
+          ["Clarté, vérité, percée intellectuelle.",                 "Confusion, mauvaise décision, brutalité."],
+          ["Indécision, impasse, choix difficile.",                  "Trop d’informations, décision qui se débloque."],
+          ["Chagrin, rupture, douleur.",                             "Guérison, pardon, peine qui s’apaise."],
+          ["Repos, récupération, méditation.",                       "Agitation, épuisement, retour forcé à l’action."],
+          ["Conflit, défaite, victoire à tout prix.",                "Réconciliation, regrets, fin des hostilités."],
+          ["Transition, éloignement des difficultés, passage.",      "Poids émotionnels, retour en arrière."],
+          ["Ruse, stratégie, tromperie.",                            "Vérité révélée, prise de conscience, aveu."],
+          ["Restriction, sentiment d’être piégé, auto-limitation.",  "Libération, nouvelles perspectives."],
+          ["Anxiété, inquiétudes, nuits blanches.",                  "Espoir, peurs qui s’apaisent."],
+          ["Fin douloureuse, trahison, point final.",                "Rétablissement, le pire est passé, renouveau."],
+          ["Curiosité, vigilance, idées nouvelles.",                 "Médisance, précipitation, paroles blessantes."],
+          ["Ambition, action rapide, franchise.",                    "Impulsivité, agressivité, dispersion."],
+          ["Lucidité, indépendance, franchise.",                     "Froideur, amertume, jugement sévère."],
+          ["Autorité intellectuelle, vérité, justice.",              "Abus de pouvoir, manipulation, dureté."]
+        ])
+      }
+    }
+  };
+
+
+  /* ===== Runes ===== */
+  const R3 = (g, name, son, sens) => ({ num:g, name, rows:[["Son", son], ["Sens du nom", sens]] });
+  refLists["Runes"] = {
+    0: {
+      glyph: true, unit: "runes",
+      intro: "Le plus ancien système runique (env. IIe – VIIIe siècle), 24 runes réparties en trois familles de huit (ættir). Les noms sont reconstruits en proto-germanique à partir des sources plus tardives : ils sont précédés d’un astérisque. Données historiques uniquement ; les sens divinatoires sont au chapitre D-03-06.",
+      cards: [
+        R3("ᚠ","*fehu","f","bétail, richesse"),
+        R3("ᚢ","*ūruz","u","aurochs"),
+        R3("ᚦ","*þurisaz","þ (th anglais)","géant (thurs)"),
+        R3("ᚨ","*ansuz","a","un dieu, un Ase"),
+        R3("ᚱ","*raidō","r","chevauchée, voyage"),
+        R3("ᚲ","*kaunan","k","ulcère (ou torche ; sens discuté)"),
+        R3("ᚷ","*gebō","g","don"),
+        R3("ᚹ","*wunjō","w","joie"),
+        R3("ᚺ","*hagalaz","h","grêle"),
+        R3("ᚾ","*naudiz","n","besoin, nécessité"),
+        R3("ᛁ","*īsaz","i","glace"),
+        R3("ᛃ","*jēra","j","année, bonne récolte"),
+        R3("ᛇ","*īwaz","ï (valeur discutée)","if (l’arbre)"),
+        R3("ᛈ","*perþō","p","inconnu (hypothèses : poirier, jeu de dés…)"),
+        R3("ᛉ","*algiz","z (R final)","élan ou protection (sens discuté)"),
+        R3("ᛊ","*sōwilō","s","soleil"),
+        R3("ᛏ","*tīwaz","t","le dieu Týr"),
+        R3("ᛒ","*berkanan","b","bouleau"),
+        R3("ᛖ","*ehwaz","e","cheval"),
+        R3("ᛗ","*mannaz","m","homme, être humain"),
+        R3("ᛚ","*laguz","l","eau, lac"),
+        R3("ᛜ","*ingwaz","ng","le dieu Ing"),
+        R3("ᛞ","*dagaz","d","jour"),
+        R3("ᛟ","*ōþila","o","domaine hérité, patrimoine")
+      ]
+    },
+    1: {
+      glyph: true, unit: "runes",
+      intro: "Variante utilisée en Angleterre et en Frise (env. Ve – XIe siècle). Elle ajoute des runes au Futhark ancien pour noter les sons du vieil anglais : 28 runes, jusqu’à 33 en Northumbrie. Les noms et leurs sens sont attestés, notamment par le Poème runique anglo-saxon.",
+      cards: [
+        R3("ᚠ","feoh","f","richesse, bétail"),
+        R3("ᚢ","ūr","u","aurochs"),
+        R3("ᚦ","þorn","þ (th)","épine"),
+        R3("ᚩ","ōs","o","dieu ; « bouche », source de la parole, dans le poème runique"),
+        R3("ᚱ","rād","r","chevauchée"),
+        R3("ᚳ","cēn","c (k, tch)","torche"),
+        R3("ᚷ","gyfu","g (y)","don"),
+        R3("ᚹ","wynn","w","joie"),
+        R3("ᚻ","hægl","h","grêle"),
+        R3("ᚾ","nȳd","n","besoin, détresse"),
+        R3("ᛁ","īs","i","glace"),
+        R3("ᛄ","gēr","j (y)","année, récolte"),
+        R3("ᛇ","ēoh","ēo / ï","if"),
+        R3("ᛈ","peorð","p","inconnu (sens discuté)"),
+        R3("ᛉ","eolh","x","laîche ou élan (sens discuté)"),
+        R3("ᛋ","sigel","s","soleil"),
+        R3("ᛏ","tīr","t","gloire, signe (étoile) ; lié au dieu Týr"),
+        R3("ᛒ","beorc","b","bouleau (ou peuplier)"),
+        R3("ᛖ","eoh","e","cheval"),
+        R3("ᛗ","mann","m","homme"),
+        R3("ᛚ","lagu","l","eau, mer"),
+        R3("ᛝ","ing","ng","Ing, héros ou dieu"),
+        R3("ᛟ","ēþel","œ","domaine, terre natale"),
+        R3("ᛞ","dæg","d","jour"),
+        R3("ᚪ","āc","a","chêne"),
+        R3("ᚫ","æsc","æ","frêne"),
+        R3("ᚣ","ȳr","y","arc (sens discuté)"),
+        R3("ᛡ","īor","io","animal aquatique : castor ou anguille (sens discuté)"),
+        R3("ᛠ","ēar","ea","terre, tombe"),
+        R3("ᛢ","cweorð","q (kw)","inconnu — rune additionnelle de Northumbrie"),
+        R3("ᛣ","calc","k","calice ou chaussure — rune additionnelle de Northumbrie"),
+        R3("ᚸ","gār","g","lance — rune additionnelle de Northumbrie"),
+        R3("ᛥ","stān","st","pierre — rune additionnelle de Northumbrie")
+      ]
+    },
+    2: {
+      glyph: true, unit: "runes",
+      intro: "Système de l’époque viking en Scandinavie (env. VIIIe – XIe siècle). Réduit à 16 runes, chacune note plusieurs sons. Il existe une forme « à longues branches » (danoise, montrée ici) et une forme « à rameaux courts » (suédo-norvégienne). Les sens viennent des poèmes runiques norvégien et islandais.",
+      cards: [
+        R3("ᚠ","fé","f, v","richesse, bétail"),
+        R3("ᚢ","úr","u, o, v, w","scorie (poème norvégien) ; bruine (poème islandais)"),
+        R3("ᚦ","þurs","þ, ð","géant"),
+        R3("ᚬ","óss","ą, o","dieu, Ase ; embouchure de rivière (poème norvégien)"),
+        R3("ᚱ","reið","r","chevauchée"),
+        R3("ᚴ","kaun","k, g","ulcère, plaie"),
+        R3("ᚼ","hagall","h","grêle"),
+        R3("ᚾ","nauðr","n","besoin, contrainte"),
+        R3("ᛁ","íss","i, e","glace"),
+        R3("ᛅ","ár","a, æ","année, abondance"),
+        R3("ᛋ","sól","s","soleil"),
+        R3("ᛏ","Týr","t, d","le dieu Týr"),
+        R3("ᛒ","bjarkan","b, p","bouleau"),
+        R3("ᛘ","maðr","m","homme"),
+        R3("ᛚ","lögr","l","eau, mer"),
+        R3("ᛦ","ýr","R (r final)","if")
+      ]
+    },
+    3: {
+      glyph: true, unit: "runes",
+      intro: "Au Moyen Âge (pleinement formé au début du XIIIe siècle), le Futhark récent est complété par des runes « pointées » (stungnar rúnir) pour correspondre à l’alphabet latin. Les runes sont alors souvent classées dans l’ordre latin, comme ici. Ce sont des lettres : leur sens est leur valeur sonore.",
+      cards: [
+        { num:"ᛆ", name:"a", rows:[["Origine","rune de base ár"]] },
+        { num:"ᛒ", name:"b", rows:[["Origine","rune de base bjarkan"]] },
+        { num:"ᛍ", name:"c", rows:[["Origine","forme rare, empruntée pour la lettre latine c"]] },
+        { num:"ᛑ", name:"d", rows:[["Origine","týr pointée"]] },
+        { num:"ᛂ", name:"e", rows:[["Origine","íss pointée"]] },
+        { num:"ᚠ", name:"f", rows:[["Origine","rune de base fé"]] },
+        { num:"ᚵ", name:"g", rows:[["Origine","kaun pointée"]] },
+        { num:"ᚼ", name:"h", rows:[["Origine","rune de base hagall"]] },
+        { num:"ᛁ", name:"i", rows:[["Origine","rune de base íss"]] },
+        { num:"ᚴ", name:"k", rows:[["Origine","rune de base kaun"]] },
+        { num:"ᛚ", name:"l", rows:[["Origine","rune de base lögr"]] },
+        { num:"ᛘ", name:"m", rows:[["Origine","rune de base maðr"]] },
+        { num:"ᚿ", name:"n", rows:[["Origine","rune de base nauðr (forme courte)"]] },
+        { num:"ᚮ", name:"o", rows:[["Origine","dérivée de óss"]] },
+        { num:"ᛔ", name:"p", rows:[["Origine","bjarkan pointée"]] },
+        { num:"ᛩ", name:"q", rows:[["Origine","forme rare, pour la lettre latine q"]] },
+        { num:"ᚱ", name:"r", rows:[["Origine","rune de base reið"]] },
+        { num:"ᛌ", name:"s", rows:[["Origine","rune de base sól (forme courte)"]] },
+        { num:"ᛏ", name:"t", rows:[["Origine","rune de base týr"]] },
+        { num:"ᚢ", name:"u", rows:[["Origine","rune de base úr"]] },
+        { num:"ᚡ", name:"v", rows:[["Origine","fé pointée"]] },
+        { num:"ᛪ", name:"x", rows:[["Origine","forme rare, pour la lettre latine x"]] },
+        { num:"ᛦ", name:"y", rows:[["Origine","rune de base ýr ; ᚤ (úr pointée) note aussi y / ø"]] },
+        { num:"ᛎ", name:"z", rows:[["Origine","forme rare, pour la lettre latine z"]] },
+        { num:"ᚦ", name:"þ", rows:[["Origine","rune de base þurs"]] },
+        { num:"ᚧ", name:"ð", rows:[["Origine","þurs pointée"]] },
+        { num:"ᛅ", name:"æ", rows:[["Origine","forme à longues branches de ár"]] },
+        { num:"ᚯ", name:"ø", rows:[["Origine","dérivée de óss"]] }
+      ]
+    },
+    4: {
+      glyph: true, unit: "repères",
+      intro: "Les runes dalécarliennes sont le dernier usage vivant de l’écriture runique. Leurs formes varient selon les villages et les époques, et elles ne sont pas encodées dans Unicode : ce chapitre présente donc le système plutôt qu’un tableau de signes.",
+      cards: [
+        { num:"✦", name:"Région", rows:[["", "La province de Dalarna (Dalécarlie), en Suède, surtout autour d’Älvdalen : on l’a appelée « le dernier bastion de l’écriture germanique »."]] },
+        { num:"✦", name:"Période", rows:[["", "De la fin du XVIe siècle au XXe siècle. La plus ancienne inscription datée (1596) se trouve sur un bol du village d’Åsen ; la dernière personne connue pour les utiliser est morte en 1980."]] },
+        { num:"✦", name:"Origine", rows:[["", "Elles dérivent des runes médiévales. Au départ presque entièrement runique, l’inventaire intègre au fil des siècles de plus en plus de lettres latines, jusqu’à ce que presque toutes les runes soient remplacées."]] },
+        { num:"✦", name:"Langue notée", rows:[["", "Principalement le suédois, écrit par des locuteurs de l’elfdalien (övdalien), la langue locale."]] },
+        { num:"✦", name:"Ordre des signes", rows:[["", "Un alphabet gravé vers 1596, découvert en 2014, range les runes dans l’ordre latin (A, B, C…) et non dans l’ordre traditionnel du futhark."]] },
+        { num:"✦", name:"Supports", rows:[["", "Plus de 200 inscriptions répertoriées : meubles, coffres de mariée, bâtiments, bols, bâtons de mesure, calendriers."]] }
+      ]
+    },
+    5: {
+      glyph: true, unit: "runes",
+      intro: "Usages ésotériques modernes : les sens ci-dessous viennent de pratiques développées surtout au XXe siècle à partir du Futhark ancien. Ils ne proviennent pas des sources historiques et varient selon les auteurs. Une rune « renversée » (tirée à l’envers) prend souvent un sens contraire ; les runes symétriques ne peuvent pas être renversées.",
+      cards: [
+        { num:"ᚠ", name:"Fehu",     rows:[["▲ Droite","Richesse, abondance, réussite matérielle.","up"],["▼ Renversée","Perte, mauvaise gestion, cupidité.","rev"]] },
+        { num:"ᚢ", name:"Uruz",     rows:[["▲ Droite","Force, vitalité, santé, endurance.","up"],["▼ Renversée","Faiblesse, maladie, occasion manquée.","rev"]] },
+        { num:"ᚦ", name:"Thurisaz", rows:[["▲ Droite","Protection, force de défense, épreuve à affronter.","up"],["▼ Renversée","Danger, impulsivité, conflit.","rev"]] },
+        { num:"ᚨ", name:"Ansuz",    rows:[["▲ Droite","Message, communication, sagesse, inspiration.","up"],["▼ Renversée","Malentendu, mauvais conseil, tromperie.","rev"]] },
+        { num:"ᚱ", name:"Raidho",   rows:[["▲ Droite","Voyage, mouvement, évolution, bon rythme.","up"],["▼ Renversée","Retard, voyage difficile, stagnation.","rev"]] },
+        { num:"ᚲ", name:"Kenaz",    rows:[["▲ Droite","Connaissance, clarté, créativité, révélation.","up"],["▼ Renversée","Perte d’inspiration, confusion, fin d’une situation.","rev"]] },
+        { num:"ᚷ", name:"Gebo",     rows:[["● Sens","Don, échange, partenariat, équilibre.","up"],["◆ Note","Rune symétrique : pas de sens renversé.",""]] },
+        { num:"ᚹ", name:"Wunjo",    rows:[["▲ Droite","Joie, harmonie, réussite.","up"],["▼ Renversée","Tristesse, isolement, frustration.","rev"]] },
+        { num:"ᚺ", name:"Hagalaz",  rows:[["● Sens","Bouleversement, épreuve imprévue, nettoyage nécessaire.","up"],["◆ Note","Rune symétrique : pas de sens renversé.",""]] },
+        { num:"ᚾ", name:"Naudiz",   rows:[["● Sens","Besoin, contrainte, patience, endurance.","up"],["◆ Note","Rune symétrique : pas de sens renversé.",""]] },
+        { num:"ᛁ", name:"Isa",      rows:[["● Sens","Blocage, attente, immobilité, introspection.","up"],["◆ Note","Rune symétrique : pas de sens renversé.",""]] },
+        { num:"ᛃ", name:"Jera",     rows:[["● Sens","Récolte, cycle, résultats mérités, patience récompensée.","up"],["◆ Note","Rune symétrique : pas de sens renversé.",""]] },
+        { num:"ᛇ", name:"Eihwaz",   rows:[["● Sens","Endurance, protection, transformation, lien entre les mondes.","up"],["◆ Note","Rune symétrique : pas de sens renversé.",""]] },
+        { num:"ᛈ", name:"Perthro",  rows:[["▲ Droite","Mystère, destin, chance, secret révélé.","up"],["▼ Renversée","Stagnation, secret mal gardé, déception.","rev"]] },
+        { num:"ᛉ", name:"Algiz",    rows:[["▲ Droite","Protection, instinct, défense spirituelle.","up"],["▼ Renversée","Vulnérabilité, danger caché, perte de protection.","rev"]] },
+        { num:"ᛊ", name:"Sowilo",   rows:[["● Sens","Succès, énergie, victoire, clarté.","up"],["◆ Note","Rune symétrique : pas de sens renversé.",""]] },
+        { num:"ᛏ", name:"Tiwaz",    rows:[["▲ Droite","Justice, courage, victoire par l’honneur.","up"],["▼ Renversée","Injustice, manque d’énergie, conflit.","rev"]] },
+        { num:"ᛒ", name:"Berkano",  rows:[["▲ Droite","Naissance, croissance, fertilité, renouveau.","up"],["▼ Renversée","Stagnation, soucis familiaux, retard.","rev"]] },
+        { num:"ᛖ", name:"Ehwaz",    rows:[["▲ Droite","Mouvement, progrès, confiance, partenariat.","up"],["▼ Renversée","Agitation, méfiance, changement brusque.","rev"]] },
+        { num:"ᛗ", name:"Mannaz",   rows:[["▲ Droite","Soi, humanité, entraide, relations.","up"],["▼ Renversée","Isolement, égoïsme, manipulation.","rev"]] },
+        { num:"ᛚ", name:"Laguz",    rows:[["▲ Droite","Intuition, émotions, flux, rêves.","up"],["▼ Renversée","Confusion, peur, mauvais jugement.","rev"]] },
+        { num:"ᛜ", name:"Ingwaz",   rows:[["● Sens","Accomplissement, fertilité, fin d’une étape, repos.","up"],["◆ Note","Rune symétrique : pas de sens renversé.",""]] },
+        { num:"ᛟ", name:"Othala",   rows:[["▲ Droite","Héritage, foyer, racines, valeurs.","up"],["▼ Renversée","Rupture familiale, perte, rigidité.","rev"]] },
+        { num:"ᛞ", name:"Dagaz",    rows:[["● Sens","Éveil, percée, transformation, nouvelle aube.","up"],["◆ Note","Rune symétrique : pas de sens renversé.",""]] },
+        { num:"◯", name:"Rune blanche (Wyrd)", rows:[["● Sens","L’inconnu, le destin encore à écrire.","up"],["◆ Note","Ajout moderne (Ralph Blum, 1982), absent des sources historiques ; beaucoup de pratiquants ne l’utilisent pas.",""]] }
+      ]
+    },
+    6: {
+      glyph: true, unit: "variantes",
+      intro: "Autres formes, usages et systèmes dérivés, historiques ou modernes.",
+      cards: [
+        { num:"ᚽ", name:"Runes à rameaux courts", rows:[["", "Variante suédo-norvégienne du Futhark récent, aux traits simplifiés, plus rapide à graver (par ex. sur la pierre de Rök)."]] },
+        { num:"✦", name:"Runes de Hälsinge", rows:[["", "Variante suédoise (Xe – XIIe siècle) presque sans traits verticaux : une sorte de sténographie runique."]] },
+        { num:"ᛀ", name:"Runes pointées", rows:[["", "Ajout d’un point à une rune pour noter un son voisin ; à l’origine de l’alphabet runique médiéval (D-03-04)."]] },
+        { num:"✦", name:"Runes liées (bindrunes)", rows:[["", "Plusieurs runes combinées en un seul signe, pour gagner de la place ; très utilisées aujourd’hui comme symboles ou talismans."]] },
+        { num:"✦", name:"Runes cryptiques", rows:[["", "Systèmes de codage (runes à rameaux, runes « de branches ») où chaque rune est désignée par sa famille (ætt) et sa position."]] },
+        { num:"✦", name:"Futhorc frison", rows:[["", "Variante du futhorc employée en Frise, proche du système anglo-saxon."]] },
+        { num:"✦", name:"Alphabet des Marcomans", rows:[["", "Liste runique transmise par des manuscrits carolingiens (IXe siècle), mêlant des formes anglo-saxonnes et continentales."]] },
+        { num:"✦", name:"Runes Armanen", rows:[["", "Système moderne de 18 runes créé par l’occultiste Guido von List (1902–1908), sans fondement historique ; plusieurs de ses signes ont ensuite été repris par l’idéologie nationale-socialiste."]] }
+      ]
+    }
+  };
+
+  // Catégories de chaque chapitre (page de droite)
+  const subcats = {
+    "Tarot": {
+      items: [
+        "Arcanes majeurs",
+        "Bâtons",
+        "Coupes",
+        "Deniers",
+        "Épées"
+      ]
+    },
+    "Runes": {
+      items: [
+        "Futhark ancien",
+        "Futhorc anglo-saxon",
+        "Futhark récent",
+        "Runes médiévales",
+        "Runes dalécarliennes",
+        "Pratiques divinatoires runiques",
+        "Autres systèmes & variantes"
+      ]
+    }
+  };
 
   const PFX = CODEX.prefix;
   const pad = n => String(n).padStart(2,'0');
