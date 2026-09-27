@@ -510,6 +510,18 @@
     .corr-k{font-size:.44rem;padding-top:1px}
   }
 
+  /* ---------- figures du corps ---------- */
+  .fig-aura{width:110px}
+  .fig-clock{width:230px}
+  .lt-fig .lbl.sm{font-size:10.5px;text-anchor:middle}
+  .lt-fig .lbl.hr{font-size:8px;text-anchor:middle;fill:var(--ink-soft)}
+  .big-glyph{font-size:4rem;line-height:1.1;color:var(--red);font-family:'Noto Serif SC','Songti SC','SimSun',serif}
+  @media (max-width:640px){
+    .fig-aura{width:60px}
+    .fig-clock{width:140px}
+    .big-glyph{font-size:2.2rem}
+  }
+
   /* ---------- outils (sauvegarde) ---------- */
   .tools{display:flex;gap:8px}
   .tool{font-family:'Cinzel',serif;font-weight:700;font-size:.72rem;letter-spacing:.08em;color:var(--gold);
@@ -866,6 +878,11 @@
 
   // Définitions de chaque chapitre (clé = titre exact ; une ligne vide = nouveau paragraphe)
   const definitions = {
+    "Énergies corporelles":
+      "Les énergies corporelles désignent, dans différentes traditions spirituelles, médicales traditionnelles et ésotériques, les forces ou principes énergétiques associés au corps humain et à son fonctionnement.\n\n" +
+      "Selon les systèmes concernés, ces énergies peuvent être décrites comme une force vitale circulant dans le corps, comme des centres ou des réseaux énergétiques, ou encore comme différents niveaux subtils associés au corps physique. Parmi les conceptions les plus connues figurent le Qi ou Ki, le Prana, les chakras, les méridiens, les corps subtils et la Kundalini.\n\n" +
+      "Ces notions ne constituent pas un système unique : elles proviennent de traditions différentes et possèdent leurs propres concepts, méthodes et interprétations. Certaines sont également réinterprétées dans l’ésotérisme moderne.\n\n" +
+      "Dans ce codex, chaque système énergétique corporel sera donc étudié selon sa tradition d’origine, ses concepts fondamentaux, sa représentation du corps, ses différents composants et les interprétations qui lui sont associées. Ces conceptions doivent être distinguées des mécanismes physiologiques établis par la science moderne.",
     "Énergies élémentaires":
       "Les énergies élémentaires désignent, dans différentes traditions ésotériques et spirituelles, les forces ou principes associés aux éléments fondamentaux de la nature. Les quatre éléments généralement concernés sont la Terre, l’Eau, l’Air et le Feu. Certains systèmes ajoutent un cinquième principe, souvent appelé Éther, ainsi que d’autres conceptions similaires.\n\n" +
       "Chaque élément est traditionnellement associé à certaines qualités symboliques. La Terre peut représenter la stabilité et la matière, l’Eau les émotions et la fluidité, l’Air le mouvement et l’intellect, tandis que le Feu est souvent associé à l’action, à la transformation et à la vitalité. Ces associations varient toutefois selon les traditions et les systèmes utilisés.\n\n" +
@@ -875,6 +892,26 @@
   const leftLists = {};
   const refLists = {};
   const subcats = {
+    "Énergies corporelles": {
+      items: [
+        "Chakras",
+        "Aura",
+        "Corps subtils",
+        "Centres énergétiques",
+        "Méridiens",
+        "Qi / Ki",
+        "Prana",
+        "Kundalini",
+        "Souffle vital",
+        "Énergie sexuelle",
+        "Énergie émotionnelle corporelle",
+        "Énergie nerveuse (au sens ésotérique ou traditionnel)",
+        "Énergie musculaire & mouvement",
+        "Énergie des organes (selon les systèmes traditionnels)",
+        "Corps énergétiques & systèmes subtils",
+        "Autres conceptions de l’énergie corporelle"
+      ]
+    },
     "Énergies élémentaires": {
       items: [
         "Feu",
@@ -1236,6 +1273,404 @@
       ]
     }
   };
+
+  // corps_text
+
+  /* ===== Pages des énergies corporelles (N-03-01 à N-03-16) ===== */
+  const SCI = t => NOTE(`<strong>Regard scientifique —</strong> ${t}`);
+  const HEAD2 = (svg, cap) => `<figure class="lt-fig el-head">${svg}${cap ? `<figcaption>${cap}</figcaption>` : ''}</figure>`;
+
+  const SVG_AURA = `<svg viewBox="0 0 140 160" class="fig-aura" aria-hidden="true">
+      <ellipse cx="70" cy="84" rx="62" ry="74" fill="none" stroke="#8e5bb5" stroke-width="1.2" opacity=".55"/>
+      <ellipse cx="70" cy="84" rx="50" ry="62" fill="none" stroke="#3a86b8" stroke-width="1.2" opacity=".6"/>
+      <ellipse cx="70" cy="84" rx="38" ry="50" fill="none" stroke="#d4a82b" stroke-width="1.4" opacity=".7"/>
+      <circle cx="70" cy="44" r="11" class="ln"/>
+      <path d="M70 55 V112 M70 66 L48 92 M70 66 L92 92 M70 112 L54 146 M70 112 L86 146" class="ln"/>
+    </svg>`;
+  const SVG_DANTIAN = `<svg viewBox="0 0 120 170" class="fig-aura" aria-hidden="true">
+      <circle cx="60" cy="22" r="13" class="ln"/>
+      <path d="M60 35 V120 M60 50 L34 84 M60 50 L86 84 M60 120 L44 162 M60 120 L76 162" class="ln dim"/>
+      <circle cx="60" cy="20" r="4.5" class="fl"/><circle cx="60" cy="60" r="5" class="fl"/><circle cx="60" cy="104" r="6.5" class="fl"/>
+      <g class="lb"><text x="96" y="23" style="text-anchor:start">shen</text><text x="96" y="63" style="text-anchor:start">qi</text><text x="96" y="107" style="text-anchor:start">jing</text></g>
+    </svg>`;
+  const SVG_CADUCEE = (()=>{
+    let a='',b='';
+    for(let y=0;y<=150;y+=3){ const x=22*Math.sin(y/150*Math.PI*3.5); a+=(y?'L':'M')+(60+x).toFixed(1)+' '+(160-y); b+=(y?'L':'M')+(60-x).toFixed(1)+' '+(160-y); }
+    return `<svg viewBox="0 0 120 170" class="fig-aura" aria-hidden="true">
+      <line x1="60" y1="8" x2="60" y2="162" stroke="#7a1a1a" stroke-width="2"/>
+      <path d="${a}" fill="none" stroke="#3a86b8" stroke-width="1.6"/>
+      <path d="${b}" fill="none" stroke="#b0302c" stroke-width="1.6"/>
+      <circle cx="60" cy="8" r="5" class="fl"/>
+      <g class="lb"><text x="24" y="168">ida</text><text x="94" y="168">pingala</text></g>
+    </svg>`;
+  })();
+  const SVG_QI = `<div class="big-glyph" aria-hidden="true">氣</div>`;
+
+  const bodyTexts = [
+    /* 01 — CHAKRAS */
+    [
+      HEAD2(SVG_CHAKRAS, "Les sept chakras du système moderne, de la Racine à la Couronne."),
+      H(1,"◎","Définition"),
+      `<p class="lt-p lettrine">Le mot sanskrit <em>cakra</em> signifie « roue ». Dans les traditions tantriques de l’Inde, les chakras sont des centres d’énergie subtile situés le long de l’axe du corps, là où se croisent les canaux d’énergie (<em>nāḍī</em>). Ils sont représentés comme des lotus dont le nombre de pétales varie.</p>`,
+      P("Chaque chakra est associé à un plan de l’existence, à un élément, à une syllabe sacrée (<em>bīja</em>) et, dans l’ésotérisme moderne, à une couleur et à des thèmes psychologiques."),
+      H(2,"✦","Composants"),
+      CORR([
+        ["1 · Mūlādhāra","racine — base de la colonne · 4 pétales · Terre · LAM"],
+        ["2 · Svādhiṣṭhāna","sacré — sous le nombril · 6 pétales · Eau · VAM"],
+        ["3 · Maṇipūra","plexus solaire · 10 pétales · Feu · RAM"],
+        ["4 · Anāhata","cœur · 12 pétales · Air · YAM"],
+        ["5 · Viśuddha","gorge · 16 pétales · Éther · HAM"],
+        ["6 · Ājñā","entre les sourcils · 2 pétales · OM"],
+        ["7 · Sahasrāra","sommet du crâne · « mille pétales »"]
+      ]),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Méditation par centre —","porter l’attention successivement sur chaque chakra, de la base vers le sommet."),
+      LI("Syllabes bīja —","chanter ou répéter intérieurement LAM, VAM, RAM, YAM, HAM, OM en se concentrant sur le centre correspondant."),
+      LI("Visualisation —","imaginer une roue ou un lotus lumineux à chaque emplacement ; les couleurs de l’arc-en-ciel sont un usage moderne."),
+      LI("Yoga —","certaines postures sont associées à des chakras (ancrage debout pour la racine, ouvertures de poitrine pour le cœur…)."),
+      LI("Bilan —","voir aussi le tirage en 7 cartes du Codex II (D-01), qui suit les chakras."),
+      H(4,"⌛","D’où viennent-ils"),
+      P("Les chakras apparaissent dans les textes tantriques hindous et bouddhistes, à partir du VIIIe siècle environ. Leur nombre varie selon les écoles (quatre, cinq, six, sept ou davantage). Le système à sept chakras vient notamment du <em>Ṣaṭ-cakra-nirūpaṇa</em> (1577), traduit en anglais par Arthur Avalon (John Woodroffe) dans <em>The Serpent Power</em> (1919)."),
+      P("La théosophie (C. W. Leadbeater, <em>The Chakras</em>, 1927) puis le New Age leur ont ajouté les couleurs de l’arc-en-ciel, des liens avec les glandes endocrines et des interprétations psychologiques qui n’existent pas dans les textes anciens."),
+      SCI("aucune structure anatomique ne correspond aux chakras. Leur rapprochement avec les plexus nerveux ou les glandes est une interprétation moderne, non démontrée.")
+    ],
+
+    /* 02 — AURA */
+    [
+      HEAD2(SVG_AURA, "L’aura, représentée comme des couches lumineuses autour du corps."),
+      H(1,"◌","Définition"),
+      `<p class="lt-p lettrine">L’aura désigne un champ lumineux ou coloré qui entourerait le corps de chaque être vivant. Pour les traditions ésotériques, elle refléterait l’état physique, émotionnel, mental et spirituel de la personne, et certaines personnes diraient la percevoir.</p>`,
+      P("Le mot vient du grec <em>aura</em>, « souffle, brise légère »."),
+      H(2,"✦","Composants"),
+      P("La théosophie décrit plusieurs couches, de la plus dense à la plus subtile :"),
+      LI("Couche éthérique —","proche du corps, liée à la vitalité physique."),
+      LI("Couche émotionnelle (astrale) —","reflet des émotions, changeante."),
+      LI("Couche mentale —","liée aux pensées et aux idées."),
+      LI("Couches spirituelles —","les plus vastes et les plus subtiles."),
+      P("Les significations courantes des couleurs (usage New Age) : rouge — énergie, passion ; orange — créativité ; jaune — intellect, joie ; vert — équilibre, guérison ; bleu — calme, expression ; violet — spiritualité ; teintes ternes — fatigue."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Exercice d’observation —","placer une personne devant un fond uni et clair, regarder le contour de sa tête avec un regard flou."),
+      LI("Bulle de lumière —","visualiser une enveloppe lumineuse autour de soi, utilisée comme protection symbolique."),
+      LI("« Nettoyage » —","douche, fumigation, passage des mains à quelques centimètres du corps, avec l’intention de se « purifier »."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les halos et nimbes lumineux autour des saints, des bouddhas et des dieux dans l’art sacré témoignent d’une idée très ancienne : la lumière émanant des êtres. La notion moderne d’aura naît avec la théosophie (C. W. Leadbeater, <em>Man Visible and Invisible</em>, 1902)."),
+      P("En 1939, Semyon Kirlian met au point une technique photographique montrant des halos autour des objets ; elle a longtemps été présentée comme une « photo de l’aura »."),
+      SCI("l’aura n’a jamais été détectée par un instrument. Les halos de la photographie Kirlian s’expliquent par un effet électrique (effet couronne) qui dépend de l’humidité et de la pression ; ceux que l’on « voit » à l’œil nu peuvent venir d’effets visuels (contraste, image rémanente).")
+    ],
+
+    /* 03 — CORPS SUBTILS */
+    [
+      H(1,"❍","Définition"),
+      `<p class="lt-p lettrine">Les corps subtils sont des « corps » non physiques qui, selon plusieurs traditions, se superposeraient au corps de chair, du plus dense au plus subtil. Ensemble, ils formeraient l’être complet : corps, souffle, émotions, pensée, conscience.</p>`,
+      H(2,"✦","Composants"),
+      P("Selon le Vedānta (Inde) :"),
+      LI("Trois corps —","le corps grossier (<em>sthūla śarīra</em>), le corps subtil (<em>sūkṣma śarīra</em>) et le corps causal (<em>kāraṇa śarīra</em>)."),
+      LI("Cinq enveloppes (koshas) —","de nourriture (<em>annamaya</em>), de souffle (<em>prāṇamaya</em>), mentale (<em>manomaya</em>), de discernement (<em>vijñānamaya</em>) et de félicité (<em>ānandamaya</em>)."),
+      P("Selon la théosophie : corps physique, éthérique, astral, mental, causal et plans supérieurs. Dans le taoïsme, on parle plutôt de trois « trésors » : l’essence (<em>jing</em>), l’énergie (<em>qi</em>) et l’esprit (<em>shen</em>)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Méditation des koshas —","traverser les enveloppes une à une : sentir le corps, puis le souffle, observer les pensées, prendre du recul, puis se reposer dans le calme."),
+      LI("Yoga nidra —","relaxation guidée qui suit souvent cette progression du corps vers la conscience."),
+      LI("Grille de lecture —","se demander à quel « niveau » se situe une difficulté : physique, énergétique, émotionnel, mental ou spirituel."),
+      H(4,"⌛","D’où viennent-ils"),
+      P("La doctrine des cinq koshas vient de la <em>Taittirīya Upaniṣad</em> (env. VIe siècle av. J.-C.). En Occident, les néoplatoniciens (Porphyre, Proclus) parlent du « véhicule de l’âme » (<em>ochēma</em>). La théosophie de H. P. Blavatsky, Annie Besant et C. W. Leadbeater (fin XIXe – début XXe siècle) systématise les corps subtils tels qu’on les connaît aujourd’hui."),
+      SCI("ces corps ne sont pas observables. Le modèle peut toutefois servir de carte symbolique pour distinguer des niveaux d’expérience (sensations, émotions, pensées).")
+    ],
+
+    /* 04 — CENTRES ÉNERGÉTIQUES */
+    [
+      HEAD2(SVG_DANTIAN, "Les trois dantian du taoïsme et ce qu’ils conservent."),
+      H(1,"⊙","Définition"),
+      `<p class="lt-p lettrine">Les centres énergétiques sont des zones du corps où l’énergie serait concentrée, conservée ou transformée. Différents des chakras, ils appartiennent surtout aux traditions chinoise et japonaise, où ils jouent un rôle central dans la méditation et les arts martiaux.</p>`,
+      H(2,"✦","Composants"),
+      LI("Dantian inférieur —","sous le nombril : réservoir de l’essence (<em>jing</em>), centre du corps et de la vitalité."),
+      LI("Dantian moyen —","au niveau de la poitrine : lié à l’énergie (<em>qi</em>) et aux émotions."),
+      LI("Dantian supérieur —","entre les sourcils : lié à l’esprit (<em>shen</em>)."),
+      LI("Hara (tanden) —","au Japon, centre vital sous le nombril, siège de la force et de la stabilité (arts martiaux, zen)."),
+      LI("Points marma —","en ayurveda, 107 points vitaux où se rencontreraient chair, vaisseaux et énergie."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Respiration abdominale —","respirer lentement en laissant le ventre se gonfler, l’attention posée sous le nombril."),
+      LI("Posture de l’arbre (zhan zhuang) —","rester debout, genoux fléchis, bras en cercle, en « remplissant » le dantian inférieur."),
+      LI("Se centrer —","dans les arts martiaux, bouger à partir du hara plutôt que des épaules."),
+      H(4,"⌛","D’où viennent-ils"),
+      P("Les dantian (« champs de cinabre ») viennent de l’alchimie intérieure taoïste (<em>neidan</em>), développée en Chine à partir de la fin de l’Antiquité et au Moyen Âge. Le hara s’est diffusé au Japon par le zen et les arts martiaux ; les points marma sont décrits dans les textes ayurvédiques (<em>Suśruta Saṃhitā</em>)."),
+      SCI("le centre de gravité du corps et la respiration diaphragmatique sont bien réels, et une bonne posture améliore l’équilibre. L’idée d’une énergie qui s’y stockerait n’est pas démontrée.")
+    ],
+
+    /* 05 — MÉRIDIENS */
+    [
+      H(1,"〰","Définition"),
+      `<p class="lt-p lettrine">En médecine traditionnelle chinoise, les méridiens (<em>jingluo</em>) sont des canaux dans lesquels circulerait le qi. Chacun est relié à un organe et jalonné de points sur lesquels on agit en acupuncture ou en massage.</p>`,
+      H(2,"✦","Composants"),
+      LI("12 méridiens principaux —","Poumon, Gros intestin, Estomac, Rate, Cœur, Intestin grêle, Vessie, Rein, Maître du cœur (Péricarde), Triple réchauffeur, Vésicule biliaire, Foie."),
+      LI("8 vaisseaux merveilleux —","dont le Vaisseau Gouverneur (<em>Du Mai</em>), le long du dos, et le Vaisseau Conception (<em>Ren Mai</em>), sur la face avant."),
+      LI("Points —","environ 360 points classiques, auxquels s’ajoutent de nombreux points « hors méridiens »."),
+      LI("Horloge circadienne —","chaque méridien aurait deux heures de « marée haute » dans la journée (voir N-03-14)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Acupression —","presser doucement un point quelques secondes à une minute, par exemple le point « Hegu » (4 GI), entre le pouce et l’index."),
+      LI("Automassage & tapotements —","suivre le trajet d’un méridien avec les mains, ou le tapoter légèrement."),
+      LI("Qigong —","mouvements lents pensés pour faire circuler le qi le long des méridiens."),
+      LI("Acupuncture —","uniquement par un praticien formé, avec des aiguilles stériles à usage unique."),
+      H(4,"⌛","D’où viennent-ils"),
+      P("Le système des méridiens est exposé dans le <em>Huangdi Neijing</em> (« Classique interne de l’Empereur jaune »), compilé vers le IIe – Ier siècle av. J.-C. En France, l’acupuncture a été popularisée dans les années 1930 par George Soulié de Morant."),
+      SCI("aucune structure anatomique correspondant aux méridiens n’a été identifiée. Pour certaines douleurs, l’acupuncture montre des effets modestes, souvent proches de ceux d’une acupuncture simulée.")
+    ],
+
+    /* 06 — QI / KI */
+    [
+      HEAD2(SVG_QI, "Le caractère 氣 (qi) : la vapeur qui s’élève au-dessus du riz."),
+      H(1,"≋","Définition"),
+      `<p class="lt-p lettrine">Le qi (气, 氣 ; <em>ki</em> en japonais, <em>gi</em> en coréen) est, dans la pensée chinoise, le souffle ou l’énergie qui constitue et anime toute chose : la matière, le vivant, le climat, l’esprit. Il est à la fois souffle, vapeur et principe d’organisation.</p>`,
+      H(2,"✦","Composants"),
+      LI("Qi originel (yuan qi) —","hérité à la naissance, conservé par les reins."),
+      LI("Qi des aliments (gu qi) —","tiré de la nourriture par la digestion."),
+      LI("Qi thoracique (zong qi) —","issu de la respiration, il anime la voix et le cœur."),
+      LI("Qi nourricier (ying qi) & qi défensif (wei qi) —","l’un nourrit l’intérieur, l’autre protège la surface du corps."),
+      LI("Déséquilibres —","vide de qi (fatigue), stagnation (blocage, douleur), qi « rebelle » (qui va dans le mauvais sens)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Qigong & taiji quan —","mouvements lents, respiration et attention pour « cultiver » le qi."),
+      LI("Arts martiaux —","le <em>ki</em> de l’aïkido, le cri <em>kiai</em> du karaté : unir souffle, intention et mouvement."),
+      LI("Reiki —","méthode japonaise (Mikao Usui, 1922) de pose des mains ; <em>rei-ki</em> signifie « énergie spirituelle »."),
+      LI("Hygiène de vie —","alimentation de saison, sommeil, respiration, selon la médecine chinoise."),
+      H(4,"⌛","D’où vient-il"),
+      P("La notion de qi est très ancienne en Chine. Mencius (IVe siècle av. J.-C.) parle de « nourrir son qi » ; le <em>Zhuangzi</em> fait de la vie une condensation du qi et de la mort sa dispersion. Le <em>Huangdi Neijing</em> en fait la base de la médecine ; le néoconfucianisme (Zhu Xi, XIIe siècle) l’oppose au principe organisateur, le <em>li</em>."),
+      SCI("le qi n’a pas été mesuré. Les bienfaits du taiji et du qigong (équilibre, souplesse, stress) sont en revanche documentés et s’expliquent par des mécanismes physiologiques connus.")
+    ],
+
+    /* 07 — PRANA */
+    [
+      H(1,"∿","Définition"),
+      `<p class="lt-p lettrine">Le prāṇa (« souffle vital » en sanskrit) est, dans les traditions indiennes, l’énergie qui anime le vivant. Il est étroitement lié à la respiration : le maîtriser, c’est maîtriser le souffle, et à travers lui le corps et l’esprit.</p>`,
+      H(2,"✦","Composants"),
+      P("Le prāṇa se divise en cinq souffles (<em>vāyu</em>) :"),
+      LI("Prāṇa —","dans la poitrine : inspiration, réception."),
+      LI("Apāna —","dans le bas-ventre : élimination, mouvement vers le bas."),
+      LI("Samāna —","au nombril : digestion, assimilation."),
+      LI("Udāna —","dans la gorge : parole, élévation."),
+      LI("Vyāna —","dans tout le corps : circulation."),
+      P("Il circulerait dans 72 000 canaux (<em>nāḍī</em>), dont trois principaux : <em>iḍā</em> (lunaire, à gauche), <em>piṅgalā</em> (solaire, à droite) et <em>suṣumnā</em> (central)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Respiration alternée (nāḍī śodhana) —","inspirer par une narine, expirer par l’autre, en alternant ; réputée équilibrante."),
+      LI("Ujjāyī —","respiration lente avec un léger resserrement de la gorge, qui produit un son doux."),
+      LI("Bhrāmarī —","expirer en émettant un bourdonnement, comme une abeille."),
+      LI("Respiration consciente —","simplement observer son souffle sans le modifier."),
+      NOTE("Prudence : arrêter en cas de vertige. Éviter les respirations rapides et forcées (comme <em>kapālabhāti</em>) en cas de grossesse, d’hypertension, de problème cardiaque ou d’épilepsie, sauf avis médical."),
+      H(4,"⌛","D’où vient-il"),
+      P("Le prāṇa est au cœur des Upaniṣad ; la <em>Praśna Upaniṣad</em> lui consacre un long développement. Les <em>Yoga Sūtra</em> de Patañjali font du <em>prāṇāyāma</em> (maîtrise du souffle) le quatrième des huit membres du yoga ; la <em>Haṭha Yoga Pradīpikā</em> (XVe siècle) en détaille les techniques."),
+      SCI("les effets de la respiration lente sur le système nerveux autonome (rythme cardiaque, stress) sont bien documentés. Le prāṇa comme énergie distincte n’a pas été mesuré.")
+    ],
+
+    /* 08 — KUNDALINI */
+    [
+      HEAD2(SVG_CADUCEE, "Iḍā et piṅgalā s’enroulent autour du canal central, que suivrait la kuṇḍalinī."),
+      H(1,"∫","Définition"),
+      `<p class="lt-p lettrine">La kuṇḍalinī (« celle qui est lovée ») est décrite comme une énergie endormie, enroulée trois tours et demi à la base de la colonne vertébrale, à la manière d’un serpent. En s’éveillant, elle monterait par le canal central à travers les chakras jusqu’au sommet du crâne, où elle s’unirait à la conscience pure.</p>`,
+      P("Dans le tantra, cette montée représente l’union de la déesse Śakti (l’énergie) et du dieu Śiva (la conscience)."),
+      H(2,"✦","Composants"),
+      LI("Kuṇḍalinī-śakti —","l’énergie elle-même, liée au chakra racine."),
+      LI("Suṣumnā —","le canal central qu’elle emprunterait."),
+      LI("Iḍā & piṅgalā —","les canaux lunaire et solaire qui s’enroulent autour."),
+      LI("Granthi —","trois « nœuds » (de Brahmā, Viṣṇu et Rudra) qu’elle devrait traverser."),
+      H(3,"☀","Comment l’utiliser"),
+      P("Traditionnellement, l’éveil de la kuṇḍalinī est un travail lent et encadré par un enseignant : postures, respiration (<em>prāṇāyāma</em>), « verrous » corporels (<em>bandha</em>), méditation et mantras. Le kundalini yoga moderne a été diffusé en Occident par Yogi Bhajan à partir de 1969."),
+      NOTE("Prudence : des expériences intenses sont rapportées (chaleur, tremblements, angoisse, troubles du sommeil). En cas de mal-être persistant, il est important d’arrêter et de consulter un professionnel de santé."),
+      H(4,"⌛","D’où vient-elle"),
+      P("La kuṇḍalinī vient des traditions tantriques śivaïtes et śākta (environ à partir du Xe siècle) et du haṭha yoga. Elle a été popularisée en Occident par <em>The Serpent Power</em> d’Arthur Avalon (1919), un séminaire de C. G. Jung (1932) et le récit autobiographique de Gopi Krishna (1967)."),
+      SCI("la kuṇḍalinī n’est pas démontrée comme énergie. Les sensations décrites peuvent recevoir des explications neurophysiologiques et psychologiques.")
+    ]
+  ];
+
+  const SVG_ORGAN_CLOCK = (()=>{
+    const org = [["Vésicule",23],["Foie",1],["Poumon",3],["Gros int.",5],["Estomac",7],["Rate",9],["Cœur",11],["Int. grêle",13],["Vessie",15],["Rein",17],["M. du cœur",19],["Tr. réch.",21]];
+    let out = `<svg viewBox="0 0 240 240" class="fig-clock" aria-hidden="true"><circle cx="120" cy="120" r="104" class="ln"/><circle cx="120" cy="120" r="58" class="ln dim"/>`;
+    org.forEach((o,j)=>{
+      const a0 = (j*30 - 90 - 15) * Math.PI/180, a1 = (j*30 - 90) * Math.PI/180;
+      out += `<line x1="${(120+58*Math.cos(a0)).toFixed(1)}" y1="${(120+58*Math.sin(a0)).toFixed(1)}" x2="${(120+104*Math.cos(a0)).toFixed(1)}" y2="${(120+104*Math.sin(a0)).toFixed(1)}" class="ln dim"/>`;
+      out += `<text x="${(120+82*Math.cos(a1)).toFixed(1)}" y="${(120+82*Math.sin(a1)+3).toFixed(1)}" class="lbl sm">${o[0]}</text>`;
+      out += `<text x="${(120+44*Math.cos(a1)).toFixed(1)}" y="${(120+44*Math.sin(a1)+3).toFixed(1)}" class="lbl hr">${o[1]}–${(o[1]+2)%24}h</text>`;
+    });
+    return out + `</svg>`;
+  })();
+
+  bodyTexts.push(
+    /* 09 — SOUFFLE VITAL */
+    [
+      H(1,"∽","Définition"),
+      `<p class="lt-p lettrine">Le souffle vital est l’une des idées les plus universelles : la vie est liée au souffle. Il anime le corps à la naissance et le quitte à la mort. Dans de nombreuses langues, un même mot désigne à la fois le souffle, le vent, la vie et l’esprit.</p>`,
+      H(2,"✦","Composants"),
+      P("Les noms du souffle selon les cultures :"),
+      CORR([
+        ["Grèce","pneuma — souffle, esprit ; psychē — âme, souffle"],
+        ["Hébreu","ruach — vent, esprit ; neshamah — souffle de vie"],
+        ["Latin","spiritus — souffle, esprit ; anima — souffle, âme"],
+        ["Arabe","nafas — souffle ; rūḥ — esprit"],
+        ["Inde","prāṇa (voir N-03-07)"],
+        ["Chine","qi (voir N-03-06)"]
+      ]),
+      P("Galien (IIe siècle) distinguait trois pneumas : naturel (le foie), vital (le cœur) et psychique (le cerveau)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Respiration lente —","environ cinq à six respirations par minute pendant quelques minutes (souvent appelée « cohérence cardiaque »)."),
+      LI("Le soupir conscient —","une longue expiration par la bouche pour relâcher une tension."),
+      LI("Chant & voix —","chanter, psalmodier, réciter : le souffle mis en forme."),
+      LI("Souffle et intention —","associer une intention à l’inspiration, un relâchement à l’expiration."),
+      H(4,"⌛","D’où vient-il"),
+      P("Dans la Genèse (2, 7), Dieu façonne l’homme et « souffle dans ses narines un souffle de vie ». La médecine grecque (Hippocrate, Galien) fait du pneuma le moteur des fonctions du corps ; les stoïciens en font le principe qui organise tout l’univers. Des idées proches existent en Inde, en Chine et dans de nombreuses cultures orales."),
+      SCI("la respiration est vitale (oxygène, gaz carbonique), et son rythme influence le système nerveux. L’idée d’un souffle vital distinct des processus physiologiques (le vitalisme) a été abandonnée par la biologie au XIXe siècle.")
+    ],
+
+    /* 10 — ÉNERGIE SEXUELLE */
+    [
+      H(1,"❦","Définition"),
+      `<p class="lt-p lettrine">Dans plusieurs traditions, l’énergie sexuelle est considérée comme une force créatrice et vitale, pas seulement liée à la reproduction. Elle pourrait être conservée, transformée ou « sublimée » en énergie spirituelle, créative ou vitale.</p>`,
+      H(2,"✦","Composants"),
+      LI("Jing (taoïsme) —","l’essence, conservée dans les reins, base de la vitalité et de la longévité."),
+      LI("Ojas (ayurveda) —","la quintessence des tissus, source de vigueur et d’immunité."),
+      LI("Brahmacharya (yoga) —","maîtrise ou canalisation de l’énergie sexuelle ; l’un des cinq préceptes des <em>Yoga Sūtra</em>."),
+      LI("Tantra —","dans certaines écoles, l’union rituelle comme voie spirituelle ; le tantra est pourtant bien plus large que la sexualité."),
+      LI("Libido & sublimation —","concepts psychanalytiques de Freud, à ne pas confondre avec une énergie physique."),
+      H(3,"☀","Comment l’utiliser"),
+      P("Les pratiques traditionnelles passent surtout par la respiration, l’attention au corps, la méditation et la maîtrise de soi. Dans une perspective actuelle, le point essentiel est ailleurs :"),
+      NOTE("Toute pratique liée à la sexualité ne concerne que des adultes pleinement consentants. Une pratique ou un « enseignant » qui impose, culpabilise, isole ou exerce une emprise est un signal d’alerte."),
+      H(4,"⌛","D’où vient-elle"),
+      P("En Chine, les « arts de la chambre à coucher » sont décrits dès la dynastie Han, dans le cadre de la recherche de longévité taoïste. En Inde, le tantra (à partir du Ve – VIIe siècle) et le yoga développent leurs propres approches. En Occident, la psychanalyse (Freud) parle de libido, et Wilhelm Reich (XXe siècle) imagine une énergie « orgone » jamais confirmée."),
+      SCI("la sexualité repose sur des mécanismes hormonaux, nerveux et psychologiques connus. L’énergie sexuelle comme substance transmissible ou transformable n’est pas démontrée.")
+    ],
+
+    /* 11 — ÉNERGIE ÉMOTIONNELLE CORPORELLE */
+    [
+      H(1,"♡","Définition"),
+      `<p class="lt-p lettrine">L’énergie émotionnelle corporelle désigne l’idée que les émotions sont des énergies qui circulent dans le corps, s’y inscrivent, s’y accumulent ou s’y bloquent. Le langage courant en garde la trace : « avoir un nœud à l’estomac », « un poids sur les épaules », « la gorge serrée ».</p>`,
+      H(2,"✦","Composants"),
+      P("En médecine traditionnelle chinoise, chaque émotion est liée à un organe :"),
+      CORR([
+        ["Colère","foie"],
+        ["Joie (excessive)","cœur"],
+        ["Soucis, rumination","rate"],
+        ["Tristesse","poumon"],
+        ["Peur","rein"]
+      ]),
+      P("Wilhelm Reich parlait d’une « cuirasse musculaire » : des tensions chroniques (mâchoire, épaules, diaphragme, ventre) qui retiendraient les émotions."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Scan corporel —","parcourir le corps avec l’attention, de la tête aux pieds, en notant où se loge une émotion."),
+      LI("Respirer dans la zone —","diriger la respiration vers une tension, puis la relâcher à l’expiration."),
+      LI("Mettre en mouvement —","marcher, secouer les bras, danser, pour « faire circuler » une émotion."),
+      LI("Exprimer —","écrire, parler, pleurer, rire : laisser l’émotion sortir plutôt que la retenir."),
+      H(4,"⌛","D’où vient-elle"),
+      P("On la retrouve dans le <em>Huangdi Neijing</em> chinois, dans la théorie des humeurs grecque, dans les chakras associés aux émotions par l’ésotérisme moderne, et au XXe siècle dans les approches « psychocorporelles » inspirées de Reich."),
+      SCI("les émotions ont bien des manifestations corporelles : rythme cardiaque, respiration, tension musculaire, hormones du stress. Des études ont même cartographié où on les ressent dans le corps (Nummenmaa et al., 2014). Le mot « énergie » est ici une image.")
+    ],
+
+    /* 12 — ÉNERGIE NERVEUSE */
+    [
+      H(1,"ϟ","Définition"),
+      `<p class="lt-p lettrine">L’« énergie nerveuse » désigne, dans les traditions anciennes et dans l’ésotérisme des XVIIIe et XIXe siècles, une force ou un fluide subtil qui circulerait dans les nerfs et animerait le corps, la sensibilité et la pensée. Cette notion est à distinguer de l’influx nerveux étudié par la médecine.</p>`,
+      H(2,"✦","Composants"),
+      LI("Esprits animaux —","fluides très subtils circulant dans les nerfs, de Galien jusqu’à Descartes (XVIIe siècle)."),
+      LI("Fluide magnétique —","le « magnétisme animal » de Mesmer (XVIIIe siècle), qui passerait d’une personne à une autre."),
+      LI("Od —","force supposée par Karl von Reichenbach (XIXe siècle)."),
+      LI("Force nerveuse —","au XIXe siècle, on pensait qu’elle pouvait s’épuiser : c’est la « neurasthénie » décrite par George Beard (1869)."),
+      LI("Nāḍī —","les canaux du yoga, parfois traduits à tort par « nerfs »."),
+      H(3,"☀","Comment l’utiliser"),
+      P("Dans les pratiques actuelles, cette idée sert surtout à parler de « nervosité » ou d’« épuisement nerveux » :"),
+      LI("Relaxation progressive —","contracter puis relâcher chaque groupe de muscles (méthode de Jacobson)."),
+      LI("Repos —","sommeil, pauses, réduction des stimulations."),
+      LI("Magnétisme —","pratique populaire de passes des mains ; à ne jamais substituer à un soin médical."),
+      H(4,"⌛","D’où vient-elle"),
+      P("De Galien (IIe siècle) à Descartes, puis Mesmer, Reichenbach et la médecine du XIXe siècle. En 1784, une commission royale (avec Franklin et Lavoisier) conclut que les effets du magnétisme animal venaient de l’imagination."),
+      SCI("l’influx nerveux est un phénomène électrochimique bien connu : Galvani découvre « l’électricité animale » en 1791, et Hodgkin et Huxley décrivent le potentiel d’action en 1952. Il ne s’agit pas d’une énergie subtile.")
+    ],
+
+    /* 13 — ÉNERGIE MUSCULAIRE & MOUVEMENT */
+    [
+      H(1,"➶","Définition"),
+      `<p class="lt-p lettrine">Dans les pratiques énergétiques, le mouvement est une façon de faire circuler, d’éveiller ou de canaliser l’énergie. Plusieurs traditions distinguent la force musculaire brute d’une « force intérieure », plus souple, issue de la coordination, de la respiration et du relâchement.</p>`,
+      H(2,"✦","Composants"),
+      LI("Li & jin —","dans les arts martiaux chinois, <em>li</em> est la force musculaire brute, <em>jin</em> la force entraînée, fluide et coordonnée."),
+      LI("Fa jin —","l’émission soudaine et explosive de cette force."),
+      LI("Song —","le relâchement actif du taiji quan, ni mou ni tendu."),
+      LI("Kiai —","le cri qui unit souffle, intention et mouvement (arts martiaux japonais)."),
+      LI("Āsana —","les postures du yoga, qui préparent le corps à la respiration et à la méditation."),
+      LI("Danse sacrée —","la ronde des derviches tourneurs (<em>samā‘</em>), les danses de transe."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Taiji quan & qigong —","mouvements lents et continus, synchronisés avec la respiration."),
+      LI("Yoga —","enchaînements de postures, en attention au souffle."),
+      LI("Marche consciente —","marcher lentement en sentant chaque appui."),
+      LI("Tension / détente —","alterner contraction et relâchement pour sentir la différence."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Des arts martiaux chinois et japonais, du haṭha yoga indien, des danses rituelles et, pour les derviches, de la confrérie soufie fondée à partir de Rûmî (XIIIe siècle)."),
+      SCI("ici, la notion scientifique existe : l’énergie musculaire vient de la dégradation du glucose et des graisses (ATP). La « force intérieure » s’explique par la technique, la posture, la coordination et le relâchement.")
+    ],
+
+    /* 14 — ÉNERGIE DES ORGANES */
+    [
+      HEAD2(SVG_ORGAN_CLOCK, "L’horloge des organes de la médecine chinoise : deux heures de « marée haute » pour chacun."),
+      H(1,"❀","Définition"),
+      `<p class="lt-p lettrine">Dans certaines médecines traditionnelles, chaque organe possède une fonction énergétique, associée à une émotion, à un élément, à une saison et à un moment de la journée. En médecine chinoise, un « organe » désigne d’ailleurs une fonction plus qu’un organe anatomique.</p>`,
+      H(2,"✦","Composants"),
+      P("En médecine chinoise, les organes « pleins » (<em>zang</em>) et leurs correspondances selon les cinq phases :"),
+      CORR([
+        ["Foie","Bois · colère · printemps · vert"],
+        ["Cœur","Feu · joie · été · rouge"],
+        ["Rate","Terre · soucis · fin d’été · jaune"],
+        ["Poumon","Métal · tristesse · automne · blanc"],
+        ["Rein","Eau · peur · hiver · noir"]
+      ]),
+      P("À chacun est couplé un organe « creux » (<em>fu</em>) : vésicule biliaire, intestin grêle, estomac, gros intestin, vessie ; s’y ajoutent le Maître du cœur et le Triple réchauffeur. L’ayurveda, lui, situe les trois <em>doṣa</em> dans le corps : <em>vāta</em> dans le côlon, <em>pitta</em> dans l’intestin grêle, <em>kapha</em> dans la poitrine."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Les six sons (liu zi jue) —","exercice de qigong où chaque organe est associé à un son expiré."),
+      LI("Rythme de saison —","adapter repas, repos et activité aux saisons, selon ces correspondances."),
+      LI("Réflexion —","observer ses émotions et ses rythmes avec cette grille symbolique."),
+      NOTE("Ces correspondances ne permettent pas de poser un diagnostic : un symptôme doit toujours être vu par un médecin."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Le système des organes et des cinq phases est exposé dans le <em>Huangdi Neijing</em> (IIe – Ier siècle av. J.-C.). L’ayurveda le décrit dans la <em>Caraka Saṃhitā</em> et la <em>Suśruta Saṃhitā</em> (premiers siècles de notre ère)."),
+      SCI("les fonctions des organes sont connues par la physiologie. Les liens entre organes, émotions et saisons relèvent d’un système symbolique ; le rythme circadien existe bien, mais il ne suit pas l’horloge des méridiens.")
+    ],
+
+    /* 15 — CORPS ÉNERGÉTIQUES & SYSTÈMES SUBTILS */
+    [
+      H(1,"✺","Définition"),
+      `<p class="lt-p lettrine">Cette section rassemble les grandes « cartes » complètes du corps énergétique, qui articulent canaux, centres, couches et souffles en un seul système. Les comparer permet de voir leurs points communs, mais aussi leurs différences profondes.</p>`,
+      H(2,"✦","Composants"),
+      CORR([
+        ["Inde (yoga, tantra)","nāḍī, chakras, koshas, cinq vāyu, kuṇḍalinī"],
+        ["Chine (taoïsme, MTC)","méridiens, dantian, trois trésors (jing, qi, shen), zang-fu"],
+        ["Tibet (vajrayāna)","tsa-lung-tiglé : canaux, vents et « gouttes » ; cinq chakras"],
+        ["Japon","hara, ki, points du shiatsu"],
+        ["Théosophie","corps subtils, aura, chakras colorés"],
+        ["Kabbale","arbre de vie projeté sur le corps (Adam Kadmon)"],
+        ["New Age","synthèses mêlant chakras, aura, méridiens et cristaux"]
+      ]),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Choisir un système —","pour une pratique, rester dans un système cohérent plutôt que tout mélanger."),
+      LI("Comparer avec prudence —","les équivalences (chakra = dantian, qi = prāṇa…) sont approximatives et souvent modernes."),
+      LI("Revenir à la source —","vérifier d’où vient une correspondance : texte ancien ou ajout récent."),
+      H(4,"⌛","D’où viennent-ils"),
+      P("Chaque système est né dans sa propre tradition, avec sa langue et sa pratique. Au XXe siècle, la théosophie puis le New Age ont largement combiné ces cartes, créant des synthèses qui n’existaient dans aucune tradition prise seule."),
+      SCI("aucune de ces cartes n’a de correspondance anatomique établie. Elles peuvent néanmoins servir de supports de méditation et de réflexion.")
+    ],
+
+    /* 16 — AUTRES CONCEPTIONS */
+    [
+      H(1,"✧","Définition"),
+      `<p class="lt-p lettrine">De nombreuses cultures ont leur propre conception d’une force vitale ou sacrée présente dans le corps, les êtres et les choses. Cette section en rassemble quelques-unes, à étudier dans leur contexte culturel propre.</p>`,
+      H(2,"✦","Composants"),
+      LI("Ka (Égypte ancienne) —","force vitale et double de la personne, nourri par les offrandes."),
+      LI("Mana (Polynésie, Mélanésie) —","puissance efficace présente dans les personnes et les objets, aussi prestige."),
+      LI("Orenda (Iroquois) & wakan (Lakota) —","puissance spirituelle et sacrée présente dans le monde."),
+      LI("Àṣẹ (Yoruba) —","force qui rend les choses possibles, pouvoir de faire advenir."),
+      LI("N/om (San du Kalahari) —","énergie guérisseuse qui s’éveille pendant la danse de transe."),
+      LI("Baraka (monde arabo-musulman) —","bénédiction transmise par les saints, les lieux et les objets."),
+      LI("Vis medicatrix naturae —","la « force guérisseuse de la nature » de la médecine hippocratique."),
+      LI("Élan vital —","notion philosophique d’Henri Bergson (1907) pour décrire la dynamique créatrice de la vie."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Comprendre avant d’emprunter —","ces notions appartiennent à des peuples et à des pratiques vivantes ; les reprendre hors contexte peut les déformer."),
+      LI("Comparer —","observer ce qui est universel (le souffle, la force de vie) et ce qui est propre à chaque culture."),
+      H(4,"⌛","D’où viennent-elles"),
+      P("L’anthropologie a beaucoup étudié ces notions, notamment Marcel Mauss avec le mana (1902 – 1903). Chacune a son histoire, ses rites et ses spécialistes."),
+      SCI("ce sont des notions culturelles, religieuses ou philosophiques, non des mesures physiques.")
+    ]
+  );
+
+  subTexts["Énergies corporelles"] = Object.fromEntries(bodyTexts.map((b,k)=>[k,b]));
   const PFX = CODEX.prefix;
   const pad = n => String(n).padStart(2,'0');
   const pad3 = n => String(n).padStart(3,'0');
