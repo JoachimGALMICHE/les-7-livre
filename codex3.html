@@ -903,6 +903,11 @@
 
   // Définitions de chaque chapitre (clé = titre exact ; une ligne vide = nouveau paragraphe)
   const definitions = {
+    "Autres systèmes énergétiques":
+      "Les autres systèmes énergétiques regroupent les conceptions, modèles et pratiques énergétiques qui ne peuvent pas être rattachés de manière suffisamment claire aux catégories précédentes du codex.\n\n" +
+      "Ils peuvent provenir de traditions spirituelles, religieuses, ésotériques, folkloriques ou de systèmes contemporains développés autour de différentes conceptions de l’énergie, de la force vitale ou des interactions entre l’être humain et son environnement.\n\n" +
+      "Cette catégorie permet notamment d’accueillir les systèmes qui possèdent leur propre vocabulaire, leur propre représentation de l’énergie ou une structure particulière ne correspondant pas aux classifications corporelles, naturelles, astrales, spirituelles, émotionnelles ou psychiques.\n\n" +
+      "Dans ce codex, chaque système sera étudié selon son origine, ses concepts fondamentaux, sa conception de l’énergie, ses composants, son fonctionnement et ses pratiques associées. Les systèmes provenant de traditions différentes seront étudiés séparément afin de ne pas les présenter comme équivalents lorsqu’ils ne le sont pas.",
     "Protection & équilibrage énergétique":
       "La protection et l’équilibrage énergétique désignent, dans différentes traditions spirituelles, folkloriques et ésotériques, l’ensemble des conceptions et pratiques visant à préserver, renforcer ou rétablir l’équilibre d’une personne, d’un lieu ou d’un objet face à ce qui est considéré comme une influence énergétique, spirituelle ou symboliquement négative.\n\n" +
       "Selon les traditions, la protection peut être conçue comme une barrière, un renforcement, une purification, un éloignement ou une mise à distance d’une influence indésirable. L’équilibrage vise quant à lui à maintenir ou restaurer un état considéré comme harmonieux, notamment après une période de stress, une pratique spirituelle ou une exposition à un environnement jugé perturbant.\n\n" +
@@ -962,6 +967,24 @@
   const leftLists = {};
   const refLists = {};
   const subcats = {
+    "Autres systèmes énergétiques": {
+      items: [
+        "Systèmes énergétiques traditionnels",
+        "Systèmes énergétiques religieux",
+        "Systèmes énergétiques ésotériques",
+        "Systèmes énergétiques folkloriques",
+        "Systèmes énergétiques chamaniques",
+        "Systèmes énergétiques occidentaux",
+        "Systèmes énergétiques orientaux",
+        "Systèmes énergétiques modernes",
+        "Systèmes énergétiques contemporains",
+        "Systèmes énergétiques personnels",
+        "Systèmes énergétiques hybrides",
+        "Systèmes énergétiques sans tradition clairement identifiée",
+        "Systèmes énergétiques atypiques",
+        "Autres systèmes énergétiques"
+      ]
+    },
     "Protection & équilibrage énergétique": {
       items: [
         "Prières & invocations protectrices",
@@ -5335,6 +5358,307 @@
   );
 
   subTexts["Protection & équilibrage énergétique"] = Object.fromEntries(protTexts.map((b,k)=>[k,b]));
+
+  // autres_text
+
+  /* ===== Pages autres systèmes énergétiques (N-11-01 à N-11-14) ===== */
+  const autresTexts = [
+    /* 01 — TRADITIONNELS */
+    [
+      H(1,"☸","Définition"),
+      LEAD("Les systèmes énergétiques traditionnels sont ceux qui se sont transmis pendant des siècles au sein d’une culture, souvent liés à une médecine, à une philosophie ou à un art de vivre. Ils possèdent leurs textes, leurs maîtres et un vocabulaire précis."),
+      H(2,"✦","Exemples de systèmes"),
+      CORR([
+        ["Médecine chinoise","qi, yin-yang, cinq phases, méridiens"],
+        ["Ayurveda (Inde)","trois doṣa (vāta, pitta, kapha), prāṇa, ojas"],
+        ["Unani (monde arabo-persan)","quatre humeurs héritées de Galien, rūḥ (esprit vital)"],
+        ["Médecine tibétaine (sowa rigpa)","trois humeurs : vent, bile, phlegme"],
+        ["Kampo (Japon)","adaptation japonaise de la médecine chinoise"],
+        ["Humorisme européen","quatre humeurs d’Hippocrate et Galien"]
+      ]),
+      H(3,"◎","Concepts fondamentaux"),
+      P("Équilibre entre principes opposés, correspondances avec les saisons et les éléments, influence de l’alimentation et du mode de vie, rôle d’un souffle vital."),
+      H(4,"☀","Pratiques associées"),
+      P("Alimentation adaptée, plantes, massages, exercices (qigong, yoga), rythmes de vie. Voir les chapitres N-03 et N-08."),
+      H(5,"⌛","Origine"),
+      P("Ces systèmes sont fixés par écrit dans l’Antiquité (<em>Huangdi Neijing</em>, <em>Caraka Saṃhitā</em>, corpus hippocratique) et transmis jusqu’à aujourd’hui."),
+      SCI("certaines plantes et habitudes de ces médecines ont des effets réels, étudiés un à un ; leurs théories énergétiques relèvent de systèmes traditionnels. L’OMS reconnaît leur place culturelle, en insistant sur la sécurité et l’efficacité vérifiée.")
+    ],
+
+    /* 02 — RELIGIEUX */
+    [
+      H(1,"✟","Définition"),
+      LEAD("Les systèmes énergétiques religieux décrivent une force sacrée qui circule entre le divin et l’humain, dans le cadre d’une religion constituée : grâce, bénédiction, puissance divine, présence."),
+      H(2,"✦","Exemples de systèmes"),
+      CORR([
+        ["Christianisme","la grâce, l’Esprit saint, les sacrements"],
+        ["Judaïsme · Kabbale","les sefirot, la Shekhinah, les flux divins dans l’arbre de vie"],
+        ["Islam · soufisme","la baraka, le dhikr, les « stations » de l’âme"],
+        ["Hindouisme","śakti, prāṇa, darśan, kuṇḍalinī"],
+        ["Bouddhisme vajrayāna","canaux, vents et gouttes (tsa-lung-tiglé)"],
+        ["Shintō","kami, ki, pureté et souillure (kegare)"]
+      ]),
+      H(3,"◎","Concepts fondamentaux"),
+      P("La force vient du divin ; elle se reçoit par la prière, les rites et les sacrements ; elle se transmet par les saints, les lieux et les objets bénis."),
+      H(4,"☀","Pratiques associées"),
+      P("Prière, rites, pèlerinages, bénédictions, méditation religieuse (voir le chapitre N-06)."),
+      H(5,"⌛","Origine"),
+      P("Des textes sacrés, des théologies et des pratiques des grandes religions."),
+      REG("ces systèmes relèvent de la foi ; le mot « énergie » est souvent une traduction moderne de notions qui, dans leur tradition, désignent autre chose (la grâce n’est pas une énergie au sens ésotérique).")
+    ],
+
+    /* 03 — ÉSOTÉRIQUES */
+    [
+      H(1,"☿","Définition"),
+      LEAD("Les systèmes énergétiques ésotériques appartiennent aux courants occultes et initiatiques : ils décrivent des forces cachées, des correspondances et des plans subtils, accessibles par l’étude, l’initiation et la pratique rituelle."),
+      H(2,"✦","Exemples de systèmes"),
+      CORR([
+        ["Hermétisme","correspondances, « ce qui est en haut est comme ce qui est en bas »"],
+        ["Alchimie","soufre, mercure, sel ; transformation de soi"],
+        ["Magie cérémonielle","Golden Dawn : sphères, éléments, pentagrammes"],
+        ["Théosophie","plans, corps subtils, rayons"],
+        ["Anthroposophie","corps éthérique et astral (Rudolf Steiner)"],
+        ["Martinisme · rosicrucianisme","voies initiatiques chrétiennes ésotériques"]
+      ]),
+      H(3,"◎","Concepts fondamentaux"),
+      P("Analogie entre microcosme et macrocosme, volonté et imagination comme forces actives, hiérarchie des plans, initiation progressive."),
+      H(4,"☀","Pratiques associées"),
+      P("Rituels, visualisation, méditation, étude des symboles (voir N-08)."),
+      H(5,"⌛","Origine"),
+      P("De l’Antiquité tardive (hermétisme) à la Renaissance (Ficin, Agrippa), puis du renouveau occultiste des XIXe et XXe siècles."),
+      SCI("ces systèmes sont étudiés par l’histoire des idées (Antoine Faivre, Wouter Hanegraaff) ; leurs forces subtiles ne sont pas démontrées.")
+    ],
+
+    /* 04 — FOLKLORIQUES */
+    [
+      H(1,"❦","Définition"),
+      LEAD("Les systèmes énergétiques folkloriques sont transmis par la tradition populaire, oralement, dans les familles et les villages. Ils ne forment pas toujours une théorie cohérente, mais un ensemble de savoirs, de gestes et de croyances."),
+      H(2,"✦","Exemples de systèmes"),
+      CORR([
+        ["Mauvais œil","malocchio, nazar, mal de ojo : le regard envieux qui nuit"],
+        ["Coupeurs de feu · leveurs de maux","« secrets » transmis en France"],
+        ["Rebouteux","remettent os et nerfs « en place »"],
+        ["Hoodoo","magie populaire afro-américaine"],
+        ["Curanderismo","guérison populaire d’Amérique latine (limpia)"],
+        ["Seiðr & galdr","magie nordique, reconstruite aujourd’hui"]
+      ]),
+      H(3,"◎","Concepts fondamentaux"),
+      P("Le « don » transmis, les forces bonnes et mauvaises, l’envie qui nuit, les objets et les paroles qui protègent ou guérissent."),
+      H(4,"☀","Pratiques associées"),
+      P("Prières secrètes, gestes, plantes, objets protecteurs (voir le chapitre N-10)."),
+      H(5,"⌛","Origine"),
+      P("Des traditions rurales et populaires, souvent mêlées de religion."),
+      SCI("les ethnologues étudient ces savoirs (Jeanne Favret-Saada, <em>Les Mots, la mort, les sorts</em>, 1977, sur la sorcellerie du Bocage). Leur efficacité relève surtout du soutien, de la croyance et du lien social.")
+    ],
+
+    /* 05 — CHAMANIQUES */
+    [
+      H(1,"◍","Définition"),
+      LEAD("Les systèmes énergétiques chamaniques reposent sur la figure du chaman, intermédiaire entre le monde des humains et celui des esprits. Par la transe, il voyage dans d’autres mondes pour soigner, retrouver une âme perdue ou obtenir des connaissances."),
+      H(2,"✦","Exemples de systèmes"),
+      CORR([
+        ["Sibérie","origine du mot « chaman » (langue evenk, šaman)"],
+        ["Amazonie","chamans curanderos, plantes maîtresses"],
+        ["Amérique du Nord","traditions des « hommes-médecine » de nombreux peuples"],
+        ["Mongolie & Corée","tengrisme, mudang coréennes"],
+        ["Peuples sámi","noaidi, tambour rituel"],
+        ["Néochamanisme","« chamanisme de base » de Michael Harner (1980)"]
+      ]),
+      H(3,"◎","Concepts fondamentaux"),
+      P("Trois mondes (inférieur, intermédiaire, supérieur), esprits auxiliaires et animaux de pouvoir, âme qui peut se perdre, maladie vue comme un déséquilibre avec le monde des esprits."),
+      H(4,"☀","Pratiques associées"),
+      P("Tambour, chant, danse, voyage chamanique, recouvrement d’âme."),
+      NOTE("Certaines cérémonies utilisent des plantes psychoactives (comme l’ayahuasca) qui présentent des risques médicaux et psychiques réels, surtout avec certains médicaments ; plusieurs sont illégales en France."),
+      H(5,"⌛","Origine"),
+      P("Des sociétés de chasseurs et d’éleveurs de nombreuses régions ; le terme est popularisé par Mircea Eliade (<em>Le Chamanisme</em>, 1951)."),
+      SCI("les anthropologues étudient le chamanisme comme un système culturel complet. Le tambour régulier peut faciliter des états de conscience modifiés ; l’existence des esprits relève de la croyance.")
+    ],
+
+    /* 06 — OCCIDENTAUX */
+    [
+      H(1,"✠","Définition"),
+      LEAD("Les systèmes énergétiques occidentaux sont nés en Europe ou en Amérique du Nord : héritiers de la philosophie grecque, du christianisme, de l’hermétisme et des sciences naissantes, ils ont souvent emprunté le langage de la physique de leur époque."),
+      H(2,"✦","Exemples de systèmes"),
+      CORR([
+        ["Quatre éléments & humeurs","Empédocle, Hippocrate, Galien"],
+        ["Magnétisme animal","Mesmer, XVIIIe siècle"],
+        ["Od","Reichenbach, XIXe siècle"],
+        ["Homéopathie","« force vitale » de Hahnemann (1810)"],
+        ["Orgone","Wilhelm Reich, XXe siècle"],
+        ["Magie cérémonielle","Golden Dawn, Crowley, Dion Fortune"]
+      ]),
+      H(3,"◎","Concepts fondamentaux"),
+      P("Fluide ou force universelle, polarités, correspondances ; souvent présentés comme des « sciences » à leur époque."),
+      H(4,"☀","Pratiques associées"),
+      P("Passes magnétiques, rituels, remèdes, appareils (baquet de Mesmer, accumulateur d’orgone)."),
+      H(5,"⌛","Origine"),
+      P("De la Grèce antique à l’ère moderne, souvent en dialogue avec la médecine et la physique."),
+      SCI("le magnétisme animal (commission royale, 1784), l’od et l’orgone ont été testés et non confirmés. L’homéopathie n’a pas montré d’effet supérieur au placebo dans les grandes revues d’études (NHMRC australien, 2015) ; elle n’est plus remboursée en France depuis 2021.")
+    ],
+
+    /* 07 — ORIENTAUX */
+    [
+      H(1,"☯","Définition"),
+      LEAD("Les systèmes énergétiques orientaux viennent d’Asie (Inde, Chine, Tibet, Japon, Corée, Asie du Sud-Est). Ils sont parmi les plus élaborés et les plus diffusés en Occident, souvent sous une forme simplifiée."),
+      H(2,"✦","Exemples de systèmes"),
+      CORR([
+        ["Inde","prāṇa, nāḍī, chakras, kuṇḍalinī, doṣa"],
+        ["Chine","qi, yin-yang, wuxing, dantian, méridiens"],
+        ["Tibet","tsa-lung, chakras du vajrayāna"],
+        ["Japon","ki, hara, reiki, shiatsu"],
+        ["Corée","gi, danjeon, maeum (cœur-esprit)"],
+        ["Thaïlande","sen (lignes d’énergie du massage thaï)"]
+      ]),
+      H(3,"◎","Concepts fondamentaux"),
+      P("Souffle vital, canaux, centres, polarités, lien étroit entre respiration, corps, esprit et cosmos."),
+      H(4,"☀","Pratiques associées"),
+      P("Yoga, prāṇāyāma, qigong, tai-chi, acupuncture, massages, méditation (voir chapitres N-03 et N-08)."),
+      H(5,"⌛","Origine"),
+      P("De traditions millénaires, diffusées en Occident surtout depuis la fin du XIXe siècle (théosophie) et les années 1960 – 1970."),
+      SCI("comme le rappelle la définition de ce chapitre, ces systèmes ne sont pas équivalents entre eux : chakra, dantian et méridien appartiennent à des cartes différentes. Leurs pratiques corporelles ont des bienfaits étudiés ; leurs structures subtiles ne sont pas démontrées.")
+    ],
+
+    /* 08 — MODERNES */
+    [
+      H(1,"⚙","Définition"),
+      LEAD("Les systèmes énergétiques modernes sont nés entre la fin du XIXe et le milieu du XXe siècle, à l’époque de l’électricité, de la radio et de la psychanalyse. Ils associent souvent traditions anciennes et vocabulaire scientifique."),
+      H(2,"✦","Exemples de systèmes"),
+      CORR([
+        ["Reiki","Mikao Usui, Japon, 1922"],
+        ["Radiesthésie","pendule et baguette pour « détecter » des ondes (abbé Mermet, 1935)"],
+        ["Bioénergie","Alexander Lowen, années 1950"],
+        ["Kinésiologie appliquée","George Goodheart, 1964"],
+        ["Fleurs de Bach","Edward Bach, années 1930"],
+        ["Géobiologie","réseaux Hartmann et Curry, années 1950"]
+      ]),
+      H(3,"◎","Concepts fondamentaux"),
+      P("Ondes, vibrations, champs, rayonnements : des images empruntées à la physique de l’époque pour décrire une énergie subtile."),
+      H(4,"☀","Pratiques associées"),
+      P("Soins par les mains, tests musculaires, pendule, élixirs, analyse des lieux."),
+      H(5,"⌛","Origine"),
+      P("De la rencontre entre traditions spirituelles, médecine non conventionnelle et découvertes techniques de l’époque."),
+      SCI("les tests contrôlés de radiesthésie (expérience de Munich, 1987 – 1988) et de kinésiologie n’ont pas montré de résultats supérieurs au hasard ; les réseaux de géobiologie n’ont pas été détectés.")
+    ],
+
+    /* 09 — CONTEMPORAINS */
+    [
+      H(1,"✺","Définition"),
+      LEAD("Les systèmes énergétiques contemporains sont apparus depuis les années 1970, souvent dans le cadre du New Age, du développement personnel ou des « médecines énergétiques ». Ils évoluent vite et se diffusent par les livres, les formations et Internet."),
+      H(2,"✦","Exemples de systèmes"),
+      CORR([
+        ["EFT (« tapping »)","tapotements sur des points d’acupuncture (Gary Craig, 1995)"],
+        ["Soins « quantiques »","emprunt du vocabulaire de la physique quantique"],
+        ["Access Bars","points sur la tête (années 1990)"],
+        ["Lithothérapie moderne","pierres et vibrations"],
+        ["Channeling","messages attribués à des entités"],
+        ["« Fréquences » et sons","fréquences dites « sacrées » (432 Hz, « solfège sacré »)"]
+      ]),
+      H(3,"◎","Concepts fondamentaux"),
+      P("Vibrations, fréquences, « élévation », « ascension », libération des blocages, souvent sans référence à une tradition précise."),
+      H(4,"☀","Pratiques associées"),
+      P("Ateliers, stages, soins, méditations guidées, applications."),
+      NOTE("Se renseigner sur la formation et les tarifs ; se méfier des pratiques qui promettent de guérir des maladies graves ou déconseillent la médecine. En France, la Miviludes reçoit les signalements de dérives."),
+      H(5,"⌛","Origine"),
+      P("Du New Age, de la psychologie humaniste et de la diffusion mondiale des traditions orientales et autochtones."),
+      SCI("ces pratiques peuvent procurer détente et bien-être ; leurs explications « quantiques » ou « vibratoires » n’ont pas de rapport avec la physique. Les « fréquences de guérison » en hertz ne reposent sur aucune donnée solide.")
+    ],
+
+    /* 10 — PERSONNELS */
+    [
+      H(1,"✎","Définition"),
+      LEAD("Les systèmes énergétiques personnels sont construits par une personne pour elle-même, à partir de ses expériences, de ses lectures et de ses intuitions : sa propre carte de l’énergie, ses symboles, ses rituels."),
+      H(2,"✦","Caractéristiques"),
+      LI("Sources multiples —","emprunts à plusieurs traditions, adaptés."),
+      LI("Vocabulaire propre —","noms et symboles personnels."),
+      LI("Évolutifs —","ils changent avec l’expérience."),
+      LI("Exemple —","un grimoire personnel, qui classe et relie ses propres notions, en est une forme."),
+      H(3,"◎","Construire le sien"),
+      LI("Noter les sources —","savoir d’où vient chaque élément."),
+      LI("Rester cohérent —","éviter les contradictions internes."),
+      LI("Tester —","garder ce qui aide vraiment, abandonner le reste."),
+      LI("Rester humble —","un système personnel n’a pas à être imposé aux autres."),
+      H(4,"⌛","Origine"),
+      P("C’est la forme la plus répandue aujourd’hui de la spiritualité « à la carte » décrite par les sociologues des religions."),
+      REG("un système personnel peut avoir une vraie valeur de sens et de soutien ; il gagne à rester ouvert au doute et à la vérification.")
+    ],
+
+    /* 11 — HYBRIDES */
+    [
+      H(1,"⧉","Définition"),
+      LEAD("Les systèmes énergétiques hybrides combinent explicitement plusieurs traditions en un seul système : chakras et méridiens, reiki et anges, astrologie et pierres."),
+      H(2,"✦","Exemples de systèmes"),
+      CORR([
+        ["Théosophie","yoga indien + ésotérisme occidental"],
+        ["Reiki occidental","reiki japonais + chakras + guides"],
+        ["Wicca","folklore européen + magie cérémonielle"],
+        ["Vaudou, santería, candomblé","religions africaines + catholicisme"],
+        ["New Age","chakras, anges, cristaux, astrologie, chamanisme"]
+      ]),
+      H(3,"◎","Points d’attention"),
+      LI("Équivalences approximatives —","les correspondances entre traditions sont souvent des créations récentes."),
+      LI("Contextes perdus —","un élément sorti de sa tradition peut changer de sens."),
+      H(4,"⌛","Origine"),
+      P("Des rencontres entre cultures (commerce, colonisation, migrations, mondialisation) et des synthèses volontaires d’auteurs ésotériques."),
+      SCI("les syncrétismes sont un phénomène culturel normal et très étudié ; ils n’ont pas en eux-mêmes de valeur de preuve.")
+    ],
+
+    /* 12 — SANS TRADITION IDENTIFIÉE */
+    [
+      H(1,"?","Définition"),
+      LEAD("Certains systèmes énergétiques circulent sans que l’on sache précisément d’où ils viennent : affirmations répétées sur Internet, « secrets anciens » non sourcés, traditions dites millénaires sans trace historique."),
+      H(2,"✦","Signes caractéristiques"),
+      LI("Origine floue —","« une sagesse ancienne », « les anciens savaient »."),
+      LI("Attribution douteuse —","à l’Égypte, à l’Atlantide, aux Mayas, aux « Pléiadiens »."),
+      LI("Absence de sources —","pas de texte ancien, pas de tradition vivante identifiable."),
+      LI("Exemple —","le « calendrier des arbres celtique » (Robert Graves, 1948), souvent présenté comme ancien."),
+      H(3,"◎","Comment les étudier"),
+      LI("Chercher la première trace écrite —","livre, auteur, date."),
+      LI("Distinguer —","tradition attestée, reconstruction moderne, invention récente."),
+      LI("Les classer ici —","en attendant de mieux connaître leur origine (comme le prévoit le Codex I pour les entités inclassables)."),
+      H(4,"⌛","Origine"),
+      P("Souvent récente : livres, conférences ou sites des XXe et XXIe siècles."),
+      SCI("l’historien Eric Hobsbawm a montré que beaucoup de « traditions anciennes » sont en réalité des inventions récentes (<em>L’Invention de la tradition</em>, 1983). Une origine inconnue n’enlève pas forcément tout intérêt, mais doit être signalée.")
+    ],
+
+    /* 13 — ATYPIQUES */
+    [
+      H(1,"✷","Définition"),
+      LEAD("Les systèmes énergétiques atypiques sont ceux dont la structure, le vocabulaire ou les pratiques sortent nettement des cadres habituels : machines énergétiques, géométries sacrées, systèmes numériques, théories très personnelles."),
+      H(2,"✦","Exemples"),
+      CORR([
+        ["Géométrie sacrée","« fleur de vie », Merkaba, solides de Platon"],
+        ["Pyramides","« énergie des pyramides » (années 1970)"],
+        ["Appareils","boîtes de radionique, « bio-résonance », générateurs d’orgone"],
+        ["Eau structurée","« mémoire de l’eau », cristaux d’eau (Masaru Emoto)"],
+        ["Ondes de forme","formes géométriques censées émettre des ondes"]
+      ]),
+      H(3,"◎","Points d’attention"),
+      LI("Coût —","certains appareils sont vendus très cher."),
+      LI("Promesses —","se méfier des allégations de guérison."),
+      H(4,"⌛","Origine"),
+      P("Du XXe siècle, souvent à la frontière entre ésotérisme et pseudo-technologie (radionique d’Albert Abrams, années 1910)."),
+      SCI("la « mémoire de l’eau » (Benveniste, 1988) n’a pas été reproduite ; les cristaux d’eau d’Emoto n’ont pas été obtenus en conditions contrôlées ; les appareils de radionique ne détectent rien de mesurable.")
+    ],
+
+    /* 14 — AUTRES */
+    [
+      H(1,"✧","Définition"),
+      LEAD("Cette section accueille tout autre système énergétique ne trouvant pas sa place ailleurs : systèmes rares, régionaux, en cours d’étude, ou qui mêlent tant de catégories qu’aucune ne leur convient."),
+      H(2,"✦","Comment classer un nouveau système"),
+      LI("1 · Origine —","culture, auteur, date, textes."),
+      LI("2 · Concepts —","comment ce système conçoit-il l’énergie ?"),
+      LI("3 · Composants —","canaux, centres, éléments, entités…"),
+      LI("4 · Fonctionnement —","comment l’énergie circule ou agit."),
+      LI("5 · Pratiques —","ce que l’on fait concrètement."),
+      LI("6 · Regard critique —","ce qui est attesté, cru ou démontré."),
+      P("C’est la grille proposée par la définition de ce chapitre ; un système bien décrit pourra ensuite rejoindre une catégorie plus précise."),
+      H(3,"⌛","Origine"),
+      P("Variable selon chaque système."),
+      REG("garder pour chaque système la même exigence : décrire fidèlement, situer dans sa tradition, et distinguer croyance et preuve.")
+    ]
+  ];
+
+  subTexts["Autres systèmes énergétiques"] = Object.fromEntries(autresTexts.map((b,k)=>[k,b]));
   const PFX = CODEX.prefix;
   const pad = n => String(n).padStart(2,'0');
   const pad3 = n => String(n).padStart(3,'0');
