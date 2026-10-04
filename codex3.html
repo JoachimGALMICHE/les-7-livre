@@ -883,6 +883,11 @@
 
   // Définitions de chaque chapitre (clé = titre exact ; une ligne vide = nouveau paragraphe)
   const definitions = {
+    "Énergies spirituelles":
+      "Les énergies spirituelles désignent, dans différentes traditions religieuses, spirituelles et ésotériques, des forces ou principes considérés comme liés à la dimension spirituelle de l’existence.\n\n" +
+      "Elles peuvent être associées à la force vitale, à la conscience, à l’âme, à la présence spirituelle, à la prière, à la méditation, ou encore à certaines formes de relation avec le sacré et les entités spirituelles. Selon les traditions, elles peuvent également être décrites comme une force qui relie l’être humain au monde spirituel ou à une réalité transcendante.\n\n" +
+      "La notion d’énergie spirituelle ne possède pas de définition universelle. Des concepts provenant de traditions différentes peuvent parfois être rapprochés dans l’ésotérisme moderne, mais ils ne sont pas nécessairement équivalents dans leurs traditions d’origine.\n\n" +
+      "Dans ce codex, les énergies spirituelles seront étudiées selon leur tradition d’origine, leur nature ou fonction attribuée, leur relation avec l’être humain et le spirituel, ainsi que les différentes interprétations qui leur sont associées. Ces notions relèvent de conceptions spirituelles ou ésotériques et ne doivent pas être confondues avec les formes d’énergie définies par les sciences physiques.",
     "Énergies astrales & cosmiques":
       "Les énergies astrales et cosmiques désignent, dans différentes traditions spirituelles, astrologiques et ésotériques, les forces ou influences symboliques associées aux astres, aux cycles célestes et aux grandes structures de l’Univers.\n\n" +
       "Elles peuvent notamment être associées au Soleil, à la Lune, aux planètes, aux étoiles, aux constellations, au zodiaque ou à certains phénomènes célestes. Certaines conceptions étendent également cette notion à des principes plus vastes tels que les cycles cosmiques, l’espace, le temps, la création ou les forces primordiales.\n\n" +
@@ -909,6 +914,28 @@
   const leftLists = {};
   const refLists = {};
   const subcats = {
+    "Énergies spirituelles": {
+      items: [
+        "Force vitale",
+        "Énergie de l’âme",
+        "Énergie de la conscience",
+        "Énergie de la prière",
+        "Énergie de la méditation",
+        "Énergie du sacré",
+        "Énergie de la foi & de la croyance",
+        "Énergie de l’intention",
+        "Énergie de la présence spirituelle",
+        "Énergie des entités spirituelles",
+        "Énergie des lieux sacrés",
+        "Énergie des rites & cérémonies",
+        "Énergie de connexion & de communion",
+        "Énergie de transformation spirituelle",
+        "Énergie de guérison spirituelle",
+        "Énergie de protection spirituelle",
+        "Énergies spirituelles hybrides & mixtes",
+        "Autres énergies spirituelles"
+      ]
+    },
     "Énergies astrales & cosmiques": {
       items: [
         "Énergies solaires",
@@ -2607,6 +2634,390 @@
   );
 
   subTexts["Énergies astrales & cosmiques"] = Object.fromEntries(astralTexts.map((b,k)=>[k,b]));
+
+  // spirit_text
+
+  /* ===== Pages des énergies spirituelles (N-06-01 à N-06-18) ===== */
+  const REG = t => NOTE(`<strong>Regard critique —</strong> ${t}`);
+
+  const spiritTexts = [
+    /* 01 — FORCE VITALE */
+    [
+      H(1,"✺","Définition"),
+      LEAD("La force vitale désigne le principe qui ferait la différence entre le vivant et l’inerte : ce qui anime le corps, le fait croître, se défendre et guérir, et qui le quitte à la mort. Au sens spirituel, elle est souvent vue comme un don ou une émanation du divin."),
+      H(2,"✦","Nature & fonction attribuées"),
+      CORR([
+        ["Inde","prāṇa — souffle vital (voir N-03-07)"],
+        ["Chine","qi — souffle-énergie (voir N-03-06)"],
+        ["Grèce","pneuma, psychē — souffle, âme animatrice"],
+        ["Bible","nephesh — être vivant ; « souffle de vie » insufflé par Dieu"],
+        ["Polynésie","mana — puissance efficace"],
+        ["Philosophie","vis vitalis (vitalisme), élan vital (Bergson, 1907)"]
+      ]),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Se ressourcer —","repos, nature, souffle, prière : ce qui « recharge » la force vitale selon les traditions."),
+      LI("Gratitude pour la vie —","prendre un moment pour reconnaître le fait d’être vivant."),
+      LI("Rythme —","respecter les cycles de fatigue et de récupération plutôt que de les forcer."),
+      H(4,"⌛","Origine & tradition"),
+      P("L’idée d’un principe de vie est présente dans presque toutes les cultures. En Occident, le vitalisme (Paul-Joseph Barthez, école de Montpellier, XVIIIe siècle) défend une « force vitale » propre aux êtres vivants, jusqu’à ce que la chimie montre qu’on peut fabriquer des molécules du vivant (Wöhler, synthèse de l’urée, 1828)."),
+      REG("la biologie explique la vie par des processus chimiques et physiques, sans force vitale distincte. La notion garde un sens spirituel et philosophique : ce qui fait qu’une vie est vécue de l’intérieur.")
+    ],
+
+    /* 02 — ÂME */
+    [
+      H(1,"❂","Définition"),
+      LEAD("L’énergie de l’âme désigne la force attribuée à la part la plus intime et durable de l’être : ce qui le rend unique, ce qui pense, aime et, selon de nombreuses traditions, survit à la mort ou se réincarne."),
+      H(2,"✦","Nature & fonction attribuées"),
+      CORR([
+        ["Égypte","ka (double vital), ba (personnalité, oiseau à tête humaine), akh (esprit glorifié)"],
+        ["Platon","l’âme immortelle, en trois parties : raison, cœur, désirs"],
+        ["Judaïsme","nefesh, ruach, neshamah : trois niveaux de l’âme"],
+        ["Christianisme · islam","âme individuelle créée par Dieu, jugée après la mort (nafs, rūḥ en islam)"],
+        ["Hindouisme","ātman, le Soi, identique au Brahman selon le Vedānta"],
+        ["Bouddhisme","anattā : pas de soi permanent, mais un flux de conscience qui renaît"]
+      ]),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Introspection —","se demander ce qui, en soi, reste stable au-delà des humeurs et des rôles."),
+      LI("Écriture —","tenir un journal de ce qui donne sens et profondeur à sa vie."),
+      LI("Pratiques de l’âme —","prière, contemplation, art, musique : ce que les traditions disent « nourrir l’âme »."),
+      H(4,"⌛","Origine & tradition"),
+      P("Les rites funéraires préhistoriques suggèrent déjà une croyance en une survie après la mort. Les grandes doctrines de l’âme se fixent dans l’Antiquité (Égypte, Upaniṣad, Platon) et dans les religions abrahamiques."),
+      REG("l’existence de l’âme est une question religieuse et philosophique, qui ne peut être tranchée par l’expérience scientifique. Les neurosciences étudient la conscience et l’identité, sans se prononcer sur l’âme.")
+    ],
+
+    /* 03 — CONSCIENCE */
+    [
+      H(1,"◉","Définition"),
+      LEAD("L’énergie de la conscience désigne l’idée que la conscience (le fait d’être présent, de percevoir, de savoir que l’on sait) serait une force en elle-même, capable d’éveil, d’élargissement ou de transformation, et pour certaines traditions le fond même de la réalité."),
+      H(2,"✦","Nature & fonction attribuées"),
+      LI("Cit (Inde) —","pure conscience ; avec l’être et la félicité, elle forme <em>sat-cit-ānanda</em>, nature de l’absolu."),
+      LI("Vijñāna (bouddhisme) —","la conscience ; l’école Yogācāra décrit huit consciences, dont une « conscience-réceptacle »."),
+      LI("Éveil —","<em>bodhi</em>, <em>satori</em>, illumination : un basculement de la conscience ordinaire."),
+      LI("États modifiés —","transe, extase, rêve lucide, expériences mystiques."),
+      LI("Conscience cosmique —","voir N-05-12."),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Attention —","observer ses pensées sans s’y identifier."),
+      LI("Présence —","revenir aux sensations du moment (respiration, sons, contacts)."),
+      LI("Question du Soi —","demander « qui est conscient ? », méthode de Ramana Maharshi."),
+      H(4,"⌛","Origine & tradition"),
+      P("Des Upaniṣad et du Vedānta (Śaṅkara, VIIIe siècle), du bouddhisme, du soufisme, de la mystique chrétienne (Maître Eckhart). Au XXe siècle, la psychologie transpersonnelle (Maslow, Grof) étudie les expériences de conscience élargie."),
+      REG("la conscience est un des grands mystères de la science : on sait qu’elle dépend du cerveau, mais pas comment l’expérience vécue en naît (le « problème difficile », David Chalmers, 1995). Elle n’est pas une énergie au sens physique.")
+    ],
+
+    /* 04 — PRIÈRE */
+    [
+      H(1,"✝","Définition"),
+      LEAD("L’énergie de la prière désigne la force attribuée au fait de s’adresser au divin, aux saints, aux ancêtres ou aux esprits : demander, remercier, louer, se confier ou simplement se tenir en présence. Pour les croyants, la prière relie et transforme."),
+      H(2,"✦","Nature & fonction attribuées"),
+      CORR([
+        ["Demande","pour soi (supplication) ou pour autrui (intercession)"],
+        ["Louange & action de grâce","célébrer, remercier"],
+        ["Contemplation","prière silencieuse, sans paroles"],
+        ["Prière répétitive","chapelet, rosaire, mālā, prière de Jésus, dhikr"],
+        ["Prière liturgique","prières communes, aux heures fixées (les 5 prières de l’islam, la liturgie des Heures)"]
+      ]),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Choisir sa forme —","paroles spontanées, prière transmise par sa tradition, ou silence."),
+      LI("Moment régulier —","le matin, le soir, avant le repas : la régularité structure la pratique."),
+      LI("Support —","bougie, chapelet, icône, tapis de prière, lieu calme."),
+      LI("Prier pour autrui —","une manière de porter quelqu’un dans ses pensées."),
+      H(4,"⌛","Origine & tradition"),
+      P("La prière est présente dans toutes les religions connues. Le Notre Père, la Fatiha, le Shema Israël, les mantras védiques et les prières des peuples autochtones en sont quelques formes."),
+      REG("la prière a des effets documentés sur celui qui prie (apaisement, sentiment de soutien). Les études sur la prière d’intercession pour des malades, notamment STEP (Benson et al., 2006), n’ont pas montré d’effet sur leur guérison.")
+    ],
+
+    /* 05 — MÉDITATION */
+    [
+      H(1,"◎","Définition"),
+      LEAD("L’énergie de la méditation désigne la force attribuée aux pratiques qui entraînent l’attention et l’esprit : apaiser, clarifier, transformer le rapport à soi et au monde, et, dans les traditions spirituelles, ouvrir à l’éveil ou à la présence divine."),
+      H(2,"✦","Nature & fonction attribuées"),
+      CORR([
+        ["Concentration","fixer l’attention sur un objet (souffle, mantra, flamme)"],
+        ["Pleine conscience","observer ce qui se passe, sans juger (vipassanā, mindfulness)"],
+        ["Bienveillance","cultiver l’amour et la compassion (mettā)"],
+        ["Méditation assise","zazen (zen), shikantaza (« juste s’asseoir »)"],
+        ["Contemplation","oraison chrétienne, hésychasme, muraqaba soufie"],
+        ["Visualisation","images intérieures (tantra, bouddhisme tibétain)"]
+      ]),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Commencer court —","cinq à dix minutes par jour, au même moment."),
+      LI("Posture —","assis, dos droit sans tension, yeux mi-clos ou fermés."),
+      LI("Ancre —","revenir doucement au souffle chaque fois que l’esprit s’égare."),
+      LI("Bienveillance —","finir en souhaitant du bien à soi-même puis aux autres."),
+      NOTE("Chez certaines personnes, la méditation intensive peut faire remonter des émotions difficiles. En cas de mal-être, réduire la pratique et en parler à un professionnel."),
+      H(4,"⌛","Origine & tradition"),
+      P("Des traditions de l’Inde (Upaniṣad, yoga, bouddhisme), de Chine (taoïsme, chan), du Japon (zen), de la mystique chrétienne, juive et musulmane. Jon Kabat-Zinn crée en 1979 le programme MBSR, qui diffuse la pleine conscience laïque."),
+      REG("de nombreuses études montrent des effets modestes mais réels sur le stress, l’anxiété et l’attention. L’idée d’une énergie produite par la méditation relève, elle, des traditions spirituelles.")
+    ],
+
+    /* 06 — SACRÉ */
+    [
+      H(1,"✧","Définition"),
+      LEAD("L’énergie du sacré désigne la puissance attribuée à ce qui est « mis à part » : séparé de l’ordinaire, respecté, craint ou vénéré. Un lieu, un objet, un temps, une parole ou un être deviennent sacrés lorsqu’ils sont reconnus comme porteurs d’une présence ou d’une force qui dépasse l’humain."),
+      H(2,"✦","Nature & fonction attribuées"),
+      LI("Sacré & profane —","deux domaines distincts ; passer de l’un à l’autre demande des rites (purification, seuil, silence)."),
+      LI("Numineux —","pour Rudolf Otto (1917), le sacré est un « mystère qui fait trembler et qui fascine »."),
+      LI("Hiérophanie —","pour Mircea Eliade, toute manifestation du sacré dans le monde."),
+      LI("Tabou & mana —","ce qui est interdit et ce qui est puissant, deux faces d’une même notion en Polynésie."),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Créer un espace à part —","un coin de la maison, un autel, un objet réservé."),
+      LI("Temps sacré —","un jour, une heure, une fête où l’on change d’attitude."),
+      LI("Respect —","entrer dans un lieu sacré d’une autre tradition en suivant ses règles (tenue, silence, chaussures)."),
+      H(4,"⌛","Origine & tradition"),
+      P("Le latin <em>sacer</em> désigne ce qui appartient aux dieux. La notion a été étudiée par la sociologie (Émile Durkheim, 1912), la phénoménologie (Rudolf Otto) et l’histoire des religions (Mircea Eliade, <em>Le Sacré et le Profane</em>, 1957)."),
+      REG("le sacré est étudié comme fait social et religieux. Sa « puissance » tient à la croyance, au respect et aux rites partagés par une communauté.")
+    ],
+
+    /* 07 — FOI & CROYANCE */
+    [
+      H(1,"✟","Définition"),
+      LEAD("L’énergie de la foi et de la croyance désigne la force attribuée au fait de croire : la confiance en Dieu, en une vérité, en un chemin ou en soi. Les traditions lui prêtent le pouvoir de soutenir dans l’épreuve, de transformer et même, selon certains récits, de « déplacer les montagnes »."),
+      H(2,"✦","Nature & fonction attribuées"),
+      LI("Foi —","confiance et fidélité (latin <em>fides</em>, hébreu <em>emounah</em>, arabe <em>īmān</em>)."),
+      LI("Croyance —","adhésion à une idée, qui peut être religieuse ou non."),
+      LI("Śraddhā (Inde, bouddhisme) —","confiance qui met en mouvement sur le chemin."),
+      LI("Égrégore —","pour l’ésotérisme, force collective créée par la croyance partagée d’un groupe (voir Codex I, E-10)."),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Clarifier ses croyances —","écrire ce que l’on croit vraiment, et pourquoi."),
+      LI("Confiance —","s’appuyer sur sa foi dans les périodes difficiles."),
+      LI("Discernement —","distinguer une foi qui libère d’une croyance qui enferme ou fait peur."),
+      H(4,"⌛","Origine & tradition"),
+      P("La foi est au cœur des religions abrahamiques (« Ta foi t’a sauvé », Évangiles) et présente dans le bouddhisme et l’hindouisme (la <em>bhakti</em>, dévotion). William James, dans <em>Les Formes multiples de l’expérience religieuse</em> (1902), étudie ses effets sur la vie des croyants."),
+      REG("les attentes et les croyances ont des effets mesurables sur la perception et la santé (effet placebo, et à l’inverse effet nocebo). La foi peut aussi apporter soutien et sens ; ces effets passent par la psychologie et les liens sociaux.")
+    ],
+
+    /* 08 — INTENTION */
+    [
+      H(1,"➤","Définition"),
+      LEAD("L’énergie de l’intention désigne la force attribuée au fait de vouloir clairement quelque chose : formuler un but, l’orienter et y consacrer son attention. Dans les pratiques spirituelles et magiques, l’intention est souvent considérée comme le cœur de tout acte."),
+      H(2,"✦","Nature & fonction attribuées"),
+      LI("Niyya (islam) —","l’intention sincère, condition de validité de la prière et des actes."),
+      LI("Kavanah (judaïsme) —","l’intention et la ferveur qui donnent son sens à la prière."),
+      LI("Saṅkalpa (yoga) —","résolution formulée au début d’une pratique, notamment du yoga nidra."),
+      LI("Volonté magique —","pour l’ésotérisme moderne, la volonté dirigée produit des effets (Éliphas Lévi, Aleister Crowley)."),
+      LI("« Loi de l’attraction » —","idée New Age selon laquelle penser à quelque chose l’attire (<em>The Secret</em>, 2006)."),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Formuler clairement —","une phrase courte, au présent, positive."),
+      LI("Écrire —","noter son intention et la relire régulièrement."),
+      LI("Passer à l’action —","associer l’intention à des étapes concrètes."),
+      LI("Rituel —","allumer une bougie, poser un objet, au moment de formuler l’intention."),
+      H(4,"⌛","Origine & tradition"),
+      P("L’importance de l’intention est ancienne : « Les actes ne valent que par les intentions », dit un célèbre hadith. La « pensée positive » et la « loi de l’attraction » naissent du mouvement américain New Thought au XIXe siècle."),
+      REG("fixer des objectifs précis et se représenter les étapes (« intentions de mise en œuvre », Peter Gollwitzer) aide réellement à agir. En revanche, l’idée que la seule pensée attire les événements n’est pas démontrée, et elle peut faire culpabiliser les personnes qui traversent des malheurs.")
+    ],
+
+    /* 09 — PRÉSENCE SPIRITUELLE */
+    [
+      H(1,"☼","Définition"),
+      LEAD("L’énergie de la présence spirituelle désigne le sentiment ou la conviction qu’une présence (divine, sainte, ancestrale ou spirituelle) se trouve là, dans un lieu, un moment ou en soi. Cette présence est souvent décrite comme une paix, une chaleur, une lumière ou une plénitude."),
+      H(2,"✦","Nature & fonction attribuées"),
+      CORR([
+        ["Judaïsme","Shekhinah — la présence divine qui « réside » parmi les humains"],
+        ["Christianisme","le Saint-Esprit ; la « présence réelle » dans l’eucharistie"],
+        ["Islam","sakīna — la sérénité descendue de Dieu"],
+        ["Hindouisme","darśan — « voir et être vu » par la divinité"],
+        ["Mystique","présence de Dieu dans l’âme (Thérèse d’Avila, Frère Laurent)"]
+      ]),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Pratique de la présence —","se rappeler plusieurs fois par jour une présence aimante, comme le faisait Frère Laurent (XVIIe siècle)."),
+      LI("Lieux de silence —","églises, temples, forêts, où l’on se sent « accompagné »."),
+      LI("Accueillir sans forcer —","ce sentiment vient ou ne vient pas ; il ne se commande pas."),
+      H(4,"⌛","Origine & tradition"),
+      P("La notion de présence divine traverse les Écritures (la nuée du Temple, la Shekhinah) et la mystique de toutes les traditions."),
+      REG("le sentiment de présence est une expérience humaine fréquente et étudiée (deuil, isolement, montagne, prière). Des chercheurs l’ont même provoqué en laboratoire (Olaf Blanke, 2014). Cela n’établit ni n’exclut l’existence d’une présence réelle : c’est une question de foi.")
+    ]
+  ];
+
+  spiritTexts.push(
+    /* 10 — ENTITÉS SPIRITUELLES */
+    [
+      H(1,"❖","Définition"),
+      LEAD("L’énergie des entités spirituelles désigne la force ou l’influence attribuée aux êtres non physiques : dieux, anges, esprits, ancêtres, saints, guides. Selon les traditions, on peut les prier, les invoquer, recevoir leur protection ou, au contraire, chercher à s’en préserver. (Les entités elles-mêmes sont décrites dans le Codex I.)"),
+      H(2,"✦","Nature & fonction attribuées"),
+      LI("Bienveillantes —","anges gardiens, saints, ancêtres protecteurs, guides spirituels."),
+      LI("Neutres ou ambivalentes —","esprits de la nature, djinns, fées."),
+      LI("Malveillantes —","démons, esprits errants ou hostiles, selon les croyances."),
+      LI("Modes de relation —","prière, offrande, invocation, médiumnité, possession rituelle (vaudou, candomblé), chamanisme."),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Honorer —","se souvenir des ancêtres, allumer une bougie pour un saint ou un défunt."),
+      LI("S’informer —","se référer au Codex I pour la tradition de chaque entité."),
+      LI("Discernement —","se méfier de toute personne qui affirme parler au nom d’entités pour obtenir de l’argent, de l’obéissance ou de la peur."),
+      NOTE("Si l’on a le sentiment persistant d’être poursuivi, possédé ou parlé par des entités, et que cela fait souffrir, il est important d’en parler à un médecin : ces vécus peuvent aussi avoir des causes médicales qui se soignent."),
+      H(4,"⌛","Origine & tradition"),
+      P("Les croyances en des êtres spirituels sont universelles. L’anthropologue Edward Tylor (1871) appelait « animisme » la croyance en des esprits qui animent le monde."),
+      REG("l’existence des entités spirituelles relève de la croyance. Les sciences humaines étudient leurs rôles sociaux, rituels et psychologiques.")
+    ],
+
+    /* 11 — LIEUX SACRÉS */
+    [
+      H(1,"⛩","Définition"),
+      LEAD("L’énergie des lieux sacrés désigne la puissance spirituelle attribuée aux temples, sanctuaires, tombeaux, lieux d’apparition ou de pèlerinage. Ces lieux sont souvent bâtis sur des sites déjà vénérés et chargés de siècles de prière."),
+      H(2,"✦","Nature & fonction attribuées"),
+      CORR([
+        ["Jérusalem","sacrée pour le judaïsme, le christianisme et l’islam"],
+        ["La Mecque","centre de l’islam, lieu du pèlerinage (hajj)"],
+        ["Bodh-Gaya","lieu de l’éveil du Bouddha"],
+        ["Varanasi","ville sainte de l’hindouisme, sur le Gange"],
+        ["Lourdes, Compostelle","grands pèlerinages chrétiens"],
+        ["Ise","principal sanctuaire shintō"],
+        ["Chartres","cathédrale, labyrinthe et ancien lieu de culte"]
+      ]),
+      P("Pour les lieux sacrés naturels (montagnes, sources, forêts), voir N-04-16."),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Visiter en pèlerin —","arriver avec une intention, prendre le temps, rester en silence."),
+      LI("Respecter —","tenue, gestes, horaires des offices, photos interdites parfois."),
+      LI("Marcher un labyrinthe —","parcours méditatif, comme celui de Chartres."),
+      H(4,"⌛","Origine & tradition"),
+      P("Beaucoup de sanctuaires ont été construits sur des lieux plus anciens (sources, collines, tombes). Les pèlerinages sont attestés depuis l’Antiquité dans toutes les grandes religions."),
+      REG("l’effet des lieux sacrés passe par la beauté, l’histoire, le silence, l’architecture (lumière, acoustique) et l’attente du visiteur. Leur « charge » énergétique relève de la croyance.")
+    ],
+
+    /* 12 — RITES & CÉRÉMONIES */
+    [
+      H(1,"⚱","Définition"),
+      LEAD("L’énergie des rites et des cérémonies désigne la force attribuée aux actes symboliques accomplis selon des règles : gestes, paroles, objets, lieux et moments précis. Le rite rend présent le sacré, marque les passages de la vie et unit une communauté."),
+      H(2,"✦","Nature & fonction attribuées"),
+      LI("Rites de passage —","naissance, initiation, mariage, funérailles ; trois étapes selon Arnold van Gennep (1909) : séparation, marge, intégration."),
+      LI("Rites périodiques —","fêtes saisonnières, sabbat, dimanche, ramadan."),
+      LI("Sacrements —","signes visibles d’une grâce invisible dans le christianisme (baptême, eucharistie…)."),
+      LI("Rites de purification —","ablutions, fumigations, jeûne."),
+      LI("Cérémonies magiques —","cercle, invocation, consécration, dans l’ésotérisme occidental."),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Créer un rituel simple —","un geste, une parole, un objet, un moment, toujours les mêmes."),
+      LI("Marquer un passage —","fin d’études, déménagement, deuil : un petit rituel aide à « tourner la page »."),
+      LI("Participer —","assister aux rites de sa tradition ou, avec respect, à ceux d’autres traditions."),
+      H(4,"⌛","Origine & tradition"),
+      P("Les rites sont aussi anciens que l’humanité (sépultures préhistoriques). Ils ont été étudiés par van Gennep, Durkheim et Victor Turner, qui insiste sur la phase de « liminalité », l’entre-deux."),
+      REG("les rituels ont des effets psychologiques étudiés : ils réduisent l’anxiété, donnent un sentiment de contrôle et renforcent les liens du groupe, même lorsqu’ils sont inventés (expériences de Michael Norton et Francesca Gino, 2014).")
+    ],
+
+    /* 13 — CONNEXION & COMMUNION */
+    [
+      H(1,"∞","Définition"),
+      LEAD("L’énergie de connexion et de communion désigne la force attribuée au lien : avec le divin, avec les autres, avec la nature ou avec le Tout. Elle se vit dans la prière commune, le chant, la danse, le partage du repas sacré ou le sentiment d’unité."),
+      H(2,"✦","Nature & fonction attribuées"),
+      LI("Communion —","l’eucharistie, « communion » au corps du Christ et entre fidèles."),
+      LI("Union mystique —","<em>unio mystica</em> chrétienne, <em>fanā’</em> soufi (l’extinction en Dieu)."),
+      LI("Yoga —","littéralement « union » en sanskrit."),
+      LI("Effervescence collective —","l’énergie ressentie lors des grands rassemblements (Durkheim)."),
+      LI("Sangha, oumma, Église —","la communauté comme lieu de la vie spirituelle."),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Chanter ensemble —","chorale, chants sacrés, kirtan."),
+      LI("Méditer en groupe —","partager un moment de silence."),
+      LI("Repas partagé —","faire d’un repas un moment de gratitude et de lien."),
+      LI("Se relier à la nature —","sentir son appartenance à quelque chose de plus grand."),
+      H(4,"⌛","Origine & tradition"),
+      P("De toutes les traditions religieuses ; Émile Durkheim (<em>Les Formes élémentaires de la vie religieuse</em>, 1912) y voit l’origine même du religieux : le groupe rassemblé ressent une force qui le dépasse."),
+      REG("le chant et le mouvement synchronisés renforcent le sentiment d’appartenance et le bien-être, ce qui est documenté en psychologie sociale. L’isolement, à l’inverse, nuit à la santé.")
+    ],
+
+    /* 14 — TRANSFORMATION SPIRITUELLE */
+    [
+      H(1,"⟳","Définition"),
+      LEAD("L’énergie de transformation spirituelle désigne la force attribuée aux changements profonds de l’être : conversion, éveil, renaissance, purification, « nuit obscure ». La personne en ressort transformée dans sa manière de voir, de vivre et d’aimer."),
+      H(2,"✦","Nature & fonction attribuées"),
+      LI("Conversion —","<em>metanoia</em>, « changement d’esprit », retournement intérieur."),
+      LI("Nuit obscure —","période de sécheresse et de doute traversée par les mystiques (Jean de la Croix)."),
+      LI("Le Grand Œuvre —","en alchimie, transformation de soi en trois étapes : œuvre au noir, au blanc, au rouge."),
+      LI("Voyage du héros —","départ, épreuve, retour transformé (Joseph Campbell, 1949)."),
+      LI("Éveil —","transformation de la conscience dans les traditions orientales (voir N-06-03)."),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Reconnaître les étapes —","situer un moment de crise comme une étape possible de transformation."),
+      LI("Accompagnement —","guide spirituel, mentor, thérapeute."),
+      LI("Rituel de passage —","marquer symboliquement l’avant et l’après (voir N-06-12)."),
+      NOTE("Une « crise spirituelle » peut ressembler à une dépression ou à d’autres troubles. Si elle s’accompagne d’une grande souffrance, d’idées noires ou d’une perte de contact avec la réalité, il faut consulter rapidement."),
+      H(4,"⌛","Origine & tradition"),
+      P("Des récits de conversion (Paul, Augustin), de la mystique chrétienne et soufie, de l’alchimie, du bouddhisme et, au XXe siècle, de la psychologie de Jung (l’individuation) et de la notion d’« urgence spirituelle » (Stanislav et Christina Grof)."),
+      REG("la psychologie étudie les grands changements de vie et la « croissance post-traumatique » (Tedeschi et Calhoun) : certaines personnes ressortent transformées d’épreuves.")
+    ],
+
+    /* 15 — GUÉRISON SPIRITUELLE */
+    [
+      H(1,"✚","Définition"),
+      LEAD("L’énergie de guérison spirituelle désigne la force attribuée à des pratiques qui viseraient à soigner par des moyens spirituels : prière, imposition des mains, bénédiction, rituel, pèlerinage, soin chamanique. Elle est souvent liée à l’idée de rétablir l’harmonie de l’être entier."),
+      H(2,"✦","Nature & fonction attribuées"),
+      CORR([
+        ["Imposition des mains","christianisme, reiki, magnétisme"],
+        ["Prière & onction","prière pour les malades, sacrement des malades"],
+        ["Pèlerinage","Lourdes, sources sacrées"],
+        ["Chamanisme","recouvrement d’âme, extraction, chants"],
+        ["Guérisseurs populaires","« coupeurs de feu », « leveurs de maux » en France"],
+        ["Ruqya","récitation coranique de protection et de guérison"]
+      ]),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Soutien —","ces pratiques peuvent apporter réconfort, apaisement et espérance."),
+      LI("En complément —","elles peuvent accompagner un traitement, jamais le remplacer."),
+      NOTE("Important : ne jamais arrêter ou retarder un traitement médical au profit d’un soin spirituel. Se méfier de tout guérisseur qui promet une guérison, demande des sommes importantes, ou conseille d’abandonner la médecine."),
+      H(4,"⌛","Origine & tradition"),
+      P("La guérison par la foi est présente dans les Évangiles, les temples d’Asclépios en Grèce, le chamanisme et les traditions populaires du monde entier. Le reiki (1922) et de nombreuses « médecines énergétiques » datent du XXe siècle."),
+      REG("le soutien, l’espoir et l’attention ont de vrais effets sur le vécu de la maladie (douleur, anxiété), en partie par l’effet placebo. Les études contrôlées n’ont pas montré d’effet propre sur les maladies elles-mêmes. Parmi les très nombreuses guérisons déclarées à Lourdes, l’Église n’a reconnu que 70 miracles (chiffre de 2018).")
+    ],
+
+    /* 16 — PROTECTION SPIRITUELLE */
+    [
+      H(1,"⛨","Définition"),
+      LEAD("L’énergie de protection spirituelle désigne la force attribuée aux pratiques, objets et prières censés protéger contre le mal, le malheur, le mauvais œil ou les influences négatives. Elle répond à un besoin universel de sécurité."),
+      H(2,"✦","Nature & fonction attribuées"),
+      CORR([
+        ["Amulettes","œil de Nazar, main de Fatma (khamsa), scarabée égyptien"],
+        ["Objets religieux","croix, médaille, mezouza, tasbih"],
+        ["Prières","psaume 91, prière de saint Michel, sourates protectrices"],
+        ["Sel & encens","purification et protection des lieux"],
+        ["Seuils","fer à cheval, sel sur le seuil, symboles sur la porte"],
+        ["Visualisation","bulle ou cercle de lumière (ésotérisme moderne)"]
+      ]),
+      P("Voir aussi N-10 (protection & équilibrage énergétique)."),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Rituel de sécurité —","une prière ou un geste le soir peut apaiser et rassurer."),
+      LI("Objet symbolique —","porter un objet qui rappelle ce qui protège et soutient."),
+      LI("Équilibre —","la protection doit apaiser ; si elle entretient la peur, il faut la remettre en question."),
+      NOTE("Se méfier de toute personne qui diagnostique une « malédiction » ou un « envoûtement » et propose de l’enlever contre paiement : c’est une escroquerie fréquente."),
+      H(4,"⌛","Origine & tradition"),
+      P("Les amulettes sont parmi les plus anciens objets religieux connus (Égypte, Mésopotamie). La croyance au mauvais œil est très répandue autour de la Méditerranée et au Moyen-Orient."),
+      REG("un objet ou une prière de protection peut réellement apaiser l’anxiété (sentiment de contrôle). Aucune protection physique contre des forces invisibles n’est démontrée.")
+    ],
+
+    /* 17 — HYBRIDES & MIXTES */
+    [
+      H(1,"⧉","Définition"),
+      LEAD("Les énergies spirituelles hybrides et mixtes naissent de la rencontre de plusieurs traditions, pratiques ou notions : syncrétismes religieux, spiritualités « à la carte », mélanges ésotériques modernes."),
+      H(2,"✦","Nature & fonction attribuées"),
+      LI("Syncrétismes —","vaudou haïtien, santería cubaine, candomblé brésilien : divinités africaines et saints catholiques associés."),
+      LI("Bouddhisme et shintō —","au Japon, les deux ont longtemps été mêlés (<em>shinbutsu-shūgō</em>)."),
+      LI("Théosophie —","synthèse de traditions orientales et occidentales (fin XIXe siècle)."),
+      LI("New Age —","combinaison libre de chakras, anges, cristaux, astrologie, chamanisme."),
+      LI("Spiritualités personnelles —","« spirituel mais pas religieux »."),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Connaître les sources —","savoir d’où vient chaque élément que l’on combine."),
+      LI("Respect —","certaines pratiques sont réservées à des initiés ou à des communautés vivantes ; les emprunter hors contexte peut les dénaturer."),
+      LI("Cohérence —","construire une pratique qui ait un sens d’ensemble."),
+      H(4,"⌛","Origine & tradition"),
+      P("Les syncrétismes naissent des rencontres entre cultures (commerce, conquêtes, esclavage, migrations). Le mot « New Age » se répand dans les années 1970."),
+      REG("la sociologie des religions étudie ces recompositions (« bricolage » religieux, Danièle Hervieu-Léger). Les rapprochements entre notions de traditions différentes sont souvent approximatifs, comme le rappelle la définition de ce chapitre.")
+    ],
+
+    /* 18 — AUTRES */
+    [
+      H(1,"✧","Définition"),
+      LEAD("Cette section rassemble d’autres notions d’énergie spirituelle, moins répandues ou propres à certaines traditions."),
+      H(2,"✦","Nature & fonction attribuées"),
+      LI("Grâce —","don gratuit de Dieu (christianisme)."),
+      LI("Baraka —","bénédiction transmise par les saints, les lieux, les objets (islam, Maghreb)."),
+      LI("Darśan —","la bénédiction reçue en voyant une divinité ou un saint (hindouisme)."),
+      LI("Shaktipat —","transmission d’énergie spirituelle par un maître (hindouisme)."),
+      LI("Chi des ancêtres —","dans les religions africaines, la force transmise par la lignée."),
+      LI("Karma —","énergie des actes, qui produit leurs fruits dans cette vie ou les suivantes."),
+      LI("Énergie du don —","le don et le contre-don (Marcel Mauss) comme lien quasi sacré."),
+      H(3,"☀","Relation avec l’être humain"),
+      LI("Explorer avec curiosité —","découvrir chaque notion dans sa tradition d’origine."),
+      LI("Garder son esprit critique —","surtout face aux promesses de « transmission » payante."),
+      H(4,"⌛","Origine & tradition"),
+      P("Chacune de ces notions appartient à une tradition précise, avec ses textes, ses maîtres et ses rites."),
+      REG("ce sont des notions religieuses et philosophiques ; leur valeur se situe dans le sens qu’elles donnent à l’expérience, non dans une mesure physique.")
+    ]
+  );
+
+  subTexts["Énergies spirituelles"] = Object.fromEntries(spiritTexts.map((b,k)=>[k,b]));
   const PFX = CODEX.prefix;
   const pad = n => String(n).padStart(2,'0');
   const pad3 = n => String(n).padStart(3,'0');
