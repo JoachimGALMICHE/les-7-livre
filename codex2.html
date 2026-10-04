@@ -1442,12 +1442,19 @@
       <h2>Sommaire</h2>
       <div class="rule"></div>
       <ol class="toc cats">
-        ${chapters.map((c,i)=>`
+        ${chapters.map((c,i)=> CODEX.tocLinks === false ? `
           <li>
             <div class="cat">
               <span class="code">${PFX}-${pad(i+1)}</span>
               <span class="name">${c}</span>
             </div>
+          </li>` : `
+          <li>
+            <a class="cat has" href="#${PFX}-${pad(i+1)}" data-go="${PFX}-${pad(i+1)}">
+              <span class="code">${PFX}-${pad(i+1)}</span>
+              <span class="name">${c}</span>
+              <span class="refcount">→</span>
+            </a>
           </li>`).join('')}
       </ol>`;
 
