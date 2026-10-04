@@ -903,6 +903,12 @@
 
   // Définitions de chaque chapitre (clé = titre exact ; une ligne vide = nouveau paragraphe)
   const definitions = {
+    "Perception & sensibilité énergétique":
+      "La perception énergétique désigne, dans différentes traditions spirituelles et ésotériques, la capacité attribuée à une personne à ressentir, identifier ou interpréter des manifestations considérées comme énergétiques.\n\n" +
+      "Cette perception peut être décrite comme une sensation corporelle, une impression émotionnelle, une perception intuitive ou une représentation mentale. Selon les traditions, elle peut concerner l’énergie d’une personne, d’un lieu, d’un objet, d’un élément naturel ou d’une autre entité.\n\n" +
+      "La sensibilité énergétique désigne plus particulièrement le degré auquel une personne estime percevoir ces phénomènes. Elle peut être considérée comme naturelle, développée progressivement ou influencée par l’état physique, émotionnel et mental de la personne.\n\n" +
+      "Ces perceptions peuvent également recevoir des interprétations psychologiques ou physiologiques. Une sensation, une intuition ou une impression ne constitue donc pas nécessairement une preuve de l’existence objective d’une énergie au sens ésotérique.\n\n" +
+      "Dans ce codex, cette section présente les différentes formes de perception rapportées dans les traditions énergétiques, leurs caractéristiques et leurs interprétations. Les exercices permettant de développer ou d’explorer ces perceptions seront étudiés dans le Codex IV — Pratiques.",
     "Manipulation & maîtrise énergétique":
       "La manipulation et la maîtrise énergétiques désignent, dans différentes traditions spirituelles, martiales, médicales traditionnelles et ésotériques, l’ensemble des pratiques par lesquelles une personne chercherait à percevoir, cultiver, diriger, transformer ou protéger l’énergie, en elle-même ou autour d’elle.\n\n" +
       "Elles reposent le plus souvent sur quelques outils communs : l’attention, le souffle, la posture, le mouvement, la visualisation, l’intention et le rituel. On les retrouve notamment dans la méditation, le yoga, le qi gong, le tai-chi, le travail des chakras ou du prana, ainsi que dans de nombreuses pratiques modernes de soin, de nettoyage ou de protection énergétique.\n\n" +
@@ -951,6 +957,26 @@
   const leftLists = {};
   const refLists = {};
   const subcats = {
+    "Perception & sensibilité énergétique": {
+      items: [
+        "Perception tactile",
+        "Perception corporelle",
+        "Perception émotionnelle",
+        "Perception mentale & intuitive",
+        "Perception visuelle",
+        "Perception auditive",
+        "Perception olfactive & gustative",
+        "Perception des lieux",
+        "Perception des objets & matériaux",
+        "Perception des êtres vivants",
+        "Perception des entités & présences",
+        "Perception à distance",
+        "Sensibilité énergétique",
+        "Interprétation des perceptions",
+        "Développement de la perception",
+        "Limites & interprétations alternatives"
+      ]
+    },
     "Manipulation & maîtrise énergétique": {
       items: [
         "Méditation",
@@ -4498,6 +4524,325 @@
   );
 
   subTexts["Manipulation & maîtrise énergétique"] = Object.fromEntries(manipTexts.map((b,k)=>[k,b]));
+
+  // perc_text
+
+  /* ===== Pages perception & sensibilité énergétique (N-09-01 à N-09-16) ===== */
+  const DESC = t => `<p class="sub-intro">${t}</p>`;
+  const percTexts = [
+    /* 01 — TACTILE */
+    [
+      DESC("Sensations de chaleur, froid, pression, picotements, lourdeur, légèreté ou mouvement."),
+      H(1,"☞","Formes rapportées"),
+      LEAD("La perception tactile est la forme la plus souvent décrite dans les pratiques énergétiques. Elle passe surtout par les mains, considérées comme des « capteurs » privilégiés."),
+      CORR([
+        ["Chaleur","énergie « active », circulation, zone en demande selon les soins"],
+        ["Froid","manque, blocage, ou énergie « sortante » selon les écoles"],
+        ["Pression · densité","limite d’un champ, d’une aura, « boule d’énergie »"],
+        ["Picotements · fourmillements","circulation, « activation »"],
+        ["Lourdeur · légèreté","énergie « dense » ou « subtile »"],
+        ["Mouvement · courant","flux, vent, spirale"]
+      ]),
+      H(2,"✦","Interprétations traditionnelles"),
+      P("En reiki et en magnétisme, les sensations des mains guident l’endroit où poser les mains ; en qigong, elles indiquent la présence du qi ; dans l’ésotérisme, elles signalent la limite de l’aura."),
+      H(3,"☀","Aperçu"),
+      LI("Exercice classique —","frotter ses mains, puis les écarter et les rapprocher lentement en notant les sensations."),
+      IV("les exercices de perception tactile seront détaillés dans le Codex IV — Pratiques."),
+      H(4,"⌛","Origine"),
+      P("Du magnétisme (Mesmer, XVIIIe siècle), du qigong, du reiki et des soins par imposition des mains."),
+      SCI("ces sensations sont réelles ; elles s’expliquent par la chaleur des mains, la circulation sanguine, la sensibilité de la peau et l’attention qu’on y porte. Les tests en aveugle n’ont pas montré qu’elles détectent un champ extérieur (étude d’Emily Rosa, 1998).")
+    ],
+
+    /* 02 — CORPORELLE */
+    [
+      DESC("Sensations internes ou localisées dans différentes parties du corps."),
+      H(1,"⚲","Formes rapportées"),
+      LEAD("La perception corporelle concerne ce qui est ressenti à l’intérieur du corps : chaleur dans le ventre, ouverture dans la poitrine, frisson le long de la colonne, pression entre les sourcils, vibration dans tout le corps."),
+      LI("Zones des chakras —","sensations attribuées à l’activité d’un centre."),
+      LI("Le long de la colonne —","chaleur ou courant, parfois interprétés comme kuṇḍalinī."),
+      LI("Dantian —","chaleur ou densité dans le bas-ventre en qigong."),
+      LI("Corps entier —","vibration, frissons, sensation d’expansion."),
+      H(2,"✦","Interprétations traditionnelles"),
+      P("Ces sensations sont souvent lues comme le signe que l’énergie circule, qu’un blocage se libère ou qu’un centre s’ouvre."),
+      H(3,"☀","Aperçu"),
+      LI("Scan corporel —","parcourir le corps avec l’attention en notant les zones de sensation."),
+      IV("les exercices de perception corporelle seront détaillés dans le Codex IV — Pratiques."),
+      H(4,"⌛","Origine"),
+      P("Du yoga, du qigong, de l’alchimie intérieure taoïste et des approches psychocorporelles modernes."),
+      SCI("la perception de l’intérieur du corps s’appelle l’intéroception ; elle varie selon les personnes et s’entraîne. Les sensations ressenties pendant la relaxation viennent souvent de la circulation sanguine, des muscles qui se relâchent et de l’attention.")
+    ],
+
+    /* 03 — ÉMOTIONNELLE */
+    [
+      DESC("Impressions ou changements émotionnels attribués à une énergie, un lieu ou une présence."),
+      H(1,"♡","Formes rapportées"),
+      LEAD("La perception émotionnelle désigne le fait de ressentir une émotion qui semble venir d’ailleurs : tristesse en entrant dans une pièce, paix dans un sanctuaire, malaise auprès d’une personne, joie soudaine dans la nature."),
+      LI("Empathie énergétique —","ressentir les émotions d’autrui comme les siennes."),
+      LI("Ambiance —","un lieu « triste », « lourd » ou « lumineux »."),
+      LI("Présence —","sentiment de paix ou d’inquiétude attribué à une présence."),
+      H(2,"✦","Interprétations traditionnelles"),
+      P("Dans l’ésotérisme moderne, on parle de personnes « empathes » qui capteraient les émotions des autres ; le corps astral serait le lieu de ces échanges (voir N-03-03)."),
+      H(3,"☀","Aperçu"),
+      LI("Distinguer —","se demander : « cette émotion est-elle à moi ? qu’est-ce qui, en moi, pourrait la produire ? »."),
+      IV("les exercices de perception émotionnelle seront détaillés dans le Codex IV — Pratiques."),
+      H(4,"⌛","Origine"),
+      P("Des traditions spirituelles, de la notion moderne d’« empathe » (New Age, années 1990) et de la contagion émotionnelle (voir N-07-13)."),
+      SCI("l’empathie est bien réelle : nous percevons très finement les visages, les voix, les postures, et imitons spontanément les émotions des autres. Les ambiances de lieux passent aussi par la lumière, le bruit, l’odeur et nos attentes.")
+    ],
+
+    /* 04 — MENTALE & INTUITIVE */
+    [
+      DESC("Impressions spontanées, intuition, ressentis ou informations perçues sans raisonnement conscient apparent."),
+      H(1,"☽","Formes rapportées"),
+      LEAD("La perception mentale et intuitive désigne les informations qui semblent « arriver » d’un coup : un mot, une image, une certitude, un pressentiment, sans avoir été réfléchis."),
+      LI("Claircognition —","« savoir » sans savoir comment."),
+      LI("Images mentales —","scènes, symboles ou couleurs qui apparaissent spontanément."),
+      LI("Pressentiment —","sentiment qu’un événement va se produire."),
+      H(2,"✦","Interprétations traditionnelles"),
+      P("On les attribue au troisième œil (Ājñā), à un guide spirituel, à l’âme ou à l’inconscient selon les traditions. Voir aussi N-07-09 (intuition) et N-07-15 (énergie psychique)."),
+      H(3,"☀","Aperçu"),
+      LI("Journal —","noter les intuitions, puis vérifier honnêtement plus tard ce qui s’est réalisé ou non."),
+      IV("les exercices de perception intuitive seront détaillés dans le Codex IV — Pratiques."),
+      H(4,"⌛","Origine"),
+      P("Des traditions mystiques, de la parapsychologie et de la psychologie de l’intuition."),
+      SCI("l’intuition est un traitement rapide et inconscient d’informations déjà acquises (Kahneman). Elle peut être juste, surtout dans un domaine connu. On retient plus volontiers les intuitions réalisées que les autres (biais de confirmation).")
+    ],
+
+    /* 05 — VISUELLE */
+    [
+      DESC("Perception supposée de couleurs, formes, halos ou champs autour d’une personne ou d’un objet."),
+      H(1,"◉","Formes rapportées"),
+      LEAD("La perception visuelle énergétique désigne le fait de « voir » des couleurs, des halos, des lumières ou des formes autour des êtres et des objets, les yeux ouverts ou fermés."),
+      LI("Aura —","halo coloré autour du corps (voir N-03-02)."),
+      LI("Lumières —","points ou éclairs de lumière, « orbes »."),
+      LI("Vision intérieure —","images vues « avec l’œil de l’esprit » (clairvoyance)."),
+      H(2,"✦","Interprétations traditionnelles"),
+      P("Les couleurs de l’aura renseigneraient sur l’état de la personne ; les lumières signaleraient une présence ou un ange (voir N-09-11)."),
+      H(3,"☀","Aperçu"),
+      LI("Exercice courant —","regarder le contour d’une personne devant un fond clair, avec un regard flou."),
+      IV("les exercices de perception visuelle seront détaillés dans le Codex IV — Pratiques."),
+      H(4,"⌛","Origine"),
+      P("De l’art sacré (nimbes, auréoles), de la théosophie, de la photographie Kirlian (1939) et du New Age."),
+      SCI("plusieurs effets visuels expliquent ces perceptions : images rémanentes (couleur complémentaire après avoir fixé un objet), effets de contraste au bord des formes, « orbes » des photos (poussière ou gouttes éclairées par le flash). Des tests ont montré que des personnes disant voir l’aura ne repéraient pas une personne cachée derrière un écran.")
+    ],
+
+    /* 06 — AUDITIVE */
+    [
+      DESC("Sons, impressions sonores ou phénomènes auditifs interprétés comme énergétiques ou spirituels."),
+      H(1,"♪","Formes rapportées"),
+      LEAD("La perception auditive énergétique désigne des sons perçus et interprétés comme spirituels ou énergétiques : sifflement aigu, bourdonnement, son intérieur, voix, musique lointaine, coups ou craquements."),
+      LI("Son intérieur —","le <em>nāda</em> du yoga, son perçu en méditation profonde."),
+      LI("Sifflement —","interprété comme un « téléchargement » ou un changement de « fréquence » dans le New Age."),
+      LI("Clairaudience —","entendre des mots ou des messages."),
+      H(2,"✦","Interprétations traditionnelles"),
+      P("Le <em>nāda yoga</em> fait du son intérieur un support de méditation ; d’autres traditions y voient des messages d’esprits, d’ancêtres ou de guides."),
+      H(3,"☀","Aperçu"),
+      LI("Écoute attentive —","en silence, écouter les sons proches, puis lointains, puis intérieurs."),
+      NOTE("Un sifflement permanent dans les oreilles (acouphène), une perte d’audition ou des voix que l’on entend sans pouvoir s’en défaire doivent être signalés à un médecin."),
+      IV("les exercices d’écoute seront détaillés dans le Codex IV — Pratiques."),
+      H(4,"⌛","Origine"),
+      P("Du yoga (<em>Haṭha Yoga Pradīpikā</em>), du spiritisme et du New Age."),
+      SCI("dans un grand silence, chacun peut percevoir des sons internes (circulation, système auditif). Les acouphènes sont fréquents et médicaux. Le cerveau a aussi tendance à reconnaître des voix dans des bruits ambigus (paréidolie auditive).")
+    ],
+
+    /* 07 — OLFACTIVE & GUSTATIVE */
+    [
+      DESC("Odeurs ou goûts inhabituels auxquels certaines pratiques attribuent une signification énergétique ou spirituelle."),
+      H(1,"❀","Formes rapportées"),
+      LEAD("La perception olfactive et gustative désigne des odeurs ou des goûts perçus sans source apparente et interprétés comme des signes : parfum de fleurs, d’encens, de tabac d’un défunt, odeur de soufre, goût métallique."),
+      LI("Odeur de sainteté —","parfum de fleurs associé aux saints dans la tradition chrétienne."),
+      LI("Parfum d’un défunt —","perçu comme un signe de présence."),
+      LI("Soufre —","associé aux forces démoniaques dans les récits populaires."),
+      LI("Clairolfaction, clairgustation —","termes du New Age."),
+      H(2,"✦","Interprétations traditionnelles"),
+      P("Ces perceptions sont souvent vues comme des « signes » laissés par une présence bienveillante ou malveillante."),
+      H(3,"☀","Aperçu"),
+      LI("Vérifier d’abord —","chercher une source possible (aération, voisinage, aliments, produits)."),
+      NOTE("Des odeurs perçues sans source, répétées ou persistantes (phantosmie), ou un goût étrange durable, doivent être signalés à un médecin : ils peuvent avoir des causes médicales."),
+      H(4,"⌛","Origine"),
+      P("De la tradition chrétienne (« odeur de sainteté »), des récits de hantise et du spiritisme."),
+      SCI("l’odorat est très lié à la mémoire et aux émotions ; une odeur peut aussi être imaginée ou rappelée par un souvenir. Les fausses perceptions d’odeur ont des causes médicales connues.")
+    ],
+
+    /* 08 — LIEUX */
+    [
+      DESC("Ressenti attribué à l’atmosphère ou à l’énergie particulière d’un lieu."),
+      H(1,"⌖","Formes rapportées"),
+      LEAD("La perception des lieux désigne l’impression qu’un endroit a une « énergie » : apaisante, joyeuse, sacrée, lourde, oppressante ou inquiétante."),
+      LI("Lieux « chargés » —","sanctuaires, sites naturels (voir N-04-16 et N-06-11)."),
+      LI("Lieux « lourds » —","maisons où quelque chose se serait passé, lieux de souffrance."),
+      LI("Géobiologie —","recherche de « réseaux » ou de « failles » sous les habitations, parfois au pendule ou à la baguette."),
+      H(2,"✦","Interprétations traditionnelles"),
+      P("Le lieu garderait la mémoire de ce qui s’y est passé ou serait traversé par des courants telluriques ; le feng shui lit l’énergie d’un lieu selon son relief, ses eaux et son orientation."),
+      H(3,"☀","Aperçu"),
+      LI("Entrer lentement —","noter ses premières impressions avant de connaître l’histoire du lieu."),
+      IV("les exercices de perception des lieux seront détaillés dans le Codex IV — Pratiques."),
+      H(4,"⌛","Origine"),
+      P("Du <em>genius loci</em> romain, du feng shui, de la sourcellerie et de la géobiologie (XXe siècle)."),
+      SCI("l’ambiance d’un lieu dépend de facteurs mesurables : lumière, bruit, température, humidité, odeurs, volume, et de ce que l’on sait du lieu. Des études ont montré que les impressions « hantées » augmentent quand on annonce un lieu comme hanté. Les réseaux de la géobiologie n’ont pas été détectés par des mesures.")
+    ],
+
+    /* 09 — OBJETS & MATÉRIAUX */
+    [
+      DESC("Ressenti associé à un objet, une pierre, un métal ou un autre matériau."),
+      H(1,"◆","Formes rapportées"),
+      LEAD("La perception des objets et des matériaux désigne l’impression qu’un objet porte une « énergie » : une pierre « chaude » ou « vibrante », un bijou hérité chargé d’histoire, un objet « malchanceux »."),
+      LI("Pierres —","chaque pierre aurait sa vibration (voir N-04-07)."),
+      LI("Métaux —","or, argent, cuivre, fer associés aux astres (alchimie)."),
+      LI("Psychométrie —","« lire » l’histoire d’un objet en le touchant."),
+      LI("Objets consacrés —","talismans, objets rituels « chargés » (voir N-08-16)."),
+      H(2,"✦","Interprétations traditionnelles"),
+      P("Les objets garderaient l’empreinte de leurs propriétaires ou de leur histoire ; on recommande souvent de « purifier » un objet d’occasion (voir N-08-17)."),
+      H(3,"☀","Aperçu"),
+      LI("Tenir et noter —","tenir un objet les yeux fermés et noter les impressions, sans conclusion hâtive."),
+      IV("les exercices de perception des objets seront détaillés dans le Codex IV — Pratiques."),
+      H(4,"⌛","Origine"),
+      P("Des lapidaires antiques, de l’alchimie, des reliques religieuses et de la psychométrie (Joseph Rodes Buchanan, 1842)."),
+      SCI("la température, le poids et la texture d’un matériau influencent la sensation (un métal paraît plus froid que le bois). Dans l’étude de Christopher French (2001), de faux cristaux ont produit les mêmes sensations que de vrais. La valeur affective d’un objet est, elle, bien réelle.")
+    ],
+
+    /* 10 — ÊTRES VIVANTS */
+    [
+      DESC("Perception supposée de l’énergie d’une personne, d’un animal ou d’une plante."),
+      H(1,"❂","Formes rapportées"),
+      LEAD("La perception des êtres vivants désigne l’impression de sentir l’« énergie » d’une personne, d’un animal ou d’une plante : présence rayonnante, calme, agitée, « vidée », lourde ou chaleureuse."),
+      LI("Personnes —","« bonne » ou « mauvaise énergie », sensation d’être rechargé ou épuisé par quelqu’un."),
+      LI("Animaux —","sentiment d’un lien, d’un échange silencieux."),
+      LI("Plantes & arbres —","impression de calme, de force ou de « communication »."),
+      H(2,"✦","Interprétations traditionnelles"),
+      P("Chaque être aurait une aura et une vibration propres ; le soin énergétique consiste souvent à « lire » cette énergie pour la rééquilibrer."),
+      H(3,"☀","Aperçu"),
+      LI("Observer —","noter son ressenti auprès d’une personne, puis ce que l’on a perçu concrètement (posture, voix, regard)."),
+      IV("les exercices de perception des êtres vivants seront détaillés dans le Codex IV — Pratiques."),
+      H(4,"⌛","Origine"),
+      P("Du chamanisme, de la théosophie, des soins énergétiques et de la sagesse populaire."),
+      SCI("nous lisons très vite et sans en avoir conscience les signaux non verbaux (visage, voix, posture, odeur). Une « bonne » ou « mauvaise énergie » résume souvent ces impressions, qui peuvent être justes ou trompeuses (préjugés).")
+    ],
+
+    /* 11 — ENTITÉS & PRÉSENCES */
+    [
+      DESC("Ressentis ou impressions interprétés, dans certaines traditions, comme liés à une présence spirituelle ou à une entité."),
+      H(1,"❖","Formes rapportées"),
+      LEAD("La perception des entités et des présences désigne le sentiment qu’« il y a quelqu’un » : présence dans une pièce vide, frôlement, regard senti, froid soudain, ombre aperçue, rêve d’un défunt."),
+      LI("Présence bienveillante —","ange, défunt aimé, guide (voir N-06-09)."),
+      LI("Présence inquiétante —","sentiment d’être observé, oppression."),
+      LI("Signes —","odeurs, sons, objets déplacés, interprétés comme des messages."),
+      H(2,"✦","Interprétations traditionnelles"),
+      P("Les traditions y voient des anges, des esprits, des ancêtres ou des défunts (voir le Codex I) ; le spiritisme et la médiumnité cherchent à communiquer avec eux."),
+      H(3,"☀","Aperçu"),
+      LI("Accueillir sans s’affoler —","noter les circonstances (fatigue, deuil, lieu, heure)."),
+      NOTE("Si ces perceptions deviennent fréquentes, effrayantes, ou s’accompagnent de voix, de visions ou d’un grand mal-être, il est important d’en parler à un médecin : cela peut se soigner."),
+      H(4,"⌛","Origine"),
+      P("Des croyances universelles aux esprits, du spiritisme (Allan Kardec, 1857) et des récits de hantise."),
+      SCI("le sentiment de présence est fréquent dans le deuil, la fatigue extrême, l’isolement ou en montagne ; il a été reproduit en laboratoire (Olaf Blanke, 2014). La paralysie du sommeil explique de nombreuses « visites » nocturnes. Cela n’exclut pas les croyances, mais montre que ces vécus ont aussi des causes naturelles.")
+    ],
+
+    /* 12 — À DISTANCE */
+    [
+      DESC("Conceptions selon lesquelles une énergie pourrait être ressentie sans contact ou sans proximité directe."),
+      H(1,"⇢","Formes rapportées"),
+      LEAD("La perception à distance désigne l’idée que l’on pourrait sentir l’énergie, l’état ou les pensées d’une personne ou d’un lieu éloignés : sentir qu’un proche va mal, savoir qui appelle, « voir » un lieu lointain."),
+      LI("Lien affectif —","pressentiment concernant un proche."),
+      LI("Vision à distance —","<em>remote viewing</em>, décrire un lieu inconnu."),
+      LI("Soins à distance —","envoyer et percevoir de l’énergie à distance (voir N-08-16)."),
+      H(2,"✦","Interprétations traditionnelles"),
+      P("Les liens énergétiques entre personnes (« cordes » ou « fils » dans le New Age) permettraient ces perceptions ; la télépathie en serait une forme (voir N-07-15)."),
+      H(3,"☀","Aperçu"),
+      LI("Tester honnêtement —","noter ses impressions avant de vérifier, et compter aussi les erreurs."),
+      IV("les exercices liés à la perception à distance seront présentés dans le Codex IV — Pratiques."),
+      H(4,"⌛","Origine"),
+      P("De la télépathie (mot inventé par Frederic Myers en 1882), de la parapsychologie et du projet militaire Stargate (1972 – 1995)."),
+      SCI("aucune perception à distance n’a été démontrée dans des conditions contrôlées. Les coïncidences frappantes (penser à quelqu’un qui appelle) s’expliquent par leur fréquence et par le fait qu’on oublie toutes les fois où cela ne se produit pas.")
+    ],
+
+    /* 13 — SENSIBILITÉ */
+    [
+      DESC("Différences individuelles dans la facilité ou l’intensité avec laquelle ces perceptions sont ressenties."),
+      H(1,"∿","Formes rapportées"),
+      LEAD("La sensibilité énergétique désigne le degré auquel une personne dit percevoir ces phénomènes. Certaines personnes se décrivent comme très sensibles, d’autres ne ressentent rien de particulier : les deux sont normales."),
+      LI("Sensibilité innée —","« don » parfois dit héréditaire dans les traditions populaires."),
+      LI("Sensibilité développée —","par la pratique (méditation, qigong, soins)."),
+      LI("Variations —","plus forte quand on est fatigué, ému, ou au contraire très reposé et concentré."),
+      LI("Excès —","sentiment d’être « submergé » par les ambiances et les personnes."),
+      H(2,"✦","Interprétations traditionnelles"),
+      P("Les traditions parlent de « don », de « voyance », de « médiumnité » ; le New Age parle d’« empathes » ou d’« hypersensibles »."),
+      H(3,"☀","Aperçu"),
+      LI("Se protéger —","repos, limites, ancrage (voir N-08-14 et N-08-19)."),
+      LI("Ne pas se comparer —","chaque personne perçoit différemment."),
+      H(4,"⌛","Origine"),
+      P("Des traditions de voyance et de médiumnité ; le terme psychologique de « personne hautement sensible » vient d’Elaine Aron (1996)."),
+      SCI("la sensibilité aux stimulations (bruit, lumière, émotions) varie réellement d’une personne à l’autre et est étudiée en psychologie. Elle n’implique pas en elle-même la perception d’une énergie subtile.")
+    ],
+
+    /* 14 — INTERPRÉTATION */
+    [
+      DESC("Méthodes permettant de donner un sens aux sensations ou impressions perçues."),
+      H(1,"✎","Formes rapportées"),
+      LEAD("L’interprétation des perceptions consiste à passer de la sensation (« chaleur dans la main ») au sens (« cette zone a besoin d’énergie »). C’est l’étape la plus délicate, car une même sensation peut recevoir des sens très différents."),
+      H(2,"✦","Méthodes"),
+      LI("Décrire avant d’interpréter —","noter la sensation exacte, sa place, son intensité, sa durée."),
+      LI("Se référer à un système —","le sens d’une sensation dépend du système utilisé (chakras, méridiens, éléments…)."),
+      LI("Chercher d’abord les causes simples —","fatigue, température, faim, émotion personnelle."),
+      LI("Plusieurs hypothèses —","garder ouvertes plusieurs interprétations."),
+      LI("Vérifier —","confronter l’interprétation à ce qui se passe ensuite, ou à l’avis de la personne concernée."),
+      LI("Humilité —","ne jamais présenter une interprétation comme une certitude, surtout en matière de santé."),
+      H(3,"☀","Aperçu"),
+      LI("Carnet de perceptions —","colonne « ce que j’ai ressenti », « ce que j’en ai pensé », « ce qui s’est passé »."),
+      IV("les exercices d’interprétation seront détaillés dans le Codex IV — Pratiques."),
+      H(4,"⌛","Origine"),
+      P("Des pratiques divinatoires et de soin, et des méthodes d’observation (journal, comparaison)."),
+      SCI("nous donnons spontanément du sens à ce que nous percevons, ce qui expose à des biais (confirmation, paréidolie). Noter et vérifier permet de les limiter.")
+    ],
+
+    /* 15 — DÉVELOPPEMENT */
+    [
+      DESC("Principes généraux associés au développement de la sensibilité énergétique. Les exercices détaillés vont dans le Codex IV."),
+      H(1,"↗","Principes"),
+      LEAD("Le développement de la perception repose, selon les traditions, sur quelques principes communs, quelles que soient les écoles."),
+      LI("Calme —","un esprit apaisé perçoit plus finement (voir N-08-01)."),
+      LI("Attention —","entraîner la concentration sur une sensation (N-08-07)."),
+      LI("Régularité —","pratiquer peu mais souvent."),
+      LI("Ancrage —","rester relié au corps et au présent (N-08-14)."),
+      LI("Journal —","noter et relire ses expériences."),
+      LI("Vérification —","comparer ses perceptions à la réalité, sans se décourager des erreurs."),
+      LI("Encadrement —","apprendre auprès de personnes sérieuses, qui ne promettent pas de « pouvoirs »."),
+      H(2,"✦","Étapes souvent décrites"),
+      P("Percevoir son propre corps, puis l’espace autour de soi, puis les autres êtres, les lieux et les objets ; enfin interpréter avec prudence."),
+      IV("tous les exercices de développement de la perception seront détaillés dans le Codex IV — Pratiques."),
+      H(3,"⌛","Origine"),
+      P("Des traditions contemplatives, des arts martiaux internes, des formations aux soins énergétiques et de la magie occidentale."),
+      SCI("l’attention au corps et aux sensations s’entraîne réellement (intéroception, pleine conscience) ; ce progrès concerne la perception de soi et de son environnement, pas la détection démontrée d’une énergie subtile.")
+    ],
+
+    /* 16 — LIMITES */
+    [
+      DESC("Distinction entre interprétation énergétique, intuition, perception subjective et explications physiologiques ou psychologiques."),
+      H(1,"◈","Les quatre niveaux"),
+      LEAD("Une même expérience peut être lue à plusieurs niveaux. Les distinguer permet de respecter son vécu tout en gardant un regard clair."),
+      CORR([
+        ["Vécu","« j’ai ressenti de la chaleur » : toujours réel pour la personne"],
+        ["Explication physiologique","circulation, température, nerfs, fatigue"],
+        ["Explication psychologique","attention, attente, suggestion, émotion, mémoire"],
+        ["Interprétation énergétique","« une énergie circulait » : relève d’un système de croyances"]
+      ]),
+      H(2,"✦","Biais connus"),
+      LI("Effet idéomoteur —","petits mouvements inconscients (pendule, baguette, oui-ja)."),
+      LI("Suggestion & attente —","on ressent ce qu’on s’attend à ressentir."),
+      LI("Paréidolie —","voir des formes ou entendre des voix dans le hasard."),
+      LI("Biais de confirmation —","retenir ce qui confirme, oublier le reste."),
+      LI("Effet Barnum —","se reconnaître dans des descriptions générales."),
+      LI("Lecture à froid —","déduire des informations à partir d’indices sans en avoir conscience."),
+      H(3,"☀","Une attitude équilibrée"),
+      LI("Respecter l’expérience —","ne pas nier ce qui est vécu."),
+      LI("Garder le doute —","ne pas en faire une preuve."),
+      LI("Santé d’abord —","ne jamais fonder une décision médicale sur une perception énergétique."),
+      H(4,"⌛","Origine"),
+      P("De la psychologie expérimentale, de l’enquête sceptique (James Randi, Comité pour la recherche scientifique sur le paranormal, 1976) et des réflexions internes aux traditions, qui mettent elles aussi en garde contre l’illusion (le « discernement des esprits »)."),
+      SCI("à ce jour, aucune étude contrôlée n’a montré que les perceptions énergétiques détectent un phénomène extérieur au-delà du hasard. Comme le dit la définition de ce chapitre, une impression n’est pas une preuve, mais elle reste une expérience digne d’intérêt.")
+    ]
+  ];
+
+  subTexts["Perception & sensibilité énergétique"] = Object.fromEntries(percTexts.map((b,k)=>[k,b]));
   const PFX = CODEX.prefix;
   const pad = n => String(n).padStart(2,'0');
   const pad3 = n => String(n).padStart(3,'0');
