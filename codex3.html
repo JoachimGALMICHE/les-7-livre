@@ -883,6 +883,11 @@
 
   // Définitions de chaque chapitre (clé = titre exact ; une ligne vide = nouveau paragraphe)
   const definitions = {
+    "Énergies émotionnelles & psychiques":
+      "Les énergies émotionnelles et psychiques désignent, dans différentes conceptions spirituelles et ésotériques, les forces ou influences associées aux émotions, aux pensées, à la volonté, à l’intention et aux différents états de la conscience.\n\n" +
+      "Elles peuvent notamment être liées à la colère, la joie, la peur, l’amour, la concentration, l’imagination, la mémoire, l’intuition, les rêves ou la volonté. Certaines conceptions considèrent que ces états peuvent influencer ou modifier la manière dont une personne perçoit, ressent ou dirige son énergie.\n\n" +
+      "Dans certains courants ésotériques, l’énergie psychique peut également être associée à des phénomènes tels que l’intuition, la visualisation, la projection mentale ou certaines formes de perception extrasensorielle. Ces interprétations varient fortement selon les traditions et ne constituent pas un modèle scientifique établi.\n\n" +
+      "Dans ce codex, les énergies émotionnelles et psychiques seront étudiées selon leur origine supposée, leur relation avec les états émotionnels ou mentaux, leurs caractéristiques, leurs interactions et les différentes interprétations qui leur sont attribuées. Ces notions seront distinguées des mécanismes psychologiques et neurologiques étudiés scientifiquement.",
     "Énergies spirituelles":
       "Les énergies spirituelles désignent, dans différentes traditions religieuses, spirituelles et ésotériques, des forces ou principes considérés comme liés à la dimension spirituelle de l’existence.\n\n" +
       "Elles peuvent être associées à la force vitale, à la conscience, à l’âme, à la présence spirituelle, à la prière, à la méditation, ou encore à certaines formes de relation avec le sacré et les entités spirituelles. Selon les traditions, elles peuvent également être décrites comme une force qui relie l’être humain au monde spirituel ou à une réalité transcendante.\n\n" +
@@ -914,6 +919,28 @@
   const leftLists = {};
   const refLists = {};
   const subcats = {
+    "Énergies émotionnelles & psychiques": {
+      items: [
+        "Énergie émotionnelle",
+        "Énergie des pensées",
+        "Énergie de l’intention",
+        "Énergie de la volonté",
+        "Énergie de l’imagination",
+        "Énergie de la concentration",
+        "Énergie de la mémoire",
+        "Énergie de la créativité",
+        "Énergie de l’intuition",
+        "Énergie des rêves",
+        "Énergie des émotions positives",
+        "Énergie des émotions négatives",
+        "Énergie collective & émotionnelle",
+        "Énergie des croyances",
+        "Énergie psychique",
+        "Énergie mentale",
+        "Énergies émotionnelles & psychiques hybrides",
+        "Autres énergies émotionnelles & psychiques"
+      ]
+    },
     "Énergies spirituelles": {
       items: [
         "Force vitale",
@@ -3018,6 +3045,381 @@
   );
 
   subTexts["Énergies spirituelles"] = Object.fromEntries(spiritTexts.map((b,k)=>[k,b]));
+
+  // psy_text
+
+  /* ===== Pages des énergies émotionnelles & psychiques (N-07-01 à N-07-18) ===== */
+  const SVG_WHEEL_EMO = (()=>{
+    const e=[["Joie","#d4a82b"],["Confiance","#7fa83a"],["Peur","#3f7a3a"],["Surprise","#3a86b8"],["Tristesse","#3a5aa8"],["Dégoût","#8e5bb5"],["Colère","#b0302c"],["Anticipation","#d9772b"]];
+    let o=`<svg viewBox="0 0 220 220" class="fig-clock" aria-hidden="true">`;
+    e.forEach((x,j)=>{
+      const a0=(j*45-112.5)*Math.PI/180, a1=(j*45-67.5)*Math.PI/180, am=(j*45-90)*Math.PI/180;
+      const p=(r,a)=>`${(110+r*Math.cos(a)).toFixed(1)} ${(110+r*Math.sin(a)).toFixed(1)}`;
+      o+=`<path d="M110 110 L${p(96,a0)} A96 96 0 0 1 ${p(96,a1)} Z" fill="${x[1]}" opacity=".78" stroke="#f4e8c8" stroke-width="1.5"/>`;
+      o+=`<text x="${(110+66*Math.cos(am)).toFixed(1)}" y="${(110+66*Math.sin(am)+3).toFixed(1)}" class="lbl sm" style="fill:#fff8e6">${x[0]}</text>`;
+    });
+    return o+`<circle cx="110" cy="110" r="14" fill="#f4e8c8" stroke="#7a1a1a"/></svg>`;
+  })();
+
+  const psyTexts = [
+    /* 01 — ÉMOTIONNELLE */
+    [
+      HEAD2(SVG_WHEEL_EMO, "Les huit émotions de base de la « roue des émotions » de Robert Plutchik (1980)."),
+      H(1,"♡","Définition"),
+      LEAD("L’énergie émotionnelle désigne la force attribuée aux émotions : ce qui nous « met en mouvement » (le mot vient du latin <em>emovere</em>, « mettre hors de soi, ébranler »). Une émotion donne de l’élan, de la tension ou au contraire vide de ses forces."),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Mouvement —","chaque émotion pousse à agir : fuir (peur), affronter (colère), se rapprocher (amour), se retirer (tristesse)."),
+      LI("Intensité —","de légère à débordante ; une émotion forte « prend toute la place »."),
+      LI("Circulation —","l’émotion monte, culmine puis redescend si elle n’est pas retenue."),
+      LI("Contagion —","les émotions se transmettent d’une personne à l’autre (voir N-07-13)."),
+      LI("Correspondances —","dans la médecine chinoise, chaque émotion est liée à un organe (voir N-03-11)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Nommer —","mettre un mot précis sur ce que l’on ressent : cela suffit souvent à l’apaiser."),
+      LI("Accueillir —","laisser l’émotion exister quelques minutes sans la juger ni agir aussitôt."),
+      LI("Exprimer —","parler, écrire, bouger, pleurer, rire."),
+      LI("Écouter son message —","se demander quel besoin l’émotion signale."),
+      H(4,"⌛","Origine supposée"),
+      P("Les philosophes antiques parlaient de « passions » (stoïciens, Descartes, <em>Les Passions de l’âme</em>, 1649). L’ésotérisme moderne associe les émotions au « corps astral » (voir N-03-03). Darwin (1872) puis Paul Ekman (années 1970) étudient leur expression universelle sur le visage."),
+      SCI("les émotions sont des réactions du cerveau et du corps (rythme cardiaque, hormones, muscles) bien étudiées. « Énergie » est ici une image, très parlante pour décrire leur effet.")
+    ],
+
+    /* 02 — PENSÉES */
+    [
+      H(1,"✎","Définition"),
+      LEAD("L’énergie des pensées désigne l’idée que les pensées ont une force propre : elles orientent l’humeur et l’action, et pour certains courants ésotériques elles agiraient même directement sur le monde ou sur les autres."),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Formes-pensées —","pour la théosophie, les pensées créent des formes visibles dans le plan mental (Besant et Leadbeater, <em>Thought-Forms</em>, 1901) ; voir aussi le Codex I, E-10."),
+      LI("Pensée créatrice —","« Tu deviens ce que tu penses », idée du mouvement New Thought."),
+      LI("Bouddhisme —","« Tout ce que nous sommes résulte de nos pensées » (premier vers du <em>Dhammapada</em>)."),
+      LI("Ruminations —","pensées qui tournent en boucle et épuisent."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Observer —","noter ses pensées sans s’y identifier : « je remarque que je pense que… »."),
+      LI("Questionner —","se demander si une pensée est vraie, utile, bienveillante."),
+      LI("Remplacer —","transformer une pensée dure en pensée plus juste."),
+      LI("Vider l’esprit —","écrire tout ce qui tourne en tête avant de dormir."),
+      H(4,"⌛","Origine supposée"),
+      P("Du bouddhisme, du stoïcisme (Épictète : « Ce qui trouble les hommes, ce ne sont pas les choses, mais les jugements qu’ils portent sur les choses »), de la théosophie et du New Thought (XIXe – XXe siècle)."),
+      SCI("les pensées agissent sur l’humeur et le comportement : c’est la base des thérapies cognitives (Aaron Beck, années 1960). Aucune action directe de la pensée sur la matière n’a été démontrée.")
+    ],
+
+    /* 03 — INTENTION */
+    [
+      H(1,"➤","Définition"),
+      LEAD("L’énergie de l’intention, vue ici sous l’angle psychique, désigne la force attribuée au fait d’orienter son esprit vers un but : elle rassemble l’attention, la motivation et l’action. (Pour l’intention au sens spirituel et religieux, voir N-06-08.)"),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Direction —","l’intention donne un cap à l’énergie mentale et émotionnelle."),
+      LI("Clarté —","une intention précise serait plus « puissante » qu’un souhait vague."),
+      LI("Alignement —","pensée, émotion et action vont dans le même sens."),
+      LI("Transmission —","certains courants pensent que l’intention se transmet à d’autres ou à des objets (soins à distance, « charger » un objet)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Une phrase —","formuler son intention en une phrase simple, au présent."),
+      LI("« Si… alors… » —","prévoir la situation et la réponse : « si j’ai envie d’abandonner, alors je relis mon objectif »."),
+      LI("Rappel —","un objet ou une image qui ramène à l’intention au fil de la journée."),
+      H(4,"⌛","Origine supposée"),
+      P("Des traditions religieuses (niyya, kavanah, saṅkalpa), de la magie (la « volonté dirigée ») et de la psychologie de la motivation."),
+      SCI("les « intentions de mise en œuvre » (Peter Gollwitzer, années 1990) aident réellement à atteindre ses objectifs. Les expériences sur l’effet de l’intention sur la matière (comme celles du laboratoire PEAR, à Princeton) n’ont pas été reproduites de manière convaincante.")
+    ],
+
+    /* 04 — VOLONTÉ */
+    [
+      H(1,"⚡","Définition"),
+      LEAD("L’énergie de la volonté désigne la force qui permet de décider, de persévérer, de résister aux impulsions et de mener une action jusqu’au bout. L’ésotérisme occidental en fait souvent le principe actif de toute transformation et de toute magie."),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Force du Feu —","la volonté est associée au Feu et au plexus solaire (voir N-02-01 et N-03-01)."),
+      LI("Thelema —","la « volonté » au cœur de la doctrine d’Aleister Crowley (1904)."),
+      LI("Volonté de puissance —","notion philosophique de Nietzsche."),
+      LI("Maîtrise de soi —","vertu centrale du stoïcisme et de nombreuses voies ascétiques."),
+      LI("Épuisement —","la volonté se fatiguerait et se rechargerait."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Commencer petit —","tenir de petits engagements quotidiens fortifie la confiance."),
+      LI("Organiser —","préparer l’environnement pour ne pas dépendre que de la volonté."),
+      LI("Récupérer —","sommeil, repas, pauses : une volonté fatiguée cède plus facilement."),
+      H(4,"⌛","Origine supposée"),
+      P("Des philosophies antiques (stoïcisme), de la théologie (libre arbitre), de la magie occidentale (Éliphas Lévi, Crowley) et de la psychologie (William James)."),
+      SCI("la maîtrise de soi est étudiée par la psychologie. L’idée d’un « réservoir » de volonté qui s’épuise (l’« épuisement de l’ego », Roy Baumeister, 1998) a été très discutée : de grandes études de réplication ne l’ont pas confirmée.")
+    ],
+
+    /* 05 — IMAGINATION */
+    [
+      H(1,"✧","Définition"),
+      LEAD("L’énergie de l’imagination désigne la force attribuée à la capacité de former des images intérieures. Pour de nombreuses traditions ésotériques, l’imagination n’est pas une simple fantaisie : c’est un organe de perception et de création, un pont vers les mondes invisibles."),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Imagination créatrice —","pour Paracelse et les alchimistes, l’imagination agit réellement."),
+      LI("Monde imaginal —","<em>mundus imaginalis</em>, monde intermédiaire entre le sensible et le spirituel, selon Henry Corbin, qui étudie les mystiques persans."),
+      LI("Imagination active —","méthode de Jung : dialoguer avec les images de l’inconscient."),
+      LI("Visualisation —","base de nombreux rituels et méditations (voir N-07-16)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Visualisation guidée —","imaginer un lieu paisible avec tous ses détails (sons, odeurs, lumière)."),
+      LI("Répétition mentale —","se représenter une action réussie avant de la faire."),
+      LI("Écriture ou dessin —","donner forme aux images intérieures."),
+      H(4,"⌛","Origine supposée"),
+      P("De la Renaissance (Paracelse, Giordano Bruno), du soufisme (Ibn Arabi, étudié par Corbin), du romantisme et de la psychologie de Jung."),
+      SCI("l’imagerie mentale active des zones du cerveau proches de celles de la perception. La répétition mentale améliore réellement certaines performances (sport, musique) ; l’imagination ne modifie pas directement le monde extérieur.")
+    ],
+
+    /* 06 — CONCENTRATION */
+    [
+      H(1,"◎","Définition"),
+      LEAD("L’énergie de la concentration désigne la force que l’on obtient en rassemblant son attention sur un seul point. L’attention dispersée « fuit » de toutes parts ; rassemblée, elle deviendrait puissante, comme la lumière concentrée par une loupe."),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Dhāraṇā —","la concentration, sixième membre du yoga de Patañjali, avant la méditation (<em>dhyāna</em>) et l’absorption (<em>samādhi</em>)."),
+      LI("Samatha —","« calme mental » du bouddhisme, obtenu par la concentration."),
+      LI("Point unique —","<em>ekāgratā</em>, l’esprit tourné vers un seul objet."),
+      LI("État de flow —","absorption totale dans une activité."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Trataka —","fixer une flamme ou un point (voir N-02-01)."),
+      LI("Compter les respirations —","de 1 à 10, puis recommencer."),
+      LI("Une seule tâche —","travailler par périodes courtes sans interruption, avec des pauses."),
+      H(4,"⌛","Origine supposée"),
+      P("Des <em>Yoga Sūtra</em> de Patañjali, du bouddhisme et de toutes les traditions de méditation ; la notion de <em>flow</em> vient du psychologue Mihaly Csikszentmihalyi (1975)."),
+      SCI("l’attention est une fonction du cerveau étudiée par les neurosciences ; elle s’entraîne, et la méditation peut l’améliorer. Elle ne produit pas d’énergie au sens physique.")
+    ],
+
+    /* 07 — MÉMOIRE */
+    [
+      H(1,"❋","Définition"),
+      LEAD("L’énergie de la mémoire désigne la force attribuée aux souvenirs : ils nous constituent, nous relient aux ancêtres et, selon certains courants ésotériques, s’inscriraient aussi dans les lieux, les objets et même dans une « mémoire universelle »."),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Mnémosyne —","déesse grecque de la mémoire, mère des neuf Muses."),
+      LI("Anamnèse —","pour Platon, apprendre, c’est se ressouvenir de ce que l’âme savait déjà."),
+      LI("Arts de la mémoire —","« palais de mémoire » de l’Antiquité et de la Renaissance (Giordano Bruno)."),
+      LI("Annales akashiques —","pour la théosophie, mémoire de tout ce qui a eu lieu, inscrite dans l’éther."),
+      LI("Mémoire des lieux & objets —","idée qu’un lieu « garde la trace » d’événements (psychométrie)."),
+      LI("Mémoire transgénérationnelle —","notion de « psychogénéalogie »."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Palais de mémoire —","placer mentalement ce que l’on veut retenir dans les pièces d’un lieu connu."),
+      LI("Rituel du souvenir —","honorer les défunts, raconter l’histoire familiale."),
+      LI("Journal —","garder la trace de ce qui compte."),
+      H(4,"⌛","Origine supposée"),
+      P("De la mythologie grecque, de Platon, des rhéteurs antiques (Simonide, Cicéron), de la Renaissance hermétique (étudiée par Frances Yates) et de la théosophie."),
+      SCI("la mémoire est une fonction du cerveau, et elle se reconstruit à chaque rappel, ce qui la rend faillible (Elizabeth Loftus). La méthode des lieux est d’une efficacité démontrée. La mémoire des lieux, des objets et les annales akashiques ne sont pas démontrées.")
+    ],
+
+    /* 08 — CRÉATIVITÉ */
+    [
+      H(1,"✺","Définition"),
+      LEAD("L’énergie de la créativité désigne la force attribuée à l’élan créateur : celui qui fait naître une œuvre, une idée, une solution. Beaucoup de traditions la décrivent comme venant d’« ailleurs » (une muse, un souffle, un génie) et traversant l’artiste."),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Muses —","neuf déesses inspiratrices des arts chez les Grecs."),
+      LI("Génie —","le <em>genius</em> romain, esprit personnel qui inspire."),
+      LI("Duende —","l’élan sombre et puissant de l’art espagnol, décrit par Federico García Lorca."),
+      LI("Énergie créatrice —","liée au chakra sacré et à l’Eau, ou au Feu, selon les systèmes."),
+      LI("Sublimation —","pour la psychanalyse, transformation de l’énergie des pulsions en création."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Pages du matin —","écrire trois pages sans s’arrêter au réveil (Julia Cameron, 1992)."),
+      LI("Rituel de création —","même lieu, même heure, même geste pour commencer."),
+      LI("Incubation —","laisser reposer un problème : la solution vient souvent pendant une marche ou le sommeil."),
+      H(4,"⌛","Origine supposée"),
+      P("De la mythologie grecque, de la notion romaine de génie, du romantisme (l’inspiration) et de la psychanalyse."),
+      SCI("la psychologie étudie la créativité (pensée divergente, incubation, rôle du sommeil et de l’humeur). L’idée d’une inspiration venue d’ailleurs relève de la croyance ou de la métaphore.")
+    ],
+
+    /* 09 — INTUITION */
+    [
+      H(1,"☽","Définition"),
+      LEAD("L’énergie de l’intuition désigne la force attribuée à un savoir immédiat, sans raisonnement conscient : le pressentiment, le « sentiment que », la petite voix intérieure. Pour l’ésotérisme, l’intuition serait une perception subtile ; pour d’autres, une sagesse de l’inconscient."),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Troisième œil —","l’intuition est associée au chakra Ājñā (voir N-03-01)."),
+      LI("Lune & Eau —","l’intuition est rattachée à la Lune et à l’élément Eau (voir N-02-02)."),
+      LI("Clair-ressenti —","forme de perception extrasensorielle (voir N-07-15)."),
+      LI("Intuition intellectuelle —","pour certains philosophes (Bergson), connaissance directe, opposée à l’analyse."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Écouter le corps —","noter les sensations (tension, détente) face à une décision."),
+      LI("Journal d’intuitions —","écrire ses pressentiments, puis vérifier plus tard s’ils étaient justes."),
+      LI("Calme —","l’intuition se perçoit mieux quand l’esprit est apaisé."),
+      LI("Vérifier —","pour les décisions importantes, compléter l’intuition par des informations fiables."),
+      H(4,"⌛","Origine supposée"),
+      P("Du latin <em>intueri</em>, « regarder attentivement ». La philosophie (Descartes, Spinoza, Bergson), la psychologie de Jung (l’intuition est l’une de ses quatre fonctions psychiques) et l’ésotérisme lui donnent des sens différents."),
+      SCI("l’intuition existe bien : c’est un traitement rapide et inconscient d’expériences passées (Daniel Kahneman, « système 1 »). Elle est fiable dans les domaines que l’on connaît bien, moins dans les domaines nouveaux.")
+    ]
+  ];
+
+  psyTexts.push(
+    /* 10 — RÊVES */
+    [
+      H(1,"☾","Définition"),
+      LEAD("L’énergie des rêves désigne la force et le sens attribués aux rêves : messages des dieux ou des ancêtres, voyages de l’âme, révélations de l’inconscient, présages ou simples images de la nuit. Toutes les cultures leur ont accordé une place."),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Rêves envoyés —","messages divins dans la Bible (Joseph), le Coran, la Grèce antique."),
+      LI("Incubation —","dormir dans un temple pour recevoir un rêve guérisseur (temples d’Asclépios)."),
+      LI("Voyage de l’âme —","dans de nombreuses cultures, l’âme quitte le corps pendant le sommeil."),
+      LI("Rêve lucide —","savoir que l’on rêve pendant le rêve ; le yoga tibétain du rêve en fait une pratique."),
+      LI("Inconscient —","« voie royale » vers l’inconscient pour Freud ; messages du Soi pour Jung."),
+      LI("Attrape-rêves —","objet ojibwé censé filtrer les mauvais rêves."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Journal des rêves —","noter ses rêves au réveil, avant qu’ils ne s’effacent."),
+      LI("Intention du soir —","formuler une question avant de dormir."),
+      LI("Interpréter avec prudence —","chercher ce que l’image évoque pour soi plutôt qu’un sens figé dans un dictionnaire des rêves."),
+      NOTE("Des cauchemars fréquents ou un sommeil très perturbé peuvent se soigner : en parler à un médecin."),
+      H(4,"⌛","Origine supposée"),
+      P("Les plus anciennes clés des songes viennent d’Égypte (papyrus Chester Beatty) et de Mésopotamie. Artémidore écrit l’<em>Onirocritique</em> (IIe siècle). Freud publie <em>L’Interprétation du rêve</em> en 1900."),
+      SCI("les rêves surviennent surtout pendant le sommeil paradoxal ; ils participeraient à la mémoire et à la régulation des émotions. Le rêve lucide a été démontré en laboratoire (Stephen LaBerge, 1980). Les rêves prémonitoires n’ont pas été démontrés.")
+    ],
+
+    /* 11 — ÉMOTIONS POSITIVES */
+    [
+      H(1,"☀","Définition"),
+      LEAD("L’énergie des émotions positives désigne la force attribuée à la joie, à l’amour, à la gratitude, à l’espoir, à l’émerveillement ou à la sérénité. On les dit « élevantes » : elles ouvriraient, relieraient et donneraient de l’élan."),
+      H(2,"✦","Caractéristiques attribuées"),
+      CORR([
+        ["Joie","élan, légèreté, partage"],
+        ["Amour","lien, ouverture ; associé au chakra du cœur"],
+        ["Gratitude","attention à ce qui est donné"],
+        ["Émerveillement","sentiment d’immensité, de recul"],
+        ["Sérénité","calme, paix intérieure"],
+        ["Compassion","mettā et karuṇā, la bienveillance et la compassion bouddhistes"]
+      ]),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Trois bonnes choses —","chaque soir, noter trois choses agréables de la journée et leur cause."),
+      LI("Lettre de gratitude —","écrire à quelqu’un pour le remercier."),
+      LI("Méditation de bienveillance —","souhaiter du bien à soi, à un proche, à un inconnu, puis à tous."),
+      LI("Savourer —","prolonger consciemment un moment agréable."),
+      H(4,"⌛","Origine supposée"),
+      P("Des sagesses antiques (Épicure, les « demeures divines » du bouddhisme) et, depuis 1998, de la psychologie positive (Martin Seligman)."),
+      SCI("les émotions positives élargissent l’attention et renforcent les ressources (théorie « élargir et construire », Barbara Fredrickson). Les exercices de gratitude ont des effets modestes mais réels sur le bien-être. Les émotions dites négatives restent utiles : il ne s’agit pas de les supprimer.")
+    ],
+
+    /* 12 — ÉMOTIONS NÉGATIVES */
+    [
+      H(1,"☁","Définition"),
+      LEAD("L’énergie des émotions négatives désigne la force attribuée à la peur, la colère, la tristesse, la honte, la jalousie ou l’angoisse. Désagréables, on les dit « lourdes » ou « basses » ; pourtant, elles ont chacune une fonction et un message."),
+      H(2,"✦","Caractéristiques attribuées"),
+      CORR([
+        ["Peur","protège du danger"],
+        ["Colère","défend une limite, signale une injustice"],
+        ["Tristesse","aide à accepter une perte, appelle le soutien"],
+        ["Honte & culpabilité","régulent les liens et les règles du groupe"],
+        ["Dégoût","éloigne de ce qui pourrait nuire"],
+        ["Jalousie","signale la peur de perdre ou un manque"]
+      ]),
+      P("Dans le bouddhisme, les « trois poisons » sont l’avidité, la haine et l’ignorance ; le christianisme parle des péchés capitaux ; la médecine chinoise associe chaque émotion à un organe."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Accueillir sans agir —","laisser passer la vague avant de répondre."),
+      LI("Respirer —","une expiration longue apaise le corps."),
+      LI("Bouger —","marcher ou faire du sport pour décharger la tension."),
+      LI("Écouter le message —","quelle limite, quelle perte, quel besoin ?"),
+      NOTE("Si une tristesse, une angoisse ou une colère dure, envahit le quotidien ou s’accompagne d’idées noires, il est important d’en parler à un médecin ou à un psychologue. En cas d’urgence, en France, le 3114 (prévention du suicide) répond jour et nuit."),
+      H(4,"⌛","Origine supposée"),
+      P("Des réflexions morales et spirituelles de toutes les traditions sur les passions, les vices et les « poisons » de l’esprit, puis de la psychologie des émotions."),
+      SCI("toutes les émotions sont des réactions adaptatives. Les supprimer de force tend à les renforcer ; les reconnaître et les réguler (thérapies cognitives et comportementales, pleine conscience) est plus efficace.")
+    ],
+
+    /* 13 — COLLECTIVE & ÉMOTIONNELLE */
+    [
+      H(1,"⁂","Définition"),
+      LEAD("L’énergie collective et émotionnelle désigne la force attribuée aux émotions partagées par un groupe : ferveur d’une foule, liesse d’une fête, panique, deuil collectif. Une ambiance se « sent » en entrant dans une pièce ; une foule peut porter ou emporter."),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Égrégore —","entité ou force collective nourrie par les pensées et émotions d’un groupe (voir Codex I, E-10)."),
+      LI("Effervescence collective —","Durkheim y voit la source du sacré (voir N-06-13)."),
+      LI("Âme des foules —","Gustave Le Bon (1895) : l’individu en foule perd sa retenue."),
+      LI("Atmosphère —","l’« ambiance » d’un lieu ou d’un groupe."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Choisir ses groupes —","fréquenter des personnes et des lieux qui font du bien."),
+      LI("Vivre la joie partagée —","chants, fêtes, rituels collectifs."),
+      LI("Prendre du recul —","en foule, se demander si l’on ressent sa propre émotion ou celle du groupe."),
+      H(4,"⌛","Origine supposée"),
+      P("Des rites collectifs de toutes les cultures, de l’ésotérisme (la notion d’égrégore se répand au XIXe siècle) et de la sociologie (Le Bon, Durkheim)."),
+      SCI("la « contagion émotionnelle » est bien étudiée (Elaine Hatfield, années 1990) : nous imitons spontanément visages, voix et postures. Les synchronisations de groupe (chant, danse) renforcent les liens. Une force collective indépendante n’est pas démontrée.")
+    ],
+
+    /* 14 — CROYANCES */
+    [
+      H(1,"✟","Définition"),
+      LEAD("L’énergie des croyances désigne, sous l’angle psychique, la force que nos convictions exercent sur nos perceptions, nos émotions, nos actes et même notre corps. Ce que l’on croit possible ou impossible ouvre ou ferme des portes. (Pour la foi religieuse, voir N-06-07.)"),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Croyances limitantes —","« je n’y arriverai jamais », « je ne mérite pas »."),
+      LI("Croyances soutenantes —","« je peux apprendre », « je ne suis pas seul »."),
+      LI("Prophétie autoréalisatrice —","une croyance pousse à agir de façon à la rendre vraie (Robert Merton, 1948)."),
+      LI("Placebo & nocebo —","l’attente d’un effet suffit parfois à le produire."),
+      LI("Magie & croyance —","l’ésotérisme considère souvent que la croyance du praticien est indispensable à l’efficacité du rite."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Repérer —","noter ses phrases intérieures du type « toujours » ou « jamais »."),
+      LI("Questionner —","quelles preuves pour et contre cette croyance ?"),
+      LI("Tester —","faire une petite expérience pour voir si la croyance tient."),
+      H(4,"⌛","Origine supposée"),
+      P("De la philosophie (le doute méthodique de Descartes), de la sociologie (Merton), de la médecine (l’effet placebo, étudié dès les années 1950) et de la psychologie cognitive."),
+      SCI("les attentes modifient réellement la perception (douleur notamment) et le comportement : c’est l’un des effets les mieux établis. Elles n’agissent pas pour autant directement sur les événements extérieurs.")
+    ],
+
+    /* 15 — PSYCHIQUE */
+    [
+      H(1,"◈","Définition"),
+      LEAD("L’énergie psychique désigne, dans les courants ésotériques et parapsychologiques, une force de l’esprit capable de percevoir au-delà des sens (perception extrasensorielle) ou d’agir sur la matière à distance. Le mot « psychique » désigne aussi, dans le langage courant, une personne qui dirait posséder ces dons."),
+      H(2,"✦","Caractéristiques attribuées"),
+      CORR([
+        ["Télépathie","communication d’esprit à esprit"],
+        ["Clairvoyance","voir à distance ou au-delà des sens"],
+        ["Clairaudience · clair-ressenti","entendre ou ressentir des informations subtiles"],
+        ["Précognition","connaître l’avenir"],
+        ["Psychométrie","lire l’histoire d’un objet en le touchant"],
+        ["Psychokinèse","agir sur la matière par l’esprit"]
+      ]),
+      P("Pour Jung, l’« énergie psychique » désigne aussi, dans un tout autre sens, l’énergie de la vie psychique en général (la libido au sens large)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Exercices d’intuition —","deviner une carte, un appel, puis noter honnêtement résultats et erreurs."),
+      LI("Garder une trace —","le hasard produit souvent des coïncidences frappantes : seul un relevé complet permet d’en juger."),
+      NOTE("Se méfier des voyants ou « médiums » qui demandent des sommes importantes, créent la peur ou la dépendance : c’est un terrain fréquent d’escroquerie et d’emprise."),
+      H(4,"⌛","Origine supposée"),
+      P("Du spiritisme et de la Society for Psychical Research (Londres, 1882), puis de la parapsychologie de J. B. Rhine (Université Duke, années 1930), qui invente le terme « perception extrasensorielle » (ESP). Pendant la guerre froide, des programmes militaires ont étudié la « vision à distance » (projet Stargate, États-Unis, arrêté en 1995)."),
+      SCI("malgré plus d’un siècle de recherches, aucun phénomène psychique n’a été démontré de façon reproductible et indépendante. Le projet Stargate a été jugé sans utilité opérationnelle, et le défi James Randi (un million de dollars promis à toute preuve) n’a jamais été remporté.")
+    ],
+
+    /* 16 — MENTALE */
+    [
+      H(1,"⧖","Définition"),
+      LEAD("L’énergie mentale désigne la force de l’esprit au sens large : la capacité de penser, de se concentrer, d’apprendre et de visualiser. Dans l’ésotérisme, elle correspond au « plan mental » et au « corps mental », lieu des pensées et des formes-pensées."),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Plan mental —","troisième plan de la théosophie (voir N-05-13)."),
+      LI("Visualisation —","technique centrale de la magie occidentale (Golden Dawn, Dion Fortune)."),
+      LI("Projection mentale —","envoyer une pensée, une image ou une intention vers quelqu’un ou quelque chose."),
+      LI("Fatigue mentale —","l’esprit « s’use » et a besoin de récupérer."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Exercice de visualisation —","se représenter un objet simple (une pomme) avec le plus de détails possible, puis le faire tourner mentalement."),
+      LI("Pauses —","alterner effort mental et repos (marche, nature, sommeil)."),
+      LI("Clarté —","faire le vide en écrivant ses idées avant de réfléchir."),
+      H(4,"⌛","Origine supposée"),
+      P("De la théosophie, de la magie occidentale (Golden Dawn, fin XIXe siècle) et de la psychologie de l’attention."),
+      SCI("le cerveau consomme environ 20 % de l’énergie du corps (sous forme de glucose) : il existe donc bien une énergie mentale au sens biologique. La « fatigue mentale » est réelle et se récupère par le repos et la nature (voir N-04-17). La projection mentale n’est pas démontrée.")
+    ],
+
+    /* 17 — HYBRIDES */
+    [
+      H(1,"⧉","Définition"),
+      LEAD("Les énergies émotionnelles et psychiques hybrides naissent de la combinaison de plusieurs états : une émotion portée par une intention, une visualisation chargée d’émotion, une croyance renforcée par un groupe."),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Émotion + visualisation —","la magie et la sophrologie insistent sur le fait de « ressentir » ce que l’on imagine."),
+      LI("Volonté + croyance —","la « foi qui agit » ; la confiance renforce la persévérance."),
+      LI("Émotion + groupe —","rituels collectifs, prières communes, chants."),
+      LI("Rêve + intuition —","rêves interprétés comme intuitions."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Combiner consciemment —","associer une intention claire, une image et une émotion positive."),
+      LI("Garder l’équilibre —","éviter que l’émotion ne prenne le pas sur le jugement dans les décisions importantes."),
+      H(4,"⌛","Origine supposée"),
+      P("De la magie cérémonielle, de la sophrologie (Alfonso Caycedo, 1960), de la préparation mentale du sport et des thérapies qui associent imagerie et émotion."),
+      SCI("l’imagerie mentale chargée d’émotion est plus efficace pour la mémoire et la motivation : c’est utilisé en psychothérapie et en préparation sportive.")
+    ],
+
+    /* 18 — AUTRES */
+    [
+      H(1,"✧","Définition"),
+      LEAD("Cette section rassemble d’autres notions d’énergie émotionnelle ou psychique, moins courantes ou difficiles à classer."),
+      H(2,"✦","Caractéristiques attribuées"),
+      LI("Vampirisme psychique —","idée que certaines personnes « pompent » l’énergie des autres ; souvent utilisée pour décrire des relations épuisantes."),
+      LI("Synchronicités —","coïncidences chargées de sens, notion de Jung et Pauli (1952)."),
+      LI("Fantôme émotionnel d’un lieu —","idée qu’une émotion forte imprègne un lieu (« empreinte » ou « hantise résiduelle »)."),
+      LI("Énergie du rire —","le rire comme décharge et comme lien (yoga du rire, Madan Kataria, 1995)."),
+      LI("Énergie de la musique —","la musique comme modulateur des émotions."),
+      LI("Énergie de l’ennui —","l’ennui comme espace qui laisse naître des idées."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Protéger ses limites —","s’éloigner des relations qui épuisent, plutôt que de parler seulement d’« énergie volée »."),
+      LI("Noter les synchronicités —","comme un support de réflexion, sans en tirer de certitudes."),
+      H(4,"⌛","Origine supposée"),
+      P("De l’ésotérisme moderne (Dion Fortune, <em>Psychic Self-Defence</em>, 1930), de Jung, de la parapsychologie et de la culture populaire."),
+      SCI("les relations épuisantes, l’effet de la musique et du rire sur l’humeur sont réels et étudiés. Les synchronicités s’expliquent en grande partie par notre tendance à remarquer les coïncidences qui nous frappent et à oublier les autres.")
+    ]
+  );
+
+  subTexts["Énergies émotionnelles & psychiques"] = Object.fromEntries(psyTexts.map((b,k)=>[k,b]));
   const PFX = CODEX.prefix;
   const pad = n => String(n).padStart(2,'0');
   const pad3 = n => String(n).padStart(3,'0');
