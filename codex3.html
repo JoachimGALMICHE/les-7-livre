@@ -500,7 +500,8 @@
   /* ---------- fiches d'élément ---------- */
   .el-head{margin:0 auto 4px}
   .fig-tri{width:74px}
-  .corr{margin:2px 0 6px}
+  .corr{margin:0}
+  .corr + :not(.corr){margin-top:8px}
   .corr-row{display:flex;gap:10px;padding:3px 0;border-bottom:1px dotted rgba(90,63,36,.28);font-size:.95rem;line-height:1.35}
   .corr-row:last-child{border-bottom:none}
   .corr-k{flex:0 0 42%;font-family:'Cinzel',serif;font-size:.74rem;font-weight:700;color:var(--red);letter-spacing:.03em;padding-top:2px}
@@ -512,6 +513,7 @@
 
   /* ---------- figures du corps ---------- */
   .fig-aura{width:110px}
+  .glyph-row{font-size:1.9rem;letter-spacing:.35em;color:var(--red);line-height:1.2}
   .fig-moon{width:290px}
   .fig-clock{width:230px}
   .lt-fig .lbl.sm{font-size:10.5px;text-anchor:middle}
@@ -519,6 +521,7 @@
   .big-glyph{font-size:4rem;line-height:1.1;color:var(--red);font-family:'Noto Serif SC','Songti SC','SimSun',serif}
   @media (max-width:640px){
     .fig-aura{width:60px}
+    .glyph-row{font-size:1rem}
     .fig-moon{width:160px}
     .fig-clock{width:140px}
     .big-glyph{font-size:2.2rem}
@@ -880,6 +883,12 @@
 
   // Définitions de chaque chapitre (clé = titre exact ; une ligne vide = nouveau paragraphe)
   const definitions = {
+    "Énergies astrales & cosmiques":
+      "Les énergies astrales et cosmiques désignent, dans différentes traditions spirituelles, astrologiques et ésotériques, les forces ou influences symboliques associées aux astres, aux cycles célestes et aux grandes structures de l’Univers.\n\n" +
+      "Elles peuvent notamment être associées au Soleil, à la Lune, aux planètes, aux étoiles, aux constellations, au zodiaque ou à certains phénomènes célestes. Certaines conceptions étendent également cette notion à des principes plus vastes tels que les cycles cosmiques, l’espace, le temps, la création ou les forces primordiales.\n\n" +
+      "Selon les traditions, ces énergies peuvent être considérées comme des influences symboliques, des forces spirituelles, des principes cosmologiques ou des correspondances entre les phénomènes célestes et le monde terrestre.\n\n" +
+      "Ces conceptions ne constituent pas un système universel et leurs significations varient fortement selon les traditions et les systèmes ésotériques concernés. Elles doivent également être distinguées des phénomènes physiques étudiés par l’astronomie et la physique.\n\n" +
+      "Dans ce codex, les énergies astrales et cosmiques seront étudiées selon leur origine ou leur association céleste, leurs caractéristiques symboliques, leurs cycles, leurs correspondances et les différentes conceptions qui leur sont attribuées.",
     "Énergies naturelles":
       "Les énergies naturelles désignent, dans différentes traditions spirituelles et ésotériques, les forces ou qualités énergétiques attribuées aux êtres vivants, aux paysages, aux phénomènes naturels et aux cycles de la nature.\n\n" +
       "Elles peuvent être associées notamment aux plantes, arbres, animaux, forêts, montagnes, cours d’eau, océans, saisons, cycles lunaires, phénomènes météorologiques ou encore à certains lieux considérés comme particuliers.\n\n" +
@@ -900,6 +909,28 @@
   const leftLists = {};
   const refLists = {};
   const subcats = {
+    "Énergies astrales & cosmiques": {
+      items: [
+        "Énergies solaires",
+        "Énergies lunaires",
+        "Énergies planétaires",
+        "Énergies stellaires",
+        "Énergies des constellations",
+        "Énergies zodiacales",
+        "Énergies des cycles célestes",
+        "Énergies des éclipses",
+        "Énergies des marées & influences lunaires",
+        "Énergies des météores & comètes",
+        "Énergies galactiques",
+        "Énergies cosmiques",
+        "Énergies des dimensions & plans cosmiques",
+        "Énergies du temps & de l’espace",
+        "Énergies primordiales",
+        "Énergies de création & de destruction",
+        "Énergies cosmiques hybrides & mixtes",
+        "Autres énergies astrales & cosmiques"
+      ]
+    },
     "Énergies naturelles": {
       items: [
         "Énergie des plantes",
@@ -1114,7 +1145,8 @@
       <circle cx="60" cy="14" r="4" class="fl"/>
     </svg>`;
   const EHEAD = (svg, tag) => `<figure class="lt-fig el-head">${svg}<figcaption>${tag}</figcaption></figure>`;
-  const CORR = rows => `<div class="corr">${rows.map(r=>`<div class="corr-row"><span class="corr-k">${r[0]}</span><span class="corr-v">${r[1]}</span></div>`).join('')}</div>`;
+  // un tableau = une ligne par bloc, pour pouvoir se couper entre deux pages
+  const CORR = rows => rows.map(r=>`<div class="corr"><div class="corr-row"><span class="corr-k">${r[0]}</span><span class="corr-v">${r[1]}</span></div></div>`);
   const CORR_NOTE = NOTE("Ces correspondances sont celles de l’ésotérisme occidental (surtout l’ordre de la Golden Dawn, XIXe siècle) et de la tradition hindoue ; elles varient selon les écoles.");
 
   const subTexts = {
@@ -2151,6 +2183,430 @@
   );
 
   subTexts["Énergies naturelles"] = Object.fromEntries(natureTexts.map((b,k)=>[k,b]));
+
+  // astral_text
+
+  /* ===== Pages des énergies astrales & cosmiques (N-05-01 à N-05-18) ===== */
+  const VS = g => g + '︎';
+  const SVG_ZODIAC = (()=>{
+    const signs = [["♈","#b0302c"],["♉","#3f7a3a"],["♊","#c9a23a"],["♋","#3a6fa8"],["♌","#b0302c"],["♍","#3f7a3a"],["♎","#c9a23a"],["♏","#3a6fa8"],["♐","#b0302c"],["♑","#3f7a3a"],["♒","#c9a23a"],["♓","#3a6fa8"]];
+    let o = `<svg viewBox="0 0 220 220" class="fig-clock" aria-hidden="true"><circle cx="110" cy="110" r="100" class="ln"/><circle cx="110" cy="110" r="66" class="ln dim"/><circle cx="110" cy="110" r="6" class="fl"/>`;
+    signs.forEach((s,j)=>{
+      const a0=(180+j*30-15)*Math.PI/180, a=(180+j*30)*Math.PI/180;
+      o += `<line x1="${(110+66*Math.cos(a0)).toFixed(1)}" y1="${(110-66*Math.sin(a0)).toFixed(1)}" x2="${(110+100*Math.cos(a0)).toFixed(1)}" y2="${(110-100*Math.sin(a0)).toFixed(1)}" class="ln dim"/>`;
+      o += `<text x="${(110+83*Math.cos(a)).toFixed(1)}" y="${(110-83*Math.sin(a)+6).toFixed(1)}" style="font-size:17px;text-anchor:middle;fill:${s[1]}">${VS(s[0])}</text>`;
+    });
+    return o + `</svg>`;
+  })();
+  const PLANET_ROW = `<div class="glyph-row" aria-hidden="true">${["☉","☽","☿","♀","♂","♃","♄"].map(VS).join(' ')}</div>`;
+
+  const astralTexts = [
+    /* 01 — SOLAIRE */
+    [
+      H(1,"☉","Définition"),
+      LEAD("L’énergie solaire, au sens astral, désigne l’influence symbolique attribuée au Soleil en astrologie et dans les traditions ésotériques : le principe de vie, de conscience et d’identité. (Pour le Soleil comme force de la nature, voir N-04-11.)"),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Principe","vitalité, conscience, volonté, identité, rayonnement"],
+        ["En astrologie","le « signe solaire » : le signe où se trouve le Soleil à la naissance"],
+        ["Signe maître","Lion"],
+        ["Jour · métal","dimanche · or"],
+        ["Kabbale","Tiphereth, la beauté, au centre de l’arbre de vie"],
+        ["Tarot","XVIIII, Le Soleil"],
+        ["Moments clés","solstices et équinoxes, entrée du Soleil dans chaque signe"]
+      ]),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Anniversaire solaire —","le « retour solaire » (le Soleil revient à sa position de naissance) sert de moment de bilan annuel."),
+      LI("Dimanche & heure du Soleil —","choisir ce jour pour les intentions de confiance, de réussite et de vitalité."),
+      LI("Méditation solaire —","visualiser un soleil au cœur ou au plexus, qui rayonne dans tout le corps."),
+      LI("Suivre la course du Soleil —","noter l’entrée du Soleil dans chaque signe (vers le 20 de chaque mois)."),
+      H(4,"⌛","D’où vient-elle"),
+      P("L’astrologie babylonienne puis grecque (Ptolémée, <em>Tétrabible</em>, IIe siècle) fait du Soleil le premier des « luminaires ». À la Renaissance, Marsile Ficin développe une « magie solaire » fondée sur les correspondances. L’usage du seul signe solaire (« je suis Lion ») vient des horoscopes de presse des années 1930."),
+      SCI("le Soleil influence physiquement la Terre (lumière, chaleur, saisons, vent solaire). En revanche, aucun lien n’a été démontré entre le signe solaire de naissance et la personnalité.")
+    ],
+
+    /* 02 — LUNAIRE */
+    [
+      H(1,"☽","Définition"),
+      LEAD("L’énergie lunaire, au sens astral, désigne l’influence symbolique attribuée à la Lune en astrologie et dans les traditions ésotériques : le monde des émotions, de l’instinct, de la mémoire et des rythmes. (Pour la Lune comme force de la nature et ses phases, voir N-04-12.)"),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Principe","émotions, sensibilité, besoins, intimité, mère, mémoire"],
+        ["Signe maître","Cancer"],
+        ["Jour · métal","lundi · argent"],
+        ["Kabbale","Yesod, le fondement"],
+        ["Tarot","XVIII, La Lune ; II, La Papesse"],
+        ["Demeures lunaires","28 « maisons » de la Lune (tradition arabe) ; 27 <em>nakshatra</em> (Inde)"],
+        ["Nœuds lunaires","points où l’orbite lunaire croise l’écliptique : Rahu et Ketu en Inde"]
+      ]),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Lune de naissance —","en astrologie, le signe lunaire décrirait la vie émotionnelle."),
+      LI("Suivre le transit lunaire —","la Lune change de signe tous les deux jours et demi environ : observer son humeur au fil de ce passage."),
+      LI("Lundi & heure de la Lune —","pour les intentions liées au foyer, aux rêves, à l’intuition."),
+      LI("Lune « hors cours » —","moment, avant un changement de signe, que la tradition déconseille pour commencer quelque chose."),
+      H(4,"⌛","D’où vient-elle"),
+      P("La Lune est le second « luminaire » de l’astrologie antique. Les demeures lunaires apparaissent en Inde (<em>nakshatra</em>), en Chine (les 28 <em>xiu</em>) et dans le monde arabe (<em>manāzil al-qamar</em>), d’où elles passent dans la magie médiévale (le <em>Picatrix</em>)."),
+      SCI("la Lune agit physiquement sur les marées. Aucun effet n’a été démontré du signe lunaire sur la personnalité ou de la position de la Lune sur le comportement humain.")
+    ],
+
+    /* 03 — PLANÉTAIRES */
+    [
+      `<figure class="lt-fig el-head">${PLANET_ROW}<figcaption>Les sept astres de l’astrologie traditionnelle : Soleil, Lune, Mercure, Vénus, Mars, Jupiter, Saturne.</figcaption></figure>`,
+      H(1,"♃","Définition"),
+      LEAD("Les énergies planétaires désignent les influences symboliques attribuées aux planètes en astrologie et en magie. Chaque planète incarne un principe (l’amour pour Vénus, l’action pour Mars, la structure pour Saturne…) et commande des jours, des heures, des métaux, des plantes et des signes."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        [`${VS("☿")} Mercure`,"intellect, échange, commerce · Gémeaux, Vierge · mercredi · vif-argent"],
+        [`${VS("♀")} Vénus`,"amour, beauté, harmonie · Taureau, Balance · vendredi · cuivre"],
+        [`${VS("♂")} Mars`,"action, courage, conflit · Bélier (et Scorpion) · mardi · fer"],
+        [`${VS("♃")} Jupiter`,"expansion, chance, sagesse · Sagittaire (et Poissons) · jeudi · étain"],
+        [`${VS("♄")} Saturne`,"structure, limite, temps · Capricorne (et Verseau) · samedi · plomb"],
+        ["Uranus","rupture, innovation · Verseau (découverte en 1781)"],
+        ["Neptune","rêve, dissolution, mystique · Poissons (1846)"],
+        ["Pluton","transformation profonde · Scorpion (1930 ; planète naine depuis 2006)"]
+      ]),
+      P("Le Soleil et la Lune complètent la liste traditionnelle des sept astres (voir N-05-01 et N-05-02)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Jours planétaires —","choisir le jour de la planète liée à son intention (vendredi pour l’amour, jeudi pour la prospérité…)."),
+      LI("Heures planétaires —","chaque heure du jour serait gouvernée par une planète, dans l’« ordre chaldéen » (Saturne, Jupiter, Mars, Soleil, Vénus, Mercure, Lune)."),
+      LI("Talismans —","dans la magie traditionnelle, objets fabriqués sous l’influence d’une planète, avec son métal et ses symboles."),
+      LI("Méditation planétaire —","réfléchir à ce que chaque principe représente dans sa vie."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les Babyloniens associaient les planètes à des dieux (Nabû, Ishtar, Nergal, Marduk, Ninurta), que les Grecs puis les Romains ont traduits : d’où les noms actuels et ceux des jours de la semaine. Ptolémée codifie l’astrologie au IIe siècle ; le <em>Picatrix</em> (XIe siècle), Marsile Ficin et Corneille Agrippa (XVIe siècle) développent la magie planétaire."),
+      SCI("les planètes sont réelles, mais leur influence sur la Terre se limite à une gravité et une lumière infimes. Un test en double aveugle publié dans <em>Nature</em> (Shawn Carlson, 1985) n’a pas montré de capacité des astrologues à relier thèmes et personnalités.")
+    ],
+
+    /* 04 — STELLAIRES */
+    [
+      H(1,"✶","Définition"),
+      LEAD("Les énergies stellaires désignent les influences attribuées aux étoiles fixes, distinctes des planètes qui se déplacent. Lointaines, immuables à l’échelle humaine, les étoiles symbolisent la permanence, la destinée, le guide et l’origine céleste de l’âme."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Sirius","l’étoile la plus brillante ; en Égypte, son lever annonçait la crue du Nil"],
+        ["Étoile polaire","guide, axe du ciel, constance"],
+        ["Les Pléiades","calendriers agricoles ; Matariki, le Nouvel An maori"],
+        ["Aldébaran, Régulus, Antarès, Fomalhaut","les quatre « étoiles royales » de la tradition perse"],
+        ["Algol","« la tête du démon », étoile réputée maléfique"],
+        ["Spica","l’épi de la Vierge, abondance"]
+      ]),
+      P("La magie médiévale retenait quinze « étoiles béhéniennes », chacune liée à une pierre et à une plante."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Observer —","apprendre à reconnaître quelques étoiles brillantes et leur saison."),
+      LI("Étoile guide —","choisir une étoile comme repère symbolique, à contempler dans les moments de doute."),
+      LI("Lever héliaque —","guetter le premier lever d’une étoile à l’aube, comme le faisaient les Égyptiens avec Sirius."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les Babyloniens et les Égyptiens observaient les étoiles pour leurs calendriers ; Ptolémée attribue à chaque étoile la « nature » d’une planète. Les étoiles béhéniennes viennent d’un texte attribué à Hermès, repris par Agrippa (XVIe siècle)."),
+      SCI("les étoiles sont des soleils lointains, alimentés par la fusion nucléaire ; leur lumière a parfois voyagé des milliers d’années. Elles n’exercent pas d’autre influence mesurable sur nous que cette lumière.")
+    ],
+
+    /* 05 — CONSTELLATIONS */
+    [
+      H(1,"⁂","Définition"),
+      LEAD("Les énergies des constellations désignent les qualités attribuées aux figures que les humains dessinent en reliant les étoiles. Chaque culture a ses propres constellations et ses propres récits : le ciel est un livre d’images et de mythes."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Constellations occidentales —","48 figures décrites par Ptolémée, issues des mythes grecs : Orion le chasseur, la Grande Ourse (la nymphe Callisto), Cassiopée, Persée…"),
+      LI("Constellations chinoises —","un tout autre découpage, avec les 28 « loges lunaires » et les quatre animaux des directions (Dragon azur, Tigre blanc, Oiseau vermillon, Tortue noire)."),
+      LI("Constellations sombres —","les peuples aborigènes d’Australie voient aussi des figures dans les zones sombres de la Voie lactée, comme l’Émeu dans le ciel."),
+      LI("Constellations zodiacales —","celles que traverse le Soleil (voir N-05-06)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Apprendre le ciel —","reconnaître une constellation par saison (Orion en hiver, le Scorpion en été)."),
+      LI("Raconter —","associer chaque constellation à son mythe, comme un conte du soir."),
+      LI("Méditation sous les étoiles —","s’allonger, regarder une figure et laisser venir ce qu’elle évoque."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les constellations occidentales viennent de Mésopotamie et de Grèce, et sont fixées par Ptolémée (IIe siècle). L’Union astronomique internationale a défini 88 constellations officielles et leurs frontières en 1922 – 1930."),
+      SCI("les étoiles d’une même constellation sont souvent très éloignées les unes des autres : elles ne semblent proches que vues depuis la Terre. Les constellations sont donc des repères culturels, pas des ensembles physiques.")
+    ],
+
+    /* 06 — ZODIACALES */
+    [
+      HEAD2(SVG_ZODIAC, "La roue des douze signes, colorés selon leur élément (Feu, Terre, Air, Eau)."),
+      H(1,VS("♈"),"Définition"),
+      LEAD("Les énergies zodiacales désignent les qualités attribuées aux douze signes du zodiaque, les douze parts égales de la bande du ciel que parcourt le Soleil en un an. Chaque signe combine un élément, un mode et une planète maîtresse."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        [`${VS("♈")} Bélier`,"Feu · cardinal · Mars — élan, initiative"],
+        [`${VS("♉")} Taureau`,"Terre · fixe · Vénus — stabilité, sensualité"],
+        [`${VS("♊")} Gémeaux`,"Air · mutable · Mercure — échange, curiosité"],
+        [`${VS("♋")} Cancer`,"Eau · cardinal · Lune — protection, émotions"],
+        [`${VS("♌")} Lion`,"Feu · fixe · Soleil — rayonnement, création"],
+        [`${VS("♍")} Vierge`,"Terre · mutable · Mercure — analyse, service"],
+        [`${VS("♎")} Balance`,"Air · cardinal · Vénus — harmonie, relation"],
+        [`${VS("♏")} Scorpion`,"Eau · fixe · Mars / Pluton — transformation, intensité"],
+        [`${VS("♐")} Sagittaire`,"Feu · mutable · Jupiter — quête, voyage"],
+        [`${VS("♑")} Capricorne`,"Terre · cardinal · Saturne — ambition, persévérance"],
+        [`${VS("♒")} Verseau`,"Air · fixe · Saturne / Uranus — innovation, collectif"],
+        [`${VS("♓")} Poissons`,"Eau · mutable · Jupiter / Neptune — compassion, rêve"]
+      ]),
+      P("Les modes : cardinal (commencer), fixe (maintenir), mutable (adapter). L’astrologie occidentale utilise un zodiaque « tropical », calé sur les saisons ; l’astrologie indienne un zodiaque « sidéral », calé sur les étoiles. À cause de la précession, les deux sont aujourd’hui décalés d’environ 24°."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Thème natal —","position du Soleil, de la Lune et des planètes dans les signes à la naissance."),
+      LI("Élément et mode —","se demander quel élément et quel mode dominent une période ou un projet."),
+      LI("Saisons astrologiques —","accorder ses intentions au signe que traverse le Soleil."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Le zodiaque à douze signes égaux apparaît en Babylonie vers le Ve siècle av. J.-C., puis est adopté par les Grecs. Le Serpentaire, parfois appelé « 13e signe », est une constellation que traverse le Soleil, mais il ne fait pas partie du zodiaque astrologique, découpé en douze parts égales."),
+      SCI("les études contrôlées n’ont pas montré de lien entre signe et personnalité. La reconnaissance de soi dans un portrait astrologique s’explique en partie par l’« effet Barnum » : on se reconnaît dans des descriptions assez générales pour convenir à tous.")
+    ],
+
+    /* 07 — CYCLES CÉLESTES */
+    [
+      H(1,"↻","Définition"),
+      LEAD("Les énergies des cycles célestes désignent les influences attribuées aux grands rythmes du ciel : le jour, le mois, l’année, mais aussi les cycles des planètes et les très longs cycles qui découpent l’histoire en « ères »."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Mois lunaire","environ 29,5 jours entre deux nouvelles lunes"],
+        ["Rétrogradations","les planètes semblent reculer ; Mercure environ trois fois par an"],
+        ["Révolution de Jupiter","environ 12 ans — en écho au cycle des 12 animaux chinois"],
+        ["Retour de Saturne","environ 29,5 ans — vu comme un passage vers la maturité"],
+        ["Grande conjonction","Jupiter et Saturne se rejoignent environ tous les 20 ans"],
+        ["Cycle de Méton","19 ans, qui accorde mois lunaires et années solaires"],
+        ["Saros","environ 18 ans et 11 jours, cycle de retour des éclipses"],
+        ["Précession","environ 25 800 ans ; base des « ères » (Poissons, Verseau…)"]
+      ]),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Calendrier personnel —","noter les grands retours (Jupiter à 12, 24, 36 ans ; Saturne vers 29 et 58 ans) comme moments de bilan."),
+      LI("Mercure rétrograde —","dans l’usage populaire, période de prudence pour signer, voyager ou communiquer."),
+      LI("Penser en cycles —","voir les étapes de sa vie comme des saisons qui reviennent."),
+      H(4,"⌛","D’où vient-elle"),
+      P("L’astronomie babylonienne connaissait déjà le saros. Méton d’Athènes décrit son cycle en 432 av. J.-C. ; Hipparque découvre la précession des équinoxes au IIe siècle av. J.-C. L’idée d’« ère du Verseau » se répand avec le New Age au XXe siècle."),
+      SCI("ces cycles sont réels et se calculent avec précision. La rétrogradation est un effet de perspective : la Terre « double » une planète sur son orbite. Leur influence sur les affaires humaines n’est pas démontrée.")
+    ],
+
+    /* 08 — ÉCLIPSES */
+    [
+      H(1,"◐","Définition"),
+      LEAD("Les énergies des éclipses désignent la force exceptionnelle attribuée aux moments où le Soleil ou la Lune s’obscurcissent. Rares, spectaculaires, inquiétantes, les éclipses ont été vues partout comme des présages, des moments de rupture, de fin ou de renouveau."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Éclipse de Soleil —","la Lune cache le Soleil ; symbole d’effacement de la lumière, de la conscience ou du pouvoir."),
+      LI("Éclipse de Lune —","la Lune passe dans l’ombre de la Terre et devient rouge (« lune de sang ») ; symbole émotionnel."),
+      LI("Dévoreurs —","Rahu et Ketu en Inde, un dragon en Chine, les loups Sköll et Hati chez les Scandinaves."),
+      LI("Présages royaux —","en Mésopotamie, un « roi de substitution » était parfois installé pour détourner le malheur annoncé."),
+      LI("En astrologie —","moments de changement brusque, liés aux nœuds lunaires."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Moment de pause —","observer l’éclipse en silence, en considérant ce qui « s’éteint » et ce qui va renaître."),
+      LI("Journal —","noter les événements de la période et y revenir au fil des mois."),
+      NOTE("Sécurité : ne regarder une éclipse de Soleil qu’avec des lunettes certifiées (norme ISO 12312-2), jamais à l’œil nu ni avec des lunettes de soleil. Une éclipse de Lune s’observe sans danger."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les Babyloniens savaient prévoir les éclipses grâce au saros. Selon Hérodote, Thalès aurait prédit celle de 585 av. J.-C., qui aurait interrompu une bataille entre Mèdes et Lydiens."),
+      SCI("une éclipse se produit quand le Soleil, la Terre et la Lune s’alignent. Elle se prévoit à la minute près et n’a pas d’influence démontrée sur les êtres humains.")
+    ],
+
+    /* 09 — MARÉES & INFLUENCES LUNAIRES */
+    [
+      H(1,"≋","Définition"),
+      LEAD("Les énergies des marées et des influences lunaires désignent les effets attribués à l’attraction de la Lune : sur les océans, bien sûr, mais aussi, selon les croyances populaires, sur les corps, les humeurs, les naissances, les cheveux ou les récoltes."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Vives-eaux & mortes-eaux —","marées fortes à la nouvelle et à la pleine lune, faibles aux quartiers."),
+      LI("Croyances populaires —","plus de naissances à la pleine lune, cheveux coupés en lune croissante qui repoussent plus vite, vin mis en bouteille selon la lune…"),
+      LI("La « folie » lunaire —","les mots « lunatique » (et l’anglais <em>lunatic</em>) viennent de l’idée que la Lune troublerait l’esprit."),
+      LI("Cycles du corps —","on a longtemps rapproché le cycle menstruel (environ 28 jours) du mois lunaire."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Calendrier des marées —","accorder une marche ou un rituel au bord de la mer avec la marée haute ou basse."),
+      LI("Journal lunaire —","vérifier pour soi-même si humeur et sommeil varient avec la Lune."),
+      LI("Symbolique —","la marée montante pour ce qui vient, la marée descendante pour ce qui part."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Le lien entre Lune et marées était connu dès l’Antiquité (Pline l’Ancien, Posidonios). Isaac Newton l’explique par la gravitation en 1687. Les croyances sur l’influence lunaire sur le corps sont très répandues dans les folklores du monde entier."),
+      SCI("les marées océaniques et même terrestres (le sol monte et descend de quelques dizaines de centimètres) sont réelles. Sur un corps humain, l’effet gravitationnel est négligeable. Les grandes études n’ont pas montré plus de naissances ou d’admissions aux urgences à la pleine lune.")
+    ],
+
+    /* 10 — MÉTÉORES & COMÈTES */
+    [
+      H(1,"☄","Définition"),
+      LEAD("Les énergies des météores et des comètes désignent la force attribuée aux visiteurs soudains du ciel : étoiles filantes, comètes chevelues, pierres tombées du ciel. Imprévus et éphémères, ils ont été vus comme des messages, des présages ou des dons des dieux."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Comètes —","présages de bouleversements ; la comète de Halley figure sur la tapisserie de Bayeux (1066)."),
+      LI("Étoiles filantes —","vœux, âmes qui passent ; les Perséides d’août sont les « larmes de saint Laurent »."),
+      LI("Météorites —","pierres du ciel souvent sacrées : la météorite de Willamette, vénérée par le peuple Clackamas ; la dague en fer météoritique de Toutânkhamon."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Nuit des étoiles filantes —","observer un essaim (Perséides vers le 12 août, Géminides vers le 14 décembre) loin des lumières."),
+      LI("Vœu —","formuler un vœu ou une intention à chaque étoile filante."),
+      LI("Journal du ciel —","noter les passages de comètes visibles et ce qu’ils ont marqué."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les chroniques antiques et médiévales relient comètes et grands événements. En 1705, Edmond Halley prévoit le retour de la comète qui porte son nom, ce qui transforme peu à peu le présage en phénomène calculable."),
+      SCI("les comètes sont des blocs de glace et de poussière ; les étoiles filantes, des grains de poussière qui brûlent dans l’atmosphère ; les météorites, des fragments d’astéroïdes. Aucune influence au-delà de leur chute n’est démontrée.")
+    ]
+  ];
+
+  const SVG_GALAXY = (()=>{
+    let arms='';
+    for(let arm=0;arm<2;arm++){
+      let d='';
+      for(let t=0;t<=3.6;t+=0.08){ const r=6+t*14, a=t+arm*Math.PI; d+=(t?'L':'M')+(70+r*Math.cos(a)).toFixed(1)+' '+(60+r*0.55*Math.sin(a)).toFixed(1); }
+      arms+=`<path d="${d}" class="ln"/>`;
+    }
+    return `<svg viewBox="0 0 140 120" class="fig-aura" aria-hidden="true">${arms}<circle cx="70" cy="60" r="7" class="fl"/></svg>`;
+  })();
+
+  astralTexts.push(
+    /* 11 — GALACTIQUES */
+    [
+      HEAD2(SVG_GALAXY, "Une galaxie spirale, comme la Voie lactée vue de l’extérieur."),
+      H(1,"✺","Définition"),
+      LEAD("Les énergies galactiques désignent les influences attribuées à la Voie lactée, notre galaxie, et à son centre. Bande laiteuse qui traverse le ciel nocturne, elle a été vue comme un fleuve, un chemin des âmes ou une route céleste."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Grèce","le lait d’Héra répandu dans le ciel (d’où « galaxie », du grec <em>gala</em>, lait)"],
+        ["Chine","le « Fleuve céleste » qui sépare le Bouvier et la Tisserande, réunis une fois par an (fête de Qixi)"],
+        ["Inde","<em>Ākāśagaṅgā</em>, le Gange céleste"],
+        ["Europe médiévale","le « chemin de Saint-Jacques », guide des pèlerins vers Compostelle"],
+        ["Nombreux peuples","le chemin que suivent les âmes des morts"]
+      ]),
+      P("Dans le New Age, le centre galactique est vu comme une source d’énergie spirituelle ; l’« alignement galactique » de 2012 a nourri de nombreuses prophéties de fin du monde."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Observer —","par une nuit d’été sans lune, loin des lumières, la Voie lactée est visible à l’œil nu."),
+      LI("Méditer sur l’échelle —","se représenter sa place dans la galaxie : une prise de recul sur les soucis du quotidien."),
+      LI("Fêter Qixi —","le 7e jour du 7e mois lunaire, la fête chinoise des amoureux liée à la Voie lactée."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Des mythes de nombreuses civilisations. En 1610, Galilée découvre avec sa lunette que la Voie lactée est faite d’innombrables étoiles ; au XXe siècle, on comprend qu’elle est une galaxie parmi des milliards (Hubble, années 1920)."),
+      SCI("la Voie lactée compte des centaines de milliards d’étoiles, avec en son centre un trou noir géant, Sagittarius A* (prix Nobel 2020). L’« alignement de 2012 » n’a eu aucun effet physique.")
+    ],
+
+    /* 12 — COSMIQUES */
+    [
+      H(1,"✧","Définition"),
+      LEAD("Les énergies cosmiques désignent l’idée d’une force, d’une harmonie ou d’une conscience qui traverserait l’Univers entier et relierait toutes choses. Le cosmos (du grec <em>kosmos</em>, « ordre ») est vu comme un tout organisé, dont l’être humain serait un reflet."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Harmonie des sphères —","pour Pythagore, les astres produisent par leurs mouvements une musique inaudible ; Kepler la reprend dans <em>Harmonices Mundi</em> (1619)."),
+      LI("Âme du monde —","l’<em>anima mundi</em> de Platon (<em>Timée</em>) : l’Univers est un être vivant doté d’une âme."),
+      LI("Macrocosme & microcosme —","« ce qui est en haut est comme ce qui est en bas » (Table d’émeraude) : l’humain reflète l’Univers."),
+      LI("Conscience cosmique —","expérience de l’unité avec le Tout, décrite par Richard M. Bucke (1901) et de nombreux mystiques."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Contemplation —","regarder le ciel nocturne en se sentant faire partie du même tout."),
+      LI("Correspondances —","relier un état intérieur à un phénomène céleste (une phase de lune, une saison)."),
+      LI("Gratitude —","prendre conscience de l’improbabilité et de la beauté d’exister."),
+      H(4,"⌛","D’où vient-elle"),
+      P("De la philosophie grecque (Pythagore, Platon, les stoïciens), de l’hermétisme de l’Antiquité tardive, puis de la Renaissance (Ficin, Kepler), de la théosophie et du New Age."),
+      SCI("certaines « énergies cosmiques » sont bien réelles, mais d’une autre nature : les rayons cosmiques (particules venues de l’espace, découvertes par Victor Hess en 1912), le rayonnement fossile du Big Bang (1965), l’énergie noire (1998). Ils ne correspondent pas aux énergies spirituelles décrites par les traditions.")
+    ],
+
+    /* 13 — DIMENSIONS & PLANS COSMIQUES */
+    [
+      H(1,"☰","Définition"),
+      LEAD("Les énergies des dimensions et des plans cosmiques désignent les forces attribuées à des niveaux d’existence superposés au monde visible : plans subtils, mondes spirituels, cieux et enfers. Chaque plan aurait sa propre « vibration », ses habitants et ses lois."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Théosophie","sept plans : physique, astral, mental, bouddhique, atmique, monadique, divin"],
+        ["Kabbale","quatre mondes : Atsilouth, Briah, Yetsirah, Assiah"],
+        ["Mythologie nordique","neuf mondes reliés par Yggdrasil"],
+        ["Bouddhisme","trois mondes (du désir, de la forme, du sans-forme) et 31 plans d’existence"],
+        ["New Age","« dimensions » (3e, 4e, 5e…) et idée d’« ascension »"]
+      ]),
+      P("Le « voyage astral » désigne l’expérience de sortir de son corps pour explorer ces plans."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Carte symbolique —","utiliser un système de plans comme support de méditation ou de réflexion."),
+      LI("Voyage intérieur —","visualisation guidée d’un « monde » intérieur, en restant ancré dans le corps."),
+      NOTE("Prudence : si des expériences de dissociation, de « sortie du corps » ou de perte de repères deviennent fréquentes ou inquiétantes, en parler à un professionnel de santé."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Des cosmologies religieuses (cieux superposés du judaïsme, de l’islam, du bouddhisme), de la Kabbale médiévale, de la théosophie de Blavatsky (fin XIXe siècle) et du New Age."),
+      SCI("en physique, une « dimension » est une grandeur mesurable (trois d’espace, une de temps) ; certaines théories, comme celle des cordes, en supposent davantage, sans preuve à ce jour. Ce sens n’a rien à voir avec les plans spirituels. Les expériences de « sortie du corps » ont été reproduites en laboratoire par stimulation du cerveau.")
+    ],
+
+    /* 14 — TEMPS & ESPACE */
+    [
+      H(1,"⧗","Définition"),
+      LEAD("Les énergies du temps et de l’espace désignent les qualités attribuées au temps lui-même (son passage, ses moments favorables, son caractère destructeur) et à l’espace, conçu comme le contenant de toutes choses."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Chronos","le temps qui s’écoule et dévore (Grèce)"],
+        ["Kairos","le moment opportun, à saisir"],
+        ["Aiôn","le temps éternel, cyclique"],
+        ["Zurvan","le Temps infini, principe premier de certains courants perses"],
+        ["Kāla","en Inde, le Temps qui détruit tout ; lié à la déesse Kālī"],
+        ["Ākāśa","l’espace, cinquième élément (voir N-02-05)"]
+      ]),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Chercher le kairos —","se demander si c’est le bon moment pour agir, plutôt que de seulement suivre l’horloge."),
+      LI("Astrologie élective —","choisir une date favorable selon le ciel pour commencer une entreprise (pratique traditionnelle)."),
+      LI("Méditation du présent —","revenir à l’instant, seul temps vraiment vécu."),
+      LI("Espace sacré —","délimiter un lieu (un cercle, un autel) pour en faire un espace à part."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Des mythologies grecque, perse et indienne, de la philosophie (Aristote, Plotin, saint Augustin, qui s’interroge : « Qu’est-ce que le temps ? ») et des pratiques rituelles qui délimitent un espace et un temps sacrés."),
+      SCI("pour la physique moderne, temps et espace forment un « espace-temps » (Einstein, 1905 et 1915) : le temps passe plus lentement près d’une masse ou à grande vitesse, ce qui est mesuré chaque jour par les satellites GPS. Il ne s’agit pas d’une énergie au sens ésotérique.")
+    ],
+
+    /* 15 — PRIMORDIALES */
+    [
+      H(1,"◯","Définition"),
+      LEAD("Les énergies primordiales désignent les forces ou principes qui existeraient avant la création du monde, ou à son tout début : le chaos, le vide, la nuit, les eaux originelles, l’œuf cosmique. D’elles tout serait né. (Voir aussi le Codex I, E-05 : entités cosmiques & primordiales.)"),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Grèce","Chaos, puis Gaïa, Éros, Érèbe et Nyx (Hésiode)"],
+        ["Égypte","le Noun, océan primordial"],
+        ["Mésopotamie","Apsû et Tiamat, eaux douces et salées"],
+        ["Scandinavie","Ginnungagap, le gouffre béant entre feu et glace"],
+        ["Chine","l’œuf cosmique d’où sort Pangu ; le Tao, puis le passage du Wuji au Taiji"],
+        ["Inde","Hiraṇyagarbha, l’œuf (ou embryon) d’or"],
+        ["Kabbale","Ein Sof, l’Infini sans limite"]
+      ]),
+      P("Le <em>Tao te king</em> le résume : « Le Tao engendre l’Un, l’Un engendre le Deux, le Deux engendre le Trois, le Trois engendre les dix mille êtres. »"),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Méditation du vide —","se reposer dans le silence d’avant les pensées, comme un retour à l’origine."),
+      LI("Rituel de commencement —","pour un nouveau départ, symboliser le « chaos » d’où naît l’ordre (une page blanche, un œuf)."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Des récits de création (cosmogonies) de toutes les cultures, transmis d’abord oralement puis fixés par écrit : la <em>Théogonie</em> d’Hésiode (VIIIe – VIIe siècle av. J.-C.), l’<em>Enuma Elish</em> babylonien, le <em>Ṛgveda</em> indien, le <em>Tao te king</em>."),
+      SCI("la cosmologie décrit l’origine de l’Univers par le Big Bang, il y a environ 13,8 milliards d’années. Ce modèle scientifique est d’une autre nature que les récits symboliques, même si certains y voient des échos.")
+    ],
+
+    /* 16 — CRÉATION & DESTRUCTION */
+    [
+      H(1,"☯","Définition"),
+      LEAD("Les énergies de création et de destruction désignent les deux forces opposées et complémentaires qui feraient naître et mourir les mondes, les êtres et les choses. Pour beaucoup de traditions, l’une ne va pas sans l’autre : détruire, c’est aussi faire place au nouveau."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("La Trimūrti hindoue —","Brahmā crée, Viṣṇu préserve, Śiva détruit ; la danse de Śiva Naṭarāja figure ce cycle."),
+      LI("Ragnarök —","la fin du monde nordique, suivie d’une renaissance."),
+      LI("Le phénix —","l’oiseau qui renaît de ses cendres."),
+      LI("Solve et coagula —","« dissous et coagule », devise de l’alchimie : défaire pour recomposer."),
+      LI("Au tarot —","l’Arcane sans nom (XIII) et la Maison Dieu (XVI) : fin, bouleversement et renouveau."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Rituel de fin —","marquer la fin d’une période (brûler, enterrer ou déchirer un symbole) avant d’en commencer une nouvelle."),
+      LI("Désencombrer —","faire de la place, au sens propre comme au figuré."),
+      LI("Accepter les cycles —","voir dans une fin la condition d’un renouveau."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Des mythologies hindoue et nordique, de l’alchimie, du symbolisme chrétien de la mort et de la résurrection, et de nombreuses philosophies du cycle (voir N-04-14)."),
+      SCI("l’Univers connaît bien des cycles de création et de destruction : les étoiles naissent et meurent, et les supernovæ dispersent les éléments (carbone, oxygène, fer) dont nos corps sont faits. « Nous sommes poussière d’étoiles » est donc vrai au sens propre.")
+    ],
+
+    /* 17 — HYBRIDES & MIXTES */
+    [
+      H(1,"⧉","Définition"),
+      LEAD("Les énergies cosmiques hybrides et mixtes naissent de la rencontre de plusieurs influences célestes : deux planètes qui se rejoignent, le Soleil et la Lune réunis (nouvelle lune, éclipse), un astre dans un signe, une phase de lune un jour planétaire."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      CORR([
+        ["Conjonction · 0°","fusion, intensification"],
+        ["Sextile · 60°","opportunité, facilité"],
+        ["Carré · 90°","tension, défi, effort"],
+        ["Trigone · 120°","harmonie, fluidité"],
+        ["Opposition · 180°","polarité, confrontation, équilibre à trouver"]
+      ]),
+      P("La mélothésie, ou « homme zodiacal », associait chaque signe à une partie du corps, du Bélier (la tête) aux Poissons (les pieds) ; elle illustre les <em>Très Riches Heures du duc de Berry</em> (XVe siècle)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Lire les aspects —","dans un thème, observer les angles entre planètes comme des dialogues entre principes."),
+      LI("Combiner —","associer le jour d’une planète, une phase de lune et un élément pour une même intention."),
+      H(4,"⌛","D’où vient-elle"),
+      P("Les aspects sont décrits par Ptolémée (IIe siècle) ; les correspondances entre astres, corps, métaux et plantes se développent au Moyen Âge et à la Renaissance, selon le principe du macrocosme et du microcosme."),
+      SCI("les aspects décrivent des angles réels entre les positions apparentes des astres. Leur influence sur les événements humains n’a pas été démontrée.")
+    ],
+
+    /* 18 — AUTRES */
+    [
+      H(1,"✧","Définition"),
+      LEAD("Cette section rassemble des énergies astrales et cosmiques plus rares, récentes ou difficiles à classer : points fictifs du ciel, astres hypothétiques, objets découverts récemment, « portails » du calendrier New Age."),
+      H(2,"✦","Caractéristiques & symbolisme"),
+      LI("Lune noire (Lilith) —","point de l’orbite lunaire (l’apogée) utilisé en astrologie, associé à l’ombre et au refoulé."),
+      LI("Chiron & astéroïdes —","Chiron, découvert en 1977, est vu comme le « guérisseur blessé » ; Cérès, Junon, Pallas et Vesta sont aussi utilisées."),
+      LI("Trous noirs —","symbole moderne de l’absorption, de l’inconnu, du passage."),
+      LI("Portails —","dates censées ouvrir un « portail énergétique » (11/11, « porte du Lion » le 8 août) dans le New Age."),
+      LI("Planètes hypothétiques —","Vulcain, que l’on cherchait près du Soleil au XIXe siècle ; Nibiru, planète imaginaire des prophéties de catastrophe."),
+      LI("Vent solaire & aurores —","particules du Soleil qui produisent les aurores (voir N-04-19)."),
+      H(3,"☀","Comment l’utiliser"),
+      LI("Rester curieux et critique —","vérifier l’origine et l’ancienneté d’un concept avant de l’adopter."),
+      LI("Symbolique personnelle —","un objet céleste peut servir de support de réflexion, même sans influence réelle."),
+      H(4,"⌛","D’où vient-elle"),
+      P("De l’astrologie moderne (XXe siècle), qui intègre astéroïdes et points fictifs, et du New Age, qui crée de nouveaux rituels calendaires."),
+      SCI("Vulcain a été abandonné quand la relativité d’Einstein (1915) a expliqué le mouvement de Mercure ; Nibiru n’existe pas : une planète de cette taille serait visible depuis longtemps. Les trous noirs, eux, sont réels et ont été photographiés (2019).")
+    ]
+  );
+
+  subTexts["Énergies astrales & cosmiques"] = Object.fromEntries(astralTexts.map((b,k)=>[k,b]));
   const PFX = CODEX.prefix;
   const pad = n => String(n).padStart(2,'0');
   const pad3 = n => String(n).padStart(3,'0');
@@ -2394,7 +2850,7 @@
       </div>
       ${ref.cards.length ? `<div class="def-label">${ref.cards.length} carte${ref.cards.length>1?'s':''}</div>`
                          : `<p class="empty-note">Aucune carte pour l’instant : utilise « Ajouter des cartes ».</p>`}` : ''}`];
-    if(subTextOf(i,k)) subTextOf(i,k).forEach(b=>blocks.push(b));
+    if(subTextOf(i,k)) subTextOf(i,k).flat().forEach(b=>blocks.push(b));
     if(ref){
       ref.cards.forEach(c=>blocks.push(c.rows ? `
         <div class="card-entry${ref.glyph ? ' glyphs' : ''}">
@@ -2460,7 +2916,7 @@
     return pages;
   }
   const subPages = (i,k) => paginate('s'+i+':'+k, ()=>subBlocks(i,k));
-  const chapterPages = i => paginate('c'+i, ()=>[chapterHead(i), ...longOf(i)]);
+  const chapterPages = i => paginate('c'+i, ()=>[chapterHead(i), ...longOf(i).flat()]);
   const chapterSpreadCount = i => longOf(i) ? Math.ceil(chapterPages(i).length/2) : 1;
   const subSpreadCount = (i,k) => Math.ceil(subPages(i,k).length / 2);
   const spreadSpreadCount = (i,s) => Math.ceil(spreadPages(i,s).length / 2);
