@@ -527,6 +527,26 @@
     .big-glyph{font-size:2.2rem}
   }
 
+  /* ---------- parties & catalogue de méthodes ---------- */
+  .lt-part{margin:16px 0 4px;text-align:center;font-family:'Cinzel Decorative',serif;font-weight:700;font-size:1.25rem;color:var(--red);
+    padding:6px 0;border-top:2px solid rgba(122,26,26,.45);border-bottom:2px solid rgba(122,26,26,.45)}
+  .lt-part span{display:inline-block;margin-right:10px;font-family:'Cinzel',serif;font-size:.9rem;letter-spacing:.15em;color:var(--ink-soft)}
+  .meth{padding:5px 0 6px;border-bottom:1px dotted rgba(90,63,36,.3)}
+  .meth-h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+  .meth-h strong{font-family:'Cinzel',serif;font-size:.92rem;color:var(--ink)}
+  .meth-t{font-style:italic;font-size:.82rem;color:var(--red)}
+  .meth-d{font-size:.96rem;line-height:1.42}
+  .lt-fig .lb-t{font-family:'IM Fell English',serif;font-size:11.5px;fill:var(--ink-soft);text-anchor:middle}
+  @media (max-width:640px){
+    .lt-part{font-size:.7rem;margin:8px 0 2px;padding:3px 0}
+    .lt-part span{font-size:.5rem;margin-right:5px}
+    .meth{padding:2px 0 3px}
+    .meth-h{gap:4px}
+    .meth-h strong{font-size:.55rem}
+    .meth-t{font-size:.5rem}
+    .meth-d{font-size:.56rem;line-height:1.32}
+  }
+
   /* ---------- outils (sauvegarde) ---------- */
   .tools{display:flex;gap:8px}
   .tool{font-family:'Cinzel',serif;font-weight:700;font-size:.72rem;letter-spacing:.08em;color:var(--gold);
@@ -883,6 +903,18 @@
 
   // Définitions de chaque chapitre (clé = titre exact ; une ligne vide = nouveau paragraphe)
   const definitions = {
+    "Manipulation & maîtrise énergétique":
+      "La manipulation et la maîtrise énergétiques désignent, dans différentes traditions spirituelles, martiales, médicales traditionnelles et ésotériques, l’ensemble des pratiques par lesquelles une personne chercherait à percevoir, cultiver, diriger, transformer ou protéger l’énergie, en elle-même ou autour d’elle.\n\n" +
+      "Elles reposent le plus souvent sur quelques outils communs : l’attention, le souffle, la posture, le mouvement, la visualisation, l’intention et le rituel. On les retrouve notamment dans la méditation, le yoga, le qi gong, le tai-chi, le travail des chakras ou du prana, ainsi que dans de nombreuses pratiques modernes de soin, de nettoyage ou de protection énergétique.\n\n" +
+      "Ces pratiques ne forment pas un système unique : chacune provient d’une tradition particulière, avec ses propres objectifs, méthodes et conceptions de l’énergie. Certaines sont très anciennes, d’autres récentes ou issues de synthèses de l’ésotérisme moderne.\n\n" +
+      "Dans ce codex, chaque pratique sera présentée selon ses principes, une méthode simple à essayer, son origine et les précautions éventuelles. Les effets ressentis seront distingués de ce que les études scientifiques ont pu établir, et aucune de ces pratiques ne remplace un avis ou un traitement médical.",
+    "Manipulation & maîtrise énergétique":
+      "La manipulation énergétique désigne, dans différentes traditions spirituelles et ésotériques, l’ensemble des conceptions et pratiques visant à percevoir, orienter, déplacer, transformer, concentrer ou utiliser une énergie selon un objectif donné.\n\n" +
+      "Selon les systèmes concernés, cette énergie peut être décrite comme une force vitale, une énergie élémentaire, corporelle, naturelle, spirituelle, psychique ou autre. Les méthodes employées pour la travailler varient donc fortement selon les traditions.\n\n" +
+      "La manipulation énergétique peut notamment être associée à des notions telles que la concentration, la circulation, la canalisation, la projection, l’accumulation, la transformation, la dissipation ou l’équilibrage de l’énergie.\n\n" +
+      "La maîtrise énergétique désigne quant à elle la capacité, selon ces conceptions, à mieux percevoir et contrôler ces processus avec précision, stabilité et intention.\n\n" +
+      "Dans ce codex, cette section présente les principes généraux de la manipulation et de la maîtrise énergétique. Les pratiques et exercices permettant de développer ces capacités seront étudiés séparément dans le Codex IV — Pratiques.\n\n" +
+      "Ces notions appartiennent à différents systèmes spirituels et ésotériques et ne doivent pas être confondues avec les formes d’énergie définies et mesurées par les sciences physiques.",
     "Énergies émotionnelles & psychiques":
       "Les énergies émotionnelles et psychiques désignent, dans différentes conceptions spirituelles et ésotériques, les forces ou influences associées aux émotions, aux pensées, à la volonté, à l’intention et aux différents états de la conscience.\n\n" +
       "Elles peuvent notamment être liées à la colère, la joie, la peur, l’amour, la concentration, l’imagination, la mémoire, l’intuition, les rêves ou la volonté. Certaines conceptions considèrent que ces états peuvent influencer ou modifier la manière dont une personne perçoit, ressent ou dirige son énergie.\n\n" +
@@ -919,6 +951,60 @@
   const leftLists = {};
   const refLists = {};
   const subcats = {
+    "Manipulation & maîtrise énergétique": {
+      items: [
+        "Méditation",
+        "Respiration & travail du souffle",
+        "Yoga",
+        "Qi Gong",
+        "Tai-chi",
+        "Visualisation",
+        "Concentration & focalisation",
+        "Travail des chakras",
+        "Travail de l’aura",
+        "Travail du Qi / Ki",
+        "Travail du Prana",
+        "Travail de la Kundalini",
+        "Relaxation & recentrage",
+        "Ancrage",
+        "Circulation énergétique",
+        "Projection & canalisation énergétique",
+        "Nettoyage & purification énergétique",
+        "Équilibrage énergétique",
+        "Protection énergétique",
+        "Pratiques énergétiques avec les éléments",
+        "Pratiques énergétiques avec la nature",
+        "Pratiques énergétiques spirituelles",
+        "Autres pratiques énergétiques"
+      ]
+    },
+    "Manipulation & maîtrise énergétique": {
+      items: [
+        "Méditation",
+        "Respiration & travail du souffle",
+        "Yoga",
+        "Qi Gong",
+        "Tai-chi",
+        "Visualisation",
+        "Concentration & focalisation",
+        "Travail des chakras",
+        "Travail de l’aura",
+        "Travail du Qi / Ki",
+        "Travail du Prana",
+        "Travail de la Kundalini",
+        "Relaxation & recentrage",
+        "Ancrage",
+        "Circulation énergétique",
+        "Projection & canalisation énergétique",
+        "Nettoyage & purification énergétique",
+        "Équilibrage énergétique",
+        "Protection énergétique",
+        "Pratiques énergétiques avec les éléments",
+        "Pratiques énergétiques avec la nature",
+        "Pratiques énergétiques spirituelles",
+        "Autres pratiques énergétiques"
+      ]
+    },
     "Énergies émotionnelles & psychiques": {
       items: [
         "Énergie émotionnelle",
@@ -3420,6 +3506,998 @@
   );
 
   subTexts["Énergies émotionnelles & psychiques"] = Object.fromEntries(psyTexts.map((b,k)=>[k,b]));
+
+  // prat_text
+
+  /* ===== Pages des pratiques de maîtrise énergétique (N-08-01 à N-08-23) ===== */
+  const STEPS = arr => arr.map((t,j)=>`<div class="positions"><div class="pos"><span class="pn">${j+1}</span><div><span>${t}</span></div></div></div>`);
+  const HP = H; // alias lisible
+
+  const pratTexts = [
+    /* 01 — MÉDITATION */
+    [
+      H(1,"◎","Définition"),
+      LEAD("La méditation regroupe les pratiques qui entraînent l’attention et l’esprit. Dans les systèmes énergétiques, elle est la base de tout travail : elle apaise, rend attentif aux sensations et permettrait de percevoir puis de diriger l’énergie. (Sur le sens spirituel, voir N-06-05.)"),
+      H(2,"✦","Principes"),
+      LI("Posture stable —","assis sur une chaise, un coussin ou à genoux, dos droit sans raideur."),
+      LI("Ancre —","un point d’attention : souffle, son, sensation, mantra."),
+      LI("Retour —","l’esprit s’égare toujours ; la pratique consiste à revenir, sans se juger."),
+      LI("Régularité —","mieux vaut 10 minutes chaque jour qu’une heure de temps en temps."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "S’asseoir, régler un minuteur sur 10 minutes, fermer les yeux ou baisser le regard.",
+        "Sentir le contact du corps avec le sol ou la chaise.",
+        "Porter l’attention sur le souffle, à l’entrée des narines ou dans le ventre.",
+        "Quand une pensée vient, la remarquer (« pensée »), puis revenir au souffle.",
+        "À la fin, prendre un instant pour remarquer son état, puis ouvrir les yeux doucement."
+      ]),
+      H(4,"⌛","Origine"),
+      P("Traditions de l’Inde (yoga, bouddhisme), de la Chine (taoïsme, chan), du Japon (zen) et mystiques chrétienne, juive et musulmane ; programme laïque MBSR (Jon Kabat-Zinn, 1979)."),
+      SCI("effets modestes mais documentés sur le stress, l’anxiété et l’attention. Une pratique intensive peut faire remonter des émotions difficiles : y aller progressivement.")
+    ],
+
+    /* 02 — RESPIRATION */
+    [
+      H(1,"∿","Définition"),
+      LEAD("La respiration et le travail du souffle sont considérés par presque toutes les traditions comme la porte d’entrée de l’énergie : le souffle relie le corps et l’esprit, et c’est la seule fonction automatique que l’on peut aussi diriger volontairement."),
+      H(2,"✦","Principes"),
+      CORR([
+        ["Abdominale","le ventre se gonfle à l’inspiration ; base de tout"],
+        ["Carrée","4 temps inspirer · 4 retenir · 4 expirer · 4 retenir"],
+        ["Cohérence cardiaque","environ 6 respirations par minute, 5 minutes"],
+        ["Expiration longue","expirer deux fois plus longtemps qu’inspirer : apaisant"],
+        ["Alternée","nāḍī śodhana du yoga (voir N-03-07)"]
+      ]),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Poser une main sur le ventre, l’autre sur la poitrine.",
+        "Inspirer par le nez pendant 4 secondes en laissant monter la main du ventre.",
+        "Expirer lentement par la bouche pendant 6 secondes.",
+        "Répéter 10 fois, puis respirer normalement et observer."
+      ]),
+      NOTE("Arrêter en cas de vertige. Éviter les respirations rapides et forcées (hyperventilation, kapālabhāti, méthodes de « respiration holotropique ») en cas de grossesse, d’épilepsie, de problème cardiaque ou d’hypertension, et ne jamais les pratiquer dans l’eau."),
+      H(4,"⌛","Origine"),
+      P("Prāṇāyāma du yoga, exercices taoïstes du souffle, respiration des moines hésychastes, techniques modernes de relaxation et de préparation à l’accouchement."),
+      SCI("la respiration lente agit sur le système nerveux autonome (nerf vague, rythme cardiaque) : c’est l’un des outils d’apaisement les mieux documentés.")
+    ],
+
+    /* 03 — YOGA */
+    [
+      H(1,"ॐ","Définition"),
+      LEAD("Le yoga (« union », « joug » en sanskrit) est un ensemble de disciplines indiennes visant la maîtrise du corps, du souffle et de l’esprit. Le yoga postural moderne, très répandu, n’en est qu’une partie."),
+      H(2,"✦","Principes"),
+      P("Les huit membres du yoga selon Patañjali :"),
+      CORR([
+        ["1 · Yama","règles de conduite envers les autres"],
+        ["2 · Niyama","disciplines personnelles"],
+        ["3 · Āsana","postures"],
+        ["4 · Prāṇāyāma","maîtrise du souffle"],
+        ["5 · Pratyāhāra","retrait des sens"],
+        ["6 · Dhāraṇā","concentration"],
+        ["7 · Dhyāna","méditation"],
+        ["8 · Samādhi","absorption"]
+      ]),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Posture de la montagne (tāḍāsana) : debout, pieds ancrés, colonne étirée, 5 respirations.",
+        "Posture de l’enfant (bālāsana) : à genoux, front au sol, bras le long du corps, 5 respirations.",
+        "Chat-vache : à quatre pattes, arrondir puis creuser le dos au rythme du souffle, 5 fois.",
+        "Finir allongé sur le dos (śavāsana), 3 minutes de détente."
+      ]),
+      NOTE("Ne jamais forcer une posture ; adapter en cas de douleur, de grossesse ou de problème de dos, et apprendre de préférence avec un enseignant."),
+      H(4,"⌛","Origine"),
+      P("Upaniṣad, <em>Bhagavad-Gītā</em>, <em>Yoga Sūtra</em> de Patañjali (environ IIe – IVe siècle), haṭha yoga médiéval (<em>Haṭha Yoga Pradīpikā</em>, XVe siècle). Le yoga postural moderne se développe au XXe siècle (Krishnamacharya, Iyengar, Pattabhi Jois)."),
+      SCI("le yoga améliore la souplesse et l’équilibre, et réduit certaines douleurs du dos et le stress.")
+    ],
+
+    /* 04 — QI GONG */
+    [
+      H(1,"氣","Définition"),
+      LEAD("Le qi gong (« travail du qi ») regroupe des exercices chinois associant mouvements lents, postures, respiration et attention, pour cultiver et faire circuler le qi (voir N-03-06)."),
+      H(2,"✦","Principes"),
+      LI("Détente (song) —","relâcher sans s’effondrer."),
+      LI("Enracinement —","pieds bien posés, poids descendu dans le bassin."),
+      LI("Souffle & mouvement —","lents, continus, synchronisés."),
+      LI("Attention au dantian —","sous le nombril (voir N-03-04)."),
+      LI("Formes connues —","les « Huit pièces de brocart » (<em>Ba Duan Jin</em>), les « Cinq animaux » (<em>Wu Qin Xi</em>), la posture de l’arbre (<em>zhan zhuang</em>)."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Debout, pieds écartés à la largeur des épaules, genoux légèrement fléchis.",
+        "Mains devant le ventre, paumes vers le haut ; inspirer en les montant lentement jusqu’à la poitrine.",
+        "Retourner les paumes vers le bas, expirer en redescendant jusqu’au ventre.",
+        "Répéter 9 fois, puis garder les mains sur le ventre une minute."
+      ]),
+      H(4,"⌛","Origine"),
+      P("Exercices taoïstes et médicaux très anciens (le « Dessin des guides », Mawangdui, IIe siècle av. J.-C.) ; « Cinq animaux » attribués au médecin Hua Tuo. Le mot « qi gong » s’impose en Chine dans les années 1950."),
+      SCI("bienfaits documentés sur l’équilibre, la mobilité et le stress, surtout chez les personnes âgées ; le qi lui-même n’est pas mesuré.")
+    ],
+
+    /* 05 — TAI-CHI */
+    [
+      H(1,"☯","Définition"),
+      LEAD("Le tai-chi (taiji quan, « boxe du faîte suprême ») est un art martial chinois pratiqué en enchaînements lents et continus. Il est vu comme une méditation en mouvement, fondée sur l’alternance du yin et du yang."),
+      H(2,"✦","Principes"),
+      LI("Lenteur & continuité —","comme dévider un fil de soie."),
+      LI("Plein & vide —","le poids passe d’une jambe à l’autre : le yang et le yin du corps."),
+      LI("Centre —","le mouvement part de la taille et du dantian."),
+      LI("Styles —","Chen (le plus ancien), Yang (le plus répandu), Wu, Sun ; la « forme de Pékin » en 24 mouvements (1956)."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Position de départ : pieds parallèles, genoux souples, bras le long du corps.",
+        "« Commencement » : inspirer en levant les bras devant soi à hauteur des épaules, poignets souples.",
+        "Expirer en fléchissant les genoux et en abaissant les mains jusqu’au ventre.",
+        "Répéter lentement 6 fois en sentant le poids descendre dans les pieds."
+      ]),
+      H(4,"⌛","Origine"),
+      P("Selon la tradition, attribué au moine Zhang Sanfeng ; historiquement, il apparaît dans le village de Chenjiagou (famille Chen) au XVIIe siècle. Il se répand dans le monde au XXe siècle."),
+      SCI("des études montrent une réduction du risque de chute chez les personnes âgées et des effets sur l’équilibre, la douleur et le stress.")
+    ],
+
+    /* 06 — VISUALISATION */
+    [
+      H(1,"✧","Définition"),
+      LEAD("La visualisation consiste à former volontairement des images intérieures (lumière, couleurs, formes, lieux) pour guider l’attention et l’énergie. Elle est au cœur de la plupart des pratiques énergétiques modernes. (Sur l’imagination, voir N-07-05.)"),
+      H(2,"✦","Principes"),
+      LI("Tous les sens —","voir, mais aussi entendre, sentir, toucher, ressentir."),
+      LI("Stabilité —","garder l’image quelques instants sans la forcer."),
+      LI("Émotion —","une image chargée d’émotion serait plus « puissante »."),
+      LI("Clôture —","toujours finir en revenant au corps et à la pièce."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Fermer les yeux, respirer lentement trois fois.",
+        "Imaginer une sphère de lumière dorée au-dessus de la tête.",
+        "À chaque inspiration, la laisser descendre à travers le corps, jusqu’aux pieds.",
+        "À chaque expiration, imaginer qu’une tension s’en va.",
+        "Après 2 minutes, sentir le poids du corps, bouger les doigts, ouvrir les yeux."
+      ]),
+      H(4,"⌛","Origine"),
+      P("Visualisations des divinités dans le bouddhisme tibétain, magie occidentale (Golden Dawn), sophrologie, imagerie guidée en psychothérapie et préparation sportive."),
+      SCI("l’imagerie mentale aide à la relaxation, à la préparation d’un geste et à la motivation ; elle n’agit pas directement sur le monde extérieur.")
+    ],
+
+    /* 07 — CONCENTRATION */
+    [
+      H(1,"⊙","Définition"),
+      LEAD("La concentration et la focalisation consistent à rassembler l’attention sur un seul point, considéré comme indispensable pour diriger l’énergie : « là où va l’attention, va l’énergie », dit un adage des pratiques énergétiques. (Voir aussi N-07-06.)"),
+      H(2,"✦","Principes"),
+      LI("Un seul objet —","un point, une flamme, un son, une partie du corps."),
+      LI("Durée progressive —","commencer par une minute, augmenter peu à peu."),
+      LI("Sans tension —","une attention ferme mais détendue."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Placer une bougie allumée à un mètre, à hauteur des yeux.",
+        "Fixer la flamme sans cligner tant que c’est confortable (une minute environ).",
+        "Fermer les yeux et observer l’image de la flamme qui persiste.",
+        "Quand elle s’efface, rouvrir les yeux et recommencer deux fois."
+      ]),
+      NOTE("Ne pas pratiquer le trataka en cas d’épilepsie ou de problème oculaire ; ne jamais laisser la bougie sans surveillance."),
+      H(4,"⌛","Origine"),
+      P("Trataka du haṭha yoga, dhāraṇā de Patañjali, concentration (samatha) du bouddhisme."),
+      SCI("l’attention s’entraîne ; la pratique régulière de la méditation de concentration améliore la stabilité de l’attention.")
+    ],
+
+    /* 08 — CHAKRAS */
+    [
+      HEAD2(SVG_CHAKRAS, ""),
+      H(1,"⊚","Définition"),
+      LEAD("Le travail des chakras regroupe les pratiques qui visent à « ouvrir », « nettoyer » ou « équilibrer » les sept centres d’énergie du système moderne (voir N-03-01)."),
+      H(2,"✦","Principes"),
+      LI("De bas en haut —","on commence par la racine pour finir par la couronne."),
+      LI("Supports —","syllabes bīja, couleurs, visualisations, postures de yoga, pierres."),
+      LI("Équilibre —","ni « trop ouvert » ni « fermé » selon les approches modernes."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Assis, dos droit, respirer calmement.",
+        "Porter l’attention à la base de la colonne ; imaginer une lumière rouge ; répéter « LAM » 3 fois.",
+        "Monter de centre en centre : orange (VAM), jaune (RAM), vert (YAM), bleu (HAM), indigo (OM).",
+        "Au sommet du crâne, rester en silence quelques respirations avec une lumière violette ou blanche.",
+        "Redescendre l’attention jusqu’aux pieds pour finir ancré."
+      ]),
+      H(4,"⌛","Origine"),
+      P("Textes tantriques (bīja et lotus) ; les couleurs de l’arc-en-ciel et la notion d’« équilibrage » sont ajoutées par la théosophie et le New Age au XXe siècle."),
+      SCI("cette pratique combine relaxation, respiration, attention au corps et son de la voix, dont les effets apaisants sont connus ; les chakras eux-mêmes ne sont pas des structures anatomiques.")
+    ],
+
+    /* 09 — AURA */
+    [
+      HEAD2(SVG_AURA, ""),
+      H(1,"◌","Définition"),
+      LEAD("Le travail de l’aura regroupe les pratiques qui viseraient à percevoir, nettoyer, renforcer ou délimiter le champ énergétique décrit autour du corps (voir N-03-02)."),
+      H(2,"✦","Principes"),
+      LI("Percevoir —","exercices d’observation ou de ressenti avec les mains."),
+      LI("Nettoyer —","« brosser » l’aura avec les mains, fumigation, douche."),
+      LI("Délimiter —","visualiser une enveloppe nette autour de soi."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Frotter les mains l’une contre l’autre 20 secondes.",
+        "Les écarter de quelques centimètres et les rapprocher lentement, en observant les sensations (chaleur, picotements, « coussin »).",
+        "Passer ensuite les mains à 10 cm du corps, de la tête vers les pieds, comme pour en chasser la poussière.",
+        "Finir en visualisant un ovale lumineux net autour de soi."
+      ]),
+      H(4,"⌛","Origine"),
+      P("Théosophie (Leadbeater, 1902), magnétisme, New Age ; nombreuses écoles de « soin énergétique » au XXe siècle."),
+      SCI("les sensations dans les mains s’expliquent par la circulation sanguine, la chaleur et l’attention ; l’expérience d’Emily Rosa (1998) n’a pas montré de perception d’un champ extérieur.")
+    ],
+
+    /* 10 — QI / KI */
+    [
+      H(1,"≋","Définition"),
+      LEAD("Le travail du qi (ki en japonais) regroupe les pratiques destinées à cultiver, conserver, faire circuler ou diriger le qi : qi gong, tai-chi, méditation taoïste, arts martiaux, acupression, reiki (voir N-03-06)."),
+      H(2,"✦","Principes"),
+      LI("Cultiver —","calme, souffle, posture."),
+      LI("Rassembler —","au dantian inférieur, considéré comme réservoir."),
+      LI("Faire circuler —","le long des méridiens ou de l’orbite microcosmique."),
+      LI("Émettre —","dans les arts martiaux (kiai, fa jin) ou les soins (reiki)."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Debout ou assis, mains posées l’une sur l’autre sous le nombril.",
+        "Respirer lentement par le nez en laissant le ventre se gonfler.",
+        "À l’inspiration, imaginer que l’énergie se rassemble sous les mains ; à l’expiration, qu’elle s’y dépose.",
+        "Continuer 5 minutes, puis frotter les mains et se masser doucement le visage."
+      ]),
+      H(4,"⌛","Origine"),
+      P("Taoïsme, médecine chinoise, arts martiaux chinois et japonais ; reiki créé par Mikao Usui (1922)."),
+      SCI("les bienfaits relèvent de la respiration, de la posture et de la relaxation ; le qi n’a pas été mesuré.")
+    ],
+
+    /* 11 — PRANA */
+    [
+      H(1,"ॐ","Définition"),
+      LEAD("Le travail du prana regroupe les pratiques du yoga visant à maîtriser le souffle vital (voir N-03-07) : prāṇāyāma, bandha (« verrous »), mudrā (gestes) et méditation."),
+      H(2,"✦","Principes"),
+      CORR([
+        ["Prāṇāyāma","maîtrise du souffle"],
+        ["Mūla bandha","verrou du périnée"],
+        ["Uḍḍiyāna bandha","verrou abdominal"],
+        ["Jālandhara bandha","verrou de la gorge"],
+        ["Mudrā","gestes des mains, comme jñāna mudrā (pouce et index joints)"]
+      ]),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Assis, main gauche sur le genou en jñāna mudrā.",
+        "Boucher la narine droite avec le pouce droit, inspirer par la gauche (4 temps).",
+        "Boucher la narine gauche avec l’annulaire, expirer par la droite (4 temps).",
+        "Inspirer à droite, expirer à gauche. C’est un cycle : en faire 5 à 10."
+      ]),
+      NOTE("Les rétentions de souffle et les bandha s’apprennent avec un enseignant ; les éviter en cas de grossesse, d’hypertension ou de problème cardiaque."),
+      H(4,"⌛","Origine"),
+      P("<em>Yoga Sūtra</em>, <em>Haṭha Yoga Pradīpikā</em> (XVe siècle), <em>Gheraṇḍa Saṃhitā</em> (XVIIe siècle)."),
+      SCI("la respiration lente et alternée a des effets apaisants documentés ; le prana comme énergie distincte n’est pas mesuré.")
+    ],
+
+    /* 12 — KUNDALINI */
+    [
+      HEAD2(SVG_CADUCEE, ""),
+      H(1,"∫","Définition"),
+      LEAD("Le travail de la kundalini regroupe les pratiques du yoga et du tantra censées éveiller l’énergie lovée à la base de la colonne et la faire monter à travers les chakras (voir N-03-08)."),
+      H(2,"✦","Principes"),
+      LI("Préparation —","longue purification du corps et de l’esprit."),
+      LI("Moyens —","postures, souffle, bandha, mantras, méditation."),
+      LI("Encadrement —","traditionnellement transmis par un maître."),
+      H(3,"☀","Pratique pas à pas"),
+      P("Par prudence, ce codex ne propose pas de technique d’éveil. Une pratique douce et sans risque :"),
+      ...STEPS([
+        "Assis, dos droit, porter l’attention à la base de la colonne.",
+        "À l’inspiration, imaginer une lumière qui monte doucement le long du dos.",
+        "À l’expiration, la laisser redescendre jusqu’au sol.",
+        "Pratiquer 3 minutes, puis finir par un ancrage (voir N-08-14)."
+      ]),
+      NOTE("Des expériences intenses ou perturbantes sont rapportées (angoisse, insomnie, sensations de chaleur). En cas de mal-être, arrêter et consulter un professionnel de santé."),
+      H(4,"⌛","Origine"),
+      P("Tantra śivaïte et śākta, haṭha yoga ; kundalini yoga moderne diffusé par Yogi Bhajan à partir de 1969."),
+      SCI("les sensations décrites ont des explications physiologiques et psychologiques possibles ; la kundalini n’est pas démontrée comme énergie.")
+    ]
+  ];
+
+  pratTexts.push(
+    /* 13 — RELAXATION & RECENTRAGE */
+    [
+      H(1,"❍","Définition"),
+      LEAD("La relaxation et le recentrage regroupent les pratiques qui ramènent au calme et à soi : relâcher les tensions, apaiser le mental, retrouver son « centre ». Ils préparent toute autre pratique énergétique."),
+      H(2,"✦","Principes"),
+      CORR([
+        ["Relaxation progressive","contracter puis relâcher chaque groupe de muscles (Edmund Jacobson, 1929)"],
+        ["Training autogène","formules de lourdeur et de chaleur (Johannes Schultz, 1932)"],
+        ["Scan corporel","parcourir le corps avec l’attention"],
+        ["Yoga nidra","relaxation profonde guidée, allongé"],
+        ["Sophrologie","respiration, relaxation et visualisation (Caycedo, 1960)"]
+      ]),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "S’allonger ou s’asseoir confortablement.",
+        "Serrer les poings 5 secondes, puis relâcher 10 secondes en sentant la différence.",
+        "Faire de même avec les épaules, le visage, le ventre, les jambes.",
+        "Terminer par trois respirations lentes en disant intérieurement « je reviens à mon centre »."
+      ]),
+      H(4,"⌛","Origine"),
+      P("Médecine et psychologie du XXe siècle, en dialogue avec le yoga et les pratiques orientales."),
+      SCI("la relaxation progressive et le training autogène ont des effets documentés sur le stress, l’anxiété et le sommeil.")
+    ],
+
+    /* 14 — ANCRAGE */
+    [
+      H(1,"⏚","Définition"),
+      LEAD("L’ancrage (en anglais <em>grounding</em>) désigne les pratiques qui visent à se sentir stable, présent et relié à la terre. Il est souvent recommandé avant et surtout après une pratique énergétique, pour « redescendre » dans le corps."),
+      H(2,"✦","Principes"),
+      LI("Appuis —","sentir le contact des pieds, du bassin, du dos."),
+      LI("Terre —","élément de l’ancrage (voir N-02-04), chakra racine."),
+      LI("Présent —","revenir aux sensations du moment."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Debout, pieds nus si possible, poids réparti sur les deux pieds.",
+        "Imaginer des racines qui partent de la plante des pieds et s’enfoncent dans le sol.",
+        "À chaque expiration, les laisser descendre un peu plus profond.",
+        "Nommer à voix basse 5 choses que l’on voit, 4 que l’on entend, 3 que l’on touche.",
+        "Taper doucement des pieds et boire un verre d’eau."
+      ]),
+      H(4,"⌛","Origine"),
+      P("Arts martiaux et qi gong (enracinement), New Age, thérapies corporelles ; l’exercice « 5-4-3-2-1 » vient de la gestion de l’anxiété."),
+      SCI("les exercices d’ancrage sensoriel aident réellement à réduire l’anxiété et la dissociation. La « mise à la terre » électrique (earthing) n’a pas d’effet démontré solidement.")
+    ],
+
+    /* 15 — CIRCULATION */
+    [
+      H(1,"↻","Définition"),
+      LEAD("La circulation énergétique désigne les pratiques qui visent à faire circuler l’énergie dans le corps, à « débloquer » les stagnations et à relier les différents centres. Une bonne circulation est associée à la santé dans la plupart des systèmes."),
+      H(2,"✦","Principes"),
+      LI("Orbite microcosmique —","pratique taoïste : faire circuler l’attention le long du dos (Vaisseau Gouverneur) puis de la face avant (Vaisseau Conception)."),
+      LI("Méridiens —","suivre le trajet des méridiens avec les mains (voir N-03-05)."),
+      LI("Mouvement —","secouer, tapoter, étirer."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Assis, langue posée contre le palais.",
+        "À l’inspiration, faire monter l’attention du périnée le long de la colonne jusqu’au sommet du crâne.",
+        "À l’expiration, la faire descendre par le front, la gorge, la poitrine, jusqu’au ventre.",
+        "Faire 9 tours, puis garder l’attention au ventre une minute."
+      ]),
+      H(4,"⌛","Origine"),
+      P("Alchimie intérieure taoïste (neidan) ; popularisée en Occident par Mantak Chia dans les années 1980."),
+      SCI("ces pratiques associent respiration lente et attention au corps ; la circulation sanguine et lymphatique est réellement stimulée par le mouvement, pas par l’attention seule.")
+    ],
+
+    /* 16 — PROJECTION & CANALISATION */
+    [
+      H(1,"➶","Définition"),
+      LEAD("La projection et la canalisation énergétiques désignent l’idée de diriger l’énergie hors de soi (vers une personne, un objet, un lieu) ou de servir de « canal » à une énergie qui viendrait d’ailleurs (le divin, l’univers, un guide)."),
+      H(2,"✦","Principes"),
+      LI("Imposition des mains —","reiki, magnétisme, prière."),
+      LI("Soin à distance —","envoyer une intention ou une prière à quelqu’un d’absent."),
+      LI("« Charger » un objet —","y diriger une intention (talismans)."),
+      LI("Canal —","le praticien se dit traversé par une énergie qui ne vient pas de lui."),
+      LI("Channeling —","au sens New Age, transmettre des messages d’entités."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Se centrer et s’ancrer (N-08-13 et N-08-14).",
+        "Formuler une intention bienveillante et claire.",
+        "Visualiser une lumière qui passe par soi et sort par les mains, vers l’objet ou la personne (avec son accord).",
+        "Terminer en se « déconnectant » : secouer les mains, se laver les mains, s’ancrer."
+      ]),
+      NOTE("Une pratique de soin énergétique ne remplace jamais un traitement. Toujours demander l’accord de la personne concernée."),
+      H(4,"⌛","Origine"),
+      P("Imposition des mains dans les religions, magnétisme de Mesmer (XVIIIe siècle), reiki (1922), « toucher thérapeutique » (Dolores Krieger, 1970), channeling New Age."),
+      SCI("les études contrôlées n’ont pas montré d’effet propre de la projection d’énergie au-delà de l’effet placebo et de l’attention bienveillante, qui ont eux-mêmes une valeur réelle de réconfort.")
+    ],
+
+    /* 17 — NETTOYAGE & PURIFICATION */
+    [
+      H(1,"✧","Définition"),
+      LEAD("Le nettoyage et la purification énergétiques regroupent les pratiques censées débarrasser une personne, un lieu ou un objet des énergies « lourdes », « stagnantes » ou « négatives »."),
+      H(2,"✦","Principes"),
+      CORR([
+        ["Eau","douche, bain, eau salée, eau de lune"],
+        ["Fumée","encens, résines, plantes (fumigation)"],
+        ["Sel","sel au coin des pièces, bain de sel"],
+        ["Son","cloche, bol chantant, tambour, battements de mains"],
+        ["Air & lumière","aérer, laisser entrer le soleil"],
+        ["Rangement","désencombrer, nettoyer physiquement"]
+      ]),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Ranger et nettoyer physiquement la pièce.",
+        "Ouvrir les fenêtres pour aérer.",
+        "Faire le tour de la pièce avec une cloche ou en frappant dans ses mains dans les coins.",
+        "Formuler une intention simple : « que ce lieu soit paisible ».",
+        "Pour soi : une douche en imaginant que l’eau emporte la fatigue de la journée."
+      ]),
+      NOTE("Pour les fumigations : aérer, éviter en présence de personnes asthmatiques, d’enfants ou d’animaux, et ne jamais laisser une combustion sans surveillance. Certaines plantes utilisées (sauge blanche, palo santo) sont surexploitées : privilégier des plantes locales."),
+      H(4,"⌛","Origine"),
+      P("Rites de purification de toutes les religions (ablutions, encens, eau bénite), pratiques autochtones de fumigation, feng shui, New Age."),
+      SCI("ranger, aérer et nettoyer améliore réellement le bien-être ; les « énergies négatives » d’un lieu ne sont pas mesurables.")
+    ],
+
+    /* 18 — ÉQUILIBRAGE */
+    [
+      H(1,"⚖","Définition"),
+      LEAD("L’équilibrage énergétique regroupe les pratiques qui visent à rétablir l’harmonie entre les pôles (yin et yang), les éléments, les centres ou les plans de l’être (voir N-01, section 5)."),
+      H(2,"✦","Principes"),
+      LI("Repérer —","excès ou manque : agitation ou fatigue, chaleur ou froid."),
+      LI("Compenser —","calmer ce qui est en excès, nourrir ce qui manque."),
+      LI("Alterner —","action et repos, effort et détente."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Se demander : « suis-je plutôt agité (trop de feu, d’air) ou plutôt éteint (trop de terre, d’eau) ? ».",
+        "Si agité : respiration lente, expiration longue, marche tranquille, contact avec l’eau.",
+        "Si éteint : mouvement dynamique, lumière, musique, respiration plus énergique.",
+        "Finir par la respiration alternée (N-08-11), réputée équilibrante."
+      ]),
+      H(4,"⌛","Origine"),
+      P("Médecine chinoise (yin / yang, cinq phases), ayurveda (trois doshas), médecine des humeurs, ésotérisme moderne."),
+      SCI("adapter activité, repos et respiration à son état est une bonne hygiène de vie ; la notion d’« énergie déséquilibrée » relève des systèmes traditionnels.")
+    ],
+
+    /* 19 — PROTECTION */
+    [
+      H(1,"⛨","Définition"),
+      LEAD("La protection énergétique regroupe les pratiques censées préserver une personne ou un lieu des influences extérieures jugées nuisibles. (Voir aussi N-06-16 et le chapitre N-10.)"),
+      H(2,"✦","Principes"),
+      LI("Délimiter —","bulle, cercle ou bouclier de lumière."),
+      LI("S’ancrer —","une personne stable serait moins « perméable »."),
+      LI("Objets & prières —","amulettes, symboles, prières protectrices."),
+      LI("Limites concrètes —","dire non, s’éloigner, se reposer."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "S’ancrer quelques respirations.",
+        "Visualiser une sphère de lumière claire qui entoure le corps à une longueur de bras.",
+        "Formuler : « seul ce qui est bon pour moi peut entrer ».",
+        "Garder cette image avant une situation difficile."
+      ]),
+      NOTE("La protection doit rassurer. Si l’on se sent sans cesse menacé ou attaqué « énergétiquement », il est préférable d’en parler à un professionnel, et de se méfier de tout « désenvoûteur » payant."),
+      H(4,"⌛","Origine"),
+      P("Cercles magiques de la magie cérémonielle, Dion Fortune (<em>Psychic Self-Defence</em>, 1930), amulettes et prières de toutes les traditions."),
+      SCI("ces pratiques peuvent réduire l’anxiété et donner un sentiment de contrôle ; aucune barrière énergétique n’est démontrée.")
+    ],
+
+    /* 20 — AVEC LES ÉLÉMENTS */
+    [
+      HEAD2(SVG_ELEMENTS, ""),
+      H(1,"✺","Définition"),
+      LEAD("Les pratiques énergétiques avec les éléments utilisent la Terre, l’Eau, l’Air, le Feu et l’Éther comme supports : chacun apporterait une qualité particulière (voir N-02)."),
+      H(2,"✦","Principes"),
+      CORR([
+        ["Feu","élan, courage : bougie, soleil, mouvement"],
+        ["Eau","apaisement, émotions : bain, rivière, pluie"],
+        ["Air","clarté, communication : souffle, vent, encens"],
+        ["Terre","ancrage, stabilité : marche pieds nus, pierres, jardin"],
+        ["Éther","unité, sens : silence, méditation, ciel"]
+      ]),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Disposer quatre objets : une pierre (Terre), un bol d’eau (Eau), une plume ou de l’encens (Air), une bougie (Feu).",
+        "Toucher ou regarder chacun en respirant lentement et en pensant à sa qualité.",
+        "Terminer au centre, en silence, pour l’Éther.",
+        "Remercier et ranger."
+      ]),
+      H(4,"⌛","Origine"),
+      P("Philosophie grecque (Empédocle), alchimie, magie de la Golden Dawn (outils élémentaires), Wicca (appel des quatre directions)."),
+      SCI("ces pratiques sont symboliques ; leurs effets passent par les sens, l’attention et le rituel.")
+    ],
+
+    /* 21 — AVEC LA NATURE */
+    [
+      H(1,"♣","Définition"),
+      LEAD("Les pratiques énergétiques avec la nature utilisent les arbres, les plantes, l’eau, les paysages, le soleil et la lune comme sources ou supports d’énergie (voir N-04)."),
+      H(2,"✦","Principes"),
+      LI("Bain de forêt —","shinrin-yoku (voir N-04-05)."),
+      LI("Arbre —","s’adosser à un tronc, méditation de l’arbre (N-04-02)."),
+      LI("Eau —","marche au bord de l’eau, bain de mer (N-04-08 à N-04-10)."),
+      LI("Cycles —","vivre au rythme du soleil, de la lune, des saisons (N-04-11 à N-04-14)."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Choisir un lieu naturel proche (parc, jardin, forêt).",
+        "Marcher lentement 10 minutes en silence, téléphone éteint.",
+        "S’arrêter devant un arbre ou une plante et l’observer en détail.",
+        "Respirer profondément et noter ce que l’on ressent avant de repartir."
+      ]),
+      H(4,"⌛","Origine"),
+      P("Traditions animistes, taoïsme, romantisme, shinrin-yoku japonais (1982), écopsychologie."),
+      SCI("le temps passé dans la nature est associé à une baisse du stress et à une meilleure humeur ; environ deux heures par semaine seraient bénéfiques (Mathew White et al., 2019).")
+    ],
+
+    /* 22 — SPIRITUELLES */
+    [
+      H(1,"✧","Définition"),
+      LEAD("Les pratiques énergétiques spirituelles relient le travail de l’énergie à une dimension religieuse ou spirituelle : prière, chant sacré, rituel, contemplation, pèlerinage (voir N-06)."),
+      H(2,"✦","Principes"),
+      LI("Prière —","prière du cœur, chapelet, dhikr (voir N-06-04)."),
+      LI("Chant —","mantras, chants grégoriens, kirtan."),
+      LI("Rituel —","gestes réguliers qui donnent forme à l’intention (voir N-06-12)."),
+      LI("Contemplation —","présence silencieuse."),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "Choisir un moment et un lieu calmes.",
+        "Allumer une bougie ou poser un objet qui a du sens.",
+        "Réciter lentement une prière, un mantra ou une phrase choisie, en accord avec le souffle.",
+        "Rester ensuite quelques minutes en silence, puis remercier."
+      ]),
+      H(4,"⌛","Origine"),
+      P("Toutes les traditions religieuses ; prière de Jésus (hésychasme), japa du yoga, dhikr soufi."),
+      SCI("la répétition rythmée d’une prière ou d’un mantra ralentit la respiration (environ 6 par minute pour le rosaire, selon une étude de 2001) et apaise.")
+    ],
+
+    /* 23 — AUTRES */
+    [
+      H(1,"✧","Définition"),
+      LEAD("Cette section rassemble d’autres pratiques énergétiques, plus récentes ou propres à certaines écoles."),
+      H(2,"✦","Principes"),
+      CORR([
+        ["Reiki","imposition des mains japonaise (Mikao Usui, 1922)"],
+        ["Shiatsu","pression des doigts sur les méridiens (Japon)"],
+        ["Réflexologie","massage des pieds, chaque zone liée à un organe"],
+        ["Sonothérapie","bols chantants, gongs, diapasons"],
+        ["Kinésiologie","test musculaire censé révéler des déséquilibres"],
+        ["EFT","tapotement de points en répétant une phrase"],
+        ["Danse & transe","danse libre, derviches, tambour chamanique"],
+        ["Magnétisme","passes des mains (tradition populaire)"]
+      ]),
+      H(3,"☀","Pratique pas à pas"),
+      ...STEPS([
+        "S’informer sur l’origine et les fondements de la pratique.",
+        "Choisir un praticien sérieux, sans promesses de guérison.",
+        "Observer honnêtement ce que la pratique apporte (détente, sommeil, humeur)."
+      ]),
+      NOTE("Aucune de ces pratiques ne remplace un avis ou un traitement médical. Se méfier des formations très coûteuses et des promesses de guérison."),
+      H(4,"⌛","Origine"),
+      P("Pour la plupart, XXe siècle, souvent inspirées de traditions anciennes."),
+      SCI("le massage, le toucher, la musique et la relaxation ont des effets réels sur la détente. Les principes énergétiques de ces méthodes (zones réflexes, test musculaire, points de tapotement) n’ont pas été validés.")
+    ]
+  );
+
+  subTexts["Manipulation & maîtrise énergétique"] = Object.fromEntries(pratTexts.map((b,k)=>[k,b]));
+
+  // manip_text
+
+  /* ===== Pages manipulation & maîtrise énergétique (N-08-01 à N-08-23) ===== */
+  const IV = t => NOTE(`<strong>Codex IV —</strong> ${t || "les exercices pas à pas de cette pratique seront détaillés dans le Codex IV — Pratiques."}`);
+  const SVG_ORBIT = `<svg viewBox="0 0 200 170" class="fig-clock" style="width:200px" aria-hidden="true">
+      <circle cx="100" cy="22" r="13" class="ln"/>
+      <path d="M100 35 V120 M100 50 L74 84 M100 50 L126 84 M100 120 L84 162 M100 120 L116 162" class="ln dim"/>
+      <path d="M100 112 C128 100 128 46 100 32 C72 46 72 100 100 112Z" fill="none" stroke="#b0302c" stroke-width="1.6" stroke-dasharray="4 3"/>
+      <path d="M126 64 l-5 6 M126 64 l3 7" class="ln"/><path d="M74 82 l-3 -7 M74 82 l5 -6" class="ln"/>
+      <g class="lb"><text x="134" y="58" style="text-anchor:start">Du Mai ↑</text><text x="66" y="94" style="text-anchor:end">Ren Mai ↓</text></g>
+    </svg>`;
+  const manipTexts = [
+    /* 01 — MÉDITATION */
+    [
+      H(1,"◎","Définition"),
+      LEAD("Dans la manipulation énergétique, la méditation est la pratique de base : elle apaise l’esprit, affine la perception et rend possible tout travail sur l’énergie. La plupart des traditions considèrent qu’on ne peut diriger une énergie que si l’on est d’abord calme et attentif."),
+      H(2,"✦","Principes"),
+      LI("Calmer —","réduire l’agitation mentale (<em>samatha</em>)."),
+      LI("Observer —","percevoir sensations, souffle et pensées sans s’y perdre (<em>vipassanā</em>)."),
+      LI("Rassembler —","réunir l’attention pour pouvoir ensuite l’orienter."),
+      LI("Formes énergétiques —","méditation des chakras, de la petite circulation, du souffle, de la lumière."),
+      P("Pour la méditation comme pratique spirituelle, voir N-06-05."),
+      H(3,"☀","Aperçu"),
+      LI("Durée —","quelques minutes chaque jour valent mieux qu’une longue séance rare."),
+      LI("Posture —","stable, dos droit, corps détendu."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Des traditions de l’Inde (yoga, bouddhisme), de la Chine (taoïsme), du Japon (zen) et de la mystique occidentale."),
+      SCI("les effets de la méditation sur l’attention et le stress sont étudiés et réels, mais modestes. L’« énergie » travaillée relève des traditions.")
+    ],
+
+    /* 02 — RESPIRATION */
+    [
+      H(1,"∿","Définition"),
+      LEAD("La respiration et le travail du souffle sont considérés presque partout comme le principal moyen de diriger l’énergie : le souffle est le lien entre le corps et l’esprit, et entre le volontaire et l’involontaire."),
+      H(2,"✦","Principes"),
+      LI("Ralentir —","respiration lente et profonde pour apaiser."),
+      LI("Allonger l’expiration —","pour relâcher et calmer."),
+      LI("Rétention —","courte pause poumons pleins ou vides, dans le prāṇāyāma."),
+      LI("Respiration abdominale —","diriger le souffle vers le ventre et le dantian."),
+      LI("Souffle et image —","associer une inspiration à une lumière qui entre, une expiration à ce qui sort."),
+      P("Voir aussi N-03-07 (prana) et N-03-09 (souffle vital)."),
+      H(3,"☀","Aperçu"),
+      LI("Exemple —","inspirer 4 temps, expirer 6 temps, pendant quelques minutes."),
+      NOTE("Arrêter en cas de vertige ; éviter les respirations rapides et forcées en cas de problème cardiaque, d’hypertension, d’épilepsie ou de grossesse."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Du prāṇāyāma indien, du qigong chinois, des respirations des arts martiaux et des pratiques chrétiennes (hésychasme) et soufies (dhikr)."),
+      SCI("la respiration lente agit sur le système nerveux autonome (rythme cardiaque, stress) : c’est l’un des effets les mieux documentés.")
+    ],
+
+    /* 03 — YOGA */
+    [
+      H(1,"ॐ","Définition"),
+      LEAD("Le yoga (« union » en sanskrit) est une discipline indienne qui unit posture, souffle, attention et éthique. Dans le travail énergétique, il prépare le corps à faire circuler le prāṇa et, dans certaines écoles, à éveiller la kuṇḍalinī."),
+      H(2,"✦","Principes"),
+      P("Les huit membres du yoga de Patañjali :"),
+      CORR([
+        ["1 · Yama","règles de conduite (non-violence, vérité…)"],
+        ["2 · Niyama","disciplines personnelles (pureté, contentement…)"],
+        ["3 · Āsana","postures"],
+        ["4 · Prāṇāyāma","maîtrise du souffle"],
+        ["5 · Pratyāhāra","retrait des sens"],
+        ["6 · Dhāraṇā","concentration"],
+        ["7 · Dhyāna","méditation"],
+        ["8 · Samādhi","absorption"]
+      ]),
+      LI("Bandha & mudrā —","« verrous » et gestes qui orienteraient l’énergie."),
+      H(3,"☀","Aperçu"),
+      LI("Styles —","haṭha, vinyāsa, yin, kuṇḍalinī, iyengar…"),
+      LI("Progressivité —","respecter ses limites, surtout dans les postures."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Des Upaniṣad, des <em>Yoga Sūtra</em> de Patañjali (premiers siècles de notre ère) et du haṭha yoga médiéval (<em>Haṭha Yoga Pradīpikā</em>, XVe siècle). Le yoga postural moderne se développe au XXe siècle (Krishnamacharya, Iyengar)."),
+      SCI("le yoga améliore la souplesse, l’équilibre et le stress, et peut aider pour les douleurs du dos. Ses effets énergétiques relèvent de la tradition.")
+    ],
+
+    /* 04 — QI GONG */
+    [
+      H(1,"氣","Définition"),
+      LEAD("Le qigong (« travail du qi ») regroupe des pratiques chinoises qui associent mouvements lents, postures, respiration et attention pour cultiver, faire circuler et conserver le qi."),
+      H(2,"✦","Principes"),
+      LI("Trois régulations —","réguler le corps (posture), le souffle et l’esprit."),
+      LI("Dantian —","l’attention revient au dantian inférieur (voir N-03-04)."),
+      LI("Song —","détente active, sans mollesse."),
+      LI("Formes —","séries traditionnelles : les huit pièces de brocart (<em>Ba Duan Jin</em>), les cinq animaux (<em>Wu Qin Xi</em>), les six sons."),
+      LI("Qigong statique —","postures immobiles comme l’« arbre » (<em>zhan zhuang</em>)."),
+      H(3,"☀","Aperçu"),
+      LI("Régularité —","quelques minutes chaque jour, de préférence le matin et en plein air."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Des pratiques anciennes de « conduite et étirement » (<em>daoyin</em>, attestées dès le IIe siècle av. J.-C. à Mawangdui), de l’alchimie intérieure taoïste et des arts martiaux. Le terme « qigong » s’impose dans les années 1950."),
+      SCI("le qigong améliore l’équilibre et la souplesse, et réduit le stress chez certaines personnes. Le qi lui-même n’est pas mesuré.")
+    ],
+
+    /* 05 — TAI-CHI */
+    [
+      H(1,"☯","Définition"),
+      LEAD("Le tai-chi (taiji quan, « boxe du faîte suprême ») est un art martial interne chinois, pratiqué en enchaînements lents et continus. Il vise l’harmonie du yin et du yang, la circulation du qi et l’enracinement."),
+      H(2,"✦","Principes"),
+      LI("Lenteur & continuité —","un mouvement ne s’arrête jamais vraiment."),
+      LI("Plein & vide —","transfert progressif du poids d’une jambe à l’autre."),
+      LI("Enracinement —","le mouvement part des pieds et du bassin."),
+      LI("Relâchement (song) —","force souple plutôt que force musculaire (voir N-03-13)."),
+      LI("Styles —","Chen (le plus ancien), Yang (le plus répandu), Wu, Sun."),
+      H(3,"☀","Aperçu"),
+      LI("Apprendre avec un enseignant —","la forme demande des corrections pour être juste."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Le tai-chi naît dans la famille Chen (Henan) au XVIIe siècle, puis se diffuse au XIXe siècle avec Yang Luchan. La légende l’attribue au moine taoïste Zhang Sanfeng."),
+      SCI("le tai-chi réduit les chutes chez les personnes âgées et améliore l’équilibre : c’est l’un des effets les mieux démontrés des pratiques énergétiques.")
+    ],
+
+    /* 06 — VISUALISATION */
+    [
+      H(1,"✧","Définition"),
+      LEAD("La visualisation consiste à former des images intérieures précises : lumière, couleur, forme, symbole, mouvement. Dans le travail énergétique, elle sert à « voir » l’énergie et à la diriger : l’énergie suivrait l’image."),
+      H(2,"✦","Principes"),
+      LI("Précision —","une image nette et stable plutôt que floue."),
+      LI("Tous les sens —","voir, mais aussi sentir, entendre, toucher intérieurement."),
+      LI("Émotion —","une image chargée de ressenti serait plus « active »."),
+      LI("Formes courantes —","sphère de lumière, colonne, racines, couleurs des chakras, pentagramme."),
+      P("Pour l’imagination au sens psychique, voir N-07-05."),
+      H(3,"☀","Aperçu"),
+      LI("Exercice de base —","fixer un objet, fermer les yeux, le reconstruire mentalement."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Du bouddhisme tantrique tibétain (visualisation des divinités), de la magie occidentale (Golden Dawn), de la sophrologie et de la préparation mentale."),
+      SCI("l’imagerie mentale améliore certaines performances (sport, musique) et sert en psychothérapie. Elle ne déplace pas d’énergie mesurable.")
+    ],
+
+    /* 07 — CONCENTRATION */
+    [
+      H(1,"⊙","Définition"),
+      LEAD("La concentration et la focalisation consistent à rassembler toute l’attention sur un point. Dans la manipulation énergétique, l’attention est souvent décrite comme ce qui « conduit » l’énergie : « là où va l’attention, va l’énergie »."),
+      H(2,"✦","Principes"),
+      LI("Point unique —","un objet, une zone du corps, une image."),
+      LI("Retour —","revenir doucement à chaque distraction : c’est l’entraînement lui-même."),
+      LI("Progression —","de la concentration (<em>dhāraṇā</em>) à la méditation (<em>dhyāna</em>)."),
+      LI("Focalisation corporelle —","porter l’attention sur les mains, le dantian, un chakra."),
+      P("Voir aussi N-07-06."),
+      H(3,"☀","Aperçu"),
+      LI("Exemples —","fixation d’une flamme (<em>trataka</em>), comptage des respirations, point entre les sourcils."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Des <em>Yoga Sūtra</em>, du bouddhisme, du qigong (« l’intention conduit le qi », <em>yi dao qi dao</em>) et de la magie occidentale."),
+      SCI("l’attention s’entraîne réellement. Porter son attention sur une partie du corps peut en modifier la perception (chaleur, picotements) : ce sont des effets de l’attention et du système nerveux.")
+    ],
+
+    /* 08 — CHAKRAS */
+    [
+      HEAD2(SVG_CHAKRAS, ""),
+      H(1,"◎","Définition"),
+      LEAD("Le travail des chakras vise, selon ses praticiens, à percevoir, « ouvrir », équilibrer ou activer les sept centres d’énergie du système moderne (voir N-03-01 pour leur description)."),
+      H(2,"✦","Principes"),
+      LI("Parcours —","de la racine vers la couronne, ou l’inverse pour s’ancrer."),
+      LI("Supports —","syllabes bīja (LAM, VAM, RAM, YAM, HAM, OM), couleurs, postures, pierres."),
+      LI("Équilibre —","ni « trop ouvert », ni « bloqué » : chaque centre en harmonie avec les autres."),
+      LI("Lecture —","relier un thème de vie (sécurité, expression, amour…) au centre correspondant."),
+      H(3,"☀","Aperçu"),
+      LI("Séance type —","attention + souffle + son sur chaque centre, quelques respirations chacun."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Des textes tantriques indiens, reformulés par la théosophie (Leadbeater, 1927) et le New Age (couleurs, pierres, psychologie)."),
+      SCI("les chakras ne correspondent à aucune structure anatomique. Le travail sur eux agit surtout par l’attention, la respiration et la relaxation.")
+    ],
+
+    /* 09 — AURA */
+    [
+      HEAD2(SVG_AURA, ""),
+      H(1,"◌","Définition"),
+      LEAD("Le travail de l’aura vise à percevoir, nettoyer, renforcer ou « refermer » le champ lumineux qui entourerait le corps (voir N-03-02)."),
+      H(2,"✦","Principes"),
+      LI("Perception —","sentir avec les mains à quelques centimètres du corps, ou observer le contour d’une personne."),
+      LI("Nettoyage —","balayages des mains, fumée, eau, sel (voir N-08-17)."),
+      LI("Renforcement —","visualiser l’aura plus lumineuse, plus dense, plus nette."),
+      LI("Fermeture —","imaginer une enveloppe protectrice (voir N-08-19)."),
+      H(3,"☀","Aperçu"),
+      LI("Exercice simple —","frotter ses mains, les écarter lentement et noter les sensations entre elles."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("De la théosophie (Leadbeater, 1902), du magnétisme et des soins énergétiques du XXe siècle."),
+      SCI("l’aura n’a pas été détectée par des instruments. Les sensations entre les mains s’expliquent par la chaleur, la circulation sanguine et l’attention.")
+    ]
+  ];
+
+  manipTexts.push(
+    /* 10 — QI / KI */
+    [
+      H(1,"≋","Définition"),
+      LEAD("Le travail du qi (ou ki) vise à cultiver, faire circuler, conserver et diriger le souffle-énergie décrit par la pensée chinoise et japonaise (voir N-03-06)."),
+      H(2,"✦","Principes"),
+      LI("L’intention conduit le qi —","<em>yi dao qi dao</em> : le qi suit l’attention."),
+      LI("Remplir le dantian —","accumuler le qi dans le bas-ventre."),
+      LI("Circuler —","le long des méridiens et des vaisseaux (voir N-08-15)."),
+      LI("Émettre —","dans certains arts martiaux et soins (<em>fa qi</em>, émission de qi)."),
+      LI("Ki japonais —","au cœur de l’aïkido, du reiki et du shiatsu."),
+      H(3,"☀","Aperçu"),
+      LI("Pratiques —","qigong, tai-chi, méditation taoïste, arts martiaux internes."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("De la médecine chinoise (<em>Huangdi Neijing</em>), du taoïsme et des arts martiaux chinois et japonais."),
+      SCI("les effets ressentis passent par la posture, le souffle et l’attention. Les démonstrations de « projection de qi » sans contact n’ont pas résisté aux tests contrôlés.")
+    ],
+
+    /* 11 — PRANA */
+    [
+      H(1,"∿","Définition"),
+      LEAD("Le travail du prana vise à purifier les canaux (nāḍī), équilibrer les souffles (vāyu) et accroître le souffle vital décrit par les traditions indiennes (voir N-03-07)."),
+      H(2,"✦","Principes"),
+      LI("Prāṇāyāma —","maîtrise et allongement du souffle."),
+      LI("Équilibrer iḍā et piṅgalā —","respiration alternée par les narines."),
+      LI("Bandha —","« verrous » de la gorge, du ventre et du périnée, censés retenir et orienter le prana."),
+      LI("Alimentation & mode de vie —","en ayurveda, certains aliments et habitudes seraient plus riches en prana."),
+      H(3,"☀","Aperçu"),
+      LI("Exemple —","respiration alternée (<em>nāḍī śodhana</em>), quelques minutes."),
+      NOTE("Les techniques puissantes (rétentions longues, respirations rapides) s’apprennent avec un enseignant."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Des Upaniṣad, des <em>Yoga Sūtra</em> et du haṭha yoga."),
+      SCI("les effets du prāṇāyāma sur le système nerveux et le stress sont documentés ; le prana comme énergie distincte n’est pas mesuré.")
+    ],
+
+    /* 12 — KUNDALINI */
+    [
+      HEAD2(SVG_CADUCEE, ""),
+      H(1,"∫","Définition"),
+      LEAD("Le travail de la kuṇḍalinī vise à éveiller et faire monter l’énergie décrite comme lovée à la base de la colonne (voir N-03-08). C’est, selon les traditions, la pratique la plus puissante et la plus délicate."),
+      H(2,"✦","Principes"),
+      LI("Préparation —","purification du corps et des canaux, stabilité mentale."),
+      LI("Outils —","postures, bandha, mudrā, prāṇāyāma, mantras, méditation."),
+      LI("Progressivité —","la tradition insiste sur la lenteur et la guidance d’un maître."),
+      LI("Intégration —","l’éveil doit s’accompagner d’un ancrage (voir N-08-14)."),
+      H(3,"☀","Aperçu"),
+      NOTE("Prudence : des expériences intenses et parfois éprouvantes sont rapportées (angoisse, insomnie, sensations fortes). Pratiquer encadré, sans forcer, et consulter un professionnel de santé en cas de mal-être persistant."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Des traditions tantriques et du haṭha yoga ; le kundalini yoga moderne a été diffusé par Yogi Bhajan à partir de 1969."),
+      SCI("la kuṇḍalinī n’est pas démontrée comme énergie ; les expériences décrites ont des explications physiologiques et psychologiques possibles.")
+    ],
+
+    /* 13 — RELAXATION & RECENTRAGE */
+    [
+      H(1,"☁","Définition"),
+      LEAD("La relaxation et le recentrage consistent à relâcher les tensions et à revenir à un état calme et unifié. Pour les traditions énergétiques, une énergie ne circule bien que dans un corps détendu et un esprit posé."),
+      H(2,"✦","Principes"),
+      LI("Relâcher —","détendre les muscles un à un."),
+      LI("Revenir au centre —","ramener l’attention au ventre, au cœur ou au souffle."),
+      LI("Unifier —","réaccorder corps, émotion et pensée."),
+      LI("Méthodes —","relaxation progressive (Jacobson), training autogène (Schultz), sophrologie, yoga nidra, scan corporel."),
+      H(3,"☀","Aperçu"),
+      LI("Exemple —","allongé, contracter puis relâcher chaque groupe de muscles, des pieds à la tête."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Des traditions de méditation et du yoga, puis des méthodes médicales du XXe siècle : Edmund Jacobson (1929), Johannes Schultz (1932), Alfonso Caycedo (sophrologie, 1960)."),
+      SCI("les méthodes de relaxation réduisent réellement le stress, la tension et certains troubles du sommeil.")
+    ],
+
+    /* 14 — ANCRAGE */
+    [
+      H(1,"⛰","Définition"),
+      LEAD("L’ancrage (en anglais <em>grounding</em>) désigne le fait de se relier à la terre, au corps et au moment présent. Il est vu comme indispensable avant et après tout travail énergétique, pour éviter de se sentir « flottant » ou dispersé."),
+      H(2,"✦","Principes"),
+      LI("Contact —","sentir le poids du corps et les appuis au sol."),
+      LI("Racines —","visualiser des racines qui descendent des pieds."),
+      LI("Élément Terre —","voir N-02-04."),
+      LI("Chakra racine —","voir N-03-01."),
+      LI("Retour au concret —","manger, marcher, toucher la matière après une pratique."),
+      H(3,"☀","Aperçu"),
+      LI("Exemple rapide —","nommer 5 choses que l’on voit, 4 que l’on touche, 3 que l’on entend, 2 que l’on sent, 1 que l’on goûte."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Des arts martiaux (enracinement), du yoga, du chamanisme et des approches psychocorporelles (Alexander Lowen, bioénergie, années 1950)."),
+      SCI("les techniques d’ancrage sensoriel aident réellement à réduire l’anxiété. Le « grounding » au sens de contact électrique avec le sol (marcher pieds nus pour se « décharger ») repose sur des études encore très limitées.")
+    ],
+
+    /* 15 — CIRCULATION */
+    [
+      HEAD2(SVG_ORBIT, "La « petite circulation céleste » : le long du dos (Du Mai), puis de la face avant (Ren Mai)."),
+      H(1,"↻","Définition"),
+      LEAD("La circulation énergétique consiste à faire « tourner » l’énergie le long de voies définies, pour l’harmoniser, la purifier ou la transformer."),
+      H(2,"✦","Principes"),
+      LI("Petite circulation céleste —","dans le taoïsme, le qi monte le long du dos (Vaisseau Gouverneur) et descend le long de la face avant (Vaisseau Conception)."),
+      LI("Grande circulation —","extension aux bras et aux jambes."),
+      LI("Iḍā, piṅgalā, suṣumnā —","dans le yoga, équilibrer les canaux latéraux puis ouvrir le canal central."),
+      LI("Pilier du milieu —","dans la magie occidentale, faire descendre et monter la lumière le long de l’axe du corps (Golden Dawn, Israel Regardie)."),
+      H(3,"☀","Aperçu"),
+      LI("Principe —","attention + souffle : suivre mentalement le trajet, lentement, sans forcer."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("De l’alchimie intérieure taoïste (<em>neidan</em>), du tantra et de la magie cérémonielle occidentale."),
+      SCI("ces circuits ne correspondent à aucune structure anatomique ; les sensations ressenties passent par l’attention portée au corps.")
+    ],
+
+    /* 16 — PROJECTION & CANALISATION */
+    [
+      H(1,"➶","Définition"),
+      LEAD("La projection et la canalisation énergétiques consistent à diriger l’énergie hors de soi (vers une personne, un objet, un lieu) ou à servir de « canal » à une énergie venue d’ailleurs (source divine, universelle, spirituelle)."),
+      H(2,"✦","Principes"),
+      LI("Projection —","envoyer l’énergie par les mains, le regard, le souffle ou l’intention."),
+      LI("Canalisation —","laisser passer une énergie extérieure plutôt que d’épuiser la sienne (principe du reiki)."),
+      LI("Charger un objet —","consacrer une pierre, un talisman, de l’eau."),
+      LI("À distance —","soins ou prières envoyés à distance."),
+      LI("Canalisation de messages —","« channeling » : transmettre des messages attribués à des entités."),
+      H(3,"☀","Aperçu"),
+      LI("Principe —","se recentrer, s’ancrer, puis orienter l’intention."),
+      NOTE("Ces pratiques ne remplacent aucun soin médical. Se méfier des promesses de guérison ou des « messages canalisés » qui servent à obtenir argent ou obéissance."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("De l’imposition des mains religieuse, du magnétisme (Mesmer), du reiki (1922), du spiritisme et du New Age (channeling)."),
+      SCI("aucune énergie projetée n’a été détectée. L’étude d’Emily Rosa (1998) a montré que des praticiens du « toucher thérapeutique » ne percevaient pas mieux que le hasard la présence d’une main.")
+    ],
+
+    /* 17 — NETTOYAGE & PURIFICATION */
+    [
+      H(1,"✧","Définition"),
+      LEAD("Le nettoyage et la purification énergétiques visent à éliminer ce qui serait « lourd », stagnant ou étranger : dans le corps, l’aura, un lieu ou un objet. Presque toutes les traditions ont leurs rites de purification."),
+      H(2,"✦","Principes"),
+      CORR([
+        ["Eau","bain, douche, ablutions, aspersion"],
+        ["Sel","bain de sel, sel aux coins d’une pièce"],
+        ["Fumée","encens, sauge, résines, palo santo"],
+        ["Son","cloches, bols chantants, mantras, battements de mains"],
+        ["Feu & lumière","bougie, soleil"],
+        ["Souffle & mains","balayages, expirations, visualisation de lumière"]
+      ]),
+      H(3,"☀","Aperçu"),
+      LI("Après une journée chargée —","douche avec l’intention de « laisser partir » ce qui pèse."),
+      LI("Dans un lieu —","aérer, ranger, puis fumée ou son."),
+      NOTE("Pour les fumigations : aérer, éviter en présence d’asthmatiques, d’enfants ou d’animaux. Préférer des plantes cultivées : la sauge blanche sauvage est surexploitée et sacrée pour certains peuples amérindiens."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Des rites de purification universels : ablutions religieuses, encens dans les temples, sudations rituelles, rites amérindiens de fumée."),
+      SCI("ces rituels apaisent et marquent une transition (voir N-06-12). Ranger et aérer améliorent réellement le confort d’un lieu ; une purification énergétique n’est pas mesurée.")
+    ],
+
+    /* 18 — ÉQUILIBRAGE */
+    [
+      H(1,"⚖","Définition"),
+      LEAD("L’équilibrage énergétique vise à harmoniser les énergies : entre les pôles (yin et yang, actif et réceptif), entre les centres (chakras), entre les éléments, ou entre excès et manque (voir N-01, section 5)."),
+      H(2,"✦","Principes"),
+      LI("Repérer —","ce qui est en excès ou en manque (agitation, fatigue…)."),
+      LI("Compenser —","apporter l’élément ou la qualité opposée (Eau pour trop de Feu, Terre pour trop d’Air)."),
+      LI("Harmoniser —","respiration alternée, travail des chakras, mouvements symétriques."),
+      LI("Rythmer —","alterner activité et repos, selon les saisons et les cycles."),
+      H(3,"☀","Aperçu"),
+      LI("Grille simple —","se demander chaque soir : « Qu’ai-je eu en trop ? en trop peu ? »."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Des médecines traditionnelles (humeurs, doṣa, yin-yang), de l’alchimie et de l’ésotérisme moderne."),
+      SCI("l’équilibre entre activité et repos, l’hygiène de vie et la régulation des émotions ont des effets réels sur la santé ; le langage de l’« équilibre énergétique » en est une lecture symbolique.")
+    ],
+
+    /* 19 — PROTECTION */
+    [
+      H(1,"⛨","Définition"),
+      LEAD("La protection énergétique désigne les pratiques visant à se préserver des influences jugées négatives : fatigue des autres, ambiances lourdes, peur, mauvais œil. (Voir aussi N-06-16 et le chapitre N-10.)"),
+      H(2,"✦","Principes"),
+      LI("Bulle de lumière —","visualiser une enveloppe lumineuse autour de soi."),
+      LI("Cercle —","tracer un cercle protecteur avant un rituel (magie occidentale)."),
+      LI("Symboles & objets —","amulettes, prières, sceaux (voir N-06-16)."),
+      LI("Ancrage —","un être ancré serait moins « perméable » (voir N-08-14)."),
+      LI("Limites —","savoir dire non et s’éloigner de ce qui épuise."),
+      H(3,"☀","Aperçu"),
+      LI("Exemple —","avant une situation difficile, trois respirations et l’image d’une lumière qui entoure le corps."),
+      NOTE("Si le besoin de se protéger devient envahissant et nourrit la peur, en parler à quelqu’un de confiance ou à un professionnel."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("Des traditions religieuses (prières, amulettes), de la magie cérémonielle (le Rituel mineur du pentagramme de la Golden Dawn) et de l’ésotérisme moderne (Dion Fortune, <em>Psychic Self-Defence</em>, 1930)."),
+      SCI("ces pratiques peuvent apaiser l’anxiété et aider à poser des limites ; une protection contre des forces invisibles n’est pas démontrée.")
+    ],
+
+    /* 20 — ÉLÉMENTS */
+    [
+      HEAD2(SVG_ELEMENTS, ""),
+      H(1,"△","Définition"),
+      LEAD("Les pratiques énergétiques avec les éléments consistent à travailler avec la Terre, l’Eau, l’Air, le Feu et l’Éther pour développer ou équilibrer les qualités qu’ils représentent (voir chapitre N-02)."),
+      H(2,"✦","Principes"),
+      CORR([
+        ["Terre","ancrage, marche pieds nus, pierres, jardin"],
+        ["Eau","bains, eau de lune, bord de mer, émotions"],
+        ["Air","respiration, encens, vent, parole"],
+        ["Feu","bougie, soleil, mouvement, volonté"],
+        ["Éther","silence, son, méditation, contemplation du ciel"]
+      ]),
+      LI("Respiration élémentaire —","associer une respiration à chaque élément, dans la magie occidentale."),
+      LI("Équilibre —","renforcer l’élément qui manque, tempérer celui qui domine."),
+      H(3,"☀","Aperçu"),
+      LI("Cycle des éléments —","une semaine, un élément par jour, avec une petite pratique."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("De la philosophie grecque, de l’alchimie, de la magie cérémonielle (Golden Dawn) et de la Wicca."),
+      SCI("les éléments sont ici des symboles ; le contact avec l’eau, l’air, la lumière et la nature a des effets réels sur le bien-être.")
+    ],
+
+    /* 21 — NATURE */
+    [
+      H(1,"♣","Définition"),
+      LEAD("Les pratiques énergétiques avec la nature consistent à se relier aux arbres, aux plantes, aux lieux, aux saisons et aux cycles naturels pour se ressourcer ou travailler avec leurs qualités (voir chapitre N-04)."),
+      H(2,"✦","Principes"),
+      LI("Bain de forêt —","marcher lentement, sens en éveil (N-04-05)."),
+      LI("Arbre —","s’adosser, méditer comme un arbre (N-04-02)."),
+      LI("Rythme lunaire & solaire —","pratiquer selon les phases et les saisons (N-04-12, N-04-13)."),
+      LI("Plantes & pierres —","comme supports d’intention (N-04-01, N-04-07)."),
+      LI("Réciprocité —","remercier, ne rien abîmer, ne rien laisser."),
+      H(3,"☀","Aperçu"),
+      LI("Un lieu à soi —","revenir régulièrement au même endroit naturel et l’observer changer."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("De l’animisme, du chamanisme, du shintō, des traditions populaires et des courants modernes (écospiritualité, néopaganisme)."),
+      SCI("le contact avec la nature réduit le stress et améliore l’attention ; c’est bien documenté.")
+    ],
+
+    /* 22 — SPIRITUELLES */
+    [
+      H(1,"✟","Définition"),
+      LEAD("Les pratiques énergétiques spirituelles placent le travail sur l’énergie dans une relation au sacré : prière, invocation, rituel, dévotion. L’énergie n’y est pas seulement dirigée par soi : elle est demandée, reçue ou offerte (voir chapitre N-06)."),
+      H(2,"✦","Principes"),
+      LI("Prière & dhikr —","répétition d’un nom divin ou d’une formule."),
+      LI("Mantra & japa —","récitation d’un son sacré, souvent avec un chapelet (mālā)."),
+      LI("Invocation —","appel à une divinité, un saint, un ange, un esprit."),
+      LI("Consécration —","rendre sacré un objet, un lieu, un temps."),
+      LI("Rituel —","structure de gestes, de paroles et de symboles (voir N-06-12)."),
+      H(3,"☀","Aperçu"),
+      LI("Respect des traditions —","certaines pratiques supposent une initiation ou une appartenance."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("De toutes les traditions religieuses et ésotériques."),
+      REG("ces pratiques relèvent de la foi et du sens qu’elles donnent ; leurs effets psychologiques (apaisement, lien, sens) sont étudiés.")
+    ],
+
+    /* 23 — AUTRES */
+    [
+      H(1,"✧","Définition"),
+      LEAD("Cette section rassemble d’autres pratiques énergétiques, souvent récentes ou propres à une école."),
+      H(2,"✦","Principes"),
+      LI("Reiki —","imposition des mains japonaise (Mikao Usui, 1922)."),
+      LI("Magnétisme —","passes des mains (tradition issue de Mesmer)."),
+      LI("Shiatsu & acupression —","pression des points et des méridiens."),
+      LI("Sons & vibrations —","bols chantants, diapasons, chant harmonique."),
+      LI("Danse & transe —","danses extatiques, derviches tourneurs."),
+      LI("Sexualité sacrée —","tantra, taoïsme (voir N-03-10)."),
+      LI("Méthodes modernes —","EFT (« tapping »), kinésiologie, soins « quantiques »."),
+      H(3,"☀","Aperçu"),
+      LI("Vérifier —","l’origine, la formation de l’enseignant et le coût avant de s’engager."),
+      NOTE("Se méfier des méthodes qui promettent de guérir des maladies graves, déconseillent la médecine ou coûtent très cher. En France, la Miviludes recense les dérives liées à certaines pratiques de « santé alternative »."),
+      IV(),
+      H(4,"⌛","Origine"),
+      P("De traditions anciennes (Japon, Chine, soufisme, tantra) et de créations du XXe siècle."),
+      SCI("certaines de ces pratiques procurent détente et bien-être ; les mécanismes énergétiques invoqués ne sont pas démontrés. L’usage du mot « quantique » pour des soins n’a aucun rapport avec la physique quantique.")
+    ]
+  );
+
+  subTexts["Manipulation & maîtrise énergétique"] = Object.fromEntries(manipTexts.map((b,k)=>[k,b]));
   const PFX = CODEX.prefix;
   const pad = n => String(n).padStart(2,'0');
   const pad3 = n => String(n).padStart(3,'0');
@@ -3705,7 +4783,7 @@
   const pageCache = new Map();
   const invalidate = () => pageCache.clear();
   // découpe une suite de blocs en pages de la hauteur du livre (gauche, droite, gauche…)
-  const keepWithNext = b => /^\s*<(h4 class="lt-h"|div class="def-label)/.test(b);
+  const keepWithNext = b => /^\s*<(h4 class="lt-h"|div class="def-label|div class="lt-part)/.test(b);
   function paginate(key, makeBlocks){
     if(pageCache.has(key)) return pageCache.get(key);
     const ref = document.querySelector('.page.left');
