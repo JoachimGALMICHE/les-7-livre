@@ -903,6 +903,11 @@
 
   // Définitions de chaque chapitre (clé = titre exact ; une ligne vide = nouveau paragraphe)
   const definitions = {
+    "Protection & équilibrage énergétique":
+      "La protection et l’équilibrage énergétique désignent, dans différentes traditions spirituelles, folkloriques et ésotériques, l’ensemble des conceptions et pratiques visant à préserver, renforcer ou rétablir l’équilibre d’une personne, d’un lieu ou d’un objet face à ce qui est considéré comme une influence énergétique, spirituelle ou symboliquement négative.\n\n" +
+      "Selon les traditions, la protection peut être conçue comme une barrière, un renforcement, une purification, un éloignement ou une mise à distance d’une influence indésirable. L’équilibrage vise quant à lui à maintenir ou restaurer un état considéré comme harmonieux, notamment après une période de stress, une pratique spirituelle ou une exposition à un environnement jugé perturbant.\n\n" +
+      "Les méthodes employées sont extrêmement variées et dépendent des cultures et des croyances. Elles peuvent utiliser des prières, des symboles, des objets protecteurs, des plantes, des éléments naturels, des gestes rituels, des espaces consacrés ou certaines pratiques de méditation et de visualisation.\n\n" +
+      "Dans ce codex, ces méthodes sont étudiées comme des pratiques et croyances traditionnelles ou ésotériques. Elles ne doivent pas être considérées comme des moyens scientifiquement démontrés de bloquer ou de modifier une énergie invisible.",
     "Perception & sensibilité énergétique":
       "La perception énergétique désigne, dans différentes traditions spirituelles et ésotériques, la capacité attribuée à une personne à ressentir, identifier ou interpréter des manifestations considérées comme énergétiques.\n\n" +
       "Cette perception peut être décrite comme une sensation corporelle, une impression émotionnelle, une perception intuitive ou une représentation mentale. Selon les traditions, elle peut concerner l’énergie d’une personne, d’un lieu, d’un objet, d’un élément naturel ou d’une autre entité.\n\n" +
@@ -957,6 +962,32 @@
   const leftLists = {};
   const refLists = {};
   const subcats = {
+    "Protection & équilibrage énergétique": {
+      items: [
+        "Prières & invocations protectrices",
+        "Symboles protecteurs",
+        "Amulettes & talismans",
+        "Cercles & espaces protecteurs",
+        "Purification par l’eau",
+        "Purification par le feu",
+        "Fumigation & encens",
+        "Sel & substances minérales",
+        "Plantes protectrices",
+        "Objets & matériaux protecteurs",
+        "Gestes & signes de protection",
+        "Visualisation protectrice",
+        "Méditation & recentrage",
+        "Ancrage",
+        "Purification des lieux",
+        "Bénédictions & consécrations",
+        "Protection par les vêtements & parures",
+        "Protection par les plantes & éléments naturels",
+        "Protection par les entités",
+        "Équilibrage énergétique",
+        "Harmonisation & recentrage",
+        "Autres méthodes traditionnelles"
+      ]
+    },
     "Perception & sensibilité énergétique": {
       items: [
         "Perception tactile",
@@ -4843,6 +4874,467 @@
   ];
 
   subTexts["Perception & sensibilité énergétique"] = Object.fromEntries(percTexts.map((b,k)=>[k,b]));
+
+  // prot_text
+
+  /* ===== Pages protection & équilibrage (N-10-01 à N-10-22) ===== */
+  const PROT_REG = t => REG(t || "ces pratiques peuvent apaiser l’anxiété, donner un sentiment de sécurité et marquer des transitions ; elles ne sont pas démontrées comme moyens de bloquer une énergie invisible.");
+  const SVG_NAZAR = `<svg viewBox="0 0 120 120" class="fig-tri" aria-hidden="true">
+      <circle cx="60" cy="60" r="50" fill="#1f4f9a"/><circle cx="60" cy="60" r="34" fill="#f4f1e6"/>
+      <circle cx="60" cy="60" r="21" fill="#6fa8dc"/><circle cx="60" cy="60" r="10" fill="#141414"/>
+    </svg>`;
+  const SVG_CIRCLE = `<svg viewBox="0 0 120 120" class="fig-tri" aria-hidden="true">
+      <circle cx="60" cy="60" r="52" class="ln"/><circle cx="60" cy="60" r="44" class="ln dim"/>
+      <polygon points="60,20 84,94 21,48 99,48 36,94" class="ln"/>
+      <circle cx="60" cy="8" r="3" class="fl"/><circle cx="112" cy="60" r="3" class="fl"/><circle cx="60" cy="112" r="3" class="fl"/><circle cx="8" cy="60" r="3" class="fl"/>
+    </svg>`;
+
+  const protTexts = [
+    /* 01 — PRIÈRES */
+    [
+      DESC("Utilisation de prières, récitations ou appels à une divinité, un saint, un ange ou une autre figure protectrice."),
+      H(1,"✝","Formes & traditions"),
+      CORR([
+        ["Christianisme","psaume 91, prière à saint Michel, prière à l’ange gardien, signe de croix"],
+        ["Islam","Ayat al-Kursi, sourates al-Falaq et an-Nas (les « deux protectrices »)"],
+        ["Judaïsme","Shema Israël, bénédiction sacerdotale, psaume 121"],
+        ["Hindouisme","Hanuman Chalisa, mantras de Durga"],
+        ["Bouddhisme","sūtras protecteurs (paritta), mantras de Tara"]
+      ]),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Moment —","au réveil, au coucher, avant un voyage ou une épreuve."),
+      LI("Forme —","prière transmise par sa tradition ou paroles personnelles."),
+      P("Voir aussi N-06-04 (énergie de la prière) et N-10-19 (protection par les entités)."),
+      H(3,"⌛","Origine"),
+      P("Les prières de protection sont parmi les plus anciennes formes religieuses (incantations mésopotamiennes et égyptiennes)."),
+      PROT_REG("la prière apporte apaisement et sentiment de soutien, ce qui est documenté ; son effet protecteur relève de la foi.")
+    ],
+
+    /* 02 — SYMBOLES */
+    [
+      DESC("Utilisation de signes, sceaux, inscriptions ou symboles auxquels une fonction protectrice est attribuée."),
+      H(1,"✶","Formes & traditions"),
+      CORR([
+        ["Pentagramme","pointe en haut : protection en magie occidentale"],
+        ["Hexagramme · sceau de Salomon","protection contre les démons (magie juive et arabe)"],
+        ["Œil d’Horus (oudjat)","santé et protection, Égypte"],
+        ["Croix · chrisme","protection chrétienne"],
+        ["Svastika · om","porte-bonheur en Inde (sens sans rapport avec son détournement nazi)"],
+        ["Hexafoil (« marque de sorcière »)","rosaces gravées sur les portes et cheminées, Europe"],
+        ["Hex signs","rosaces colorées des granges, Pennsylvanie"],
+        ["Ægishjálmur","« heaume de terreur » des grimoires islandais"]
+      ]),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Tracer —","sur une porte, un objet, dans l’air (pentagramme), ou en visualisation."),
+      LI("Connaître le sens —","certains symboles ont des sens différents selon les cultures."),
+      H(3,"⌛","Origine"),
+      P("Des traditions égyptienne, juive, chrétienne, islamique et populaires ; nombre de « marques de sorcière » datent des XVIe – XVIIIe siècles en Angleterre."),
+      PROT_REG()
+    ],
+
+    /* 03 — AMULETTES & TALISMANS */
+    [
+      HEAD2(SVG_NAZAR, "Le nazar, l’« œil bleu » contre le mauvais œil."),
+      DESC("Objets portés ou conservés comme protections selon différentes traditions."),
+      H(1,"✦","Formes & traditions"),
+      P("On distingue souvent l’<em>amulette</em>, qui protège et éloigne, du <em>talisman</em>, qui attire une influence favorable (souvent fabriqué sous un astre)."),
+      CORR([
+        ["Nazar","œil bleu contre le mauvais œil (Turquie, Grèce, Moyen-Orient)"],
+        ["Khamsa · main de Fatma","main ouverte protectrice (Maghreb, Moyen-Orient)"],
+        ["Scarabée","régénération et protection (Égypte)"],
+        ["Cornicello","petite corne rouge contre la jettatura (Italie du Sud)"],
+        ["Omamori","sachets protecteurs des sanctuaires japonais"],
+        ["Médaille miraculeuse · scapulaire","objets de piété catholiques"],
+        ["Mezouza","rouleau de prière fixé au montant des portes (judaïsme)"]
+      ]),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Porter ou placer —","sur soi, à l’entrée, dans la voiture, au berceau."),
+      LI("Renouveler —","certains, comme les omamori, se rendent au sanctuaire chaque année."),
+      H(3,"⌛","Origine"),
+      P("Les amulettes existent depuis la préhistoire ; l’Égypte en a produit des milliers. Les talismans astrologiques sont décrits dans le <em>Picatrix</em> et par Agrippa."),
+      PROT_REG()
+    ],
+
+    /* 04 — CERCLES & ESPACES */
+    [
+      HEAD2(SVG_CIRCLE, "Un cercle avec pentagramme et les quatre directions, comme en magie occidentale."),
+      DESC("Délimitation symbolique d’un espace destiné à protéger une personne ou une pratique."),
+      H(1,"✦","Formes & traditions"),
+      LI("Cercle magique —","tracé au sol avant une invocation dans les grimoires (la <em>Clé de Salomon</em>) ; on ne doit pas en sortir pendant le rite."),
+      LI("Cercle wiccan —","« lancer le cercle » en appelant les quatre directions."),
+      LI("Rituel mineur du pentagramme —","Golden Dawn : tracer des pentagrammes vers les quatre points cardinaux."),
+      LI("Espaces consacrés —","temple, autel, sanctuaire, enceinte sacrée."),
+      LI("Seuils —","la porte, le pas de la porte, lieu de protection privilégié."),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Délimiter —","craie, sel, cordon, bougies, ou simple visualisation."),
+      LI("Ouvrir & fermer —","marquer clairement le début et la fin de l’espace protégé."),
+      IV("les étapes pour délimiter un cercle seront détaillées dans le Codex IV — Pratiques."),
+      H(3,"⌛","Origine"),
+      P("Des grimoires médiévaux et de la Renaissance, de la magie cérémonielle (XIXe siècle) et de la Wicca (XXe siècle)."),
+      PROT_REG("délimiter un espace aide à se concentrer et à séparer le rituel du quotidien ; sa fonction de barrière relève de la croyance.")
+    ],
+
+    /* 05 — EAU */
+    [
+      DESC("Utilisation symbolique de l’eau pour nettoyer ou purifier une personne, un objet ou un lieu."),
+      H(1,"≈","Formes & traditions"),
+      CORR([
+        ["Eau bénite","aspersion, signe de croix en entrant à l’église"],
+        ["Ablutions","wudu avant la prière (islam)"],
+        ["Mikvé","bain rituel (judaïsme)"],
+        ["Misogi","purification sous une cascade (shintō)"],
+        ["Bain dans le Gange","purification (hindouisme)"],
+        ["Eau de lune · eau de source","usages ésotériques et populaires"]
+      ]),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Douche ou bain intentionnel —","se laver en « laissant partir » une journée lourde."),
+      LI("Aspersion —","quelques gouttes sur un lieu ou un objet."),
+      P("Voir aussi N-02-02 (Eau) et N-08-17 (nettoyage)."),
+      H(3,"⌛","Origine"),
+      P("Universelle : l’eau qui lave le corps devient le symbole de ce qui lave l’âme."),
+      PROT_REG("le bain et l’eau apaisent réellement ; la purification énergétique relève du symbole.")
+    ],
+
+    /* 06 — FEU */
+    [
+      DESC("Usage symbolique du feu, de la lumière ou de la chaleur dans certaines traditions de purification."),
+      H(1,"△","Formes & traditions"),
+      CORR([
+        ["Bougies & lampes","cierges, lampes à huile (diya), veilleuses devant les icônes"],
+        ["Feux de joie","Saint-Jean, Beltaine, sauter au-dessus du feu"],
+        ["Ārati","flamme tournée devant la divinité (hindouisme)"],
+        ["Feu sacré","temples du feu zoroastriens"],
+        ["Brûler","papiers, intentions, objets symboliques"]
+      ]),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Bougie —","allumer une flamme avec une intention de protection ou de clarté."),
+      LI("Brûler pour libérer —","écrire ce qui pèse et le brûler en sécurité."),
+      NOTE("Sécurité : jamais de flamme sans surveillance, loin des tissus ; brûler à l’extérieur ou dans un récipient résistant, avec de l’eau à portée."),
+      H(3,"⌛","Origine"),
+      P("Des cultes du feu (Agni, zoroastrisme), des fêtes saisonnières européennes et des usages religieux de la lumière."),
+      PROT_REG()
+    ],
+
+    /* 07 — FUMIGATION */
+    [
+      DESC("Utilisation de fumées aromatiques, résines ou plantes dans des pratiques de purification et de protection."),
+      H(1,"∿","Formes & traditions"),
+      CORR([
+        ["Encens · oliban","églises, temples, mosquées (bakhour)"],
+        ["Myrrhe · benjoin","résines anciennes de purification"],
+        ["Copal","Mésoamérique"],
+        ["Sauge, cèdre, foin d’odeur","rites de nombreux peuples amérindiens"],
+        ["Genévrier","fumigations alpines et tibétaines"],
+        ["Armoise, laurier, romarin","usages européens"]
+      ]),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Parcourir —","passer la fumée dans les coins d’une pièce, fenêtre ouverte."),
+      LI("Sur soi —","faire passer la fumée autour du corps."),
+      NOTE("Aérer ; éviter en présence d’asthmatiques, de jeunes enfants, d’animaux (surtout les oiseaux). Préférer des plantes cultivées : la sauge blanche sauvage est surexploitée et ses rites appartiennent à des peuples amérindiens."),
+      H(3,"⌛","Origine"),
+      P("L’encens est utilisé depuis l’Égypte ancienne ; la « route de l’encens » reliait l’Arabie au monde méditerranéen."),
+      PROT_REG("les odeurs agissent sur l’humeur et marquent un moment rituel ; la fumée dégrade aussi la qualité de l’air intérieur.")
+    ],
+
+    /* 08 — SEL & MINÉRAUX */
+    [
+      DESC("Usage traditionnel du sel, de pierres ou de minéraux comme supports symboliques de purification ou de protection."),
+      H(1,"◇","Formes & traditions"),
+      CORR([
+        ["Sel","sur le seuil, aux coins des pièces, dans un bain ; jeté par-dessus l’épaule"],
+        ["Morishio","petits cônes de sel à l’entrée (Japon)"],
+        ["Sel des lutteurs de sumo","jeté sur le ring pour le purifier"],
+        ["Tourmaline noire, obsidienne","pierres « protectrices » (lithothérapie moderne)"],
+        ["Hématite, onyx","protection et ancrage"],
+        ["Ambre, corail","protection des enfants (traditions européennes)"]
+      ]),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Bol de sel —","dans une pièce, renouvelé régulièrement."),
+      LI("Pierre de poche —","comme rappel de stabilité."),
+      NOTE("Attention : les colliers d’ambre pour bébés présentent un risque d’étouffement et de strangulation, selon les autorités sanitaires."),
+      P("Voir aussi N-04-07 (roches et minéraux)."),
+      H(3,"⌛","Origine"),
+      P("Le sel, précieux et conservateur, est sacré dans de nombreuses cultures (shintō, Bible, rites européens)."),
+      PROT_REG()
+    ],
+
+    /* 09 — PLANTES PROTECTRICES */
+    [
+      DESC("Utilisation folklorique ou rituelle de certaines plantes auxquelles sont attribuées des propriétés protectrices."),
+      H(1,"❦","Formes & traditions"),
+      CORR([
+        ["Ail","contre les vampires et le mauvais œil"],
+        ["Millepertuis","herbe de la Saint-Jean, chasse-diable"],
+        ["Rue","contre le mauvais œil (Méditerranée)"],
+        ["Romarin & laurier","protection des maisons"],
+        ["Sorbier","croix de sorbier contre les sorcières (Écosse, Scandinavie)"],
+        ["Houx & gui","protection en hiver"],
+        ["Basilic sacré (tulsī)","plante protectrice du foyer (Inde)"],
+        ["Rameaux bénis","buis ou olivier du dimanche des Rameaux"]
+      ]),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Suspendre —","bouquet séché à la porte."),
+      LI("Planter —","près de l’entrée de la maison."),
+      NOTE("Ne pas consommer une plante sans identification sûre ; certaines (rue, millepertuis) sont toxiques ou interagissent avec des médicaments."),
+      P("Voir aussi N-04-01 (plantes)."),
+      H(3,"⌛","Origine"),
+      P("Des herbiers antiques, du folklore européen et des traditions populaires du monde entier."),
+      PROT_REG()
+    ],
+
+    /* 10 — OBJETS & MATÉRIAUX */
+    [
+      DESC("Objets, métaux, pierres ou autres matériaux associés à la protection dans certaines cultures."),
+      H(1,"⚒","Formes & traditions"),
+      CORR([
+        ["Fer","repousse les fées et les esprits (folklore celtique) ; fer à cheval"],
+        ["Argent","contre les loups-garous et les vampires"],
+        ["Miroirs","renvoient le mal ; miroir bagua du feng shui"],
+        ["Clochettes","sons qui éloignent les esprits"],
+        ["Bouteilles de sorcière","bouteilles enterrées sous le seuil (Angleterre, XVIIe siècle)"],
+        ["Chaussures cachées","découvertes dans les murs des maisons anciennes"],
+        ["Attrape-rêves","filtre les mauvais rêves (Ojibwés)"]
+      ]),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Placer —","au seuil, au-dessus de la porte, près du lit."),
+      LI("Connaître l’origine —","l’attrape-rêves, par exemple, appartient à une culture précise."),
+      H(3,"⌛","Origine"),
+      P("De nombreux objets protecteurs ont été retrouvés dans les murs, sous les sols et les cheminées des maisons européennes, témoins d’usages populaires discrets."),
+      PROT_REG()
+    ],
+
+    /* 11 — GESTES */
+    [
+      DESC("Gestes, postures ou signes corporels traditionnellement utilisés pour éloigner ou repousser une influence considérée comme nuisible."),
+      H(1,"☞","Formes & traditions"),
+      CORR([
+        ["Signe de croix","christianisme"],
+        ["Toucher du bois","pour ne pas attirer le malheur"],
+        ["Mano cornuta · mano fico","gestes contre le mauvais œil (Italie)"],
+        ["Cracher trois fois","contre le mauvais sort (Europe de l’Est, Grèce)"],
+        ["Mudrā d’absence de crainte","main levée paume ouverte (abhaya mudrā, bouddhisme et hindouisme)"],
+        ["Kuji-in","neuf gestes des mains et syllabes (Japon)"],
+        ["Croiser les doigts","porte-bonheur"]
+      ]),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Geste-rappel —","un geste simple associé à une intention de calme ou de protection."),
+      H(3,"⌛","Origine"),
+      P("Des traditions religieuses et des superstitions populaires, transmises par l’usage."),
+      PROT_REG("ces gestes rassurent et peuvent réduire l’anxiété ; une étude de 2010 suggérait qu’un porte-bonheur augmentait la confiance, mais ce résultat n’a pas été confirmé ensuite. Leur effet protecteur relève de la croyance.")
+    ]
+  ];
+
+  protTexts.push(
+    /* 12 — VISUALISATION */
+    [
+      DESC("Représentation mentale d’une lumière, d’une enveloppe ou d’une autre forme symbolique de protection."),
+      H(1,"✧","Formes & traditions"),
+      LI("Bulle de lumière —","enveloppe lumineuse autour du corps."),
+      LI("Bouclier, armure —","image d’une protection solide."),
+      LI("Miroir —","surface qui renvoie ce qui n’est pas désiré."),
+      LI("Pilier de lumière —","lumière qui descend du ciel et entoure le corps."),
+      LI("Couleurs —","blanc, or, bleu ou violet selon les écoles."),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Avant une situation difficile —","quelques respirations et l’image d’une enveloppe calme."),
+      LI("Le soir —","« refermer » sa bulle avant de dormir."),
+      IV("les exercices de visualisation protectrice seront détaillés dans le Codex IV — Pratiques."),
+      P("Voir aussi N-08-06 et N-08-19."),
+      H(3,"⌛","Origine"),
+      P("De la magie occidentale (Dion Fortune, Golden Dawn) et de l’ésotérisme moderne."),
+      PROT_REG("la visualisation apaisante réduit le stress et aide à se sentir plus solide ; c’est son principal effet.")
+    ],
+
+    /* 13 — MÉDITATION & RECENTRAGE */
+    [
+      DESC("Pratiques visant à retrouver un état de calme, de stabilité ou d’équilibre intérieur."),
+      H(1,"◎","Formes & traditions"),
+      LI("Méditation du souffle —","revenir au souffle pour se stabiliser."),
+      LI("Recentrage —","ramener l’attention au ventre ou au cœur."),
+      LI("Méditation de bienveillance —","adoucir la colère ou la peur."),
+      LI("Prière silencieuse —","remettre sa peur à plus grand que soi."),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Trois minutes —","respirer, sentir les appuis, nommer ce qui est là."),
+      LI("Après une pratique ou une journée chargée —","revenir à un état calme."),
+      P("Voir aussi N-08-01 et N-08-13."),
+      H(3,"⌛","Origine"),
+      P("Des traditions contemplatives de toutes les cultures."),
+      PROT_REG("le calme intérieur aide réellement à faire face au stress et aux situations difficiles.")
+    ],
+
+    /* 14 — ANCRAGE */
+    [
+      DESC("Pratiques symboliques visant à renforcer le sentiment de stabilité et de connexion au corps ou à la terre."),
+      H(1,"⛰","Formes & traditions"),
+      LI("Racines —","visualiser des racines qui descendent dans le sol."),
+      LI("Pieds nus —","contact direct avec la terre."),
+      LI("Posture de l’arbre —","qigong (<em>zhan zhuang</em>)."),
+      LI("Retour aux sens —","exercice des 5-4-3-2-1 (voir N-08-14)."),
+      LI("Manger, boire —","revenir au concret après une pratique."),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Avant et après —","toute pratique énergétique ou spirituelle."),
+      LI("En cas de dispersion —","quand on se sent « ailleurs » ou débordé."),
+      H(3,"⌛","Origine"),
+      P("Des arts martiaux, du yoga, du chamanisme et des approches psychocorporelles."),
+      PROT_REG("les techniques d’ancrage sensoriel sont utilisées en psychothérapie pour réduire l’anxiété.")
+    ],
+
+    /* 15 — PURIFICATION DES LIEUX */
+    [
+      DESC("Méthodes traditionnelles destinées à nettoyer symboliquement un espace considéré comme chargé ou perturbé."),
+      H(1,"⌂","Formes & traditions"),
+      CORR([
+        ["Bénédiction de maison","prêtre, pasteur, rabbin, imam selon les traditions"],
+        ["Encens & fumigations","voir N-10-07"],
+        ["Sel & eau","aspersion, sel aux coins"],
+        ["Son","cloches, battements de mains, bols"],
+        ["Ouvrir & aérer","faire circuler l’air et la lumière"],
+        ["Ranger & nettoyer","nettoyage concret, puis symbolique"],
+        ["Nettoyage de printemps","nombreuses traditions avant le Nouvel An (Nowruz, Nouvel An chinois)"]
+      ]),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Ordre —","ranger, nettoyer, aérer, puis faire le geste symbolique."),
+      LI("En entrant dans un nouveau logement —","rituel de « prise de possession » des lieux."),
+      H(3,"⌛","Origine"),
+      P("Des traditions religieuses et populaires ; le grand ménage avant le Nouvel An existe en Iran, en Chine et dans de nombreuses cultures."),
+      PROT_REG("un lieu rangé, propre, aéré et lumineux améliore réellement le confort et l’humeur.")
+    ],
+
+    /* 16 — BÉNÉDICTIONS & CONSÉCRATIONS */
+    [
+      DESC("Rituels destinés à placer une personne, un objet ou un lieu sous une protection ou une influence considérée comme favorable."),
+      H(1,"✟","Formes & traditions"),
+      LI("Bénédiction —","parole et geste qui appellent le bien sur quelqu’un (bénédiction des enfants, des repas, des récoltes)."),
+      LI("Consécration —","rendre sacré un objet, un lieu ou une personne (autel, église, objet rituel)."),
+      LI("Bénédictions populaires —","bénédiction des animaux à la Saint-Antoine, des voitures, des bateaux."),
+      LI("Magie —","consécration des outils rituels par les quatre éléments."),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Bénédiction personnelle —","souhaiter du bien à quelqu’un, à voix haute ou en pensée."),
+      LI("Consacrer un objet —","le dédier à un usage précis, par un petit rituel."),
+      H(3,"⌛","Origine"),
+      P("Des traditions religieuses (bénédiction sacerdotale juive, sacramentaux catholiques, puja hindoue) et de la magie cérémonielle."),
+      PROT_REG("les bénédictions marquent l’importance d’un moment, renforcent les liens et rassurent ; leur effet relève de la foi.")
+    ],
+
+    /* 17 — VÊTEMENTS & PARURES */
+    [
+      DESC("Utilisation de bijoux, vêtements, couleurs ou ornements ayant une fonction protectrice traditionnelle."),
+      H(1,"❋","Formes & traditions"),
+      CORR([
+        ["Fil rouge","au poignet contre le mauvais œil (Kabbale, Europe de l’Est, Inde)"],
+        ["Bindi · khôl","protection et beauté (Inde, Moyen-Orient)"],
+        ["Broderies","motifs protecteurs au col et aux manches (Europe de l’Est)"],
+        ["Bleu","couleur protectrice autour de la Méditerranée"],
+        ["Rouge","éloigne le malheur (Chine, Nouvel An)"],
+        ["Bijoux","médailles, croix, main de Fatma, œil"],
+        ["Tatouages","yantra protecteurs (sak yant, Thaïlande)"]
+      ]),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Choisir en connaissance —","connaître le sens culturel de ce que l’on porte."),
+      LI("Rappel —","un bijou ou une couleur comme rappel quotidien d’une intention."),
+      H(3,"⌛","Origine"),
+      P("Des traditions vestimentaires et décoratives de nombreuses cultures."),
+      PROT_REG()
+    ],
+
+    /* 18 — PLANTES & ÉLÉMENTS NATURELS */
+    [
+      DESC("Association de certains éléments naturels à une fonction de garde, d’éloignement ou de purification."),
+      H(1,"♣","Formes & traditions"),
+      LI("Haies & arbres gardiens —","sureau, houx, sorbier plantés près des maisons."),
+      LI("Eaux vives —","dans le folklore, certains esprits ne pourraient pas traverser une eau courante."),
+      LI("Pierres levées & cairns —","marqueurs protecteurs de lieux et de chemins."),
+      LI("Feu & soleil —","la lumière qui chasse l’ombre."),
+      LI("Animaux gardiens —","voir Codex I, E-12."),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Jardin protecteur —","planter quelques plantes traditionnelles autour de la maison."),
+      LI("Se relier —","sentir la protection d’un lieu naturel familier."),
+      P("Voir aussi N-10-09 et le chapitre N-04."),
+      H(3,"⌛","Origine"),
+      P("Du folklore européen, de l’animisme et de nombreuses traditions rurales."),
+      PROT_REG("le contact avec la nature apaise ; la fonction de garde relève du folklore.")
+    ],
+
+    /* 19 — ENTITÉS */
+    [
+      DESC("Recours symbolique ou religieux à des divinités, anges, ancêtres, esprits ou autres figures protectrices."),
+      H(1,"❖","Formes & traditions"),
+      CORR([
+        ["Anges gardiens","christianisme ; archange Michel, protecteur contre le mal"],
+        ["Saints patrons","protecteurs d’un lieu, d’un métier, d’une personne"],
+        ["Ancêtres","protecteurs de la famille (Afrique, Asie)"],
+        ["Divinités protectrices","Ganesh qui écarte les obstacles, Bès en Égypte, Durga"],
+        ["Esprits gardiens","kami, esprits de lieu, animaux totems"],
+        ["Bodhisattvas","Avalokiteśvara, Tara"]
+      ]),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Prier, invoquer, honorer —","selon sa tradition."),
+      LI("Image ou statuette —","à l’entrée, près du lit, sur un autel."),
+      P("Voir le Codex I pour chaque entité, et N-06-10."),
+      H(3,"⌛","Origine"),
+      P("Des religions et traditions du monde entier."),
+      PROT_REG("la croyance en une protection bienveillante peut rassurer et donner du courage ; son existence relève de la foi.")
+    ],
+
+    /* 20 — ÉQUILIBRAGE */
+    [
+      DESC("Ensemble de pratiques visant à rétablir un état considéré comme énergétiquement harmonieux."),
+      H(1,"⚖","Formes & traditions"),
+      LI("Équilibre des pôles —","yin et yang, actif et réceptif."),
+      LI("Équilibre des éléments —","apporter l’élément qui manque (voir N-08-20)."),
+      LI("Équilibre des chakras —","voir N-08-08."),
+      LI("Équilibre des doṣa —","ayurveda : vāta, pitta, kapha."),
+      LI("Équilibre de vie —","activité et repos, social et solitude."),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Observer —","repérer ce qui est en excès ou en manque."),
+      LI("Compenser doucement —","ajouter ce qui manque plutôt que tout bouleverser."),
+      P("Voir aussi N-01 (section 5) et N-08-18."),
+      H(3,"⌛","Origine"),
+      P("Des médecines traditionnelles et de l’ésotérisme moderne."),
+      PROT_REG("l’équilibre de vie (sommeil, alimentation, activité, liens) a des effets réels et mesurables sur la santé.")
+    ],
+
+    /* 21 — HARMONISATION */
+    [
+      DESC("Pratiques visant à retrouver une sensation d’équilibre entre différents aspects physiques, émotionnels, mentaux ou spirituels."),
+      H(1,"∞","Formes & traditions"),
+      CORR([
+        ["Corps","mouvement, repos, alimentation, contact avec la nature"],
+        ["Émotions","expression, accueil, régulation"],
+        ["Mental","clarté, pauses, concentration"],
+        ["Spirituel","sens, prière, méditation, lien"]
+      ]),
+      LI("Sons —","bols chantants, chant, musique douce."),
+      LI("Rythmes —","respiration, marche, danse."),
+      LI("Rituels de transition —","marquer le passage du travail au repos."),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Bilan des quatre plans —","chaque soir, une note pour le corps, les émotions, l’esprit, le spirituel."),
+      LI("Petit geste par plan —","une action simple pour celui qui est le plus faible."),
+      H(3,"⌛","Origine"),
+      P("Des approches globales de l’être humain (médecines traditionnelles, corps subtils) et des approches modernes de bien-être."),
+      PROT_REG("prendre soin de ces différents aspects est recommandé aussi par la santé publique ; l’« harmonisation énergétique » en est une lecture symbolique.")
+    ],
+
+    /* 22 — AUTRES */
+    [
+      DESC("Méthodes de protection ou d’équilibrage propres à une culture, une religion ou un courant particulier."),
+      H(1,"✧","Formes & traditions"),
+      LI("Ruqya —","récitation coranique de protection et de guérison (islam)."),
+      LI("Limpia —","nettoyage avec un œuf, des herbes ou des fleurs (Mexique, Amérique latine)."),
+      LI("Coupe-feu & leveurs de sorts —","guérisseurs populaires (France)."),
+      LI("Exorcisme —","rite encadré par l’Église catholique (prêtres exorcistes désignés)."),
+      LI("Feng shui —","disposition des lieux pour l’harmonie (Chine)."),
+      LI("Vastu shastra —","architecture traditionnelle (Inde)."),
+      LI("Nettoyage chamanique —","chants, souffle, plumes, tambour."),
+      H(2,"☀","Comment l’utiliser"),
+      LI("Dans son contexte —","ces pratiques appartiennent à des traditions vivantes, avec leurs spécialistes."),
+      NOTE("Se méfier des personnes qui annoncent un « envoûtement » ou une « malédiction » et proposent de l’enlever contre paiement : c’est une escroquerie fréquente. En cas de souffrance psychique, consulter un professionnel de santé."),
+      H(3,"⌛","Origine"),
+      P("Des religions, des médecines populaires et des traditions régionales."),
+      PROT_REG()
+    ]
+  );
+
+  subTexts["Protection & équilibrage énergétique"] = Object.fromEntries(protTexts.map((b,k)=>[k,b]));
   const PFX = CODEX.prefix;
   const pad = n => String(n).padStart(2,'0');
   const pad3 = n => String(n).padStart(3,'0');
